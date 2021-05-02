@@ -1,5 +1,5 @@
-# 핸드워크 웹페이지 제작 프로젝트   
-
+# 핸드워크 웹페이지 제작 프로젝트
+<br>
 
 ## 프로젝트 정보
 ### 프로젝트 팀원 : [김종태](https://github.com/kjt407), [최준형](https://github.com/wnsgudchl0302)
@@ -8,6 +8,7 @@
 ### 사용기술 :
 * ### 프론트 (HTML, CSS, JS, JQUERY, SLICK, AJAX)
 * ### 백엔드  (JAVA, JSP, SERVLET(MVC), AJAX)
+<br>
 
 ## 개발로그
 * ### 2021.05.03
