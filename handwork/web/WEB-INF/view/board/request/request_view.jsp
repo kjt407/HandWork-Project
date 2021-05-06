@@ -123,10 +123,10 @@
 			               
 			                </c:when>
 							<c:otherwise>
-								
-								<a href="../plzWriter.jsp" class="btn-edit" >수정</a>
-                        		<a href="../plzWriter.jsp" class="btn-edit"}>삭제</a>
-                        	 
+
+								<a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit" >수정</a>
+                        		<a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit"}>삭제</a>
+
 							
 							</c:otherwise>
 						</c:choose> 

@@ -49,7 +49,7 @@ public class RequestListController extends HttpServlet {
 		
 		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/request.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/board/request/request.jsp").forward(request, response);
 		
 	}
 }

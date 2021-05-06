@@ -19,8 +19,8 @@ public class JoinController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// LogInForm.jsp·Î Æ÷¿öµù
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/join.jsp");
+		// LogInForm.jspï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/login/join.jsp");
 		rd.forward(request, response);
 	}
 	

@@ -38,7 +38,7 @@ public class RequestWriteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/request_write.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/board/request/request_write.jsp").forward(request, response);
 
 	}
 

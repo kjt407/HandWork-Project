@@ -16,7 +16,7 @@ public class LogoutControler extends HttpServlet {
 		session.removeAttribute("id");
 		session.removeAttribute("name");
 		session.invalidate();
-		request.getRequestDispatcher("/WEB-INF/view/logout.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/login/logout.jsp").forward(request, response);
 		
 	}
 }
