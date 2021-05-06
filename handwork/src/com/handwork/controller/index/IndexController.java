@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/index")
+@WebServlet("/")
 public class IndexController extends HttpServlet {
 
 	@Override
