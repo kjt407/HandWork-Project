@@ -78,7 +78,7 @@
 		<h2 class="hide">로그인영역</h2>
 		<div class="login-container inner-container">
 			<p class="horizontal-login horizontal-title">로그인</p>
-			<form action="login" method="post">
+			<form action="" method="post">
 				<input type="text" name="id" class="text-id"
 					placeholder="아이디를 입력하세요."> <input type="password" name="pw"
 					class="text-pw" placeholder="비밀번호를 입력해주세요"> <input
