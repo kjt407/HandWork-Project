@@ -7,7 +7,7 @@
 				<h2 class="hide">
 					핸드워크 헤더
 					</h2>
-					<a href="/index" class="main-logo"> <!-- <img src="./images/2.png" alt="메인페이지 로고"> -->
+					<a href="/" class="main-logo"> <!-- <img src="./images/2.png" alt="메인페이지 로고"> -->
 						<p>HANDWORK</p>
 					</a>
 					<ul class="header-menu-title">
