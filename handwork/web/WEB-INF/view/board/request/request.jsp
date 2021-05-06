@@ -165,7 +165,7 @@
                     <c:choose>
 				<c:when test="${empty id}">
 				
-					 <a href="plzLogin.jsp" class="btn-write">글작성</a>
+					 <a onclick="alert('로그인을 해주세요');" class="btn-write">글작성</a>
                
                 </c:when>
 				<c:otherwise>
