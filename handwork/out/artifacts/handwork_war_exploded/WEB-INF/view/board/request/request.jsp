@@ -43,6 +43,7 @@
             <jsp:include page="/WEB-INF/view/board_aslide.jsp"/>
             <div class="board-main request-main">
                <h3 class="hide">게시판 메인</h3>
+                ${ pageContext.request.servletPath }<br>
                 <form action="" class="board-search">
                     <select name="f">
                         <option ${(param.f == "title")?"selected":""} value="title">제목</option>
