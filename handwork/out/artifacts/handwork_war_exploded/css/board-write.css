@@ -1,0 +1,45 @@
+
+@charset "utf-8";
+/* 공통항목 설정 */
+.board-section .board-bg div.left, .board-section .board-aside { background: white; }
+.board-section .board-main, .board-section .board-bg div.right { background: rgb(247, 247, 247);}
+.request-write-main.board-main {align-items: flex-start;}
+.request-write-main .board-write-row  { display: flex; align-items: center; width: 100%; margin-bottom: 15px;}
+.request-write-main .board-write-col { display: flex; flex-direction: column; align-items: flex-start; width: 100%;}
+.request-write-main .input-label { font-size: 16px; margin-bottom: 5px;}
+.request-write-main select, .request-write-main input, textarea{ border: 1px solid hsla(0, 0%, 0%, 0.4); background: white; border-radius: 1px; font-size: 18px; height: 50px; text-indent:0; padding: 0 0 0 15px; resize: none;}
+
+/* 글쓰기 페이지 css */
+.request-write-main .request-write-title { display: flex; flex-direction: column; width: 100%; font-size: 29px; color: black; font-weight: bold; margin-bottom: 10px; }
+.request-write-main .request-write-title::after {display: block; content: ""; height: 1px; width: 100%; background: rgba(000, 000, 000, 0.5); margin-top: 8px;}
+.request-write-main input {padding: 0 0 0 19px;}
+.request-write-main input#file-upload-button { width: 0px;}
+.request-write-main input::placeholder {font-size: 90%;}
+.request-write-main .request-write-header { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 15px 10px; }
+.request-write-main .request-write-header .category-select-col { width: 70%;}
+.request-write-main .request-write-header .location-select-col {width: 30%;}
+.request-write-main .request-write-header select.category-select { width: 100%; border-right: none;}
+.request-write-main .request-write-header select.location-select { width: 100%;}
+.request-write-main .request-write-header .board-write-price { border-right: none;}
+/* 이미지 업로드 부분 */
+.request-write-main .request-write-header .img-ul-li { display: flex; align-items: center; height: 50px; margin:5px 0;}
+.request-write-main .request-write-header .img-ul-li label { display: flex; justify-content: center; align-items: center; height: 100%; width: 100px; font-size: 18px; color: white; padding: 7px; background: tomato; border-radius: 1px; white-space:nowrap; transition: 0.3s;}
+.request-write-main .request-write-header .img-ul-li label:hover { background: darkred;}
+
+/*이미지 변경 버튼 (이미 업로드된 항목)*/
+.request-write-main .request-write-header .img-ul-li.add-img-li-update label {background: gray;}
+.request-write-main .request-write-header .img-ul-li.add-img-li-update label:hover { background: darkred;}
+.request-write-main .request-write-header .img-ul-li p.img-path {display: flex; justify-content: flex-start; align-items: center; padding: 0 15px; width: 500px; height: 100%; border: 1px solid hsla(0, 0%, 0%, 0.4); background: white; white-space:nowrap; font-size: 16px; overflow-x: hidden;}
+.request-write-main .request-write-header .img-ul-li .btn-del-img { display: block; background: url("/Project/images/cancel.png") no-repeat center; background-size: cover; width: 20px; height: 20px; border: none; margin-left: 15px; transition: 0.3s;}
+.request-write-main .request-write-header .img-ul-li .btn-del-img:hover { transform: scale(1.2); }
+.request-write-main .request-write-header div.add-btn-container { display: flex; justify-content: flex-start; align-items: center; width: 600px; margin: 5px 0; }
+.request-write-main .request-write-header #btn-add-img { display: flex; justify-content: center; align-items: center; width: 100px; height: 50px; border: 1px solid hsla(0, 0%, 0%, 0.4); background: white; border-radius: 1px; font-size: 22px; font-weight: lighter; transition: 0.3s;}
+.request-write-main .request-write-header #btn-add-img:hover {border: 2px solid black;}
+
+.request-write-main .request-write-header .delivery-radio-label {display: flex; justify-content: center; align-items: center; width: 150px; height: 50px; background: gray; color: white; font-size: 18px; padding: 7px; transition: 0.3s;}
+.request-write-main .request-write-header .delivery-radio:checked+.delivery-radio-label {background: tomato; }
+.request-write-main .request-write-header textarea.board-write-subs { text-indent: 0; width: 100%; height: 600px; font-size: 18px; padding: 15px; margin: 10px 0; }
+.request-write-main .request-write-header .btn-submit-group {display: flex; justify-content:center; align-items: center; margin:10px 0 30px 0; }
+.request-write-main .request-write-header .btn-submit-group .btn-submit {display: flex; justify-content: center; align-items: center;  width: 120px; height: 50px; border: 1px solid hsla(0, 0%, 0%, 0.4); background: white; border-radius: 1px; font-size: 18px; padding: 0; margin: 0 3px; background: gray; color: white; transition: 0.15s;}
+.request-write-main .request-write-header .btn-submit-group .btn-submit:hover {background: tomato;}
+

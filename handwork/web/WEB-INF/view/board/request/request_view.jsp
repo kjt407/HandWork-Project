@@ -50,22 +50,8 @@
             <div class="right"></div>
         </div>
         <div class="board-container">
-            <div class="board-aside request-aside">
-                <h3 class="hide">게시판 목록</h3>
-                <p class="board-list-title">게시판</p>
-                <p class="title-deco">HandWork</p>
-                <ul class="board-list">
-                    <li><a href="">수제공방</a></li>
-                    <li class="crt-page"><a href="/request">제작의뢰</a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">공지사항</a></li>
-                    <li><a href="">리뷰게시판</a></li>
-                    <li><a href="">문의게시판</a></li>
-                </ul>
-                <div class="filter">
-                    <p>FILTER</p>
-                </div>
-            </div>
+            <%--게시판 목록 include--%>
+            <jsp:include page="/WEB-INF/view/board_aslide.jsp"/>
             <div class="board-main request-view-main">
                 <h3 class="hide">게시글 상세페이지</h3>
                 <div class="request-view-header">
