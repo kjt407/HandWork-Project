@@ -60,7 +60,7 @@
                     <li>
                         <div class="board-items">
 
-                            <a href="request/detail?id=${r.id}" class="img-container">
+                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="img-container">
                                	 <c:choose>
 				                   		<c:when test="${empty r.filename }">
 				                   			<img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
@@ -89,19 +89,19 @@
                                     <a href="" class="board-list-category">${r.kategorie}</a>
                                     <a href="" class="board-list-locale">${r.location}</a>
                                 </div>
-                                <a href="request/detail?id=${r.id}" class="board-list-title">${r.title}</a>
-                                <a href="request/detail?id=${r.id}" class="board-list-subs">${r.content}</a>
+                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-title">${r.title}</a>
+                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-subs">${r.content}</a>
                                 <div class="row-wrapper">
                                     <c:choose>
                                         <c:when test="${r.state eq 0}">
-                                            <a href="request/detail?id=${r.id}" class="board-list-price state auction">${r.price}원</a>
+                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state auction">${r.price}원</a>
                                         </c:when>
                                         <c:otherwise>
-                                            <a href="request/detail?id=${r.id}" class="board-list-price state complete">${r.price}원</a>
+                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state complete">${r.price}원</a>
                                         </c:otherwise>
                                     </c:choose>
                                     <div>
-                                        <a href="request/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>
+                                        <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>
                                         <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                 </c:when>
 				<c:otherwise>
 			
-				 <a href="request/write" class="btn-write">글작성</a>
+				 <a href="${pageContext.request.contextPath}/request/write" class="btn-write">글작성</a>
 				</c:otherwise>
 			</c:choose> 
 				</div>

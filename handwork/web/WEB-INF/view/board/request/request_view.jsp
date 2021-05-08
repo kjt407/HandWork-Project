@@ -104,8 +104,8 @@
                        <c:choose>
 							<c:when test="${id eq r.writer_id}">
 							
-								<a href="update?id=${r.id}" class="btn-edit" >수정</a>
-                        		<a href="delete?id=${r.id}" class="btn-edit"}>삭제</a>
+								<a href="${pageContext.request.contextPath}/request/update?id=${r.id}" class="btn-edit" >수정</a>
+                        		<a href="${pageContext.request.contextPath}/request/delete?id=${r.id}" class="btn-edit"}>삭제</a>
 			               
 			                </c:when>
 							<c:otherwise>
@@ -117,7 +117,7 @@
 							</c:otherwise>
 						</c:choose> 
                         
-                        <a href="/request" class="btn-list">목록으로</a>
+                        <a href="${pageContext.request.contextPath}/request" class="btn-list">목록으로</a>
                     </div>
 
                 
@@ -126,7 +126,7 @@
                            <c:when test="${empty nr.id}">
                            </c:when>
                            <c:otherwise>
-                              <a href="detail?id=${nr.id}" class="control-board-items board-next">
+                              <a href="${pageContext.request.contextPath}/request/detail?id=${nr.id}" class="control-board-items board-next">
                               <p class="control-col">다음글</p>
                                  <div class="img-wrap">
                                   <c:choose>
@@ -163,7 +163,7 @@
                            <c:when test="${empty pr.id}">
                            </c:when>
                            <c:otherwise>
-                              <a href="detail?id=${pr.id}" class="control-board-items board-next">
+                              <a href="${pageContext.request.contextPath}/request/detail?id=${pr.id}" class="control-board-items board-next">
                               <p class="control-col">이전글</p>
                                  <div class="img-wrap">
                      

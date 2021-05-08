@@ -135,10 +135,10 @@
                         <input type="submit" class="btn-submit submit" value="작성완료"/>
                         <c:choose>
                        <c:when test="${empty r.id }">
-                          <a href="../request" class="btn-submit cancel" >취소</a>
+                          <a href="${pageContext.request.contextPath}/request" class="btn-submit cancel" >취소</a>
                        </c:when>
                        <c:otherwise>
-                          <a href="detail?id=${r.id}"  class="btn-submit cancel" >취소</a>   
+                          <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}"  class="btn-submit cancel" >취소</a>
                        </c:otherwise>
                     </c:choose> 
                     </div>

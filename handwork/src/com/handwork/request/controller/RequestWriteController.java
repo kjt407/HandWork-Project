@@ -127,7 +127,7 @@ public class RequestWriteController extends HttpServlet {
 			e.printStackTrace();
 		}
 		// System.out.println(id);
-		response.sendRedirect("../request");
+		response.sendRedirect(request.getContextPath()+"/request");
 	}
 
 	private String getCurrentTime() {

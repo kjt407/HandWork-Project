@@ -184,7 +184,7 @@ function commentRegister(sessionID, boardNum){
 
 // AJAX 통신 부분
 function ajaxPost(json) {
-    const url = "/comment";
+    const url = getContextPath()+"/comment";
 
     $.ajax({
         type:"POST",
@@ -195,11 +195,11 @@ function ajaxPost(json) {
         success:function(data){
             if (data.state != null && data.state === 1){
                 alert("이미 채결완료된 게시글 입니다\n페이지가 새로고침 됩니다");
-                location.href = "/request/detail?id="+data.boardNum;
+                location.href = getContextPath()+"/request/detail?id="+data.boardNum;
                 return;
             }else if (data.state != null && data.state === 2){
                 alert("채결이 완료 되었습니다\n페이지가 새로고침 됩니다");
-                location.href = "/request/detail?id="+data.boardNum;
+                location.href = getContextPath()+"/request/detail?id="+data.boardNum;
                 return;
             }
             // alert('ajax통신 성공'+data+'length: '+data.length);
@@ -239,4 +239,11 @@ function createEle(data) {
 
 function plzLogin(){
     alert("로그인을 해주세요");
+}
+function getContextPath() {
+
+    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+
+    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+
 }

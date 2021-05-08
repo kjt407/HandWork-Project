@@ -46,7 +46,7 @@ public class RequestUpdateController extends HttpServlet{
 		
 		request.setAttribute("r", request_);
 		
-		request.getRequestDispatcher("../request/write").forward(request, response);
+		request.getRequestDispatcher("/request/write").forward(request, response);
 	}
 	
 		
@@ -286,7 +286,7 @@ public class RequestUpdateController extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("../request");
+		response.sendRedirect(request.getContextPath()+"/request");
 	}
 }
 
