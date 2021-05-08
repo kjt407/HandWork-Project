@@ -9,7 +9,7 @@
 <body>
 <script>
 alert('회원가입 완료! \n로그인을 해주세요.');
-location.href = "login";
+location.href = "${pageContext.request.contextPath}/login";
 </script>
 </body>
 </html>

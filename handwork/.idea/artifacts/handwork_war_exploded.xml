@@ -8,7 +8,7 @@
           <element id="module-output" name="handwork" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="cos" />
+          <element id="library" level="project" name="include_libs" />
         </element>
       </element>
     </root>

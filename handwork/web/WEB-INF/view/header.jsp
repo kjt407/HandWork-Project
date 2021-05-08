@@ -7,7 +7,7 @@
 				<h2 class="hide">
 					핸드워크 헤더
 					</h2>
-					<a href="/" class="main-logo"> <!-- <img src="./images/2.png" alt="메인페이지 로고"> -->
+					<a href="${pageContext.request.contextPath}/" class="main-logo"> <!-- <img src="./images/2.png" alt="메인페이지 로고"> -->
 						<p>HANDWORK</p>
 					</a>
 					<ul class="header-menu-title">
@@ -27,7 +27,7 @@
 							<div class="header-sub">
 								<ul class="inner-ul">
 									<li><a href="">수제공방</a></li>
-									<li><a href="/request">제작의뢰</a></li>
+									<li><a href="${pageContext.request.contextPath}/request">제작의뢰</a></li>
 								</ul>
 							</div>
 						</li>
@@ -51,8 +51,8 @@
 			<c:choose>
 				<c:when test="${sessionScope.id eq null}">
 					<ul class="login">
-						<li><a href="/login">로그인</a></li>
-						<li><a href="/join">회원가입</a></li>
+						<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
+						<li><a href="${pageContext.request.contextPath}/join">회원가입</a></li>
 						<li><a href="">마이페이지</a></li>
 					</ul>
 				</c:when>
@@ -60,7 +60,7 @@
 					<ul class="login">
 						<li><a class="header-username" disable>${name}님</a></li>
 						<li><a href="">마이페이지</a></li>
-						<li><a href="/logout" class="header-logout">로그아웃</a></li>
+						<li><a href="${pageContext.request.contextPath}/logout" class="header-logout">로그아웃</a></li>
 					</ul>
 				</c:otherwise>
 			</c:choose>

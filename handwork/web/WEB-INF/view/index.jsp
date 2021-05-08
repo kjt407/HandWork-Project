@@ -190,12 +190,12 @@
 			<p>
 				원하시는 수제품이 없으신가요?</br> 제작의뢰 기능을 사용 해보세요
 			</p>
-			<a href="request">제작의뢰 하기</a>
+			<a href="${pageContext.request.contextPath}/request">제작의뢰 하기</a>
 		</div>
 		<div class="right">
 			<div class="right-container">
 				<div class=board-title>
-					<a href="request" class="title">제작의뢰 게시판</a> <span class="sub">전국
+					<a href="${pageContext.request.contextPath}/request" class="title">제작의뢰 게시판</a> <span class="sub">전국
 						수많은 수제품 공예가들의 작품을 지금 확인하세요</span>
 				</div>
 				<table>

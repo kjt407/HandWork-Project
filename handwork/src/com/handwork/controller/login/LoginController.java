@@ -75,7 +75,7 @@ public class LoginController extends HttpServlet {
 
 				request.setAttribute("l", rs.getString("name"));
 				System.out.println(request.getAttribute("l"));
-				response.sendRedirect("index");
+				response.sendRedirect(request.getContextPath()+"/");
 				return;
 			}
 		} catch (Exception e) {

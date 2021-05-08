@@ -58,7 +58,7 @@
 								alert("완료!")
 							}
 						});
-						window.location.href = "index";
+						window.location.href = "${pageContext.request.contextPath}/";
 					}
 				});
 			}
@@ -83,7 +83,7 @@
 					placeholder="아이디를 입력하세요."> <input type="password" name="pw"
 					class="text-pw" placeholder="비밀번호를 입력해주세요"> <input
 					type="submit" class="btn-login btn-submit" value="로그인"> <a
-					href="join">회원가입</a>
+					href="${pageContext.request.contextPath}/join">회원가입</a>
 			</form>
 			<p class="horizontal-or">OR</p>
 			 <a href="javascript:kakaoLogin();" class="btn-login-kakao"></a>

@@ -22,6 +22,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="cos" level="project" />
+    <orderEntry type="library" name="include_libs" level="project" />
+    <orderEntry type="library" name="servlet" level="project" />
   </component>
 </module>

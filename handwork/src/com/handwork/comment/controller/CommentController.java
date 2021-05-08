@@ -8,7 +8,6 @@ import com.handwork.request.entity.Request;
 import org.apache.catalina.tribes.group.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
