@@ -2,7 +2,7 @@
 
 
 /* .board-title-section {display: flex; justify-content: center; align-items: center; height: 200px;  width:100%; background: silver;} */
-.board-title-section {position: relative; height: 300px;  width: auto; background: url(/images/order_background.jpg) center no-repeat; background-size: cover;}
+.board-title-section {position: relative; height: 300px;  width: auto; background: url(../images/order_background.jpg) center no-repeat; background-size: cover;}
 .board-title-section div {background: rgba(0, 0, 0, 0.5) ; color: white; text-align: center; line-height: 300px; font-size: 25px;}
 
 .board-section { position: relative; display: flex; justify-content: center; width: 100%; height: 100%; min-height: 900px; background: whitesmoke;}
@@ -49,8 +49,8 @@
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main > div.row-wrapper a { display: flex; align-items: center; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main > div.row-wrapper > div { display: flex; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main div.row-wrapper:first-child > a::before { display: inline-block; content: ""; width: 20px; height: 20px; }
-.board-section .board-main ul.board-content-list .board-items > div.board-list-main div.row-wrapper:first-child > a.board-list-category::before{ background: url(/images/cate_icon.png) center no-repeat;  background-size: 16px 16px;}
-.board-section .board-main ul.board-content-list .board-items > div.board-list-main div.row-wrapper:first-child > a.board-list-locale::before{ background: url(/images/location_icon.png) center no-repeat;  background-size: 16px 16px;}
+.board-section .board-main ul.board-content-list .board-items > div.board-list-main div.row-wrapper:first-child > a.board-list-category::before{ background: url(../images/cate_icon.png) center no-repeat;  background-size: 16px 16px;}
+.board-section .board-main ul.board-content-list .board-items > div.board-list-main div.row-wrapper:first-child > a.board-list-locale::before{ background: url(../images/location_icon.png) center no-repeat;  background-size: 16px 16px;}
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main a.board-list-title { font-size: 22px; font-weight: 600; margin-top: 10px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden;}
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main a.board-list-subs { font-size: 14px; margin-top: 15px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow: hidden;}
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main > div.row-wrapper:last-child { position: absolute; bottom: 0; width: 100%; padding-right: 10px;}
