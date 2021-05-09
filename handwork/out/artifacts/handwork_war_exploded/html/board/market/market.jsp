@@ -56,7 +56,7 @@
                 
                 <div class="board-content-list market">
                     <div class="board-items market">
-                        <div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+                        <a href="" class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></a>
                         <div class="item-container market">
                             <div class="item-row">
                                 <a href="" class="item-writer">촤콜렛하우스</a>
@@ -64,12 +64,12 @@
                             </div>
                             <a href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</a>
                             <a href="" class="item-price state sell">15000원</a>
-                            <a href="" class="item-stock">1</a>
-                            <a href="" class="item-selled">1</a>
+                            <p href="" class="item-stock">1</p>
+                            <p href="" class="item-selled">1</p>
                         </div>
                     </div>
                     <div class="board-items market">
-                        <div class="img-wrap"><img src="${pageContext.request.contextPath}/upload/기타.PNG" alt="제품이미지"></div>
+                        <a href="" class="img-wrap"><img src="${pageContext.request.contextPath}/upload/기타.PNG" alt="제품이미지"></a>
                         <div class="item-container market">
                             <div class="item-row">
                                 <a href="" class="item-writer">촤콜렛하우스</a>
@@ -77,8 +77,8 @@
                             </div>
                             <a href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</a>
                             <a href="" class="item-price state out">15000원</a>
-                            <a href="" class="item-stock">1</a>
-                            <a href="" class="item-selled">1</a>
+                            <p href="" class="item-stock">1</p>
+                            <p href="" class="item-selled">1</p>
                         </div>
                     </div>
                     <div class="board-items market"></div>
