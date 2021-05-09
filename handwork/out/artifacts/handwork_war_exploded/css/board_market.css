@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.board-section .board-content-list.market { display: grid; width: 100%; grid-gap: 20px; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 450px 450px 450px;}
+.board-section .board-content-list.market > .board-items { display: flex; flex-direction: column; background: tomato; }
+.board-section .board-content-list.market > .board-items div.img-wrap { display: flex; justify-content: center; align-items: center; overflow: hidden; width: 308px; height:308px; }
+.board-section .board-content-list.market > .board-items div.img-wrap > img { width: 100%; height: 100%; object-fit: cover; }
+.board-section .board-content-list.market > .board-items div.item-container { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
+.board-section .board-content-list.market > .board-items div.item-container * { font-size: 17px; color: black; }

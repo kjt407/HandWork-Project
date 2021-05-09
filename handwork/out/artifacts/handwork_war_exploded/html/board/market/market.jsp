@@ -14,26 +14,27 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_market.css">
     <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript"
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
-    <title>핸드워크</title>
+    <title>핸드워크: 수제공방</title>
 </head>
 <body>
-    <h1 class="hide">핸드워크</h1>
+    <h1 class="hide">수제공방</h1>
     <header>
 		<jsp:include page="/WEB-INF/view/header.jsp"/>
 	</header>
 
 
     <section class="board-title-section">
-        <div>제작의뢰 게시판</div>
+        <div>수제공방 게시판</div>
     </section>
 
     <section class="request board-section">
-        <h2 class="hide">제작의뢰 게시판</h2>
+        <h2 class="hide">수제공방 게시판</h2>
         <div class="board-bg">
             <div class="left"></div>
             <div class="right"></div>
@@ -53,7 +54,29 @@
                     <input type="submit" class="search-submit" value="검색">
                 </form>
                 
-                
+                <div class="board-content-list market">
+                    <div class="board-items market">
+                        <div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+                        <div class="item-container market">
+                            <div class="item-row">
+                                <a href="" class="item-category">패션/뷰티</a>
+                                <a href="" class="item-location">서울특별시</a>
+                            </div>
+                            <a href="" class="item-title">제목입니다</a>
+                            <a href="" class="item-price">15000원</a>
+                            <a href="" class="item-stock">남은수량: 1개</a>
+                            <a href="" class="item-writer">작성자</a>
+                        </div>
+                    </div>
+                    <div class="board-items market"></div>
+                    <div class="board-items market"></div>
+                    <div class="board-items market"></div>
+                    <div class="board-items market"></div>
+                    <div class="board-items market"></div>
+                    <div class="board-items market"></div>
+                    <div class="board-items market"></div>
+                    <div class="board-items market"></div>
+                </div>
                
 			
 				 <ul class="board-content-list">
