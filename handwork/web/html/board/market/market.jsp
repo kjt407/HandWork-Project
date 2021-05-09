@@ -59,13 +59,26 @@
                         <div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
                         <div class="item-container market">
                             <div class="item-row">
-                                <a href="" class="item-category">패션/뷰티</a>
+                                <a href="" class="item-writer">촤콜렛하우스</a>
                                 <a href="" class="item-location">서울특별시</a>
                             </div>
-                            <a href="" class="item-title">제목입니다</a>
-                            <a href="" class="item-price">15000원</a>
-                            <a href="" class="item-stock">남은수량: 1개</a>
-                            <a href="" class="item-writer">작성자</a>
+                            <a href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</a>
+                            <a href="" class="item-price state sell">15000원</a>
+                            <a href="" class="item-stock">1</a>
+                            <a href="" class="item-selled">1</a>
+                        </div>
+                    </div>
+                    <div class="board-items market">
+                        <div class="img-wrap"><img src="${pageContext.request.contextPath}/upload/기타.PNG" alt="제품이미지"></div>
+                        <div class="item-container market">
+                            <div class="item-row">
+                                <a href="" class="item-writer">촤콜렛하우스</a>
+                                <a href="" class="item-location">서울특별시</a>
+                            </div>
+                            <a href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</a>
+                            <a href="" class="item-price state out">15000원</a>
+                            <a href="" class="item-stock">1</a>
+                            <a href="" class="item-selled">1</a>
                         </div>
                     </div>
                     <div class="board-items market"></div>
