@@ -1,44 +1,32 @@
-package com.handwork.request.controller;
+package com.handwork.market.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 
-import com.handwork.request.entity.Request;
-import com.handwork.request.service.RequestService;
-import com.mysql.cj.Session;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-@WebServlet("/request/write")
-public class RequestWriteController extends HttpServlet {
+@WebServlet("/market/write")
+public class MarketWriteController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/WEB-INF/view/board/request/request_write.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/board/market/market_write.jsp").forward(request, response);
 
 	}
 
@@ -94,7 +82,7 @@ public class RequestWriteController extends HttpServlet {
 		String how = multi.getParameter("how");
 		try {
 
-			String sql = "insert into board ( writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id) "
+			String sql = "insert into market ( writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id) "
 					+ "values(?,?,?,?,?,?,?,?,0,?,?,?)";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -127,7 +115,7 @@ public class RequestWriteController extends HttpServlet {
 			e.printStackTrace();
 		}
 		// System.out.println(id);
-		response.sendRedirect(request.getContextPath()+"/request");
+		response.sendRedirect(request.getContextPath()+"/market");
 	}
 
 	private String getCurrentTime() {

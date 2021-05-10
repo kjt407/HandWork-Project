@@ -43,7 +43,7 @@
 						console.log(id);
 						console.log(email);
 						console.log(name);
-						
+
 						$.ajax({
 
 							url: "kakaoLogin",
@@ -54,7 +54,7 @@
 
 							data: { "id": id, "email": email, "name": name },
 							success: function (data) {
-								
+
 								alert("완료!")
 							}
 						});

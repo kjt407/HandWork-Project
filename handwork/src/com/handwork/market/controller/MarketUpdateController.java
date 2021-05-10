@@ -1,52 +1,40 @@
-package com.handwork.request.controller;
+package com.handwork.market.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Connection;
+import com.handwork.market.entity.Market;
+import com.handwork.market.service.MarketService;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Enumeration;
 
-import com.handwork.request.entity.Request;
-import com.handwork.request.service.RequestService;
-import com.mysql.cj.Session;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
-@WebServlet("/request/update")
-public class RequestUpdateController extends HttpServlet{
+@WebServlet("/market/update")
+public class MarketUpdateController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println(id);
 		
-		RequestService service = new RequestService();
+		MarketService service = new MarketService();
 		
-		Request request_ = service.getRequest(id);
-		request_.setIsUpdate(true);
+		Market market = service.getMarket(id);
+		market.setIsUpdate(true);
 		
-		request.setAttribute("r", request_);
+		request.setAttribute("r", market);
 		
-		request.getRequestDispatcher("/request/write").forward(request, response);
+		request.getRequestDispatcher("/market/write").forward(request, response);
 	}
 	
 		
@@ -178,11 +166,11 @@ public class RequestUpdateController extends HttpServlet{
 		String[] edit_filename = multi.getParameterValues("edit_filename"); //edit_filename = ���� �� �̹���(�����ؾ���)
 		
 		// ���񽺸� ȣ���Ͽ� Request ������� �ش� �Խñ� �̹��� �� ��� �޾ƿ� 		
-		RequestService service = new RequestService();
-		Request request_ = service.getRequest(id);
-		if(request_.getFilename() != null && !request_.getFilename().equals("")) {
+		MarketService service = new MarketService();
+		Market market = service.getMarket(id);
+		if(market.getFilename() != null && !market.getFilename().equals("")) {
 			System.out.println("������Ʈ ����Ұ� null ���� �ƴ�"+fullFileName);
-			fullFileName = request_.getFilename();//Request�� ����� �̹��� �� ���	
+			fullFileName = market.getFilename();//Request�� ����� �̹��� �� ���
 			System.out.println("������Ʈ���� �����̸� ������"+fullFileName);
 			//������ �̹������� ����
 			System.out.println("del_filename : " + del_filename);
@@ -248,7 +236,7 @@ public class RequestUpdateController extends HttpServlet{
 		try {
 		System.out.println("������Ʈ�� �ʱ� ����");
 		
-		String sql = "update board set title=?, kategorie=?, location=?, deadline=?, price=?, content=?, filename=?, how=? where id=?";
+		String sql = "update market set title=?, kategorie=?, location=?, deadline=?, price=?, content=?, filename=?, how=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
@@ -286,7 +274,7 @@ public class RequestUpdateController extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getContextPath()+"/request");
+		response.sendRedirect(request.getContextPath()+"/market");
 	}
 }
 

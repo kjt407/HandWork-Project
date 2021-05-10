@@ -13,11 +13,66 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/slick/slick-theme.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript"
 	src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
+	<script type="text/javascript">
+		$(window).load(function(){
+			window.Kakao.init("47d80a797066ad48e74a8224ca2a7e23");
+
+		});
+
+		function sendTo() {
+			Kakao.API.request({
+				url: '/v2/api/talk/memo/default/send',
+				data: {
+					template_object: {
+						object_type: 'feed',
+						content: {
+							title: '딸기 치즈 케익',
+							description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+							image_url:
+									'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+							link: {
+								mobile_web_url: 'https://developers.kakao.com',
+								web_url: 'https://developers.kakao.com',
+							},
+						},
+						social: {
+							like_count: 286,
+							comment_count: 45,
+							shared_count: 845,
+						},
+						buttons: [
+							{
+								title: '웹으로 보기',
+								link: {
+									mobile_web_url: 'https://developers.kakao.com',
+									web_url: 'https://developers.kakao.com',
+								},
+							},
+							{
+								title: '앱으로 보기',
+								link: {
+									mobile_web_url: 'https://developers.kakao.com',
+									web_url: 'https://developers.kakao.com',
+								},
+							},
+						],
+					},
+				},
+				success: function(res) {
+					alert('success: ' + JSON.stringify(res))
+				},
+				fail: function(err) {
+					alert('error: ' + JSON.stringify(err))
+				},
+			})
+		}
+	</script>
 <title>핸드워크</title>
 </head>
 <body>
@@ -26,7 +81,9 @@
 	<header>
 		<jsp:include page="/WEB-INF/view/header.jsp"/>
 	</header>
-
+	<a id="send-to-btn" href="#" onclick="sendTo();">
+		<img src="//k.kakaocdn.net/14/dn/btqc6xrxbuT/7VJk7YSWITkz9K9pbXEffk/o.jpg" />
+	</a>
 	<section class="slide">
 		<div class="slide-items">
 			<div class="slide-label">핸드워커</div>

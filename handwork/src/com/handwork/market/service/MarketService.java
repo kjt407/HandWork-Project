@@ -1,6 +1,6 @@
 package com.handwork.market.service;
 
-import com.handwork.market.entity.Request;
+import com.handwork.market.entity.Market;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,23 +9,23 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestService {
+public class MarketService {
 
-	public List<Request> getRequestList() {
-		return getRequestList("title", "", 1);
+	public List<Market> getMarketList() {
+		return getMarketList("title", "", 1);
 	}
 
-	public List<Request> getRequestList(int page) {
-		return getRequestList("title", "", page);
+	public List<Market> getMarketList(int page) {
+		return getMarketList("title", "", page);
 	}
 
-	public List<Request> getRequestList(String field, String query, int page) {
+	public List<Market> getMarketList(String field, String query, int page) {
 
-		List<Request> list = new ArrayList<>();
+		List<Market> list = new ArrayList<>();
 
 		String sql="SELECT *" +
 				"FROM( " +
-				"SELECT @rownum:=@rownum+1  num, A.* FROM board A, " +
+				"SELECT @rownum:=@rownum+1  num, A.* FROM market A, " +
 				"   (SELECT @ROWNUM := 0) R where "+field+" like ? order by regdate desc" +
 				") " +
 				"list WHERE num between ? and ?";
@@ -68,9 +68,9 @@ public class RequestService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				Request request = new Request(id, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
+				Market market = new Market(id, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
 
-				list.add(request);
+				list.add(market);
 			}
 			rs.close();
 			stmt.close();
@@ -81,16 +81,16 @@ public class RequestService {
 		return list;
 	}
 
-	public int getRequestCount() {
-		return getRequestCount("title", "");
+	public int getMarketCount() {
+		return getMarketCount("title", "");
 	}
 
-	public int getRequestCount(String field, String query) {
+	public int getMarketCount(String field, String query) {
 
 		int count = 0;
 		String sql="SELECT count(id) count " +
 				"FROM( " +
-				"SELECT @ROWNUM:=@ROWNUM+1  num, A.* FROM board A, " +
+				"SELECT @ROWNUM:=@ROWNUM+1  num, A.* FROM market A, " +
 				"   (SELECT @ROWNUM := 0) R where "+field+" like ? order by regdate desc" +
 				")A ";
 
@@ -118,9 +118,9 @@ public class RequestService {
 		return count;
 	}
 
-	public Request getRequest(int id) {
-		Request request = null;
-		String sql = "select * from board where id=?";
+	public Market getMarket(int id) {
+		Market market = null;
+		String sql = "select * from market where id=?";
 
 
 		try {
@@ -151,7 +151,7 @@ public class RequestService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				request = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
+				market = new Market(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
 
 				System.out.println(" ð  : " + regdate);
 
@@ -164,16 +164,16 @@ public class RequestService {
 			// TODO: handle exception
 		}
 
-		return request;
+		return market;
 	}
 
-	public Request getNextNotice(int id, boolean incHit) {
-		Request notice = null;
+	public Market getNextNotice(int id, boolean incHit) {
+		Market notice = null;
 
-		String sql = "select * from board" +
+		String sql = "select * from market" +
 				"       where id = (" +
-				"       select id from board" +
-				"       where regdate > (select regdate from board where id = ?)" +
+				"       select id from market" +
+				"       where regdate > (select regdate from market where id = ?)" +
 				"       limit 1" +
 				"       )";
 
@@ -205,10 +205,10 @@ public class RequestService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
+				notice = new Market(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
 
 				if(incHit) {
-					stmt.execute("update board set hit=hit+1 where id=" + id);
+					stmt.execute("update market set hit=hit+1 where id=" + id);
 				}
 
 
@@ -224,11 +224,11 @@ public class RequestService {
 		return notice;
 	}
 
-	public Request getPrevNotice(int id, boolean incHit) {
-		Request notice = null;
+	public Market getPrevNotice(int id, boolean incHit) {
+		Market notice = null;
 
-		String sql =   "select * from (select * from board order by regdate desc) A " +
-				" where regdate < (select regdate from board where id = ?) " +
+		String sql =   "select * from (select * from market order by regdate desc) A " +
+				" where regdate < (select regdate from market where id = ?) " +
 				" limit 1";
 
 		try {
@@ -259,10 +259,10 @@ public class RequestService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
+				notice = new Market(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
 
 				if(incHit) {
-					stmt.execute("update board set hit=hit+1 where id=" + id);
+					stmt.execute("update market set hit=hit+1 where id=" + id);
 				}
 
 

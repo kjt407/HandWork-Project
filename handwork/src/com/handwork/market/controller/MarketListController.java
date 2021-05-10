@@ -1,21 +1,18 @@
-package com.handwork.request.controller;
+package com.handwork.market.controller;
 
-import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import com.handwork.market.entity.Market;
+import com.handwork.market.service.MarketService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
-import com.handwork.request.entity.Request;
-import com.handwork.request.service.RequestService;
-
-@WebServlet("/request")
-public class RequestListController extends HttpServlet {
+@WebServlet("/market")
+public class MarketListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -35,13 +32,13 @@ public class RequestListController extends HttpServlet {
 		if(page_ != null && !page_.equals(""))
 			page = Integer.parseInt(page_);
 		
-		RequestService service = new RequestService();
+		MarketService service = new MarketService();
 
-		List<Request> list = service.getRequestList(field, query, page);
+		List<Market> list = service.getMarketList(field, query, page);
 
 
 
-		int count = service.getRequestCount(field, query);
+		int count = service.getMarketCount(field, query);
 
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
@@ -49,7 +46,7 @@ public class RequestListController extends HttpServlet {
 		
 		
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/WEB-INF/view/board/request/request.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/board/market/market.jsp").forward(request, response);
 		
 	}
 }

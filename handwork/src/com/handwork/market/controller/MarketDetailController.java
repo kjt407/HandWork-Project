@@ -1,62 +1,52 @@
-package com.handwork.request.controller;
+package com.handwork.market.controller;
 
-import java.io.IOException;
-import java.sql.Connection;
-
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Date;
+import com.handwork.market.entity.Market;
+import com.handwork.market.service.MarketService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.handwork.request.entity.Request;
-import com.handwork.request.service.RequestService;
+import java.io.IOException;
 
 
-
-
-@WebServlet("/request/detail")
-public class RequestDetailController extends HttpServlet {
+@WebServlet("/market/detail")
+public class MarketDetailController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		RequestService service = new RequestService();
-		
-		Request request_ = service.getRequest(id);
+		MarketService service = new MarketService();
+
+		Market market = service.getMarket(id);
 
 
 		int count = service.getCount(id);
 		
-		String filename = request_.getFilename();
+		String filename = market.getFilename();
 		if(filename==null || filename.equals("")) {
 			
 		} else {
 			String filenameRs = filename.substring(0, filename.length()-1);
-			request_.setFilename(filenameRs);	
+			market.setFilename(filenameRs);
 		}
-		request_.setIsUpdate(false);
-		request_.setCount(count);
+		market.setIsUpdate(false);
+		market.setCount(count);
 
-		request.setAttribute("r", request_);
+		request.setAttribute("r", market);
+
+		Market nextMarket = service.getNextNotice(id, true);
+		request.setAttribute("nr", nextMarket);
 		
-		Request nextRequest_ = service.getNextNotice(id, true);
-		request.setAttribute("nr", nextRequest_);
-		
-		Request prevNotice_ = service.getPrevNotice(id, true);
+		Market prevNotice_ = service.getPrevNotice(id, true);
 		request.setAttribute("pr", prevNotice_);
 		
 		
 		
-		request.getRequestDispatcher("/WEB-INF/view/board/request/request_view.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/board/market/market_view.jsp").forward(request, response);
 		
 	}
 	
