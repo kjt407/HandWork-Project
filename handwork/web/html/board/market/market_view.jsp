@@ -62,14 +62,17 @@
                         <p class="item-deadline subs">7</p>
                         <a href="" class="item-location subs">서울특별시</a>
                         <p class="item-ship subs">택배+방문수령</p>
+                        <p class="item-writedate">2021.05.11</p>
+                        <p class="item-hits">11</p>
                         <input type="button" class="btn-contact" value="판매자와 연락하기">
                     </div>
                 </div>
                 <div class="content-section market">
-
+                    <p class="content-title section-title">제품 상세정보</p>
+                    <p class="content-view">상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제</p>
                 </div>
                 <div class="review-section market">
-
+                    <p class="review-title section-title">구매후기</p>
                 </div>
             </div>
         </div>
