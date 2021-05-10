@@ -1,0 +1,38 @@
+@charset "utf-8";
+
+.board-title-section {position: relative; height: 300px;  width: auto; background: url(../images/market_background.jpg) center no-repeat; background-size: cover;}
+.board-section .board-container .board-main > div.market.board-header { display: flex; align-items: flex-start; justify-content: center; width: 100%; margin-bottom: 20px;}
+.board-section .board-container .board-main > div.market.board-header > .img-slider { display: flex; width: 50%; height:500px; background: indianred;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel { display: flex; width: 50%; height:500px; flex-direction: column; justify-content: flex-start; align-items: flex-start; margin-left: 20px; background: white; }
+.board-section .board-container .board-main > div.market.board-header > .main-panel > * { font-size: 17px; color: black; margin-bottom: 15px; }
+.board-section .board-container .board-main > div.market.board-header > .main-panel > .item-row { display: flex;  justify-content: space-between; align-items: center; width: 100%;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel > .item-row > * { display: flex; align-items: center; font-size: 16px; font-weight: 500; color: #3f3f3f;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel > .item-row > *::before { display: inline-block; content: ""; width: 17px; height: 17px; opacity: 0.7;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel > .item-row > .item-writer::before { background: url(../images/shop.png) center no-repeat;  background-size: 18px 16px; width: 18px; margin-right: 2px; opacity: 0.5;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel > .item-row > .item-category::before { background: url(../images/cate_icon.png) center no-repeat;  background-size: 17px 17px; margin-right: 3px; }
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-title { font-weight: 600; font-size: 21px; line-height: 22px;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-price { display: flex; align-items: center; font-size: 27px;  color: tomato; font-family: 'Do Hyeon', sans-serif;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-price.state::after { display:flex; align-items: center; content: ""; font-family: NanumGothic; font-size: 17px; font-weight: 400; padding: 2px; background: tomato; color: white; border-radius:2px; margin-left: 7px;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-price.state.sell::after { content: "판매중";}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-price.state.out { color: gray;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-price.state.out::after { content: "품절"; background: gray;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .star-wrap { display: flex; justify-content: start; align-items: center; height: 20px;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .star-wrap > .star-item { height: 100%; }
+.board-section .board-container .board-main > div.market.board-header > .main-panel .subs { display: flex; justify-content: flex-start; align-items: flex-end; width: 100%;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .subs:before { content: ""; display: flex; justify-content: flex-start; width: 80px; color: #555555; font-size: 15px;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-deadline:before { content: "제작기간"}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-deadline:after { content: "일 소요"}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-location:before { content: "판매지역"}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .item-ship.subs:before { content: "배송방법"}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .btn-contact { display: flex; justify-content: center; align-items: center; justify-self: flex-end; color: white; background: tomato; font-size: 19px; padding: 10px; border-radius: 2px; margin-top: 18px; transition: 0.3s all;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .btn-contact:hover { background: gray;}
+
+
+
+.board-section .board-container .board-main > div.market.content-section { display: flex; width: 100%; height:500px; background: #e3d0b9;}
+.board-section .board-container .board-main > div.market.review-section { display: flex; width: 100%; height:500px; background: azure;}
+
+
+
+
+
