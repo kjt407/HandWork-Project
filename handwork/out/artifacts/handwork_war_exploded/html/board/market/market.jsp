@@ -20,6 +20,7 @@
     <script type="text/javascript"
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/market.js"></script>
     <title>핸드워크: 수제공방</title>
 </head>
 <body>
@@ -66,6 +67,10 @@
                             <a href="" class="item-price state sell">15000원</a>
                             <p href="" class="item-stock">1</p>
                             <p href="" class="item-selled">1</p>
+                            <div class="item-review">
+                                <div class="star-wrap">2</div>
+                                <span class="review-text">가장 최근의 리뷰가 보여집니다</span>
+                            </div>
                         </div>
                     </div>
                     <div class="board-items market">
@@ -79,12 +84,12 @@
                             <a href="" class="item-price state out">15000원</a>
                             <p href="" class="item-stock">1</p>
                             <p href="" class="item-selled">1</p>
+                            <div class="item-review">
+                                <div class="star-wrap">3</div>
+                                <span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="board-items market"></div>
-                    <div class="board-items market"></div>
-                    <div class="board-items market"></div>
-                    <div class="board-items market"></div>
                     <div class="board-items market"></div>
                     <div class="board-items market"></div>
                     <div class="board-items market"></div>
