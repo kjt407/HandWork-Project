@@ -55,25 +55,25 @@
                         <input type="button" value="" class="btn-img prev" onclick="btnImg('prev')">
                         <input type="button" value="" class="btn-img next" onclick="btnImg('next')">
                         <ul class="img-ul">
+                        <%--최대 7개 까지만 업로드 하도록--%>
                             <li class="img-li">
-                                <img src="${pageContext.request.contextPath}/images/items.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                                <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">
                             </li>
                             <li class="img-li">
                                 <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">
                             </li>
                             <li class="img-li">
-                                <img src="${pageContext.request.contextPath}/images/items.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                                <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">
                             </li>
                             <li class="img-li">
                                 <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">
                             </li>
                             <li class="img-li">
-                                <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                                <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">
                             </li>
-                            <li class="img-li">
-                                <img src="${pageContext.request.contextPath}/images/items.png" alt="" class="img-item" onmouseover="sliderHover(this)">
-                            </li>
-
                         </ul>
                     </div>
                     <div class="main-panel">
@@ -81,7 +81,7 @@
                             <a href="" class="item-writer">촤콜렛하우스</a>
                             <a href="" class="item-category">식품/잡화</a>
                         </div>
-                        <p href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+                        <p href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛 </p>
                         <p href="" class="item-price state sell">15000원</p>
                         <div class="star-wrap">2</div>
                         <p class="item-deadline subs">7</p>
@@ -97,7 +97,59 @@
                     <p class="content-view">상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제 상세한 내용이 들어가야제</p>
                 </div>
                 <div class="review-section market">
-                    <p class="review-title section-title">구매후기</p>
+                    <div class="section-title">
+                        <div class="title-wrap">
+                            <span class="review-title">구매후기 (12)</span>
+                            <input type="button" value="리뷰작성" class="btn-write-review"></input>
+                        </div>
+                    </div>
+                    <ul class="review-ul">
+                        <li class="review-li">
+                            <div class="review-row">
+                                <div class="user-info-wrap">
+                                    <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                    <div class="write-info">
+                                        <span class="user-name" >김종태</span>
+                                        <span class="user-date" >2021.05.12</span>
+                                    </div>
+                                </div>
+                                <div class="star-wrap">3</div>
+                            </div>
+                            <div class="review-row">
+                                <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
+                                <div class="review-control">
+                                    <input type="button" onclick="commentEdit(this)" value="수정">
+                                    <input type="button" onclick="commentDelete(this)" value="삭제">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="review-li">
+                            <div class="li-container">
+                                <div class="user-img-wrap">
+                                    <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                </div>
+                                <span class="comment-writername" >김종태</span>
+                                <span class="comment-writedate" >2021.05.12</span>
+                                <input type="button" onclick="commentEdit(this)" value="수정">
+                                <input type="button" onclick="commentDelete(this)" value="삭제">
+                                <div class="star-wrap">2</div>
+                                <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
+                            </div>
+                        </li>
+                        <li class="review-li">
+                            <div class="li-container">
+                                <div class="user-img-wrap">
+                                    <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                </div>
+                                <span class="comment-writername" >김종태</span>
+                                <span class="comment-writedate" >2021.05.12</span>
+                                <input type="button" onclick="commentEdit(this)" value="수정">
+                                <input type="button" onclick="commentDelete(this)" value="삭제">
+                                <div class="star-wrap">2</div>
+                                <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
