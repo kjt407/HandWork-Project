@@ -87,9 +87,11 @@
                         <p class="item-deadline subs">7</p>
                         <a href="" class="item-location subs">서울특별시</a>
                         <p class="item-ship subs">택배+방문수령</p>
-                        <p class="item-writedate">2021.05.11</p>
-                        <p class="item-hits">11</p>
                         <input type="button" class="btn-contact" value="판매자와 연락하기">
+                        <div class="board-info-wrap" style="display: flex; justify-self: flex-end; margin: 10px 0 0 0; !important;">
+                            <p class="item-hits">11</p>
+                            <p class="item-writedate">2021.05.11</p>
+                        </div>
                     </div>
                 </div>
                 <div class="content-section market">

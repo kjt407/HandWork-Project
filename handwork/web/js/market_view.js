@@ -33,6 +33,23 @@ function radioStarInit(){
             $(stars[i]).css("background",'url('+getContextPath()+'/images/star.png)');
             $(stars[i]).css("background-size",'contain');
         }
+        switch (score) {
+            case '1' :
+                $('.score-label').text("별로에요");
+                break;
+            case '2' :
+                $('.score-label').text("그저그래요");
+                break;
+            case '3' :
+                $('.score-label').text("평범해요");
+                break;
+            case '4' :
+                $('.score-label').text("좋아요");
+                break;
+            case '5' :
+                $('.score-label').text("최고에요");
+                break;
+        }
     })
 }
 function btnWriteReview(ele) {
@@ -51,10 +68,13 @@ function btnWriteReview(ele) {
             '                                    <label class="radio-star-label"for="star-4"></label>\n' +
             '                                    <input type="radio" name="radio-stars" id="star-5" value="5" class="radio-stars" checked>\n' +
             '                                    <label class="radio-star-label"for="star-5"></label>\n' +
+            '                                    <span class="score-label">최고에요</span>\n' +
             '                                </div>\n' +
             '                                <textarea name="review-subs" class="review-subs" required></textarea>\n' +
-            '                                <input type="submit" value="확인">\n' +
-            '                                <input type="button" value="취소" onclick="btnCancelReview()">\n' +
+            '                                <div class="review-write-control">\n' +
+            '                                   <input type="submit" class="btn-write-submit" value="확인">\n' +
+            '                                   <input type="button" class="btn-write-cancel" value="취소" onclick="btnCancelReview()">\n' +
+            '                                </div>\n' +
             '                            </form>\n' +
             '                        </li>');
         radioStarInit();
