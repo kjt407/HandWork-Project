@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_market.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/market.css">
     <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript"
@@ -29,12 +29,11 @@
 		<jsp:include page="/WEB-INF/view/header.jsp"/>
 	</header>
 
-
     <section class="board-title-section">
         <div>수제공방 게시판</div>
     </section>
 
-    <section class="request board-section">
+    <section class="market board-section">
         <h2 class="hide">수제공방 게시판</h2>
         <div class="board-bg">
             <div class="left"></div>
@@ -44,7 +43,7 @@
             <%--게시판 목록 include--%>
             <jsp:include page="/WEB-INF/view/board_aslide.jsp"/>
 
-            <div class="board-main request-main">
+            <div class="board-main market-main">
                <h3 class="hide">게시판 메인</h3>
                 <form action="" class="board-search">
                     <select name="f">
@@ -97,66 +96,7 @@
                 </div>
                
 			
-				 <ul class="board-content-list">
-				 	<c:forEach var="r" items="${list}">
-                    <li>
-                        <div class="board-items">
 
-                            <a href="request/detail?id=${r.id}" class="img-container">
-                               	 <c:choose>
-				                   		<c:when test="${empty r.filename }">
-				                   			<img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-				                   		</c:when>
-				                   		<c:when test="${r.filename eq '/'}">
-	                                        <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-	                                     </c:when>
-				                   	
-				                   		<c:otherwise>
-				                 	  		<c:set var="doneLoop" value="false"/>
-					                   		<c:forTokens var="itemFN" items="${r.filename}" delims="/">
-					                   			<c:if test="${not doneLoop}">
-					                      			<img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
-					                      			
-					                      			<c:set var="doneLoop" value="true"/>
-					                      		</c:if>
-					                    	</c:forTokens>
-					                    	
-					                    	
-				                   		</c:otherwise>
-				                   	</c:choose>
-                              
-                            </a>
-                            <div class="board-list-main">
-                                <div class="row-wrapper">
-                                    <a href="" class="board-list-category">${r.kategorie}</a>
-                                    <a href="" class="board-list-locale">${r.location}</a>
-                                </div>
-                                <a href="request/detail?id=${r.id}" class="board-list-title">${r.title}</a>
-                                <a href="request/detail?id=${r.id}" class="board-list-subs">${r.content}</a>
-                                <div class="row-wrapper">
-                                    <c:choose>
-                                        <c:when test="${r.state eq 0}">
-                                            <a href="request/detail?id=${r.id}" class="board-list-price state auction">${r.price}원</a>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <a href="request/detail?id=${r.id}" class="board-list-price state complete">${r.price}원</a>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <div>
-                                        <a href="request/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>
-                                        <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="board-list-aside">
-                                <p class="board-list-deadline">${r.deadline}</p>
-                                <span class="board-list-comment">${r.count}</span>
-                                <span class="board-list-views">${r.hit}</span>
-                            </div>
-                        </div>
-                    </li>
-                    </c:forEach>
-                </ul>
                 
                 <c:set var="page" value="${(empty param.p) ? 1:param.p}" />
 				<c:set var="startNum" value="${page-(page-1)%5}" />
@@ -198,7 +138,7 @@
                 </c:when>
 				<c:otherwise>
 			
-				 <a href="request/write" class="btn-write">글작성</a>
+				 <a href="market/write" class="btn-write">글작성</a>
 				</c:otherwise>
 			</c:choose> 
 				</div>
