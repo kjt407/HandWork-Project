@@ -62,6 +62,12 @@
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .star-wrap > .star-item { height: 100%; }
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > p.review-subs { max-width: 700px; padding: 0 15px; font-size: 16px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > div.review-control { flex-shrink: 0; width: 60px;}
+
+
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li.write .radio-star-wrap { display: flex;}
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li.write .radio-star-wrap .radio-stars { width: 0px;}
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li.write .radio-star-wrap .radio-star-label { display: flex; width: 20px;height: 20px; background: url("../images/star.png"); background-size: contain;}
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li.write textarea { height: 150px; border-radius: 5px; border: silver 1px solid; resize: none; text-indent: 0; padding: 10px; font-size: 17px; }
 /*.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li:after { content: ""; width: 100%; height: 1px; background: #555555; margin: 20px 0;}*/
 
 

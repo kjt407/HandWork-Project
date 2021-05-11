@@ -100,10 +100,32 @@
                     <div class="section-title">
                         <div class="title-wrap">
                             <span class="review-title">구매후기 (12)</span>
-                            <input type="button" value="리뷰작성" class="btn-write-review"></input>
+                            <input type="button" value="리뷰작성" class="btn-write-review" onclick="btnWriteReview(this)"></input>
                         </div>
                     </div>
                     <ul class="review-ul">
+<%--                        <li class="review-li write">--%>
+<%--                            <p>리뷰 작성하기</p>--%>
+<%--                            <form action="" method="post">--%>
+<%--                                <div class="radio-star-wrap">--%>
+<%--                                    <input type="radio" name="radio-stars" id="star-1" value="1" class="radio-stars" checked>--%>
+<%--                                    <label class="radio-star-label"for="star-1"></label>--%>
+<%--                                    <input type="radio" name="radio-stars" id="star-2" value="2" class="radio-stars" >--%>
+<%--                                    <label class="radio-star-label"for="star-2"></label>--%>
+<%--                                    <input type="radio" name="radio-stars" id="star-3" value="3" class="radio-stars" >--%>
+<%--                                    <label class="radio-star-label"for="star-3"></label>--%>
+<%--                                    <input type="radio" name="radio-stars" id="star-4" value="4" class="radio-stars" >--%>
+<%--                                    <label class="radio-star-label"for="star-4"></label>--%>
+<%--                                    <input type="radio" name="radio-stars" id="star-5" value="5" class="radio-stars" >--%>
+<%--                                    <label class="radio-star-label"for="star-5"></label>--%>
+<%--                                </div>--%>
+<%--                                <div class="star-wrap">3</div>--%>
+<%--                                <textarea name="review-subs" class="review-subs" required></textarea>--%>
+<%--                                <input type="submit" value="확인">--%>
+<%--                                <input type="button" value="취소">--%>
+<%--                            </form>--%>
+<%--                        </li>--%>
+
                         <li class="review-li">
                             <div class="review-row">
                                 <div class="user-info-wrap">
@@ -124,29 +146,41 @@
                             </div>
                         </li>
                         <li class="review-li">
-                            <div class="li-container">
-                                <div class="user-img-wrap">
+                            <div class="review-row">
+                                <div class="user-info-wrap">
                                     <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                    <div class="write-info">
+                                        <span class="user-name" >김종태</span>
+                                        <span class="user-date" >2021.05.12</span>
+                                    </div>
                                 </div>
-                                <span class="comment-writername" >김종태</span>
-                                <span class="comment-writedate" >2021.05.12</span>
-                                <input type="button" onclick="commentEdit(this)" value="수정">
-                                <input type="button" onclick="commentDelete(this)" value="삭제">
-                                <div class="star-wrap">2</div>
+                                <div class="star-wrap">3</div>
+                            </div>
+                            <div class="review-row">
                                 <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
+                                <div class="review-control">
+                                    <input type="button" onclick="commentEdit(this)" value="수정">
+                                    <input type="button" onclick="commentDelete(this)" value="삭제">
+                                </div>
                             </div>
                         </li>
                         <li class="review-li">
-                            <div class="li-container">
-                                <div class="user-img-wrap">
+                            <div class="review-row">
+                                <div class="user-info-wrap">
                                     <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                    <div class="write-info">
+                                        <span class="user-name" >김종태</span>
+                                        <span class="user-date" >2021.05.12</span>
+                                    </div>
                                 </div>
-                                <span class="comment-writername" >김종태</span>
-                                <span class="comment-writedate" >2021.05.12</span>
-                                <input type="button" onclick="commentEdit(this)" value="수정">
-                                <input type="button" onclick="commentDelete(this)" value="삭제">
-                                <div class="star-wrap">2</div>
-                                <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
+                                <div class="star-wrap">3</div>
+                            </div>
+                            <div class="review-row">
+                                <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제 </p>
+                                <div class="review-control">
+                                    <input type="button" onclick="commentEdit(this)" value="수정">
+                                    <input type="button" onclick="commentDelete(this)" value="삭제">
+                                </div>
                             </div>
                         </li>
                     </ul>
