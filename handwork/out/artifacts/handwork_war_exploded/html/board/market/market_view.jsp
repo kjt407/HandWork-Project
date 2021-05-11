@@ -26,7 +26,7 @@
     <script type="text/javascript"
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/market.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/market_view.js"></script>
 
     <title>핸드워크: 수제공방</title>
 </head>
@@ -50,11 +50,36 @@
             <div class="board-main market-view-main">
                 <h3 class="hide">게시글 상세페이지</h3>
                 <div class="market board-header">
-                    <div class="img-slider"></div>
+                    <div class="img-container">
+                        <img src="${pageContext.request.contextPath}/images/item.png" alt="" id="img-main">
+                        <input type="button" value="" class="btn-img prev" onclick="btnImg('prev')">
+                        <input type="button" value="" class="btn-img next" onclick="btnImg('next')">
+                        <ul class="img-ul">
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath}/images/items.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath}/images/items.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath}/images/items.png" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
+
+                        </ul>
+                    </div>
                     <div class="main-panel">
                         <div class="item-row">
                             <a href="" class="item-writer">촤콜렛하우스</a>
-                            <p class="item-category">식품/잡화</p>
+                            <a href="" class="item-category">식품/잡화</a>
                         </div>
                         <p href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
                         <p href="" class="item-price state sell">15000원</p>
