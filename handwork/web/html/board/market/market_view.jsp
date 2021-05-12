@@ -142,8 +142,8 @@
                             <div class="review-row">
                                 <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
                                 <div class="review-control">
-                                    <input type="button" onclick="commentEdit(this)" value="수정">
-                                    <input type="button" onclick="commentDelete(this)" value="삭제">
+                                    <input type="button" onclick="reviewEdit(this)" value="수정">
+                                    <input type="button" onclick="location.href='${pageContext.request.contextPath}/review/delete'" value="삭제">
                                 </div>
                             </div>
                         </li>
@@ -161,8 +161,8 @@
                             <div class="review-row">
                                 <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
                                 <div class="review-control">
-                                    <input type="button" onclick="commentEdit(this)" value="수정">
-                                    <input type="button" onclick="commentDelete(this)" value="삭제">
+                                    <input type="button" onclick="reviewEdit(this)" value="수정">
+                                    <input type="button" onclick="location.href='${pageContext.request.contextPath}/review/delete'" value="삭제">
                                 </div>
                             </div>
                         </li>
@@ -180,8 +180,8 @@
                             <div class="review-row">
                                 <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제 </p>
                                 <div class="review-control">
-                                    <input type="button" onclick="commentEdit(this)" value="수정">
-                                    <input type="button" onclick="commentDelete(this)" value="삭제">
+                                    <input type="button" onclick="reviewEdit(this)" value="수정">
+                                    <input type="button" onclick="location.href='${pageContext.request.contextPath}/review/delete'" value="삭제">
                                 </div>
                             </div>
                         </li>
