@@ -80,12 +80,14 @@ function btnWriteReview(ele) {
             '                        </li>');
         radioStarInit();
 
-        $(ele).addClass('hide');
+        $('.btn-write-review').addClass('hide');
+        $('.review-control').addClass('hide');
     }
 }
 function btnCancelReview() {
     $('.review-li.write').remove();
     $('.btn-write-review').removeClass('hide');
+    $('.review-control').removeClass('hide');
 }
 // 리뷰 작성부분
 
@@ -118,16 +120,18 @@ function reviewEdit(ele) {
         '                            </form>\n' +
         '                        </li>');
     $(parent).addClass('hide');
+    $('.btn-write-review').addClass('hide');
+    $('.review-control').addClass('hide');
     radioStarInit();
-
     let stars = $('.radio-stars').get();
     $(stars[index]).trigger('click');
     $(stars[index]).trigger('click');
-
 }
 function btnCancelEdit() {
     $('.review-li.edit').remove();
     $('li.review-li').removeClass('hide');
+    $('.btn-write-review').removeClass('hide');
+    $('.review-control').removeClass('hide');
 }
 //리뷰 수정 부분
 

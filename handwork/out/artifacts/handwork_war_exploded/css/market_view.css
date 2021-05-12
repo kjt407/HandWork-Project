@@ -46,12 +46,11 @@
 .board-section .board-container .board-main > div.market.content-section { display: flex; flex-direction: column; justify-content: flex-start; width: 100%; min-height: 250px; font-size: 21px; line-height: 35px;}
 .board-section .board-container .board-main .section-title { display: flex; flex-direction: column; width: 100%; font-size: 23px; font-weight: bold; color: #2f2f2f;}
 .board-section .board-container .board-main .section-title:after { content: ""; width:100%; height: 1px; background: #2f2f2f; margin: 10px 0; }
-.board-section .board-container .board-main .title-wrap { display: flex; justify-content: space-between;}
+.board-section .board-container .board-main .title-wrap { display: flex; justify-content: space-between; align-items: flex-end;}
 .board-section .board-container .board-main .content-view {display: flex; justify-content: flex-start;margin: 20px; color: #2f2f2f;}
-/*.board-section .board-container .board-main .section-title { display: flex; align-items: center; width: 100%; font-size: 23px; font-weight: bold; color: #2f2f2f;}*/
-/*.board-section .board-container .board-main .section-title:before { content: ""; height:100%; width: 2px; background: #2f2f2f; margin-right: 10px; }*/
 
 .board-section .board-container .board-main > div.market.review-section { display: flex; flex-direction: column; width: 100%;}
+.board-section .board-container .board-main > div.market.review-section .title-wrap > input.btn-write-review{ background: none; font-size: 16px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul { padding: 0 20px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li {display: flex; flex-direction: column; background: whitesmoke; margin: 20px 0; padding: 15px; border-radius: 5px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row { display: flex; justify-content: space-between; align-items: flex-start;}

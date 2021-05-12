@@ -55,8 +55,8 @@
                         
             
                 <h3 class="hide">게시글 작성페이지</h3>
-                <p class="request-write-title">제작의뢰 글쓰기</p>
-                <div class="request-write-header">
+                <p class="board-write-header-title">제작의뢰 글쓰기</p>
+                <div class="board-write-header">
                     <div class="board-write-row">
                         <div class="board-write-col category-select-col">
                             <p class="input-label">카테고리</p>

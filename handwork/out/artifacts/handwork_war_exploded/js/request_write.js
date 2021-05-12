@@ -17,7 +17,11 @@ function addImg() {
     var img_ul = $('#add-img-ul');
     indexReOrder();
     var index = newIndexNum();
-    img_ul.append('<li class="img-ul-li new-upload"><input type="file" name="img_path'+index+'" class="board-write-img hide" id="img-upload'+index+'" placeholder="이미지 업로드" accept="image/png, image/jpeg, image/jpg" onchange="imgChange(this)" required/><label for="img-upload'+index+'">업로드</label><p id="img-path'+index+'" class="img-path" >선택된 이미지 없음</p><input type="button" id="btn-del-img'+index+'" class="btn-del-img" onClick="delRow(this)"/></li>');
+    if(index > 7){
+        alert("이미지는 최대 7개 까지 업로드 가능합니다");
+    } else {
+        img_ul.append('<li class="img-ul-li new-upload"><input type="file" name="img_path'+index+'" class="board-write-img hide" id="img-upload'+index+'" placeholder="이미지 업로드" accept="image/png, image/jpeg, image/jpg" onchange="imgChange(this)" required/><label for="img-upload'+index+'">업로드</label><p id="img-path'+index+'" class="img-path" >선택된 이미지 없음</p><input type="button" id="btn-del-img'+index+'" class="btn-del-img" onClick="delRow(this)"/></li>');
+    }
 }
 
 function delRow(ele) {

@@ -102,32 +102,10 @@
                     <div class="section-title">
                         <div class="title-wrap">
                             <span class="review-title">구매후기 (12)</span>
-                            <input type="button" value="리뷰작성" class="btn-write-review" onclick="btnWriteReview(this)"></input>
+                            <input type="button" value="+ 리뷰작성" class="btn-write-review" onclick="btnWriteReview(this)"></input>
                         </div>
                     </div>
                     <ul class="review-ul">
-<%--                        <li class="review-li write">--%>
-<%--                            <p>리뷰 작성하기</p>--%>
-<%--                            <form action="" method="post">--%>
-<%--                                <div class="radio-star-wrap">--%>
-<%--                                    <input type="radio" name="radio-stars" id="star-1" value="1" class="radio-stars" checked>--%>
-<%--                                    <label class="radio-star-label"for="star-1"></label>--%>
-<%--                                    <input type="radio" name="radio-stars" id="star-2" value="2" class="radio-stars" >--%>
-<%--                                    <label class="radio-star-label"for="star-2"></label>--%>
-<%--                                    <input type="radio" name="radio-stars" id="star-3" value="3" class="radio-stars" >--%>
-<%--                                    <label class="radio-star-label"for="star-3"></label>--%>
-<%--                                    <input type="radio" name="radio-stars" id="star-4" value="4" class="radio-stars" >--%>
-<%--                                    <label class="radio-star-label"for="star-4"></label>--%>
-<%--                                    <input type="radio" name="radio-stars" id="star-5" value="5" class="radio-stars" >--%>
-<%--                                    <label class="radio-star-label"for="star-5"></label>--%>
-<%--                                </div>--%>
-<%--                                <div class="star-wrap">3</div>--%>
-<%--                                <textarea name="review-subs" class="review-subs" required></textarea>--%>
-<%--                                <input type="submit" value="확인">--%>
-<%--                                <input type="button" value="취소">--%>
-<%--                            </form>--%>
-<%--                        </li>--%>
-
                         <li class="review-li">
                             <div class="review-row">
                                 <div class="user-info-wrap">

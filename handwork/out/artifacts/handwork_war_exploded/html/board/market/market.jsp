@@ -64,8 +64,7 @@
                             </div>
                             <a href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</a>
                             <a href="" class="item-price state sell">15000원</a>
-                            <p href="" class="item-stock">1</p>
-                            <p href="" class="item-selled">1</p>
+                            <p href="" class="item-review-num">1</p>
                             <div class="item-review">
                                 <div class="star-wrap">2</div>
                                 <span class="review-text">가장 최근의 리뷰가 보여집니다</span>
@@ -81,8 +80,7 @@
                             </div>
                             <a href="" class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</a>
                             <a href="" class="item-price state out">15000원</a>
-                            <p href="" class="item-stock">1</p>
-                            <p href="" class="item-selled">1</p>
+                            <p href="" class="item-review-num">1</p>
                             <div class="item-review">
                                 <div class="star-wrap">3</div>
                                 <span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
