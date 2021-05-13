@@ -26,7 +26,7 @@
 						<li>장터
 							<div class="header-sub">
 								<ul class="inner-ul">
-									<li><a href="">수제공방</a></li>
+									<li><a href="${pageContext.request.contextPath}/market">수제공방</a></li>
 									<li><a href="${pageContext.request.contextPath}/request">제작의뢰</a></li>
 								</ul>
 							</div>

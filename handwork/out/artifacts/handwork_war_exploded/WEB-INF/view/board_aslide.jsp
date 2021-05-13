@@ -15,7 +15,7 @@
     <p class="title-deco">HandWork</p>
     <ul class="board-list">
         <c:set var="context" value="${ pageContext.request.servletPath }"/>
-            <li <c:if test="${fn:contains(context, '/board/market')}"> class="crt-page" </c:if> > <a href="">수제공방</a></li>
+            <li <c:if test="${fn:contains(context, '/board/market')}"> class="crt-page" </c:if> > <a href="${pageContext.request.contextPath}/market">수제공방</a></li>
             <li <c:if test="${fn:contains(context, '/board/request')}"> class="crt-page" </c:if> > <a href="${pageContext.request.contextPath}/request">제작의뢰</a></li>
             <li <c:if test="${fn:contains(context, '/board/notice')}"> class="crt-page" </c:if> > <a href="">공지사항</a></li>
             <li <c:if test="${fn:contains(context, '/board/review')}"> class="crt-page" </c:if> > <a href="">리뷰게시판</a></li>

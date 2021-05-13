@@ -34,30 +34,55 @@ header .login a:last-child {padding-right: 0px;}
 .sell-section .board-title .title{font-size: 24px; font-weight: 600; color: black; display: block; padding: 25px 0 10px 0;}
 .sell-section .board-title .sub{font-size: 15px; color: gray; padding: 0 0 25px 0;}
 .sell-section .board-slider {display: flex; width: 100%; justify-content: center;}
-.sell-section .board-slider .prev-container { display: flex; width: 280px; height: 500px; flex-direction: column; align-items: center; overflow: hidden; margin: 0 10px; background: white; } 
-/* box-shadow: 2px 2px 2px; */
-/* .sell-section .board .prev-container:first-child {margin-left: 0px;} */
-.sell-section .board-slider .prev-container div.img-wrap { display: flex; justify-content: center; align-items: center; width: auto; height: 250px; overflow: hidden; }
-.sell-section .board-slider .prev-container img { background: lightblue; width: auto; height: 250px; min-width: 250px; transition: 0.2s; }
-.sell-section .board-slider .prev-container:hover img { transform: scale(1.1);}
-.sell-section .board-slider .prev-container .board-content { display: flex; position: relative; flex-direction: column; width: 100%; height: 250px; justify-content: flex-start; padding: 5px 15px;}
-.sell-section .board-slider .prev-container .board-content .title { font-size: 16px; font-weight: bold; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow: hidden; width: 100%; margin-bottom: 5px;}
-.sell-section .board-slider .prev-container .board-content .content { color: gray; display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow: hidden; }
-.sell-section .board-slider .prev-container .board-content span[class^=price] { font-size: 16px; font-weight: bold; color: salmon;}
-.sell-section .board-slider .prev-container .board-content .price-sub { position: absolute; bottom: 0; left: 0; margin: 0 0 10px 10px;}
-.sell-section .board-slider .prev-container .board-content .price-value { position: absolute; bottom: 0; right: 0; margin: 0 10px 10px 0;}
-.sell-section .board-slider .prev-container .board-content .price-value::before {content: "\\";}
-.sell-section .board-slider .prev-container .board-content .price-value::after {content: "\~";}
+.sell-section .board-slider .prev-container { display: flex; width: 280px; height: 500px; flex-direction: column; align-items: center; overflow: hidden; margin: 0 10px; background: white; }
+.prev-container:hover .img-wrap > img { transform: scale(1.1);}
+.board-items { display: flex; flex-direction: column; background: whitesmoke;  border-radius: 2px;}
+.board-items .img-wrap { display: flex; justify-content: center; align-items: center; overflow: hidden; width: 100%; height:302px; }
+.board-items .img-wrap > img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s all;}
+.board-items .img-wrap:hover > img { transform: scale(1.1); }
+.board-items div.item-container { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 10px;}
+.board-items div.item-container * { font-size: 15px; color: black; }
+.board-items div.item-container > .item-row { display: flex;  justify-content: space-between; align-items: center; width: 100%; margin-bottom: 7px;}
+.board-items div.item-container > .item-row > * { display: flex; align-items: center; font-size: 14px; font-weight: 500; color: #3f3f3f;}
+.board-items div.item-container > .item-row > *::before { display: inline-block; content: ""; width: 16px; height: 16px; opacity: 0.7;}
+.board-items div.item-container > .item-row > .item-writer::before { background: url(../images/shop.png) center no-repeat;  background-size: 18px 16px; width: 18px; margin-right: 2px; opacity: 0.5;}
+.board-items div.item-container > .item-row > .item-location::before { background: url(../images/location_icon.png) center no-repeat;  background-size: 16px 16px; }
+.board-items div.item-container .item-title { height: 42px; font-weight: 600; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow: hidden; font-size: 19px; line-height: 22px; margin-bottom: 7px;}
+.board-items div.item-container .item-price { display: flex; align-items: center; font-size: 25px;  color: tomato; font-family: 'Do Hyeon', sans-serif; margin-bottom: 5px;}
+.board-items div.item-container .item-price.state::before { display:flex; align-items: center; content: ""; font-family: NanumGothic; font-size: 17px; font-weight: 400; padding: 2px; background: tomato; color: white; border-radius:2px; margin-right: 7px;}
+.board-items div.item-container .item-price.state.sell::before { content: "판매중";}
+.board-items div.item-container .item-price.state.out { color: gray;}
+.board-items div.item-container .item-price.state.out::before { content: "품절"; background: gray;}
+.board-items div.item-container .item-review-num { font-size: 16px; color: #555555; margin-bottom: 3px;}
+.board-items div.item-container .item-review-num:after { content: "개"}
+.board-items div.item-container .item-review-num::before { content: "리뷰 -"; margin-right: 5px;}
+.board-items div.item-container div.item-review { display: flex; flex-direction: column; width: 100%; border-top: 1px solid #b5b5b5; padding-top: 10px; margin-top: 10px;}
+.board-items div.item-container div.item-review .star-wrap { display: flex; justify-content: start; align-items: center; height: 20px; margin-bottom: 7px;}
+.board-items div.item-container div.item-review .star-wrap > .star-item { height: 100%; }
+.board-items div.item-container div.item-review .review-text { height: 34px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow: hidden; font-size: 15px; line-height: 18px; color: #3f3f3f;}
+
+/*수제공방 (구)컨테이너 속성*/
+/*.sell-section .board-slider .prev-container div.img-wrap { display: flex; justify-content: center; align-items: center; width: auto; height: 250px; overflow: hidden; }*/
+/*.sell-section .board-slider .prev-container img { background: lightblue; width: auto; height: 250px; min-width: 250px; transition: 0.2s; }*/
+/*.sell-section .board-slider .prev-container:hover img { transform: scale(1.1);}*/
+/*.sell-section .board-slider .prev-container .board-content { display: flex; position: relative; flex-direction: column; width: 100%; height: 250px; justify-content: flex-start; padding: 5px 15px;}*/
+/*.sell-section .board-slider .prev-container .board-content .title { font-size: 16px; font-weight: bold; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow: hidden; width: 100%; margin-bottom: 5px;}*/
+/*.sell-section .board-slider .prev-container .board-content .content { color: gray; display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow: hidden; }*/
+/*.sell-section .board-slider .prev-container .board-content span[class^=price] { font-size: 16px; font-weight: bold; color: salmon;}*/
+/*.sell-section .board-slider .prev-container .board-content .price-sub { position: absolute; bottom: 0; left: 0; margin: 0 0 10px 10px;}*/
+/*.sell-section .board-slider .prev-container .board-content .price-value { position: absolute; bottom: 0; right: 0; margin: 0 10px 10px 0;}*/
+/*.sell-section .board-slider .prev-container .board-content .price-value::before {content: "\\";}*/
+/*.sell-section .board-slider .prev-container .board-content .price-value::after {content: "\~";}*/
 .sell-section .slick-arrow {display: block; width: 40px; height: 40px; font-size: 0; opacity: 0.5;}
 .sell-section .slick-arrow:hover {opacity: 1;  transition: 0.2s;}
 .sell-section .slick-prev {position:absolute; left:-40px; background: url(../images/prev.png) center no-repeat;  margin-right: 40px;}
-.sell-section .slick-next {position:absolute; right:-40px; background: url(../images/next.png) center no-repeat;} 
+.sell-section .slick-next {position:absolute; right:-40px; background: url(../images/next.png) center no-repeat;}
 .sell-section .slick-arrow::before {content: none;}
 
 .order-section { position: relative; display: flex; width: 100%; height: 600px;}
 .order-section .rayer{position: absolute; z-index: 10; top: 0; left: 0; height: 100%; width: 100%; background: -webkit-linear-gradient(left, rgba(207,216,220,0) 0%,rgba(207,216,220,0.3) 15%,rgba(207,216,220,0.5) 20%,rgba(207,216,220,0.7) 30%,rgba(207,216,220,0.8) 40%,rgba(207,216,220,1) 50%,rgba(207,216,220,1) 100%);}
 .order-section .left {display: flex; flex-direction: column; justify-content: center; align-items: center; width: 50%; height: 100%; background:url(../images/order_background.jpg) no-repeat; background-size: cover;}
-.order-section .left a,p {z-index: 20; margin: 10px 0;}
+.order-section .left a, .order-section .left p {z-index: 20; margin: 10px 0;}
 .order-section .left p { color: black; line-height: 25px; font-size: 18px; font-weight: bold; text-align: center;}
 .order-section .left a { display: block; width: 160px; height: 50px; line-height: 50px; border: 2px solid black ; font-size: 16px; font-weight: bold; text-align: center; transition: 0.3s; }
 .order-section .left a:hover { background: rgb(24, 24, 24); color: white;}
@@ -65,17 +90,26 @@ header .login a:last-child {padding-right: 0px;}
 .order-section section .board-title {display: flex; justify-content: center; align-items: center; flex-direction: column;}
 .order-section .board-title .title{font-size: 24px; font-weight: 600; color: black; display: block; padding: 20px 0 10px 0;}
 .order-section .board-title .sub{font-size: 15px; color: gray; padding: 0 0 20px 0;}
-.order-section  .right {display: flex; width: 50%; justify-content: space-around; align-items: center;}
-.order-section  .right .right-container {display: flex; flex-direction: column; align-content:center; justify-items: center; transform: translateX(-5%); z-index: 11;}
-.order-section  .right .right-container .board-title {text-align: center; margin-bottom: 50px;}
-.order-section  .right .right-container .board-title .title:hover { color: darkslategray;  transition: 0.25s; }
-.order-section  .right .right-container table {width: 500px;  text-align: center; }
-.order-section  .right .right-container table thead {font-size: 16px; font-weight: 600; color: black; border-bottom: 1px solid black;}
-.order-section  .right .right-container table thead td{padding-bottom: 10px;}
-.order-section  .right .right-container table tbody tr {font-size: 14px; color: black; border-bottom: 1px solid gray;}
-.order-section  .right .right-container table tbody td{padding: 10px 0;} 
-.order-section  .right .right-container .order-pager {display: flex; justify-content: center; margin:15px 0 70px 0;}
-.order-section  .right .right-container .order-pager li { padding: 0 10px; font-weight: lighter;}
-.order-section  .right .right-container .order-pager li:hover {text-decoration: underline;}
-.order-section  .right .right-container .order-pager li .on { font-weight: bold;}
+.order-section .right {display: flex; width: 50%; justify-content: space-around; align-items: center;}
+.order-section .right .right-container {display: flex; flex-direction: column; align-content:center; justify-items: center; transform: translateX(-5%); z-index: 11;}
+.order-section .right .right-container .board-title {text-align: center; margin-bottom: 20px;}
+.order-section .right .right-container .board-title .title:hover { color: darkslategray;  transition: 0.25s; }
+/*제작의뢰 슬릭(세로) 슬라이더 css*/
+.order-section .right .right-container > .request-slide { display: flex; width: 500px; }
+.order-section .right .right-container > .request-slide a.item-wrap { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 80px; margin: 5px 0; background: rgba(255,255,255,0.3);}
+.order-section .right .right-container > .request-slide a.item-wrap > * { margin: 0 10px; }
+.order-section .right .right-container > .request-slide a.item-wrap img.item-img { display: flex; justify-content: center; align-items: center; width: 80px; height: 100%; object-fit: cover; margin: 0; flex-shrink: 0;}
+.order-section .right .right-container > .request-slide a.item-wrap span.item-title { width: 100%;}
+.order-section .right .right-container > .request-slide a.item-wrap span.item-price { flex-shrink: 0;}
+.order-section .right .right-container > .request-slide a.item-wrap span.item-writer { flex-shrink: 0;}
+/*제작의뢰 (구)컨테이너 속성*/
+/*.order-section  .right .right-container table {width: 500px;  text-align: center; }*/
+/*.order-section  .right .right-container table thead {font-size: 16px; font-weight: 600; color: black; border-bottom: 1px solid black;}*/
+/*.order-section  .right .right-container table thead td{padding-bottom: 10px;}*/
+/*.order-section  .right .right-container table tbody tr {font-size: 14px; color: black; border-bottom: 1px solid gray;}*/
+/*.order-section  .right .right-container table tbody td{padding: 10px 0;} */
+/*.order-section  .right .right-container .order-pager {display: flex; justify-content: center; margin:15px 0 70px 0;}*/
+/*.order-section  .right .right-container .order-pager li { padding: 0 10px; font-weight: lighter;}*/
+/*.order-section  .right .right-container .order-pager li:hover {text-decoration: underline;}*/
+/*.order-section  .right .right-container .order-pager li .on { font-weight: bold;}*/
 
