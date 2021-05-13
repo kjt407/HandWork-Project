@@ -20,7 +20,8 @@ public class MarketDetailController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println("리뷰리스트 테스트");
 		MarketService service = new MarketService();

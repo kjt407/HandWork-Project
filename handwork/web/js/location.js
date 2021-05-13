@@ -1,18 +1,17 @@
 $(window).load(function(){
-    if(navigator.geolocation){
-        alert("현재위치 허용됨");
-    }
     const json = {type:'init'};
-    ajaxGet(json);
+    ajaxInit(json);
+
 });
 
 let initData = [];
 
 function initMap(initLatlng){
 
+    alert('좌표'+initLatlng.x+initLatlng.y);
     let mapOptions = {
         center: new naver.maps.LatLng(initLatlng.x, initLatlng.y),
-        zoom: 17
+        zoom: 15
     };
 
     let map = new naver.maps.Map('map', mapOptions);
@@ -25,17 +24,20 @@ function initMap(initLatlng){
                 position: new naver.maps.LatLng(initData[key].x, initData[key].y),
                 map: map
             }));
-        var infoWindow = new naver.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ key.substr(0, 1) +'"</b>.</div>'
-        });
-        infoWindows.push(infoWindow);
+        // var infoWindow = new naver.maps.InfoWindow({
+        //     content: '<div style="width:150px;text-align:center;padding:10px;">The Letter is <b>"'+ key.substr(0, 1) +'"</b>.</div>'
+        // });
+        // infoWindows.push(infoWindow);
     }
 
     function getClickHandler(seq) {
+        const data = {"board-num":initData[seq].board_num, "type":"click"};
         return function(e) {
+            let result = ajaxClick(data);
             var marker = markers[seq],
-                infoWindow = infoWindows[seq];
-
+                infoWindow = new naver.maps.InfoWindow({
+                         content: '<div style="width:150px;text-align:center;padding:10px;">'+initData[seq].board_num+result.title+'</div>'
+                     });
             if (infoWindow.getMap()) {
                 infoWindow.close();
             } else {
@@ -60,7 +62,7 @@ function initMap(initLatlng){
 // ].join('');
 
 
-function ajaxGet(str) {
+function ajaxInit(str) {
     const url = getContextPath()+"/location";
 
     $.ajax({
@@ -75,7 +77,29 @@ function ajaxGet(str) {
             for (let col in data){
                 initData.push(data[col]);
             }
-            initMap(initData[0]);
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(onSuccessGeolocation, onErrorGeolocation);
+            }
+        },
+        error:function(){
+            alert('Ajax 통신 에러');
+        }
+    })
+}
+
+function ajaxClick(str) {
+    const url = getContextPath()+"/location";
+
+    $.ajax({
+        type:"GET",
+        url:url,
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        dataType:"json",
+        data:str,
+        success:function(data){
+            alert("Ajax 통신 완료"+data);
+            console.log(data);
+            return data;
         },
         error:function(){
             alert('Ajax 통신 에러');
@@ -86,4 +110,17 @@ function ajaxGet(str) {
 function getContextPath() {
     var hostIndex = location.href.indexOf( location.host ) + location.host.length;
     return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+}
+function onSuccessGeolocation(position) {
+    alert('지오그레이션 성공');
+    let initLatlng = {"x":position.coords.latitude,"y":position.coords.longitude};
+    // var location = new naver.maps.LatLng(position.coords.latitude,
+    //     position.coords.longitude);
+    // map.setCenter(location);
+    console.log(location);
+    initMap(initLatlng);
+}
+function onErrorGeolocation() {
+    alert("지오그레이션 실패");
+    initMap(initData[initData.length-1]);
 }

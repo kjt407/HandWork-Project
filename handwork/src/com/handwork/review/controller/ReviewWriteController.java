@@ -29,8 +29,7 @@ public class ReviewWriteController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //  super.doPost(request, response);
-
-
+        request.setCharacterEncoding("utf-8");
         System.out.println("doPost 넘어옴!!");
         int star = Integer.parseInt(request.getParameter("radio-stars"));
         String content = request.getParameter("review-subs");

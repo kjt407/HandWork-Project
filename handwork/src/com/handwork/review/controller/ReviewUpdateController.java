@@ -27,7 +27,7 @@ public class ReviewUpdateController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //  super.doPost(request, response);
-
+        request.setCharacterEncoding("utf-8");
         System.out.println("update 메서드 실행");
         int star = Integer.parseInt(request.getParameter("radio-stars"));
         String content = request.getParameter("review-subs");

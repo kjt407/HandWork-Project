@@ -15,8 +15,7 @@ import java.util.List;
 public class MarketListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+		request.setCharacterEncoding("utf-8");
 
 		String field_ = request.getParameter("f");
 		String query_ = request.getParameter("q");

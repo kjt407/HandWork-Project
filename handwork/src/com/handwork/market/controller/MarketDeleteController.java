@@ -14,7 +14,8 @@ import java.sql.Statement;
 public class MarketDeleteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		try {

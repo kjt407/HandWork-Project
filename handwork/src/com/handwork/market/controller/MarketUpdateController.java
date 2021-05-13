@@ -23,7 +23,7 @@ import java.util.Enumeration;
 public class MarketUpdateController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println(id);
 		
@@ -36,72 +36,31 @@ public class MarketUpdateController extends HttpServlet{
 		
 		request.getRequestDispatcher("/market/write").forward(request, response);
 	}
-	
-		
-		/*try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-		    String dbID = "handwork";
-		    String dbPassword = "handwork";
-			
-		    Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword); 
-			Statement stmt = conn.createStatement();
-			
-			
-			ResultSet rs =stmt.executeQuery((String.format("select * from board where id=" + id)));
-			  if(rs.next()) {
-				  Request req = new Request();
-				  
-				  	req.setId(rs.getInt("id"));
-					req.setWriter(rs.getString("writer"));
-					req.setTitle(rs.getString("title"));
-					req.setKategorie(rs.getString("kategorie"));
-					req.setLocation(rs.getString("location"));
-					req.setDeadline(rs.getString("deadline"));
-					req.setPrice(rs.getInt("price"));
-					req.setContent(rs.getString("content"));
-					req.setRegdate(rs.getDate("regdate"));
-					req.setHit(rs.getInt("hit"));
-					
-					
-					System.out.println(req.getId());
-					System.out.println(req.getTitle());
-					
-					requeset.setAttribute("title", req.getTitle());
-				  }
-			    stmt.close();
-			    conn.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}*/
-		//response.sendRedirect("../request/write");
-		//request.getRequestDispatcher("/request_write.jsp").forward(request, response);
-		//request.getRequestDispatcher("../request/write").forward(request, response);
-	
+
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+		request.setCharacterEncoding("utf-8");
 		String fullFileName = null; //������ SQL filename �� ���
 		ArrayList<String> imgUpdateList = new ArrayList<String>(); //imgUpdateList = ���� �� �̹���(sql �߰��ʿ�)
-		
+
 		int sizeLimit = 15 * 1024 * 1024;
-		
-		//	����θ� �����η� �����;� 
+
+		//	����θ� �����η� �����;�
 		String realPath = request.getServletContext().getRealPath("upload");
 		System.out.println(realPath);
-		
+
 		//upload ������ ���� ��� ������ �����
 		File dir = new File(realPath);
 		if (!dir.exists()) dir.mkdirs();
-				
+
 		MultipartRequest multi = null;
-		multi = new MultipartRequest(request, realPath, 
+		multi = new MultipartRequest(request, realPath,
 				sizeLimit, "utf-8",new DefaultFileRenamePolicy());
-		
-		
+
+
 		int id = Integer.parseInt(multi.getParameter("id"));
-		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		
 		String writer = (String) session.getAttribute("name");
