@@ -1,6 +1,7 @@
 package com.handwork.location.controller;
 
 
+import com.handwork.location.service.LocationService;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -21,15 +22,16 @@ public class LocationController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/x-json; charset=UTF-8");
-        request.getParameter("type");
+        String type = (request.getParameter("type"));
+        JSONArray json = null;
+        if(type != null && type.equals("init")){
+            json = initMarker(request,response);
+            response.getWriter().print(json);
+        } else if(type == null) {
+            request.getRequestDispatcher("/html/location/location.jsp").forward(request,response);
+        }
 
 
-        JSONObject json = new JSONObject();
-        json.put("x","37.49099729728258");
-        json.put("y","126.81345371145218");
-        json.put("board_num","9");
-
-        response.getWriter().print(json);
     }
 
     @Override
@@ -38,8 +40,17 @@ public class LocationController extends HttpServlet {
 
     }
 
-    private void initMarker(){
+    private JSONArray initMarker(HttpServletRequest request, HttpServletResponse response){
+        LocationService service = new LocationService();
 
+//        JSONArray jsonarray = new JSONArray();
+//
+//        JSONObject json = new JSONObject();
+//        json.put("x","37.49099729728258");
+//        json.put("y","126.81345371145218");
+//        json.put("board_num","9");
+
+        return service.getInitData();
     }
 
 

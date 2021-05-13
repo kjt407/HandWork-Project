@@ -1,7 +1,11 @@
 package com.handwork.location.service;
 
 import com.handwork.request.entity.Request;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
+import java.io.Console;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,24 +15,10 @@ import java.util.List;
 
 public class LocationService {
 
-	public List<Request> getRequestList() {
-		return getRequestList("title", "", 1);
-	}
+	public JSONArray getInitData() {
 
-	public List<Request> getRequestList(int page) {
-		return getRequestList("title", "", page);
-	}
-
-	public List<Request> getRequestList(String field, String query, int page) {
-
-		List<Request> list = new ArrayList<>();
-
-		String sql="SELECT *" +
-				"FROM( " +
-				"SELECT @rownum:=@rownum+1  num, A.* FROM board A, " +
-				"   (SELECT @ROWNUM := 0) R where "+field+" like ? order by regdate desc" +
-				") " +
-				"list WHERE num between ? and ?";
+		String sql="SELECT id,latlng FROM handwork.market";
+		JSONArray jsonarray = new JSONArray();
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,41 +26,30 @@ public class LocationService {
 			String dbID = "handwork";
 			String dbPassword = "handwork";
 
-
 			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, "%"+query+"%");
-			stmt.setInt(2, 1+(page-1)*5);
-			stmt.setInt(3, page*5);
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()){
-//             int id = rs.getInt("id");
-//               String title = rs.getString("title");
-//               Date regdate = rs.getDate("regdate");
-//               String writer_id = rs.getString("writer_id");
-//               int hit = rs.getInt("hit");
-//               String files = rs.getString("files");
-//               String content = rs.getString("content");
-//
-				int id = rs.getInt("id");
-				String writer = rs.getString("writer");
-				String title = rs.getString("title");
-				String kategorie = rs.getString("kategorie");
-				String location = rs.getString("location");
-				String deadline = rs.getString("deadline");
-				int price = rs.getInt("price");
-				String content = rs.getString("content");
-				String regdate = rs.getString("regdate");
-				int hit = rs.getInt("hit");
-				String filename = rs.getString("filename");
-				String how = rs.getString("how");
-				String writer_id = rs.getString("writer_id");
-				int state = rs.getInt("state");
+				System.out.println("while");
+				String board_num = rs.getString("id");
+				String latlng = rs.getString("latlng");
+				if(latlng != null && !latlng.trim().equals("")) {
+					JSONParser jsonParse = new JSONParser();
+					JSONObject jsonObj = (JSONObject) jsonParse.parse(latlng);
+					String x = (String) jsonObj.get("x");
+					String y = (String) jsonObj.get("y");
+					System.out.println("latlng : "+latlng);
+					System.out.println("x : "+x);
+					System.out.println("y : "+y);
 
-				Request request = new Request(id, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
+					JSONObject json = new JSONObject();
+					json.put("board_num", board_num);
+					json.put("x", x);
+					json.put("y", y);
 
-				list.add(request);
+					jsonarray.add(json);
+				}
 			}
 			rs.close();
 			stmt.close();
@@ -78,7 +57,7 @@ public class LocationService {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return list;
+		return jsonarray;
 	}
 
 	public int getRequestCount() {
