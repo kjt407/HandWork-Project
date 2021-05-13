@@ -21,7 +21,15 @@ public class LocationController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/x-json; charset=UTF-8");
+        request.getParameter("type");
 
+
+        JSONObject json = new JSONObject();
+        json.put("x","37.49099729728258");
+        json.put("y","126.81345371145218");
+        json.put("board_num","9");
+
+        response.getWriter().print(json);
     }
 
     @Override
