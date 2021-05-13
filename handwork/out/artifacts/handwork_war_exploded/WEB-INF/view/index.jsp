@@ -43,7 +43,7 @@
 
 	<section class="sell-section">
 		<div class=board-title>
-			<a href="" class="title">수제공방 게시판</a> <span class="sub">전국 수많은
+			<a href="${pageContext.request.contextPath}/market" class="title">수제공방 게시판</a> <span class="sub">전국 수많은
 				수제품 공예가들의 작품을 지금 확인하세요</span>
 		</div>
 		<div class="board-slider"
@@ -51,135 +51,180 @@
 			style="width: 1200px; height: 500px;">
 			<div>
 				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
 						</div>
 					</div>
 				</a>
 			</div>
 			<div>
 				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
 						</div>
 					</div>
 				</a>
 			</div>
 			<div>
 				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
 						</div>
 					</div>
 				</a>
 			</div>
 			<div>
 				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
-						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
 						</div>
 					</div>
 				</a>
 			</div>
 			<div>
 				<a href="">
-					<div class="prev-container">
-						<div class=img-wrap>
-							<img src="${pageContext.request.contextPath}/images/item.png" alt="게시글 사진">
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
 						</div>
-						<div class="board-content">
-							<p class="title">수제 초콜렛 (선물포장, 발렌타인 예약 가능!)</p>
-							<p class="content">이 제품은 어쩌구 저쩌구 뭐 이러한 그능이 있고 뭐 그런 제품입니다
-								제품입니다 제품입니다제품입니다 전국에 제작자 단 한명!</p>
-							<span class="price-sub">제작가</span> <span class="price-value">12000</span>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="">
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="">
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="">
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div>
+				<a href="">
+					<div class="board-items market prev-container">
+						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="item-container market">
+							<div class="item-row">
+								<p class="item-writer">촤콜렛하우스</p>
+								<p class="item-location">서울특별시</p>
+							</div>
+							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
+							<p class="item-price state sell">15000원</p>
+							<p class="item-review-num">1</p>
+							<div class="item-review">
+								<div class="star-wrap">2</div>
+								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+							</div>
 						</div>
 					</div>
 				</a>
@@ -200,70 +245,83 @@
 					<a href="${pageContext.request.contextPath}/request" class="title">제작의뢰 게시판</a> <span class="sub">전국
 						수많은 수제품 공예가들의 작품을 지금 확인하세요</span>
 				</div>
-				<table>
-					<thead>
-						<tr onclick="location.href=''">
-							<td>제목</td>
-							<td>내용</td>
-							<td>제작가</td>
-							<td>작성자</td>
-							<td>작성일</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr onclick="location.href=''">
-							<td>제목입니다</td>
-							<td>내용입니다입니다입니다</td>
-							<td>12000원</td>
-							<td>종태</td>
-							<td>1998-05-06</td>
-						</tr>
-						<tr onclick="location.href=''">
-							<td>제목입니다</td>
-							<td>내용입니다입니다입니다</td>
-							<td>12000원</td>
-							<td>종태</td>
-							<td>1998-05-06</td>
-						</tr>
-						<tr onclick="location.href=''">
-							<td>제목입니다</td>
-							<td>내용입니다입니다입니다</td>
-							<td>12000원</td>
-							<td>종태</td>
-							<td>1998-05-06</td>
-						</tr>
-						<tr onclick="location.href=''">
-							<td>제목입니다</td>
-							<td>내용입니다입니다입니다</td>
-							<td>12000원</td>
-							<td>종태</td>
-							<td>1998-05-06</td>
-						</tr>
-						<tr onclick="location.href=''">
-							<td>제목입니다</td>
-							<td>내용입니다입니다입니다</td>
-							<td>12000원</td>
-							<td>종태</td>
-							<td>1998-05-06</td>
-						</tr>
-						<tr onclick="location.href=''">
-							<td>제목입니다</td>
-							<td>내용입니다입니다입니다</td>
-							<td>12000원</td>
-							<td>종태</td>
-							<td>1998-05-06</td>
-						</tr>
-					</tbody>
-				</table>
-				<ul class="order-pager">
-					<li><a href="" class="pager-prev">이전</a></li>
-					<li><a href="">1</a></li>
-					<li><a href="">2</a></li>
-					<li><a href="" class="on">3</a></li>
-					<li><a href="">4</a></li>
-					<li><a href="">5</a></li>
-					<li><a href="" class="pager-next">다음</a></li>
-				</ul>
+<%--				제작의뢰 slick 박스 구성--%>
+				<div class="request-slide" data-slick='{"slidesToShow": 4, "slidesToScroll": 1}'>
+					<div class="slider-item">
+						<a href="" class="item-wrap">
+							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
+							<span class="item-title">제작의뢰 게시글 제목입니다</span>
+							<span class="item-price">12000</span>
+							<span class="item-writer">김종태</span>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="" class="item-wrap">
+							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
+							<span class="item-title">제작의뢰 게시글 제목입니다제작의뢰 게시글 제목입니다제작의뢰 게시글 제목입니다</span>
+							<span class="item-price">120000000</span>
+							<span class="item-writer">김종태</span>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="" class="item-wrap">
+							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
+							<span class="item-title">제작의뢰 게시글 제목입니다</span>
+							<span class="item-price">12000</span>
+							<span class="item-writer">김종태</span>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="" class="item-wrap">
+							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
+							<span class="item-title">제작의뢰 게시글 제목입니다</span>
+							<span class="item-price">12000</span>
+							<span class="item-writer">김종태</span>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="" class="item-wrap">
+							<img src="${pageContext.request.contextPath}/images/items.png" class="item-img" alt="제작의뢰 게시글 이미지">
+							<span class="item-title">제작의뢰 게시글 제목입니다</span>
+							<span class="item-price">12000</span>
+							<span class="item-writer">김종태</span>
+						</a>
+					</div>
+					<div class="slider-item">
+						<a href="" class="item-wrap">
+							<img src="${pageContext.request.contextPath}/images/items.png" class="item-img" alt="제작의뢰 게시글 이미지">
+							<span class="item-title">제작의뢰 게시글 제목입니다</span>
+							<span class="item-price">12000</span>
+							<span class="item-writer">김종태</span>
+						</a>
+					</div>
+				</div>
+<%--				<table>--%>
+<%--					<thead>--%>
+<%--						<tr onclick="location.href=''">--%>
+<%--							<td>제목</td>--%>
+<%--							<td>내용</td>--%>
+<%--							<td>제작가</td><td>작성자</td>--%>
+<%--							<td>작성일</td>--%>
+<%--						</tr>--%>
+<%--					</thead>--%>
+<%--					<tbody>--%>
+<%--						<tr onclick="location.href=''">--%>
+<%--							<td>제목입니다</td>--%>
+<%--							<td>내용입니다입니다입니다</td>--%>
+<%--							<td>12000원</td>--%>
+<%--							<td>종태</td>--%>
+<%--							<td>1998-05-06</td>--%>
+<%--						</tr>--%>
+<%--						<tr onclick="location.href=''">--%>
+<%--							<td>제목입니다</td>--%>
+<%--							<td>내용입니다입니다입니다</td>--%>
+<%--							<td>12000원</td>--%>
+<%--							<td>종태</td>--%>
+<%--							<td>1998-05-06</td>--%>
+<%--						</tr>--%>
+<%--					</tbody>--%>
+<%--				</table>--%>
 			</div>
 		</div>
 	</section>

@@ -13,7 +13,7 @@
 .board-section .board-container .board-main > div.market.board-header > .img-container .img-ul > .img-li > img.img-item { height: 100%; width: 65px; object-fit: cover; opacity: 0.4;}
 .board-section .board-container .board-main > div.market.board-header > .img-container .img-ul > .img-li > img.img-item.select { opacity: 1; border: 3px solid tomato;}
 
-.board-section .board-container .board-main > div.market.board-header > .main-panel { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; margin-left: 20px; background: white; box-shadow: 0 0 5px gray; border-radius: 2px; padding: 20px;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; margin-left: 20px; background: white; box-shadow: 0 0 5px gray; border-radius: 2px; padding: 20px; width: 100%;}
 .board-section .board-container .board-main > div.market.board-header > .main-panel > * { font-size: 17px; color: black; margin-bottom: 15px; }
 .board-section .board-container .board-main > div.market.board-header > .main-panel > .item-row { display: flex;  justify-content: space-between; align-items: center; width: 100%;}
 .board-section .board-container .board-main > div.market.board-header > .main-panel > .item-row > * { display: flex; align-items: center; font-size: 16px; font-weight: 500; color: #3f3f3f;}
