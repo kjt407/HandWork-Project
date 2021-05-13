@@ -94,9 +94,9 @@
                                     <p href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-price state out">${r.price}원</p>
                                 </c:otherwise>
                             </c:choose>
-                            <p href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-review-num">1</p>
+                            <p href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-review-num">${r.count}</p>
                             <div class="item-review">
-                                <div class="star-wrap">2</div>
+                                <div class="star-wrap">${r.starAvg}</div>
                                 <span class="review-text">가장 최근의 리뷰가 보여집니다</span>
                             </div>
                         </div>

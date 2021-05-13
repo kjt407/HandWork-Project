@@ -27,6 +27,7 @@
             src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/market_view.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
     <title>핸드워크: 수제공방</title>
 </head>
@@ -92,11 +93,26 @@
                             <p href="" class="item-price state out">${r.price}원</p>
                         </c:otherwise>
                     </c:choose>
-                    <div class="star-wrap">2</div>
+                    <div class="star-wrap">${r.starAvg}</div>
                     <p class="item-deadline subs">${r.period}</p>
                     <a href="" class="item-location subs">${r.location}</a>
                     <p class="item-ship subs">${r.how}</p>
-                    <input type="button" class="btn-contact" value="판매자와 연락하기">
+                    <a id="send-to-btn" href="#" onclick="sendTo();">
+                        <img src="//k.kakaocdn.net/14/dn/btqc6xrxbuT/7VJk7YSWITkz9K9pbXEffk/o.jpg" />
+                    </a>
+                    <c:choose>
+                        <c:when test="${empty id}">
+                            <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기" disable></input>
+                        </c:when>
+                        <c:when test="${r.state eq 1}">
+                            <input type="button" class="btn-contact" onclick="alert('품절입니다');" value="판매자와 연락하기" disable></input>
+                        </c:when>
+                        <c:otherwise>
+                            <input type="button" class="btn-contact" value="판매자와 연락하기">
+                        </c:otherwise>
+                    </c:choose>
+
+
                     <div class="board-info-wrap" style="display: flex; justify-self: flex-end; margin: 10px 0 0 0; !important;">
                         <p class="item-hits">${r.hit}</p>
                         <p class="item-writedate">${r.regdate}</p>
@@ -129,59 +145,214 @@
             <div class="review-section market">
                 <div class="section-title">
                     <div class="title-wrap">
-                        <span class="review-title">구매후기 (12)</span>
-                        <input type="button" value="리뷰작성" class="btn-write-review" onclick="btnWriteReview(this)"></input>
+                        <span class="review-title">구매후기 (${r.count})</span>
+                        <c:choose>
+                            <c:when test="${empty id}">
+                                <input type="button" value="리뷰작성" class="btn-write-review" onclick="alert('로그인을 해주세요');"></input>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="button" value="리뷰작성" class="btn-write-review" onclick="btnWriteReview(this,${r.id})"></input>
+                            </c:otherwise>
+                        </c:choose>
+
+
                     </div>
                 </div>
-                <ul class="review-ul">
-                    <%--                        <li class="review-li write">--%>
-                    <%--                            <p>리뷰 작성하기</p>--%>
-                    <%--                            <form action="" method="post">--%>
-                    <%--                                <div class="radio-star-wrap">--%>
-                    <%--                                    <input type="radio" name="radio-stars" id="star-1" value="1" class="radio-stars" checked>--%>
-                    <%--                                    <label class="radio-star-label"for="star-1"></label>--%>
-                    <%--                                    <input type="radio" name="radio-stars" id="star-2" value="2" class="radio-stars" >--%>
-                    <%--                                    <label class="radio-star-label"for="star-2"></label>--%>
-                    <%--                                    <input type="radio" name="radio-stars" id="star-3" value="3" class="radio-stars" >--%>
-                    <%--                                    <label class="radio-star-label"for="star-3"></label>--%>
-                    <%--                                    <input type="radio" name="radio-stars" id="star-4" value="4" class="radio-stars" >--%>
-                    <%--                                    <label class="radio-star-label"for="star-4"></label>--%>
-                    <%--                                    <input type="radio" name="radio-stars" id="star-5" value="5" class="radio-stars" >--%>
-                    <%--                                    <label class="radio-star-label"for="star-5"></label>--%>
-                    <%--                                </div>--%>
-                    <%--                                <div class="star-wrap">3</div>--%>
-                    <%--                                <textarea name="review-subs" class="review-subs" required></textarea>--%>
-                    <%--                                <input type="submit" value="확인">--%>
-                    <%--                                <input type="button" value="취소">--%>
-                    <%--                            </form>--%>
-                    <%--                        </li>--%>
 
+                <ul class="review-ul">
+                    <c:forEach var="re" items="${reviewsList}">
                     <li class="review-li">
                         <div class="review-row">
                             <div class="user-info-wrap">
                                 <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
                                 <div class="write-info">
-                                    <span class="user-name" >김종태</span>
-                                    <span class="user-date" >2021.05.12</span>
+                                    <span class="user-name" >${re.name}</span>
+                                    <span class="user-date" >${re.r_time}</span>
                                 </div>
                             </div>
-                            <div class="star-wrap">3</div>
+                            <div class="star-wrap">${re.star}</div>
                         </div>
                         <div class="review-row">
-                            <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
+                            <p class="review-subs">${re.content}</p>
                             <div class="review-control">
-                                <input type="button" onclick="reviewEdit(this)" value="수정">
-                                <input type="button" onclick="location.href='${pageContext.request.contextPath}/review/delete'" value="삭제">
+                                <c:choose>
+                                    <c:when test="${id eq re.user_id}">
+                                        <input type="button" onclick="reviewEdit(this, ${r.id}, ${re.idx})" value="수정">
+                                        <input type="button" onclick="location.href='${pageContext.request.contextPath}/review/delete'" value="삭제">
+
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input type="button" onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" value="수정">
+                                        <input type="button" onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" value="삭제">
+                                    </c:otherwise>
+                                </c:choose>
+
                             </div>
                         </div>
                     </li>
+                    </c:forEach>
                 </ul>
+
             </div>
         </div>
     </div>
 </section>
 <footer>
     <jsp:include page="/WEB-INF/view/footer.jsp"/>
+    <h1>${r.filename}</h1>
+    <c:choose>
+        <c:when test="${empty r.filename }">
+            image_url: '${pageContext.request.contextPath}/images/noImage.png',
+        </c:when>
+        <c:when test="${r.filename eq '/'}">
+            image_url: '${pageContext.request.contextPath}/images/noImage.png',
+        </c:when>
+        <c:otherwise>
+            <c:set var="doneLoop" value="false"/>
+            <c:forTokens var="itemFN" items="${r.filename}" delims="/">
+                <c:if test="${not doneLoop}">
+                    <img src="${pageContext.request.contextPath }/upload/${itemFN}">
+
+
+                    <c:set var="doneLoop" value="true"/>
+                </c:if>
+            </c:forTokens>
+        </c:otherwise>
+    </c:choose>
 </footer>
+<a id="send-to-btn" href="#" onclick="sendTo();">
+    <img src="//k.kakaocdn.net/14/dn/btqc6xrxbuT/7VJk7YSWITkz9K9pbXEffk/o.jpg" />
+</a>
+<script type="text/javascript">
+    function sendTo() {
+        Kakao.Auth.login({
+            scope: 'PROFILE,TALK_MESSAGE',
+            success: function() {
+                Kakao.API.request({
+                    url: '/v2/api/talk/memo/default/send',
+                    data: {
+                        template_object: {
+                            object_type: 'commerce',
+                            content: {
+                                title: '언제 어디든, 더 쉽고 편하게 당신의 일상을 더 즐겁게, 헤이 라이언의 이야기를 들려드릴게요.',
+                                image_url:
+                                    'http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png',
+                                link: {
+                                    mobile_web_url: 'https://developers.kakao.com',
+                                    web_url: 'https://developers.kakao.com',
+                                },
+                            },
+                            commerce: {
+                                product_name: '카카오미니',
+                                regular_price: 100000,
+                                discount_rate: 10,
+                                discount_price: 90000
+                            },
+                            buttons: [
+                                {
+                                    title: '구매하기',
+                                    link: {
+                                        mobile_web_url: 'https://developers.kakao.com',
+                                        web_url: 'https://developers.kakao.com',
+                                    },
+                                },
+                                {
+                                    title: '공유하기',
+                                    link: {
+                                        mobile_web_url: 'https://developers.kakao.com',
+                                        web_url: 'https://developers.kakao.com',
+                                    },
+                                },
+                            ],
+                        },
+                    },
+                    success: function(res) {
+                        alert('success: ' + JSON.stringify(res))
+                    },
+                    fail: function(err) {
+                        alert('error: ' + JSON.stringify(err))
+                    },
+                })
+            },
+            fail: function(err) {
+                alert('failed to login: ' + JSON.stringify(err))
+            },
+        })
+    }
+</script>
+
+<script type="text/javascript">
+    $(window).load(function(){
+        window.Kakao.init("47d80a797066ad48e74a8224ca2a7e23");
+
+
+    });
+
+    function sendTo() {
+        Kakao.API.request({
+            url: '/v2/api/talk/memo/default/send',
+            data: {
+                template_object: {
+                    object_type: 'commerce',
+                    content: {
+                        title: '${r.title}',
+
+                            <c:choose>
+                                <c:when test="${empty r.filename }">
+                                     image_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/images/noImage.png',
+                                </c:when>
+                                <c:when test="${r.filename eq '/'}">
+                                     image_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/images/noImage.png',
+                                </c:when>
+                                <c:otherwise>
+                                    <c:set var="doneLoop" value="false"/>
+                                    <c:forTokens var="itemFN" items="${r.filename}" delims="/">
+                                        <c:if test="${not doneLoop}">
+
+                                        image_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/upload/${itemFN}',
+                                        //image_url: 'happy407.iptime.org/handwork/upload/hands-5581460_1920.jpg',
+                                            <c:set var="doneLoop" value="true"/>
+                                        </c:if>
+                                    </c:forTokens>
+                                </c:otherwise>
+                            </c:choose>
+
+                        link: {
+                            mobile_web_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/market/detail?id=${r.id}',
+                            web_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/market/detail?id=${r.id}',
+                        },
+                    },
+                    commerce: {
+                        product_name: '${r.title}',
+                        regular_price: ${r.price},
+
+                    },
+                    buttons: [
+                        {
+                            title: '구매하기',
+                            link: {
+                                mobile_web_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/market/detail?id=${r.id}',
+                                web_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/market/detail?id=${r.id}',
+                            },
+                        },
+                        {
+                            title: '공유하기',
+                            link: {
+                                mobile_web_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/market/detail?id=${r.id}',
+                                web_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/market/detail?id=${r.id}',
+                            },
+                        },
+                    ],
+                },
+            },
+            success: function(res) {
+                alert('success: ' + JSON.stringify(res))
+            },
+            fail: function(err) {
+                alert('error: ' + JSON.stringify(err))
+            },
+        })
+    }
+</script>
 </body>
 </html>

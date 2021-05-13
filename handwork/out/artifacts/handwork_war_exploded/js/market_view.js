@@ -53,12 +53,13 @@ function radioStarInit(){
         }
     })
 }
-function btnWriteReview(ele) {
+function btnWriteReview(ele,board_num) {
     if(!$('.review-li.write').length){
         $('.review-ul').prepend('<li class="review-li write">\n' +
             '                            <p>리뷰 작성하기</p>\n' +
             '                            <form action="'+getContextPath()+'/review/write" method="post">\n' +
             '                                <div class="radio-star-wrap">\n' +
+            '                                    <input type="hidden" name="board-num" id="board-num" value="'+board_num+'" class="radio-stars">\n' +
             '                                    <input type="radio" name="radio-stars" id="star-1" value="1" class="radio-stars">\n' +
             '                                    <label class="radio-star-label"for="star-1"></label>\n' +
             '                                    <input type="radio" name="radio-stars" id="star-2" value="2" class="radio-stars" >\n' +
@@ -92,14 +93,16 @@ function btnCancelReview() {
 // 리뷰 작성부분
 
 //리뷰 수정 부분
-function reviewEdit(ele) {
+function reviewEdit(ele,board_num,review_idx) {
     let parent = $(ele).parents('li.review-li');
     const index = $(parent).find('div.star-wrap').text()-1;
     const  subs = $(parent).find('p.review-subs').text();
     parent.after('<li class="review-li edit">\n' +
         '                            <p>리뷰 수정하기</p>\n' +
-        '                            <form action="'+getContextPath()+'/review/edit" method="post">\n' +
+        '                            <form action="'+getContextPath()+'/review/update" method="post">\n' +
         '                                <div class="radio-star-wrap">\n' +
+        '                                    <input type="hidden" name="review-idx" id="review-idx" value="'+review_idx+'">\n' +
+        '                                    <input type="hidden" name="board-num" id="board-num" value="'+board_num+'">\n' +
         '                                    <input type="radio" name="radio-stars" id="star-1" value="1" class="radio-stars">\n' +
         '                                    <label class="radio-star-label"for="star-1"></label>\n' +
         '                                    <input type="radio" name="radio-stars" id="star-2" value="2" class="radio-stars" >\n' +

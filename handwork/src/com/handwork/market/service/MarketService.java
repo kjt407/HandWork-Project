@@ -68,8 +68,9 @@ public class MarketService {
 				String how = rs.getString("how");
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
+				int starAvg = getStarAvg(id);
 
-				Market market = new Market(id, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
+				Market market = new Market(id, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id), starAvg);
 
 				list.add(market);
 			}
@@ -289,7 +290,7 @@ public class MarketService {
 			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
 			String dbID = "handwork";
 			String dbPassword = "handwork";
-			String sql = "SELECT count(board_num) count from comment where board_num=?";
+			String sql = "SELECT count(board_num) count from review where board_num=?";
 			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -303,6 +304,30 @@ public class MarketService {
 
 		}
 		return count;
+	}
+
+	public int getStarAvg(int boardNum){
+		System.out.println("getStarAvg 메서드 실행");
+		int starAvg =0;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+			String dbID = "handwork";
+			String dbPassword = "handwork";
+			String sql = "select round(avg(star))starAvg from review where board_num = ?";
+			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+			stmt.setInt(1, boardNum);
+
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				starAvg = rs.getInt("starAvg");
+			}
+		} catch (Exception e) {
+
+		}
+		return starAvg;
 	}
 
 

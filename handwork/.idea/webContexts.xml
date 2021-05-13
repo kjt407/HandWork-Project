@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/web/WEB-INF/view/board/market/market.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/view/board/market" />
+        <entry key="file://$PROJECT_DIR$/web/WEB-INF/view/board/market/market_write.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/view/board/market" />
         <entry key="file://$PROJECT_DIR$/web/request_write.jsp" value="file://$PROJECT_DIR$/web" />
       </map>
     </option>

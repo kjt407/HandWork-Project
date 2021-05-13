@@ -40,9 +40,11 @@ public class MarketListController extends HttpServlet {
 
 		int count = service.getMarketCount(field, query);
 
+
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
-		
+
+
 		
 		
 		request.setAttribute("list", list);
