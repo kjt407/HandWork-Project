@@ -56,7 +56,7 @@ public class MarketWriteController extends HttpServlet {
 		String title = multi.getParameter("title");
 		String kategorie = multi.getParameter("kategorie");
 		String location = multi.getParameter("location");
-		String deadline = multi.getParameter("deadline");
+		int period = Integer.parseInt(multi.getParameter("period"));
 		int price = Integer.parseInt(multi.getParameter("price"));
 		System.out.println(price);
 		String content = multi.getParameter("content");
@@ -82,7 +82,7 @@ public class MarketWriteController extends HttpServlet {
 		String how = multi.getParameter("how");
 		try {
 
-			String sql = "insert into market ( writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id) "
+			String sql = "insert into market ( writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id) "
 					+ "values(?,?,?,?,?,?,?,?,0,?,?,?)";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -96,7 +96,7 @@ public class MarketWriteController extends HttpServlet {
 			pstmt.setString(2, title);
 			pstmt.setString(3, kategorie);
 			pstmt.setString(4, location);
-			pstmt.setString(5, deadline);
+			pstmt.setInt(5, period);
 			pstmt.setInt(6, price);
 			pstmt.setString(7, content);
 			pstmt.setString(8, getCurrentTime());

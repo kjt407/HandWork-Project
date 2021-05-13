@@ -109,7 +109,7 @@ public class MarketUpdateController extends HttpServlet{
 		String title = multi.getParameter("title");
 		String kategorie = multi.getParameter("kategorie");
 		String location = multi.getParameter("location");
-		String deadline = multi.getParameter("deadline");
+		int period = Integer.parseInt(multi.getParameter("period"));
 		int price = Integer.parseInt(multi.getParameter("price"));
 		String content = multi.getParameter("content");
 		
@@ -236,7 +236,7 @@ public class MarketUpdateController extends HttpServlet{
 		try {
 		System.out.println("������Ʈ�� �ʱ� ����");
 		
-		String sql = "update market set title=?, kategorie=?, location=?, deadline=?, price=?, content=?, filename=?, how=? where id=?";
+		String sql = "update market set title=?, kategorie=?, location=?, period=?, price=?, content=?, filename=?, how=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
@@ -249,7 +249,7 @@ public class MarketUpdateController extends HttpServlet{
 		pstmt.setString(1, title);
 		pstmt.setString(2, kategorie);
 		pstmt.setString(3, location);
-		pstmt.setString(4, deadline);
+		pstmt.setInt(4, period);
 		pstmt.setInt(5, price);
 		pstmt.setString(6, content);
 		

@@ -56,45 +56,45 @@
 
             <div class="board-content-list market">
                 <c:forEach var="r" items="${list}">
-                    <div class="board-items market">
-                        <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="img-wrap">
-                            <c:choose>
-                                <c:when test="${empty r.filename }">
-                                    <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-                                </c:when>
-                                <c:when test="${r.filename eq '/'}">
-                                    <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-                                </c:when>
+                <div class="board-items market">
+                    <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="img-wrap">
+                        <c:choose>
+                            <c:when test="${empty r.filename }">
+                                <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
+                            </c:when>
+                            <c:when test="${r.filename eq '/'}">
+                                <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
+                            </c:when>
 
-                                <c:otherwise>
-                                    <c:set var="doneLoop" value="false"/>
-                                    <c:forTokens var="itemFN" items="${r.filename}" delims="/">
-                                        <c:if test="${not doneLoop}">
-                                            <img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
+                            <c:otherwise>
+                                <c:set var="doneLoop" value="false"/>
+                                <c:forTokens var="itemFN" items="${r.filename}" delims="/">
+                                    <c:if test="${not doneLoop}">
+                                        <img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
 
-                                            <c:set var="doneLoop" value="true"/>
-                                        </c:if>
-                                    </c:forTokens>
+                                        <c:set var="doneLoop" value="true"/>
+                                    </c:if>
+                                </c:forTokens>
 
 
-                                </c:otherwise>
-                            </c:choose>
-                        </a>
-                        <div class="item-container market">
-                            <div class="item-row">
-                                <a href="" class="item-writer">${r.writer}</a>
-                                <a href="" class="item-location">${r.location}</a>
-                            </div>
-                            <a href="" class="item-title">${r.title}</a>
-                            <a href="" class="item-price state sell">${r.price}원</a>
-                            <p href="" class="item-stock">1</p>
-                            <p href="" class="item-selled">1</p>
-                            <div class="item-review">
-                                <div class="star-wrap">2</div>
-                                <span class="review-text">가장 최근의 리뷰가 보여집니다</span>
-                            </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </a>
+                    <div class="item-container market">
+                        <div class="item-row">
+                            <a href="" class="item-writer">${r.writer}</a>
+                            <a href="" class="item-location">${r.location}</a>
+                        </div>
+                        <a href="" class="item-title">${r.title}</a>
+                        <a href="" class="item-price state sell">${r.price}원</a>
+                        <p href="" class="item-stock">1</p>
+                        <p href="" class="item-selled">1</p>
+                        <div class="item-review">
+                            <div class="star-wrap">2</div>
+                            <span class="review-text">가장 최근의 리뷰가 보여집니다</span>
                         </div>
                     </div>
+                </div>
                 </c:forEach>
             </div>
 

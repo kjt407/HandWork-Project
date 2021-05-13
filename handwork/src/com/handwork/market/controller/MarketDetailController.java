@@ -46,7 +46,7 @@ public class MarketDetailController extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("/WEB-INF/view/board/market/market_view.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/board/market/market_view2.jsp").forward(request, response);
 		
 	}
 	

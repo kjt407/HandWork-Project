@@ -97,7 +97,7 @@
                         </div>
                         <div class="board-write-col deadline-col">
                             <p class="input-label">마감일자</p>
-                            <input type="date" value="xxx" min="yyy" max="zzz" name="deadline" value="${r.deadline}"class="board-write-daedline" id="board-write-daedline" required>
+                            <input type="text" name="period" class="board-write-daedline" id="board-write-daedline" required>
                         </div>
                     </div>
 

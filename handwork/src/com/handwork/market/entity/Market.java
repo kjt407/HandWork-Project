@@ -1,20 +1,13 @@
 package com.handwork.market.entity;
 
 public class Market {
-    //   private int id;
-//   private String title;
-//   private Date regdate;
-//   private String writer_id;
-//   private int hit;
-//   private String files;
-//   private String content;
-//   private int num;
+
     private int id;
     private String writer;
     private String title;
     private String kategorie;
     private String location;
-    private String deadline;
+    private int period;
     private int price;
     private String content;
     private String regdate;
@@ -30,7 +23,7 @@ public class Market {
         super();
     }
 
-    public Market(String writer, String title, String kategorie, String location, String deadline, int price,
+    public Market(String writer, String title, String kategorie, String location, int period, int price,
                   String content, String regdate, int hit, String filename, String how, String writer_id, int state) {
         super();
 
@@ -38,7 +31,7 @@ public class Market {
         this.title = title;
         this.kategorie = kategorie;
         this.location = location;
-        this.deadline = deadline;
+        this.period = period;
         this.price = price;
         this.content = content;
         this.regdate = regdate;
@@ -49,7 +42,7 @@ public class Market {
         this.state = state;
     }
 
-    public Market(int id, String writer, String title, String kategorie, String location, String deadline, int price,
+    public Market(int id, String writer, String title, String kategorie, String location, int period, int price,
                   String content, String regdate, int hit, String filename, String how, String writer_id, int state) {
         super();
         this.id = id;
@@ -57,7 +50,7 @@ public class Market {
         this.title = title;
         this.kategorie = kategorie;
         this.location = location;
-        this.deadline = deadline;
+        this.period = period;
         this.price = price;
         this.content = content;
         this.regdate = regdate;
@@ -68,7 +61,7 @@ public class Market {
         this.state = state;
     }
 
-    public Market(int id, String writer, String title, String kategorie, String location, String deadline, int price,
+    public Market(int id, String writer, String title, String kategorie, String location, int period, int price,
                   String content, String regdate, int hit, String filename, String how, String writer_id, int state, int count) {
         super();
         this.id = id;
@@ -76,7 +69,7 @@ public class Market {
         this.title = title;
         this.kategorie = kategorie;
         this.location = location;
-        this.deadline = deadline;
+        this.period = period;
         this.price = price;
         this.content = content;
         this.regdate = regdate;
@@ -128,12 +121,12 @@ public class Market {
         this.location = location;
     }
 
-    public String getDeadline() {
-        return deadline;
+    public int getPeriod() {
+        return period;
     }
 
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
+    public void setPeriod(int period) {
+        this.period = period;
     }
 
     public int getPrice() {
@@ -219,7 +212,7 @@ public class Market {
     @Override
     public String toString() {
         return "Request [writer=" + writer + ", title=" + title + ", kategorie=" + kategorie + ", location=" + location
-                + ", deadline=" + deadline + ", price=" + price + ", content=" + content + ", regdate=" + regdate
+                + ", period=" + period + ", price=" + price + ", content=" + content + ", regdate=" + regdate
                 + ", hit=" + hit + "]";
     }
 

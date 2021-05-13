@@ -1,5 +1,6 @@
 package com.handwork.market.service;
 
+
 import com.handwork.market.entity.Market;
 
 import java.sql.Connection;
@@ -58,7 +59,7 @@ public class MarketService {
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
-				String deadline = rs.getString("deadline");
+				int period = rs.getInt("period");
 				int price = rs.getInt("price");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
@@ -68,7 +69,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				Market market = new Market(id, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
+				Market market = new Market(id, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
 
 				list.add(market);
 			}
@@ -141,7 +142,7 @@ public class MarketService {
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
-				String deadline = rs.getString("deadline");
+				int period = rs.getInt("period");
 				int price = rs.getInt("price");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
@@ -151,7 +152,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				market = new Market(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
+				market = new Market(nid, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
 
 				System.out.println(" ð  : " + regdate);
 
@@ -195,7 +196,7 @@ public class MarketService {
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
-				String deadline = rs.getString("deadline");
+				int period = rs.getInt("period");
 				int price = rs.getInt("price");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
@@ -205,7 +206,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				notice = new Market(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
+				notice = new Market(nid, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
 
 				if(incHit) {
 					stmt.execute("update market set hit=hit+1 where id=" + id);
@@ -249,7 +250,7 @@ public class MarketService {
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
-				String deadline = rs.getString("deadline");
+				int period = rs.getInt("period");
 				int price = rs.getInt("price");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
@@ -259,7 +260,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				notice = new Market(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
+				notice = new Market(nid, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
 
 				if(incHit) {
 					stmt.execute("update market set hit=hit+1 where id=" + id);
