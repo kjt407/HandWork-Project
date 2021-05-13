@@ -160,7 +160,7 @@ public class MarketUpdateController extends HttpServlet{
 		//�����׸� �׽�Ʈ
 		
 		String how = multi.getParameter("how");
-		
+		int state = Integer.parseInt(multi.getParameter("state"));
 		//�ϴ� �ΰ� �׸��� �Ķ���ͷ� �Ѿ���� ���� �� �� ����
 		String[] del_filename = multi.getParameterValues("del_filename");
 		String[] edit_filename = multi.getParameterValues("edit_filename"); //edit_filename = ���� �� �̹���(�����ؾ���)
@@ -236,7 +236,7 @@ public class MarketUpdateController extends HttpServlet{
 		try {
 		System.out.println("������Ʈ�� �ʱ� ����");
 		
-		String sql = "update market set title=?, kategorie=?, location=?, period=?, price=?, content=?, filename=?, how=? where id=?";
+		String sql = "update market set title=?, kategorie=?, location=?, period=?, price=?, content=?, filename=?, how=?, state=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
@@ -266,7 +266,8 @@ public class MarketUpdateController extends HttpServlet{
 		System.out.println("���� �����"+fullFileName);
 		
 		pstmt.setString(8, how);
-		pstmt.setInt(9, id);
+		pstmt.setInt(9, state);
+		pstmt.setInt(10, id);
 		
 		pstmt.executeUpdate();
 		

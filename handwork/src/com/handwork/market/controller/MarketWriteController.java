@@ -61,6 +61,7 @@ public class MarketWriteController extends HttpServlet {
 		System.out.println(price);
 		String content = multi.getParameter("content");
 		String writer_id = (String)session.getAttribute("id");
+		int state = Integer.parseInt(multi.getParameter("state"));
 
 		Enumeration files = multi.getFileNames();
 
@@ -82,8 +83,8 @@ public class MarketWriteController extends HttpServlet {
 		String how = multi.getParameter("how");
 		try {
 
-			String sql = "insert into market ( writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id) "
-					+ "values(?,?,?,?,?,?,?,?,0,?,?,?)";
+			String sql = "insert into market ( writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state) "
+					+ "values(?,?,?,?,?,?,?,?,0,?,?,?,?)";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
@@ -107,6 +108,7 @@ public class MarketWriteController extends HttpServlet {
 			}
 			pstmt.setString(10, how);
 			pstmt.setString(11, writer_id);
+			pstmt.setInt(12, state);
 
 			pstmt.executeUpdate();
 			System.out.println(getCurrentTime());

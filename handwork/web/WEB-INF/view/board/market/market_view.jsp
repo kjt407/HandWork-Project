@@ -20,217 +20,162 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_view.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/market_view.css">
     <script type="text/javascript"
             src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript"
             src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/request_view.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/market_view.js"></script>
 
-    <title>핸드워크</title>
+    <title>핸드워크: 수제공방</title>
 </head>
 <body>
-<input type="hidden" id="board-state" value="${r.state}">
-<input type="hidden" id="board-id" value="${r.id}">
-<input type="hidden" id="board-writer-id" value="${r.writer_id}">
-<input type="hidden" id="session-id" value="${id}">
-
 <h1 class="hide">핸드워크</h1>
 <header>
     <jsp:include page="/WEB-INF/view/header.jsp"/>
 </header>
 
 <section class="board-title-section">
-    <div>제작의뢰 게시판</div>
+    <div>수제공방 게시판</div>
 </section>
-<section class="request board-section">
-    <h2 class="hide">제작의뢰 게시판</h2>
+<section class="market board-section">
+    <h2 class="hide">수제공방 게시판</h2>
     <div class="board-bg">
         <div class="left"></div>
         <div class="right"></div>
     </div>
     <div class="board-container">
-        <%--게시판 목록 include--%>
         <jsp:include page="/WEB-INF/view/board_aslide.jsp"/>
-        <div class="board-main request-view-main">
+        <div class="board-main market-view-main">
             <h3 class="hide">게시글 상세페이지</h3>
-            <div class="request-view-header">
-                <p class="board-view-category">${r.kategorie}</p>
-                <p class="board-view-title">${r.title}</p>
-                <div class="header-row">
-                    <div class="writer-info">
-                        <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="작성자 프로필">
-                        <a href="">${r.writer}</a>
-                    </div>
-                    <div class="post-info">
-                        <p class="board-view-comment">${r.count}</p>
-                        <p class="board-view-views">${r.hit}</p>
-                        <p class="board-view-writedate">${r.regdate}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="request-view-body">
-                <div class="body-row">
-                    <div class="image-slide-main">
-
+            <div class="market board-header">
+                <div class="img-container">
+                    <img src="${pageContext.request.contextPath}/images/item.png" alt="" id="img-main">
+                    <input type="button" value="" class="btn-img prev" onclick="btnImg('prev')">
+                    <input type="button" value="" class="btn-img next" onclick="btnImg('next')">
+                    <ul class="img-ul">
+                        <%--최대 7개 까지만 업로드 하도록--%>
                         <c:forTokens var="itemFN" items="${r.filename}" delims="/">
-                            <%-- 	${itemFN} --%>
-                            <div><img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img"></div>
+                            <li class="img-li">
+                                <img src="${pageContext.request.contextPath }/upload/${itemFN}" alt="" class="img-item" onmouseover="sliderHover(this)">
+                            </li>
                         </c:forTokens>
-
+                        <%--                        <li class="img-li">--%>
+                        <%--                            <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
+                        <%--                        </li>--%>
+                        <%--                        <li class="img-li">--%>
+                        <%--                            <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
+                        <%--                        </li>--%>
+                        <%--                        <li class="img-li">--%>
+                        <%--                            <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
+                        <%--                        </li>--%>
+                        <%--                        <li class="img-li">--%>
+                        <%--                            <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
+                        <%--                        </li>--%>
+                        <%--                        <li class="img-li">--%>
+                        <%--                            <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
+                        <%--                        </li>--%>
+                    </ul>
+                </div>
+                <div class="main-panel">
+                    <div class="item-row">
+                        <a href="" class="item-writer">${r.writer}</a>
+                        <a href="" class="item-category">${r.kategorie}</a>
+                    </div>
+                    <p href="" class="item-title">${r.title}</p>
+                    <c:choose>
+                        <c:when test="${r.state eq 0}">
+                            <p href="" class="item-price state sell">${r.price}원</p>
+                        </c:when>
+                        <c:otherwise>
+                            <p href="" class="item-price state out">${r.price}원</p>
+                        </c:otherwise>
+                    </c:choose>
+                    <div class="star-wrap">2</div>
+                    <p class="item-deadline subs">${r.period}</p>
+                    <a href="" class="item-location subs">${r.location}</a>
+                    <p class="item-ship subs">${r.how}</p>
+                    <input type="button" class="btn-contact" value="판매자와 연락하기">
+                    <div class="board-info-wrap" style="display: flex; justify-self: flex-end; margin: 10px 0 0 0; !important;">
+                        <p class="item-hits">${r.hit}</p>
+                        <p class="item-writedate">${r.regdate}</p>
                     </div>
                 </div>
-                <div class="body-row">
-                    <span class="body-price sub-title">희망가격 :</span><p class="subs">${r.price}</p>
-                </div>
-                <div class="body-row">
-                    <span class="body-price sub-title">마감일자 :</span><p class="subs">${r.deadline}</p>
-                </div>
-                <div class="body-row">
-                    <span class="body-location sub-title">수령지역 :</span><p class="subs">${r.location}</p>
-                </div>
-                <div class="body-row">
-                    <span class="body-shipping sub-title">수령방법 :</span><p class="subs">${r.how}</p>
-                </div>
-                <div class="body-row">
-                    <span class="sub-title">의뢰사항 :</span>
-                    <p class="subs">${fn:replace(r.content, crcn, br)}</p>
-                </div>
             </div>
-            <div class="request-view-control">
-
-
-                <div class="control-row btn-group">
-                    <c:choose>
-                        <c:when test="${id eq r.writer_id}">
-
-                            <a href="${pageContext.request.contextPath}/market/update?id=${r.id}" class="btn-edit" >수정</a>
-                            <a href="${pageContext.request.contextPath}/market/delete?id=${r.id}" class="btn-edit"}>삭제</a>
-
-                        </c:when>
-                        <c:otherwise>
-
-                            <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit" >수정</a>
-                            <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit"}>삭제</a>
-
-
-                        </c:otherwise>
-                    </c:choose>
-
-                    <a href="${pageContext.request.contextPath}/market" class="btn-list">목록으로</a>
-                </div>
-
-
-                <div class="prev-next-group">
-                    <c:choose>
-                        <c:when test="${empty nr.id}">
-                        </c:when>
-                        <c:otherwise>
-                            <a href="${pageContext.request.contextPath}/market/detail?id=${nr.id}" class="control-board-items board-next">
-                                <p class="control-col">다음글</p>
-                                <div class="img-wrap">
-                                    <c:choose>
-                                        <c:when test="${empty nr.filename }">
-                                            <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img" style="width: 50px; height:50px;">
-
-                                        </c:when>
-
-                                        <c:otherwise>
-                                            <c:set var="doneLoop" value="false"/>
-                                            <c:forTokens var="itemFN" items="${nr.filename}" delims="/">
-                                                <c:if test="${not doneLoop}">
-                                                    <img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
-
-                                                    <c:set var="doneLoop" value="true"/>
-                                                </c:if>
-                                            </c:forTokens>
-
-
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                                <div class="control-col title-subs">
-                                    <p class="view-control-title">${nr.title}</p>
-                                </div>
-                                <p class="view-control-price board-list-price state complete control-col">${nr.price}</p>
-                                <p class=" view-control-writer board-list-writer control-col">${nr.writer}</p>
-                            </a>
-
-                        </c:otherwise>
-                    </c:choose>
-
-                    <c:choose>
-                        <c:when test="${empty pr.id}">
-                        </c:when>
-                        <c:otherwise>
-                            <a href="${pageContext.request.contextPath}/market/detail?id=${pr.id}" class="control-board-items board-next">
-                                <p class="control-col">이전글</p>
-                                <div class="img-wrap">
-
-                                    <c:choose>
-                                        <c:when test="${empty pr.filename }">
-                                            <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img" style="width: 50px; height:50px;">
-
-
-                                        </c:when>
-
-                                        <c:otherwise>
-                                            <c:set var="doneLoop" value="false"/>
-                                            <c:forTokens var="itemFN" items="${pr.filename}" delims="/">
-                                                <c:if test="${not doneLoop}">
-                                                    <img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
-
-                                                    <c:set var="doneLoop" value="true"/>
-                                                </c:if>
-                                            </c:forTokens>
-                                        </c:otherwise>
-                                    </c:choose>
-
-                                </div>
-                                <div class="control-col title-subs">
-                                    <p class="view-control-title">${pr.title}</p>
-                                </div>
-                                <p class="view-control-price board-list-price state complete control-col">${pr.price}</p>
-                                <p class=" view-control-writer board-list-writer control-col">${pr.writer}</p>
-                            </a>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+            <div class="content-section market">
+                <p class="content-title section-title">제품 상세정보</p>
+                <p class="content-view">${fn:replace(r.content, crcn, br)}</p>
             </div>
-
-            <%--                댓글 작성하는 폼 부분--%>
-            <div class="request-view-comment">
-                <p id="comment-ul-title">제안댓글</p>
-                <ul class="comment-ul" id="comment-ul">
-                    <%--AJAX 스크립트 처리--%>
-                </ul>
+            <div class="control-row btn-group">
                 <c:choose>
-                    <c:when test="${r.state eq 1}">
-                        <p style="display: flex; justify-content: center; align-content: center; background: whitesmoke; padding: 60px 0; font-size: 25px; width: 100%">채결 완료되어 댓글을 작성 할 수 없습니다</p>
+                    <c:when test="${id eq r.writer_id}">
+
+                        <a href="${pageContext.request.contextPath}/market/update?id=${r.id}" class="btn-edit" >수정</a>
+                        <a href="${pageContext.request.contextPath}/market/delete?id=${r.id}" class="btn-edit"}>삭제</a>
+
                     </c:when>
                     <c:otherwise>
-                        <div class="comment-write">
-                            <div class="comment-write-row">
-                                <p>제안하기</p>
-                                <div class="suggest-price-group">
-                                    <p>제안가격 : </p>
-                                    <input type="number" class="suggest-price" id="suggest-price" placeholder="제안가격">
-                                </div>
-                            </div>
-                            <div class="comment-write-row write">
-                                <textarea name="suggest_comment" id="suggest-comment" required></textarea>
-                                <c:choose>
-                                    <c:when test="${id eq null}">
-                                        <input type="button" value="등 록" id="comment-register-btn" onclick="plzLogin()">
-                                    </c:when>
-                                    <c:otherwise>
-                                        <input type="button" value="등 록" id="comment-register-btn" onclick="commentRegister(&#34 ${id} &#34,${r.id })">
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
+
+                        <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit" >수정</a>
+                        <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit"}>삭제</a>
+
+
                     </c:otherwise>
                 </c:choose>
+
+                <a href="${pageContext.request.contextPath}/market" class="btn-list">목록으로</a>
+            </div>
+            <div class="review-section market">
+                <div class="section-title">
+                    <div class="title-wrap">
+                        <span class="review-title">구매후기 (12)</span>
+                        <input type="button" value="리뷰작성" class="btn-write-review" onclick="btnWriteReview(this)"></input>
+                    </div>
+                </div>
+                <ul class="review-ul">
+                    <%--                        <li class="review-li write">--%>
+                    <%--                            <p>리뷰 작성하기</p>--%>
+                    <%--                            <form action="" method="post">--%>
+                    <%--                                <div class="radio-star-wrap">--%>
+                    <%--                                    <input type="radio" name="radio-stars" id="star-1" value="1" class="radio-stars" checked>--%>
+                    <%--                                    <label class="radio-star-label"for="star-1"></label>--%>
+                    <%--                                    <input type="radio" name="radio-stars" id="star-2" value="2" class="radio-stars" >--%>
+                    <%--                                    <label class="radio-star-label"for="star-2"></label>--%>
+                    <%--                                    <input type="radio" name="radio-stars" id="star-3" value="3" class="radio-stars" >--%>
+                    <%--                                    <label class="radio-star-label"for="star-3"></label>--%>
+                    <%--                                    <input type="radio" name="radio-stars" id="star-4" value="4" class="radio-stars" >--%>
+                    <%--                                    <label class="radio-star-label"for="star-4"></label>--%>
+                    <%--                                    <input type="radio" name="radio-stars" id="star-5" value="5" class="radio-stars" >--%>
+                    <%--                                    <label class="radio-star-label"for="star-5"></label>--%>
+                    <%--                                </div>--%>
+                    <%--                                <div class="star-wrap">3</div>--%>
+                    <%--                                <textarea name="review-subs" class="review-subs" required></textarea>--%>
+                    <%--                                <input type="submit" value="확인">--%>
+                    <%--                                <input type="button" value="취소">--%>
+                    <%--                            </form>--%>
+                    <%--                        </li>--%>
+
+                    <li class="review-li">
+                        <div class="review-row">
+                            <div class="user-info-wrap">
+                                <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                <div class="write-info">
+                                    <span class="user-name" >김종태</span>
+                                    <span class="user-date" >2021.05.12</span>
+                                </div>
+                            </div>
+                            <div class="star-wrap">3</div>
+                        </div>
+                        <div class="review-row">
+                            <p class="review-subs">리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제리뷰의 내용이 들어와야제 리뷰의 내용이 들어와야제</p>
+                            <div class="review-control">
+                                <input type="button" onclick="reviewEdit(this)" value="수정">
+                                <input type="button" onclick="location.href='${pageContext.request.contextPath}/review/delete'" value="삭제">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

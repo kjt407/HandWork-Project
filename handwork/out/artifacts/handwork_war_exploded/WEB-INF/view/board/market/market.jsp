@@ -82,13 +82,19 @@
                         </a>
                         <div class="item-container market">
                             <div class="item-row">
-                                <a href="" class="item-writer">${r.writer}</a>
-                                <a href="" class="item-location">${r.location}</a>
+                                <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-writer">${r.writer}</a>
+                                <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-location">${r.location}</a>
                             </div>
-                            <a href="" class="item-title">${r.title}</a>
-                            <a href="" class="item-price state sell">${r.price}원</a>
-                            <p href="" class="item-stock">1</p>
-                            <p href="" class="item-selled">1</p>
+                            <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-title">${r.title}</a>
+                            <c:choose>
+                                <c:when test="${r.state eq 0}">
+                                    <p href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-price state sell">${r.price}원</p>
+                                </c:when>
+                                <c:otherwise>
+                                    <p href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-price state out">${r.price}원</p>
+                                </c:otherwise>
+                            </c:choose>
+                            <p href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-review-num">1</p>
                             <div class="item-review">
                                 <div class="star-wrap">2</div>
                                 <span class="review-text">가장 최근의 리뷰가 보여집니다</span>

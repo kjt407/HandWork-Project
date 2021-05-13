@@ -21,49 +21,42 @@
     <title>핸드워크</title>
 </head>
 <body>
-<h1 class="hide">핸드워크: 수제공방</h1>
+<h1 class="hide">핸드워크</h1>
 <header>
     <jsp:include page="/WEB-INF/view/header.jsp"/>
 </header>
-<section class="board-title-section market">
-    <div>수제공방 게시판</div>
+<section class="board-title-section">
+    <div>제작의뢰 게시판</div>
 </section>
 
-<section class="market board-section">
-    <h2 class="hide">수제공방 게시판</h2>
+<section class="request board-section">
+    <h2 class="hide">제작의뢰 게시판</h2>
     <div class="board-bg">
         <div class="left"></div>
         <div class="right"></div>
     </div>
     <div class="board-container">
+        <%--게시판 목록 include--%>
         <jsp:include page="/WEB-INF/view/board_aslide.jsp"/>
 
         <c:choose>
         <c:when test="${empty r.id}">
             <%-- ${r.id}write --%>
-        <form class="board-main market-write-main"  enctype="multipart/form-data" action="write" method="post">
+        <form class="board-main request-write-main"  enctype="multipart/form-data" action="write" method="post">
             </c:when>
             <c:otherwise>
                 <%-- ${r.id}update --%>
-            <form class="board-main market-write-main" enctype="multipart/form-data" action="update" method="post">
+            <form class="board-main request-write-main" enctype="multipart/form-data" action="update" method="post">
                 </c:otherwise>
                 </c:choose>
 
                 <input type="hidden" name="id" value="${r.id}"/>
 
+
+
                 <h3 class="hide">게시글 작성페이지</h3>
-                <p class="board-write-header-title">수제공방 글쓰기</p>
-                <div class="board-write-header">
-                    <div class="board-write-row state-select-row">
-                        <div class="board-write-col state-select-col">
-                            <p class="input-label">판매상태</p>
-                            <select name="state" id="state-select" class="state-select">
-                                <%--                            update 시에는 해당하는 옵션에 select 주면됨--%>
-                                <option value="0" selected>판매중</option>
-                                <option value="1">품절</option>
-                            </select>
-                        </div>
-                    </div>
+                <p class="request-write-title">제작의뢰 글쓰기</p>
+                <div class="request-write-header">
                     <div class="board-write-row">
                         <div class="board-write-col category-select-col">
                             <p class="input-label">카테고리</p>
@@ -102,9 +95,9 @@
                             <input type="text" class="board-write-price" value="${r.price}" placeholder="가격을 원단위로 입력해 주세요"  oninput="inputNumberFormat(this)" required/>
                             <input type="hidden" id="real-input-price" name="price" value="${r.price}" />
                         </div>
-                        <div class="board-write-col period-col">
-                            <p class="input-label">제작기간</p>
-                            <input type="number"name="period" placeholder="기간을 일단위로 입력해 주세요" value="${r.period}"class="board-write-period" id="board-write-period" required>
+                        <div class="board-write-col deadline-col">
+                            <p class="input-label">마감일자</p>
+                            <input type="text" name="period" class="board-write-daedline" id="board-write-daedline" required>
                         </div>
                     </div>
 
@@ -130,11 +123,11 @@
                     </div>
 
                     <div class="board-write-col price-col">
-                        <p class="input-label">배송방법</p>
+                        <p class="input-label">수령방법</p>
                         <div class="board-write-row delivery-container">
-                            <input type="radio" name="how" id="d_radio1" value="방문수령" class="delivery-radio hide" checked><label for="d_radio1" class="delivery-radio-label">방문수령</label>
+                            <input type="radio" name="how" id="d_radio1" value="직접수령" class="delivery-radio hide" checked><label for="d_radio1" class="delivery-radio-label">직접수령</label>
                             <input type="radio" name="how" id="d_radio2" value="택배" class="delivery-radio hide"><label for="d_radio2" class="delivery-radio-label">택배</label>
-                            <input type="radio" name="how" id="d_radio3" value="방문수령+택배" class="delivery-radio hide"><label for="d_radio3" class="delivery-radio-label">방문수령+택배</label>
+                            <input type="radio" name="how" id="d_radio3" value="직접수령+택배" class="delivery-radio hide"><label for="d_radio3" class="delivery-radio-label">직접수령+택배</label>
                         </div>
                     </div>
                     <textarea id="subs" cols="30" rows="10" name="content" class="board-write-subs" placeholder="의뢰 요청 사항 (상세하게 입력해주세요)" required>${r.content}</textarea>
@@ -142,10 +135,10 @@
                         <input type="submit" class="btn-submit submit" value="작성완료"/>
                         <c:choose>
                             <c:when test="${empty r.id }">
-                                <a href="../market" class="btn-submit cancel" >취소</a>
+                                <a href="${pageContext.request.contextPath}/market" class="btn-submit cancel" >취소</a>
                             </c:when>
                             <c:otherwise>
-                                <a href="detail?id=${r.id}"  class="btn-submit cancel" >취소</a>
+                                <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}"  class="btn-submit cancel" >취소</a>
                             </c:otherwise>
                         </c:choose>
                     </div>

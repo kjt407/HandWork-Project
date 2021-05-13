@@ -41,8 +41,8 @@ public class MarketService {
 			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%"+query+"%");
-			stmt.setInt(2, 1+(page-1)*5);
-			stmt.setInt(3, page*5);
+			stmt.setInt(2, 1+(page-1)*6);
+			stmt.setInt(3, page*6);
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()){
