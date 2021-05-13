@@ -95,13 +95,17 @@ header .login a:last-child {padding-right: 0px;}
 .order-section .right .right-container .board-title {text-align: center; margin-bottom: 20px;}
 .order-section .right .right-container .board-title .title:hover { color: darkslategray;  transition: 0.25s; }
 /*제작의뢰 슬릭(세로) 슬라이더 css*/
-.order-section .right .right-container > .request-slide { display: flex; width: 500px; }
-.order-section .right .right-container > .request-slide a.item-wrap { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 80px; margin: 5px 0; background: rgba(255,255,255,0.3);}
-.order-section .right .right-container > .request-slide a.item-wrap > * { margin: 0 10px; }
+.order-section .right .right-container > .request-slide { display: flex; width: 530px; }
+.order-section .right .right-container > .request-slide .slick-prev ,
+.order-section .right .right-container > .request-slide .slick-next { transform: rotate(90deg);}
+.order-section .right .right-container > .request-slide .slider-item { display: flex; justify-content: center; }
+.order-section .right .right-container > .request-slide a.item-wrap { display: flex; justify-content: space-between; align-items: center; width: 500px; height: 80px; margin: 5px 0; background: rgba(255,255,255,0.3); border-radius: 2px; transition: 0.3s all;}
+.order-section .right .right-container > .request-slide a.item-wrap:hover { background: white;}
+.order-section .right .right-container > .request-slide a.item-wrap > * { display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; margin: 0 0 0 10px; }
 .order-section .right .right-container > .request-slide a.item-wrap img.item-img { display: flex; justify-content: center; align-items: center; width: 80px; height: 100%; object-fit: cover; margin: 0; flex-shrink: 0;}
-.order-section .right .right-container > .request-slide a.item-wrap span.item-title { width: 100%;}
-.order-section .right .right-container > .request-slide a.item-wrap span.item-price { flex-shrink: 0;}
-.order-section .right .right-container > .request-slide a.item-wrap span.item-writer { flex-shrink: 0;}
+.order-section .right .right-container > .request-slide a.item-wrap span.item-title { -webkit-line-clamp:2; width: 100%; font-size: 16px;}
+.order-section .right .right-container > .request-slide a.item-wrap span.item-price { flex-shrink: 0; font-size: 16px; width: 80px; text-align: center;}
+.order-section .right .right-container > .request-slide a.item-wrap span.item-writer {  flex-shrink: 0; width: 50px; margin-right: 10px; text-align: right;}
 /*제작의뢰 (구)컨테이너 속성*/
 /*.order-section  .right .right-container table {width: 500px;  text-align: center; }*/
 /*.order-section  .right .right-container table thead {font-size: 16px; font-weight: 600; color: black; border-bottom: 1px solid black;}*/
