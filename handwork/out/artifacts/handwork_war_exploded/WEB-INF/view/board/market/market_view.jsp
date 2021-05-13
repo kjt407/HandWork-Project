@@ -97,9 +97,7 @@
                     <p class="item-deadline subs">${r.period}</p>
                     <a href="" class="item-location subs">${r.location}</a>
                     <p class="item-ship subs">${r.how}</p>
-                    <a id="send-to-btn" href="#" onclick="sendTo();">
-                        <img src="//k.kakaocdn.net/14/dn/btqc6xrxbuT/7VJk7YSWITkz9K9pbXEffk/o.jpg" />
-                    </a>
+                    
                     <c:choose>
                         <c:when test="${empty id}">
                             <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기" disable></input>
@@ -199,83 +197,8 @@
 </section>
 <footer>
     <jsp:include page="/WEB-INF/view/footer.jsp"/>
-    <h1>${r.filename}</h1>
-    <c:choose>
-        <c:when test="${empty r.filename }">
-            image_url: '${pageContext.request.contextPath}/images/noImage.png',
-        </c:when>
-        <c:when test="${r.filename eq '/'}">
-            image_url: '${pageContext.request.contextPath}/images/noImage.png',
-        </c:when>
-        <c:otherwise>
-            <c:set var="doneLoop" value="false"/>
-            <c:forTokens var="itemFN" items="${r.filename}" delims="/">
-                <c:if test="${not doneLoop}">
-                    <img src="${pageContext.request.contextPath }/upload/${itemFN}">
-
-
-                    <c:set var="doneLoop" value="true"/>
-                </c:if>
-            </c:forTokens>
-        </c:otherwise>
-    </c:choose>
 </footer>
 
 
-<script type="text/javascript">
-
-
-    function sendTo() {
-        window.Kakao.init("47d80a797066ad48e74a8224ca2a7e23");
-        Kakao.API.request({
-            url: '/v2/api/talk/memo/default/send',
-            data: {
-                template_object: {
-                    object_type: 'commerce',
-                    content: {
-                        title: '${r.title}',
-
-                            <c:choose>
-                                <c:when test="${empty r.filename }">
-                                     image_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/images/noImage.png',
-                                </c:when>
-                                <c:when test="${r.filename eq '/'}">
-                                     image_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/images/noImage.png',
-                                </c:when>
-                                <c:otherwise>
-                                    <c:set var="doneLoop" value="false"/>
-                                    <c:forTokens var="itemFN" items="${r.filename}" delims="/">
-                                        <c:if test="${not doneLoop}">
-
-                                        image_url: '${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/upload/${itemFN}',
-                                        //image_url: 'happy407.iptime.org/handwork/upload/hands-5581460_1920.jpg',
-                                            <c:set var="doneLoop" value="true"/>
-                                        </c:if>
-                                    </c:forTokens>
-                                </c:otherwise>
-                            </c:choose>
-
-                        link: {
-                            mobile_web_url: '/market/detail?id=${r.id}',
-                            web_url: '/market/detail?id=${r.id}',
-                        },
-                    },
-                    commerce: {
-                        product_name: '${r.title}',
-                        regular_price: ${r.price},
-
-                    },
-
-                },
-            },
-            success: function(res) {
-                alert('success: ' + JSON.stringify(res))
-            },
-            fail: function(err) {
-                alert('error: ' + JSON.stringify(err))
-            },
-        })
-    }
-</script>
 </body>
 </html>
