@@ -54,11 +54,14 @@
 
 							data: { "id": id, "email": email, "name": name },
 							success: function (data) {
+<<<<<<< HEAD
 
 								alert("완료!")
+=======
+								window.location.href = "${pageContext.request.contextPath}/";
+>>>>>>> e1a895c63ac88a8c7e267617c9ae2fe515e64791
 							}
 						});
-						window.location.href = "${pageContext.request.contextPath}/";
 					}
 				});
 			}

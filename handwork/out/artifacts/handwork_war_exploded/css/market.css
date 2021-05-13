@@ -19,12 +19,9 @@
 .board-section .board-content-list.market > .board-items div.item-container .item-price.state.sell::before { content: "판매중";}
 .board-section .board-content-list.market > .board-items div.item-container .item-price.state.out { color: gray;}
 .board-section .board-content-list.market > .board-items div.item-container .item-price.state.out::before { content: "매진"; background: gray;}
-.board-section .board-content-list.market > .board-items div.item-container .item-stock,
-.board-section .board-content-list.market > .board-items div.item-container .item-selled { font-size: 16px; color: #555555; margin-bottom: 3px;}
-.board-section .board-content-list.market > .board-items div.item-container .item-stock:after,
-.board-section .board-content-list.market > .board-items div.item-container .item-selled:after { content: "개"}
-.board-section .board-content-list.market > .board-items div.item-container .item-stock::before { content: "남은수량 -"; margin-right: 5px;}
-.board-section .board-content-list.market > .board-items div.item-container .item-selled::before { content: "구매 -"; margin-right: 5px;}
+.board-section .board-content-list.market > .board-items div.item-container .item-review-num { font-size: 16px; color: #555555; margin-bottom: 3px;}
+.board-section .board-content-list.market > .board-items div.item-container .item-review-num:after { content: "개"}
+.board-section .board-content-list.market > .board-items div.item-container .item-review-num::before { content: "리뷰 -"; margin-right: 5px;}
 .board-section .board-content-list.market > .board-items div.item-container div.item-review { display: flex; flex-direction: column; width: 100%; border-top: 1px solid #b5b5b5; padding-top: 10px; margin-top: 10px;}
 .board-section .board-content-list.market > .board-items div.item-container div.item-review .star-wrap { display: flex; justify-content: start; align-items: center; height: 20px; margin-bottom: 7px;}
 .board-section .board-content-list.market > .board-items div.item-container div.item-review .star-wrap > .star-item { height: 100%; }

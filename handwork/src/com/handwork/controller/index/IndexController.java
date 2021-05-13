@@ -20,13 +20,7 @@ public class IndexController extends HttpServlet {
 		// LogInForm.jsp�� ������
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/index.jsp");
 
-		try {
-			Thread.sleep(1200);
-			rd.forward(request, response);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		rd.forward(request, response);
 
 	}
 

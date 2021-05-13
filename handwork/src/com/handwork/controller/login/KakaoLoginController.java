@@ -63,8 +63,6 @@ public class KakaoLoginController extends HttpServlet {
 				session.setAttribute("dept", rs.getString("dept"));
 
 				request.setAttribute("l", rs.getString("name"));
-				
-				response.sendRedirect("/WEB-INF/view/index.jsp");
 				return;
 			}
 		} catch (Exception e) {

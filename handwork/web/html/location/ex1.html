@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript"
+            src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"
+            src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ff931k1pgc"></script>
+</head>
+<body>
+<div id="map" style="width:100%;height:1000px;"></div>
+<script>
+    // $(window).load(function(){
+    // });
+    var mapOptions = {
+        center: new naver.maps.LatLng(37.49099729728258, 126.81345371145218),
+        zoom: 17
+    };
+
+    var map = new naver.maps.Map('map', mapOptions);
+
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(37.3595704, 127.105399),
+        map: map
+    });
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(37.49099729728258, 126.81345371145218),
+        map: map
+    });
+
+
+</script>
+</body>
+</html>

@@ -54,11 +54,9 @@
 
 							data: { "id": id, "email": email, "name": name },
 							success: function (data) {
-
-								alert("완료!")
+								window.location.href = "${pageContext.request.contextPath}/";
 							}
 						});
-						window.location.href = "${pageContext.request.contextPath}/";
 					}
 				});
 			}
