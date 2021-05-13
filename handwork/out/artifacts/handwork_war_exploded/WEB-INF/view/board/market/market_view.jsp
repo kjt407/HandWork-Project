@@ -97,7 +97,7 @@
                     <p class="item-deadline subs">${r.period}</p>
                     <a href="" class="item-location subs">${r.location}</a>
                     <p class="item-ship subs">${r.how}</p>
-                    
+
                     <c:choose>
                         <c:when test="${empty id}">
                             <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기" disable></input>
