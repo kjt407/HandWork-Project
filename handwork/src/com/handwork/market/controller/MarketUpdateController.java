@@ -46,15 +46,10 @@ public class MarketUpdateController extends HttpServlet{
 		ArrayList<String> imgUpdateList = new ArrayList<String>(); //imgUpdateList = ���� �� �̹���(sql �߰��ʿ�)
 
 		int sizeLimit = 15 * 1024 * 1024;
-<<<<<<< HEAD
 
-		//	����θ� �����η� �����;�
-		String realPath = request.getServletContext().getRealPath("upload");
-=======
 		
 		//	����θ� �����η� �����;� 
 		String realPath = request.getServletContext().getRealPath("upload/marketBoard");
->>>>>>> bb6bc61acd628eeeb725e15774ce0e893d774ad3
 		System.out.println(realPath);
 
 		//upload ������ ���� ��� ������ �����

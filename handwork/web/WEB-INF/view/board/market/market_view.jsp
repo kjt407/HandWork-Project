@@ -52,7 +52,7 @@
             <h3 class="hide">게시글 상세페이지</h3>
             <div class="market board-header">
                 <div class="img-container">
-                    <img src="${pageContext.request.contextPath}/images/item.png" alt="" id="img-main">
+                    <img src="" alt="" id="img-main">
                     <input type="button" value="" class="btn-img prev" onclick="btnImg('prev')">
                     <input type="button" value="" class="btn-img next" onclick="btnImg('next')">
                     <ul class="img-ul">
