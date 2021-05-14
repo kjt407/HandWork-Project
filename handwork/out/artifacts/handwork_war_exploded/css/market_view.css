@@ -40,7 +40,8 @@
 .board-section .board-container .board-main > div.market.board-header > .main-panel .item-hits:before { content: ""; width: 16px; height: 16px;background: url(../images/views.png) center no-repeat;  background-size: 16px 16px; margin-right: 2px; opacity: 0.5;}
 
 .board-section .board-container .board-main > div.market.board-header > .main-panel .btn-contact { display: flex; justify-content: center; align-items: center; justify-self: flex-end; color: white; background: coral; font-size: 19px; padding: 10px; border-radius: 2px; transition: 0.3s all;}
-.board-section .board-container .board-main > div.market.board-header > .main-panel .btn-contact:hover { background: gray;}
+.board-section .board-container .board-main > div.market.board-header > .main-panel .btn-contact:hover,
+.board-section .board-container .board-main > div.market.board-header > .main-panel .btn-contact:disabled { background: gray;}
 
 
 .board-section .board-container .board-main > div.market.content-section { display: flex; flex-direction: column; justify-content: flex-start; width: 100%; min-height: 250px; font-size: 21px; line-height: 35px;}

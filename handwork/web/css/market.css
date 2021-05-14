@@ -18,7 +18,7 @@
 .board-section .board-content-list.market > .board-items div.item-container .item-price.state::before { display:flex; align-items: center; content: ""; font-family: NanumGothic; font-size: 17px; font-weight: 400; padding: 2px; background: tomato; color: white; border-radius:2px; margin-right: 7px;}
 .board-section .board-content-list.market > .board-items div.item-container .item-price.state.sell::before { content: "판매중";}
 .board-section .board-content-list.market > .board-items div.item-container .item-price.state.out { color: gray;}
-.board-section .board-content-list.market > .board-items div.item-container .item-price.state.out::before { content: "매진"; background: gray;}
+.board-section .board-content-list.market > .board-items div.item-container .item-price.state.out::before { content: "품절"; background: gray;}
 .board-section .board-content-list.market > .board-items div.item-container .item-review-num { font-size: 16px; color: #555555; margin-bottom: 3px;}
 .board-section .board-content-list.market > .board-items div.item-container .item-review-num:after { content: "개"}
 .board-section .board-content-list.market > .board-items div.item-container .item-review-num::before { content: "리뷰 -"; margin-right: 5px;}

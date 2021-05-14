@@ -100,10 +100,10 @@
 
                     <c:choose>
                         <c:when test="${empty id}">
-                            <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기" disable></input>
+                            <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기" disabled></input>
                         </c:when>
                         <c:when test="${r.state eq 1}">
-                            <input type="button" class="btn-contact" onclick="alert('품절입니다');" value="판매자와 연락하기" disable></input>
+                            <input type="button" class="btn-contact" onclick="alert('품절입니다');" value="판매자와 연락하기" disabled></input>
                         </c:when>
                         <c:otherwise>
                             <input type="button" class="btn-contact" value="판매자와 연락하기">
