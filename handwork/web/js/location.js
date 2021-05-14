@@ -63,7 +63,7 @@ function initMap(initLatlng){
                 });
                 $('.detail_section').empty();
                 $('.detail_section').append(
-                    '<img src="'+getContextPath()+'/upload/'+data[0].filename.split('/')[0]+'" alt="" style="width: 50px; height: 50px;">'+
+                    '<img src="'+getContextPath()+'/upload/marketBoard/'+data[0].filename.split('/')[0]+'" alt="" style="width: 50px; height: 50px;">'+
                     '<p>'+board_num+'</p>'+
                     '<p>'+title+'</p>'+
                     '<p>'+content+'</p>'+
