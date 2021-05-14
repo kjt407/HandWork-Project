@@ -113,7 +113,7 @@
 				<div class="request-slide" data-slick='{"slidesToShow": 4, "slidesToScroll": 1}'>
 					<c:forEach var="r" items="${list}">
 					<div class="slider-item">
-						<a href="" class="item-wrap">
+						<a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="item-wrap">
 							<c:choose>
 								<c:when test="${empty r.filename }">
 									<img src="${pageContext.request.contextPath}/images/noImage.png" class="item-img no-img" alt="제작의뢰 게시글 이미지">
