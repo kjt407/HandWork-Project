@@ -49,7 +49,7 @@
                 </c:otherwise>
                 </c:choose>
 
-
+                    <input type="hidden" name="id" value="${r.id}"/>
                 <h3 class="hide">게시글 작성페이지</h3>
                 <p class="board-write-header-title">수제공방 글쓰기</p>
                 <div class="board-write-header">

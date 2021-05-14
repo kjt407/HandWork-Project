@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="board-items market">
-                        <a href="" class="img-wrap"><img src="${pageContext.request.contextPath}/upload/기타.PNG" alt="제품이미지"></a>
+                        <a href="" class="img-wrap"><img src="${pageContext.request.contextPath}/upload/requestBoard/기타.PNG" alt="제품이미지"></a>
                         <div class="item-container market">
                             <div class="item-row">
                                 <a href="" class="item-writer">촤콜렛하우스</a>

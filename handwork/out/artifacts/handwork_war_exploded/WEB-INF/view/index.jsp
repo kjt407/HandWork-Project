@@ -66,7 +66,7 @@
 									<c:set var="doneLoop" value="false"/>
 									<c:forTokens var="itemFN" items="${m.filename}" delims="/">
 										<c:if test="${not doneLoop}">
-											<img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
+											<img src="${pageContext.request.contextPath }/upload/marketBoard/${itemFN}" class="view-img">
 
 											<c:set var="doneLoop" value="true"/>
 										</c:if>
@@ -126,7 +126,7 @@
 									<c:set var="doneLoop" value="false"/>
 									<c:forTokens var="itemFN" items="${r.filename}" delims="/">
 										<c:if test="${not doneLoop}">
-											<img src="${pageContext.request.contextPath }/upload/${itemFN}" class="item-img" alt="제작의뢰 게시글 이미지">
+											<img src="${pageContext.request.contextPath }/upload/requestBoard/${itemFN}" class="item-img" alt="제작의뢰 게시글 이미지">
 
 											<c:set var="doneLoop" value="true"/>
 										</c:if>
