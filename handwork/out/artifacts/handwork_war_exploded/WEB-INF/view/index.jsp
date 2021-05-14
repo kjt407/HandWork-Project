@@ -49,186 +49,50 @@
 		<div class="board-slider"
 			data-slick='{"slidesToShow": 4, "slidesToScroll": 1}'
 			style="width: 1200px; height: 500px;">
+			<c:forEach var="m" items="${m_list}">
 			<div>
-				<a href="">
+				<a href="${pageContext.request.contextPath}/market/detail?id=${m.id}">
 					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
+						<div class="img-wrap">
+							<c:choose>
+								<c:when test="${empty m.filename }">
+									<img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
+								</c:when>
+								<c:when test="${m.filename eq '/'}">
+									<img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
+								</c:when>
+
+								<c:otherwise>
+									<c:set var="doneLoop" value="false"/>
+									<c:forTokens var="itemFN" items="${m.filename}" delims="/">
+										<c:if test="${not doneLoop}">
+											<img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
+
+											<c:set var="doneLoop" value="true"/>
+										</c:if>
+									</c:forTokens>
+								</c:otherwise>
+							</c:choose>
+						</div>
 						<div class="item-container market">
 							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
+								<p class="item-writer">${m.writer}</p>
+								<p class="item-location">${m.location}</p>
 							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
+							<p class="item-title">${m.title}</p>
+							<p class="item-price state sell">${m.price}원</p>
+							<p class="item-review-num">${m.count}</p>
 							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
+								<div class="star-wrap">${m.starAvg}</div>
+								<span class="review-text">${m.topReview}</span>
 							</div>
 						</div>
 					</div>
 				</a>
 			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div>
-				<a href="">
-					<div class="board-items market prev-container">
-						<div class="img-wrap"><img src="${pageContext.request.contextPath}/images/item.png" alt="제품이미지"></div>
-						<div class="item-container market">
-							<div class="item-row">
-								<p class="item-writer">촤콜렛하우스</p>
-								<p class="item-location">서울특별시</p>
-							</div>
-							<p class="item-title">찰리의 촤칼렛 공장에서 만드는 수제 쳐컬렛</p>
-							<p class="item-price state sell">15000원</p>
-							<p class="item-review-num">1</p>
-							<div class="item-review">
-								<div class="star-wrap">2</div>
-								<span class="review-text">가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다가장 최근의 리뷰가 보여집니다</span>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
+			</c:forEach>
+
+
 		</div>
 	</section>
 	<section class="order-section">
@@ -247,54 +111,36 @@
 				</div>
 <%--				제작의뢰 slick 박스 구성--%>
 				<div class="request-slide" data-slick='{"slidesToShow": 4, "slidesToScroll": 1}'>
+					<c:forEach var="r" items="${list}">
 					<div class="slider-item">
 						<a href="" class="item-wrap">
-							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
-							<span class="item-title">제작의뢰 게시글 제목입니다</span>
-							<span class="item-price">12000</span>
-							<span class="item-writer">김종태</span>
+							<c:choose>
+								<c:when test="${empty r.filename }">
+									<img src="${pageContext.request.contextPath}/images/noImage.png" class="item-img no-img" alt="제작의뢰 게시글 이미지">
+								</c:when>
+								<c:when test="${r.filename eq '/'}">
+									<img src="${pageContext.request.contextPath}/images/noImage.png" class="item-img no-img" alt="제작의뢰 게시글 이미지">
+								</c:when>
+
+								<c:otherwise>
+									<c:set var="doneLoop" value="false"/>
+									<c:forTokens var="itemFN" items="${r.filename}" delims="/">
+										<c:if test="${not doneLoop}">
+											<img src="${pageContext.request.contextPath }/upload/${itemFN}" class="item-img" alt="제작의뢰 게시글 이미지">
+
+											<c:set var="doneLoop" value="true"/>
+										</c:if>
+									</c:forTokens>
+
+
+								</c:otherwise>
+							</c:choose>
+							<span class="item-title">${r.title}</span>
+							<span class="item-price">${r.price}</span>
+							<span class="item-writer">${r.writer}</span>
 						</a>
 					</div>
-					<div class="slider-item">
-						<a href="" class="item-wrap">
-							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
-							<span class="item-title">제작의뢰 게시글 제목입니다제작의뢰 게시글 제목입니다제작의뢰 게시글 제목입니다</span>
-							<span class="item-price">120000000</span>
-							<span class="item-writer">김종태</span>
-						</a>
-					</div>
-					<div class="slider-item">
-						<a href="" class="item-wrap">
-							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
-							<span class="item-title">제작의뢰 게시글 제목입니다</span>
-							<span class="item-price">12000</span>
-							<span class="item-writer">김종태</span>
-						</a>
-					</div>
-					<div class="slider-item">
-						<a href="" class="item-wrap">
-							<img src="${pageContext.request.contextPath}/images/item.png" class="item-img" alt="제작의뢰 게시글 이미지">
-							<span class="item-title">제작의뢰 게시글 제목입니다</span>
-							<span class="item-price">12000</span>
-							<span class="item-writer">김종태</span>
-						</a>
-					</div>
-					<div class="slider-item">
-						<a href="" class="item-wrap">
-							<img src="${pageContext.request.contextPath}/images/items.png" class="item-img" alt="제작의뢰 게시글 이미지">
-							<span class="item-title">제작의뢰 게시글 제목입니다</span>
-							<span class="item-price">12000</span>
-							<span class="item-writer">김종태</span>
-						</a>
-					</div>
-					<div class="slider-item">
-						<a href="" class="item-wrap">
-							<img src="${pageContext.request.contextPath}/images/items.png" class="item-img" alt="제작의뢰 게시글 이미지">
-							<span class="item-title">제작의뢰 게시글 제목입니다</span>
-							<span class="item-price">12000</span>
-							<span class="item-writer">김종태</span>
-						</a>
-					</div>
+					</c:forEach>
 				</div>
 <%--				<table>--%>
 <%--					<thead>--%>

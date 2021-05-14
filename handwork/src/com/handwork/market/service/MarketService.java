@@ -69,8 +69,9 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 				int starAvg = getStarAvg(id);
+				String topReview = topReview(id);
 
-				Market market = new Market(id, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id), starAvg);
+				Market market = new Market(id, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id), starAvg, topReview);
 
 				list.add(market);
 			}
@@ -328,6 +329,36 @@ public class MarketService {
 
 		}
 		return starAvg;
+	}
+
+	public String topReview(int boardnum){
+		String content ="";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+			String dbID = "handwork";
+			String dbPassword = "handwork";
+
+			String sql = "SELECT content FROM review where board_num=? order by idx desc limit 1";
+
+			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+			stmt.setInt(1, boardnum);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while(rs.next()){
+				content = rs.getString("content");
+			}
+
+			rs.close();
+			stmt.close();
+			conn.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return content;
 	}
 
 

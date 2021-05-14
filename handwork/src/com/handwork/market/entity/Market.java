@@ -19,6 +19,7 @@ public class Market {
     private int state;
     private int count;
     private int starAvg;
+    private String topReview;
 
     public Market() {
         super();
@@ -63,7 +64,7 @@ public class Market {
     }
 
     public Market(int id, String writer, String title, String kategorie, String location, int period, int price,
-                  String content, String regdate, int hit, String filename, String how, String writer_id, int state, int count, int starAvg) {
+                  String content, String regdate, int hit, String filename, String how, String writer_id, int state, int count, int starAvg, String topReview) {
         super();
         this.id = id;
         this.writer = writer;
@@ -81,6 +82,7 @@ public class Market {
         this.state = state;
         this.count = count;
         this.starAvg = starAvg;
+        this.topReview = topReview;
     }
 
     public int getId() {
@@ -218,6 +220,15 @@ public class Market {
     public void setStarAvg(int starAvg) {
         this.starAvg = starAvg;
     }
+
+    public String getTopReview() {
+        return topReview;
+    }
+
+    public void setTopReview(String topReview) {
+        this.topReview = topReview;
+    }
+
 
     @Override
     public String toString() {

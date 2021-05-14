@@ -15,8 +15,6 @@ public class ReviewService {
 
         List<Reviews> list = new ArrayList<>();
 
-
-
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
@@ -55,5 +53,7 @@ public class ReviewService {
         }
         return list;
     }
+
+
 
 }
