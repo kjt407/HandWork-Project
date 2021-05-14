@@ -14,7 +14,7 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ff931k1pgc"></script>
 </head>
 <body>
-<div id="map" style="width:100%;height:1000px;"></div>
+<div id="map" style="width:80%;height:800px;position: relative;"></div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/location.js"></script>
 </body>
 </html>

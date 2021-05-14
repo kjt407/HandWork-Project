@@ -100,7 +100,7 @@
 
                     <c:choose>
                         <c:when test="${empty id}">
-                            <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기" disabled></input>
+                            <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기"></input>
                         </c:when>
                         <c:when test="${r.state eq 1}">
                             <input type="button" class="btn-contact" onclick="alert('품절입니다');" value="판매자와 연락하기" disabled></input>
@@ -158,10 +158,10 @@
                         <span class="review-title">구매후기 (${r.count})</span>
                         <c:choose>
                             <c:when test="${empty id}">
-                                <input type="button" value="리뷰작성" class="btn-write-review" onclick="alert('로그인을 해주세요');"></input>
+                                <input type="button" value="+ 리뷰작성" class="btn-write-review" onclick="alert('로그인을 해주세요');"></input>
                             </c:when>
                             <c:otherwise>
-                                <input type="button" value="리뷰작성" class="btn-write-review" onclick="btnWriteReview(this,${r.id})"></input>
+                                <input type="button" value="+ 리뷰작성" class="btn-write-review" onclick="btnWriteReview(this,${r.id})"></input>
                             </c:otherwise>
                         </c:choose>
 
