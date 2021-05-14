@@ -97,7 +97,7 @@
                             <p href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-review-num">${r.count}</p>
                             <div class="item-review">
                                 <div class="star-wrap">${r.starAvg}</div>
-                                <span class="review-text">가장 최근의 리뷰가 보여집니다</span>
+                                <span class="review-text">${r.topReview}</span>
                             </div>
                         </div>
                     </div>
