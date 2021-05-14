@@ -106,7 +106,19 @@
                             <input type="button" class="btn-contact" onclick="alert('품절입니다');" value="판매자와 연락하기" disabled></input>
                         </c:when>
                         <c:otherwise>
-                            <input type="button" class="btn-contact" value="판매자와 연락하기">
+                            <form name="a" action="mail" method="post">
+                                <input type="button" class="btn-contact" value="판매자와 연락하기" onclick="check()">
+                                <input type="hidden" name="to" value="wnsgudchl0302@naver.com">
+                                <input type="hidden" name="from" value="ambirion0302@gmail.com">
+                                <input type="hidden" name="title" value="${r.title}">
+                                <input type="hidden" name="content" value="${r.content}">
+                                <input type="hidden" name="name" value="${r.writer}">
+                                <input type="hidden" name="writer_id" value="${r.writer_id}">
+                                <input type="hidden" name="price" value="${r.price}">
+                                <input type="hidden" name="board-num" value="${r.id}">
+                                <input type="hidden" name="toId" value="${id}">
+                            </form>
+
                         </c:otherwise>
                     </c:choose>
 
@@ -201,4 +213,9 @@
 
 
 </body>
+<script>
+    function check() {
+        document.a.submit();
+    }
+</script>
 </html>
