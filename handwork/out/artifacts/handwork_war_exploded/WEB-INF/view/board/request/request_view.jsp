@@ -75,7 +75,7 @@
                         
                         <c:forTokens var="itemFN" items="${r.filename}" delims="/">
                         <%-- 	${itemFN} --%>
-                      		<div><img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img"></div>
+                      		<div><img src="${pageContext.request.contextPath }/upload/requestBoard/${itemFN}" class="view-img"></div>
                         </c:forTokens>
                             
                         </div>
@@ -139,7 +139,7 @@
                                        <c:set var="doneLoop" value="false"/>
                                           <c:forTokens var="itemFN" items="${nr.filename}" delims="/">
                                              <c:if test="${not doneLoop}">
-                                                <img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
+                                                <img src="${pageContext.request.contextPath }/upload/requestBoard/${itemFN}" class="view-img">
                               
                                                 <c:set var="doneLoop" value="true"/>
                                              </c:if>
@@ -178,7 +178,7 @@
                                        <c:set var="doneLoop" value="false"/>
                                           <c:forTokens var="itemFN" items="${pr.filename}" delims="/">
                                              <c:if test="${not doneLoop}">
-                                                <img src="${pageContext.request.contextPath }/upload/${itemFN}" class="view-img">
+                                                <img src="${pageContext.request.contextPath }/upload/requestBoard/${itemFN}" class="view-img">
                            
                                                 <c:set var="doneLoop" value="true"/>
                                              </c:if>

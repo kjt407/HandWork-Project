@@ -39,7 +39,7 @@ public class MarketWriteController extends HttpServlet {
 		int sizeLimit = 15 * 1024 * 1024;
 
 		// ����θ� �����η� �����;�
-		String realPath = request.getServletContext().getRealPath("upload");
+		String realPath = request.getServletContext().getRealPath("upload/marketBoard");
 		System.out.println(realPath);
 
 		// upload ������ ���� ��� ������ �����

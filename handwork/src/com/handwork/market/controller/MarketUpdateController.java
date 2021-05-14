@@ -46,9 +46,15 @@ public class MarketUpdateController extends HttpServlet{
 		ArrayList<String> imgUpdateList = new ArrayList<String>(); //imgUpdateList = ���� �� �̹���(sql �߰��ʿ�)
 
 		int sizeLimit = 15 * 1024 * 1024;
+<<<<<<< HEAD
 
 		//	����θ� �����η� �����;�
 		String realPath = request.getServletContext().getRealPath("upload");
+=======
+		
+		//	����θ� �����η� �����;� 
+		String realPath = request.getServletContext().getRealPath("upload/marketBoard");
+>>>>>>> bb6bc61acd628eeeb725e15774ce0e893d774ad3
 		System.out.println(realPath);
 
 		//upload ������ ���� ��� ������ �����
@@ -66,6 +72,7 @@ public class MarketUpdateController extends HttpServlet{
 		String writer = (String) session.getAttribute("name");
 		System.out.println("writer = "+writer);
 		String title = multi.getParameter("title");
+		System.out.println("타이트트트트틀 : "+title);
 		String kategorie = multi.getParameter("kategorie");
 		String location = multi.getParameter("location");
 		int period = Integer.parseInt(multi.getParameter("period"));

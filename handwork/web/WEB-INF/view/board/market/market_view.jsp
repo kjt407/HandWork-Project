@@ -59,7 +59,7 @@
                         <%--최대 7개 까지만 업로드 하도록--%>
                         <c:forTokens var="itemFN" items="${r.filename}" delims="/">
                             <li class="img-li">
-                                <img src="${pageContext.request.contextPath }/upload/${itemFN}" alt="" class="img-item" onmouseover="sliderHover(this)">
+                                <img src="${pageContext.request.contextPath }/upload/marketBoard/${itemFN}" alt="" class="img-item" onmouseover="sliderHover(this)">
                             </li>
                         </c:forTokens>
                         <%--                        <li class="img-li">--%>
