@@ -1,7 +1,8 @@
 $(window).load(function(){
     const json = {type:'init'};
     ajaxInit(json);
-    $('#map').height(window.innerHeight);
+    $('#map').height(window.innerHeight-80);
+    initStars();
 });
 
 let initData = [];
@@ -64,8 +65,8 @@ function initMap(initLatlng){
                         '<p>'+writer_id+'</p>'+
                         '</div>'
                 });
-                $('.detail_section').empty();
-                $('.detail_section').append(
+                $('.detail-section').empty();
+                $('.detail-section').append(
                     '<img src="'+getContextPath()+'/upload/marketBoard/'+data[0].filename.split('/')[0]+'" alt="" style="width: 50px; height: 50px;">'+
                     '<p>'+board_num+'</p>'+
                     '<p>'+title+'</p>'+
@@ -168,19 +169,19 @@ function getContextPath() {
     return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
 }
 
-//
-// function onSuccessGeolocation(position) {
-//     alert('지오그레이션 성공');
-//     let initLatlng = {"x":position.coords.latitude,"y":position.coords.longitude};
-//     // var location = new naver.maps.LatLng(position.coords.latitude,
-//     //     position.coords.longitude);
-//     // map.setCenter(location);
-//     console.log(location);
-//     initMap(initLatlng);
-// }
-// function onErrorGeolocation() {
-//     alert("지오그레이션 실패");
-//     initMap(initData[initData.length-1]);
-// }
+function initStars(){
+    let starWrap = $('.star-wrap').get();
+    for( let i = 0 ; i < starWrap.length; i++){
+        let num = $(starWrap[i]).text();
+        $(starWrap[i]).empty();
+        for (let z=0; z<5; z++){
+            if(z < num){
+                $(starWrap[i]).append('<img class="star-item" src="'+getContextPath()+'/images/star.png"/>');
+            } else{
+                $(starWrap[i]).append('<img class="star-item" src="'+getContextPath()+'/images/star_empty.png"/>');
+            }
+        }
+    }
 
+}
 

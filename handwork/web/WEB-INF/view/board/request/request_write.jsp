@@ -18,6 +18,7 @@
     <script type="text/javascript"
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <title>핸드워크</title>
 </head>
 <body>
@@ -71,15 +72,7 @@
                         </div>
                         <div class="board-write-col location-select-col">
                             <p class="input-label">의뢰지역</p>
-                            <select name="location" id="location-select" class="location-select" class="board-write-location">
-                                <option value="서울특별시" selected>서울특별시</option>
-                                <option value="경기도">경기도</option>
-                                <option value="강원도">강원도</option>
-                                <option value="충청도">충청도</option>
-                                <option value="전라도">전라도</option>
-                                <option value="경상도">경상도</option>
-                                <option value="제주도">제주도</option>
-                            </select>
+                            <input type="text" name="location" id="location" class="board-write-location" value="${r.location}" required/>
                         </div>
                     </div>
                     <div class="board-write-row">
