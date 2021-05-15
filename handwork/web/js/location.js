@@ -78,8 +78,8 @@ function initMap(initLatlng){
                     '                    </div>\n' +
                     '                    <div class="main-panel">\n' +
                     '                        <div class="item-row">\n' +
-                    '                            <a href="" class="item-writer">'+writer+'</a>\n' +
-                    '                            <a href="" class="item-category">'+category+'</a>\n' +
+                    '                            <p href="" class="item-writer">'+writer+'</p>\n' +
+                    '                            <p href="" class="item-category">'+category+'</p>\n' +
                     '                        </div>\n' +
                     '                        <p href="" class="item-title">'+title+'</p>\n' +
                     '                        <p href="" class="item-price state '+
@@ -87,7 +87,7 @@ function initMap(initLatlng){
                                             +'">'+price+'</p>\n' +
                     '                        <div class="star-wrap">'+starAvg+'</div>\n' +
                     '                        <p class="item-deadline subs">'+period+'</p>\n' +
-                    '                        <a href="" class="item-location subs">'+location+'</a>\n' +
+                    '                        <p href="" class="item-location subs">'+location+'</p>\n' +
                     '                        <p class="item-ship subs">'+how+'</p>\n' +
                     '                        <div class="board-info-wrap" style="display: flex; justify-self: flex-end; margin: 10px 0 0 0; !important;">\n' +
                     '                            <p class="item-hits">'+hits+'</p>\n' +
@@ -95,7 +95,7 @@ function initMap(initLatlng){
                     '                        </div>\n' +
                     '                    </div>\n' +
                     '                </div>\n' +
-                    '            <a href="'+getContextPath()+'/market/detail?id='+board_num+'" class="btn-link-board" style="display: flex; justify-content: center; align-items: center; width: 100%; background: tomato; padding: 20px; font-size: 18px; color: white;">게시글 이동하기</a>'
+                    '            <a href="'+getContextPath()+'/market/detail?id='+board_num+'" class="btn-link-board">게시글 이동하기</a>'
                 );
                 infoWindows[seq].open(map, marker);
                 initStars();

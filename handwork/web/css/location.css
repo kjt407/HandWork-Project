@@ -2,6 +2,7 @@
 .board-section {display: flex; justify-content: flex-start; align-items: flex-start; min-height:auto;}
 .board-section #map { width:100%; position: relative; }
 .board-section div.detail-section { display:flex; flex-direction: column; align-items: center; justify-content: space-between; width: 400px; flex-shrink: 0; background: white;}
+.board-section div.detail-section div.init-container { display: flex; justify-content: center; width:100%; height:100%; align-items: center; background: whitesmoke; }
 .board-section div.detail-section > .wrap { display:flex; flex-direction: column; align-items: center; justify-content: space-between; width: 100%;}
 .board-section div.detail-section .img-container { position:relative; display: flex; flex-direction: column; align-items: center; width: 100%;}
 .board-section div.detail-section .img-container #img-main {  width:100%; height: 400px; object-fit: cover; background: lightgrey;}
@@ -39,3 +40,6 @@
 .board-section div.detail-section .main-panel .item-hits { display: flex; justify-content: flex-start; align-items: center; font-size: 14px; color: #555555;  margin-right: 15px;}
 .board-section div.detail-section .main-panel .item-writedate:before { content: ""; width: 16px; height: 16px;background: url(../images/writing.png) center no-repeat;  background-size: 16px 16px; margin-right: 2px; opacity: 0.5;}
 .board-section div.detail-section .main-panel .item-hits:before { content: ""; width: 16px; height: 16px;background: url(../images/views.png) center no-repeat;  background-size: 16px 16px; margin-right: 2px; opacity: 0.5;}
+.board-section div.detail-section .main-panel .item-hits:before { content: ""; width: 16px; height: 16px;background: url(../images/views.png) center no-repeat;  background-size: 16px 16px; margin-right: 2px; opacity: 0.5;}
+.board-section div.detail-section a.btn-link-board {display: flex; justify-content: center; align-items: center; width: 100%; background: tomato; padding: 20px; font-size: 18px; color: white; transition: 0.2s all;}
+.board-section div.detail-section a.btn-link-board:hover {background: darkred;}
