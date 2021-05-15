@@ -24,7 +24,7 @@ public class LocationController extends HttpServlet {
         response.setContentType("application/x-json; charset=UTF-8");
         String type = (request.getParameter("type"));
         if (type == null || type.equals("")) {
-            request.getRequestDispatcher("/html/location/location.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/view/location/location.jsp").forward(request, response);
         }else if (type.equals("init")) {
             JSONArray json = initMarker(request, response);
             response.getWriter().print(json);

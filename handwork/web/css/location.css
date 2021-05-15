@@ -2,6 +2,7 @@
 .board-section {display: flex; justify-content: flex-start; align-items: flex-start; min-height:auto;}
 .board-section #map { width:100%; position: relative; }
 .board-section div.detail-section { display:flex; flex-direction: column; align-items: center; justify-content: space-between; width: 400px; flex-shrink: 0; background: white;}
+.board-section div.detail-section > .wrap { display:flex; flex-direction: column; align-items: center; justify-content: space-between; width: 100%;}
 .board-section div.detail-section .img-container { position:relative; display: flex; flex-direction: column; align-items: center; width: 100%;}
 .board-section div.detail-section .img-container #img-main {  width:100%; height: 400px; object-fit: cover; background: lightgrey;}
 .board-section div.detail-section .img-container .btn-img { position:absolute; width: 30px; height: 30px; opacity: 0.8;}

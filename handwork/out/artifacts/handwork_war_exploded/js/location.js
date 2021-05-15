@@ -2,7 +2,6 @@ $(window).load(function(){
     const json = {type:'init'};
     ajaxInit(json);
     $('#map').height(window.innerHeight-80);
-    initStars();
 });
 
 let initData = [];
@@ -52,6 +51,7 @@ function initMap(initLatlng){
                 const filename =  data[0].filename;
                 const writer_id =  data[0].writer_id;
                 const how =  data[0].how;
+                const hits =  data[0].hit;
                 const state =  data[0].state;
                 const starAvg =  data[0].starAvg;
 
@@ -67,24 +67,39 @@ function initMap(initLatlng){
                 });
                 $('.detail-section').empty();
                 $('.detail-section').append(
-                    '<img src="'+getContextPath()+'/upload/marketBoard/'+data[0].filename.split('/')[0]+'" alt="" style="width: 50px; height: 50px;">'+
-                    '<p>'+board_num+'</p>'+
-                    '<p>'+title+'</p>'+
-                    '<p>'+content+'</p>'+
-                    '<p>'+price+'</p>'+
-                    '<p>'+state+'</p>'+
-                    '<p>'+writer+'</p>'+
-                    '<p>'+category+'</p>'+
-                    '<p>'+location+'</p>'+
-                    '<p>'+period+'</p>'+
-                    '<p>'+regdate+'</p>'+
-                    '<p>'+filename+'</p>'+
-                    '<p>'+writer_id+'</p>'+
-                    '<p>'+state+'</p>'+
-                    '<p>'+starAvg+'</p>'+
-                    '<p>'+how+'</p>'
+                    '<div class="wrap">\n' +
+                    '                    <div class="img-container">\n' +
+                    '                        <img src="" alt="" id="img-main">\n' +
+                    '                        <input type="button" value="" class="btn-img prev" onclick="btnImg(\'prev\')">\n' +
+                    '                        <input type="button" value="" class="btn-img next" onclick="btnImg(\'next\')">\n' +
+                    '                        <ul class="img-ul">\n'  +
+                    imgListInit(filename.split('/'))+
+                    '                        </ul>\n' +
+                    '                    </div>\n' +
+                    '                    <div class="main-panel">\n' +
+                    '                        <div class="item-row">\n' +
+                    '                            <a href="" class="item-writer">'+writer+'</a>\n' +
+                    '                            <a href="" class="item-category">'+category+'</a>\n' +
+                    '                        </div>\n' +
+                    '                        <p href="" class="item-title">'+title+'</p>\n' +
+                    '                        <p href="" class="item-price state '+
+                    stateInit(state)
+                                            +'">'+price+'</p>\n' +
+                    '                        <div class="star-wrap">'+starAvg+'</div>\n' +
+                    '                        <p class="item-deadline subs">'+period+'</p>\n' +
+                    '                        <a href="" class="item-location subs">'+location+'</a>\n' +
+                    '                        <p class="item-ship subs">'+how+'</p>\n' +
+                    '                        <div class="board-info-wrap" style="display: flex; justify-self: flex-end; margin: 10px 0 0 0; !important;">\n' +
+                    '                            <p class="item-hits">'+hits+'</p>\n' +
+                    '                            <p class="item-writedate">'+regdate+'</p>\n' +
+                    '                        </div>\n' +
+                    '                    </div>\n' +
+                    '                </div>\n' +
+                    '            <a href="'+getContextPath()+'/market/detail?id='+board_num+'" class="btn-link-board" style="display: flex; justify-content: center; align-items: center; width: 100%; background: tomato; padding: 20px; font-size: 18px; color: white;">게시글 이동하기</a>'
                 );
                 infoWindows[seq].open(map, marker);
+                initStars();
+                imgSlider($('.img-li').eq(0).children('img'));
             } else if(infoWindows[seq].getMap()){
                 infoWindows[seq].close();
             }
@@ -164,6 +179,25 @@ function ajaxClick(str,seq,map) {
     return returnData;
 }
 
+function imgListInit(filenames){
+    console.log(filenames);
+    let result = "";
+    for(let i=0; i<filenames.length-1; i++){
+        result += '<li class="img-li">\n' +
+'                       <img src="'+getContextPath()+'/upload/marketBoard/'+filenames[i]+'" alt="" class="img-item">\n' +
+'                  </li>';
+    }
+    return result
+}
+
+function stateInit(state){
+    if(state){
+        return "out"
+    }else{
+        return "sell"
+    }
+}
+
 function getContextPath() {
     var hostIndex = location.href.indexOf( location.host ) + location.host.length;
     return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
@@ -182,6 +216,33 @@ function initStars(){
             }
         }
     }
+}
 
+function btnImg(action){
+    let index = $('.img-item.select').parents('li').index();
+    const lengthLi = $('.img-li').get().length-1;
+    let resultIndex;
+    if (action == 'prev'){
+        if (index != 0){
+            resultIndex = index-1;
+        }else if (index == 0){
+            resultIndex = lengthLi;
+        }
+    } else if(action == 'next') {
+        if (index != lengthLi){
+            resultIndex = index+1;
+        }else if (index == lengthLi){
+            resultIndex = 0;
+        }
+    }
+    let resultEle = $('.img-li').eq(resultIndex).children('img');
+    imgSlider(resultEle);
+}
+
+function imgSlider(ele) {
+    $('.img-item').removeClass('select')
+    $(ele).addClass('select');
+    let imgView = $('#img-main');
+    imgView.attr('src',$(ele).attr('src'));
 }
 
