@@ -4,6 +4,9 @@ import com.handwork.market.entity.Market;
 import com.handwork.market.service.MarketService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,8 +14,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -70,6 +78,7 @@ public class MarketUpdateController extends HttpServlet{
 		System.out.println("타이트트트트틀 : "+title);
 		String kategorie = multi.getParameter("kategorie");
 		String location = multi.getParameter("location");
+		String flocation = multi.getParameter("flocation");
 		int period = Integer.parseInt(multi.getParameter("period"));
 		int price = Integer.parseInt(multi.getParameter("price"));
 		String content = multi.getParameter("content");
@@ -197,7 +206,7 @@ public class MarketUpdateController extends HttpServlet{
 		try {
 		System.out.println("������Ʈ�� �ʱ� ����");
 		
-		String sql = "update market set title=?, kategorie=?, location=?, period=?, price=?, content=?, filename=?, how=?, state=? where id=?";
+		String sql = "update market set title=?, kategorie=?, location=?, flocation=?, period=?, price=?, content=?, filename=?, how=?, state=?, latlng=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
@@ -210,26 +219,28 @@ public class MarketUpdateController extends HttpServlet{
 		pstmt.setString(1, title);
 		pstmt.setString(2, kategorie);
 		pstmt.setString(3, location);
-		pstmt.setInt(4, period);
-		pstmt.setInt(5, price);
-		pstmt.setString(6, content);
-		
+		pstmt.setString(4, flocation);
+		pstmt.setInt(5, period);
+		pstmt.setInt(6, price);
+		pstmt.setString(7, content);
+
 		if(fullFileName.replace("/","").equals("")) {
 	         fullFileName = null;
 	    }
 		
 		System.out.println("��������� if��"+fullFileName);
 		if(fullFileName== null || fullFileName.equals("")) {
-			pstmt.setNull(7, java.sql.Types.VARCHAR);
+			pstmt.setNull(8, java.sql.Types.VARCHAR);
 		} else {
-			pstmt.setString(7, fullFileName);
+			pstmt.setString(8, fullFileName);
 		}
 		System.out.println("���� �����"+fullFileName);
 		
-		pstmt.setString(8, how);
-		pstmt.setInt(9, state);
-		pstmt.setInt(10, id);
-		
+		pstmt.setString(9, how);
+		pstmt.setInt(10, state);
+		pstmt.setString(11, getGeoCode(flocation));
+		pstmt.setInt(12, id);
+
 		pstmt.executeUpdate();
 		
 		} catch (Exception e) {
@@ -237,6 +248,44 @@ public class MarketUpdateController extends HttpServlet{
 		}
 		
 		response.sendRedirect(request.getContextPath()+"/market");
+	}
+
+	private String getGeoCode(String flocation) {
+		StringBuffer result = new StringBuffer();
+		JSONObject obj = null;
+		try {
+			String address= URLEncoder.encode(flocation, "UTF-8");
+			String apiKey= URLEncoder.encode("AIzaSyAY--fPA18-UuvufmlYYCPygAJYmQNXZVo", "UTF-8");
+			String urlStr = String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s",address,apiKey);
+			System.out.println(urlStr);
+			URL url = new URL(urlStr);
+			HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+			conn.setRequestMethod("GET");
+			int rspCode = conn.getResponseCode();
+			if (rspCode == 200) {
+				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+				String nextLine = br.readLine();
+				while ((nextLine = br.readLine()) != null) {
+					result.append(nextLine);
+				}
+			}
+			conn.disconnect();
+
+			String resultStr = result.toString();
+			resultStr = resultStr.substring(resultStr.indexOf("\"location\" : {"));
+			resultStr = resultStr.substring(resultStr.indexOf("{"),resultStr.indexOf("}")+1);
+
+			JSONParser jsonParse = new JSONParser();
+			obj =  (JSONObject)jsonParse.parse(resultStr);
+
+		} catch (IOException e) {
+			System.out.println("RestCall Fail : " + e.getMessage());
+		} catch (ParseException e) {
+			System.out.println("Json error");
+		}
+
+		return String.valueOf(obj);
 	}
 }
 

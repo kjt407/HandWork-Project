@@ -57,7 +57,7 @@ function initMap(initLatlng){
                 infoWindows[seq] = new naver.maps.InfoWindow({
                     content:
                         '<div style="width:250px;text-align:center;padding:10px;">'+
-                        '<img src="'+getContextPath()+'/upload/'+data[0].filename.split('/')[0]+'" alt="" style="width: 50px; height: 50px;">'+
+                        '<img src="'+getContextPath()+'/upload/marketBoard/'+data[0].filename.split('/')[0]+'" alt="" style="width: 50px; height: 50px;">'+
                         '<p>'+title+'</p>'+
                         '<p>'+content+'</p>'+
                         '<p>'+price+'</p>'+

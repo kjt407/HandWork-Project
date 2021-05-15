@@ -144,6 +144,7 @@ public class MarketService {
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
+				String flocation = rs.getString("flocation");
 				int period = rs.getInt("period");
 				int price = rs.getInt("price");
 				String content = rs.getString("content");
@@ -154,7 +155,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				market = new Market(nid, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
+				market = new Market(nid, writer, title, kategorie, location, flocation, period, price, content, regdate, hit, filename, how, writer_id, state);
 
 				System.out.println(" ð  : " + regdate);
 

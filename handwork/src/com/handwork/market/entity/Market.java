@@ -7,6 +7,7 @@ public class Market {
     private String title;
     private String kategorie;
     private String location;
+    private String flocation;
     private int period;
     private int price;
     private String content;
@@ -20,6 +21,8 @@ public class Market {
     private int count;
     private int starAvg;
     private String topReview;
+    private String latlng;
+
 
     public Market() {
         super();
@@ -83,6 +86,24 @@ public class Market {
         this.count = count;
         this.starAvg = starAvg;
         this.topReview = topReview;
+    }
+
+    public Market(int id, String writer, String title, String kategorie, String location, String flocation, int period, int price, String content, String regdate, int hit, String filename, String how, String writer_id, int state) {
+        this.id = id;
+        this.writer = writer;
+        this.title = title;
+        this.kategorie = kategorie;
+        this.location = location;
+        this.flocation = flocation;
+        this.period = period;
+        this.price = price;
+        this.content = content;
+        this.regdate = regdate;
+        this.hit = hit;
+        this.filename = filename;
+        this.how = how;
+        this.writer_id = writer_id;
+        this.state = state;
     }
 
     public int getId() {
@@ -229,15 +250,53 @@ public class Market {
         this.topReview = topReview;
     }
 
+    public String getFlocation() {
+        return flocation;
+    }
+
+    public void setFlocation(String flocation) {
+        this.flocation = flocation;
+    }
+
+    public Boolean getUpdate() {
+        return isUpdate;
+    }
+
+    public void setUpdate(Boolean update) {
+        isUpdate = update;
+    }
+
+    public String getLatlng() {
+        return latlng;
+    }
+
+    public void setLatlng(String latlng) {
+        this.latlng = latlng;
+    }
 
     @Override
     public String toString() {
-        return "Request [writer=" + writer + ", title=" + title + ", kategorie=" + kategorie + ", location=" + location
-                + ", period=" + period + ", price=" + price + ", content=" + content + ", regdate=" + regdate
-                + ", hit=" + hit + "]";
+        return "Market{" +
+                "id=" + id +
+                ", writer='" + writer + '\'' +
+                ", title='" + title + '\'' +
+                ", kategorie='" + kategorie + '\'' +
+                ", location='" + location + '\'' +
+                ", flocation='" + flocation + '\'' +
+                ", period=" + period +
+                ", price=" + price +
+                ", content='" + content + '\'' +
+                ", regdate='" + regdate + '\'' +
+                ", hit=" + hit +
+                ", filename='" + filename + '\'' +
+                ", how='" + how + '\'' +
+                ", isUpdate=" + isUpdate +
+                ", writer_id='" + writer_id + '\'' +
+                ", state=" + state +
+                ", count=" + count +
+                ", starAvg=" + starAvg +
+                ", topReview='" + topReview + '\'' +
+                ", latlng='" + latlng + '\'' +
+                '}';
     }
-
-
-
-
 }

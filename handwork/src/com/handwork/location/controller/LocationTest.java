@@ -23,11 +23,12 @@ public class LocationTest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        getGeoCode();
+        getGeoCode("경기 안양시 동안구 임곡로 16");
     }
 
-    private void getGeoCode() {
+    private String getGeoCode(String flocation) {
         StringBuffer result = new StringBuffer();
+        JSONObject obj = null;
         try {
             String address= URLEncoder.encode("경기 안양시 동안구 임곡로 16", "UTF-8");
             String apiKey= URLEncoder.encode("AIzaSyAY--fPA18-UuvufmlYYCPygAJYmQNXZVo", "UTF-8");
@@ -42,7 +43,6 @@ public class LocationTest extends HttpServlet {
 
                 String nextLine = br.readLine();
                 while ((nextLine = br.readLine()) != null) {
-                    System.out.println(nextLine);
                     result.append(nextLine);
                 }
             }
@@ -53,14 +53,14 @@ public class LocationTest extends HttpServlet {
             resultStr = resultStr.substring(resultStr.indexOf("{"),resultStr.indexOf("}")+1);
 
             JSONParser jsonParse = new JSONParser();
-            JSONObject obj =  (JSONObject)jsonParse.parse(resultStr);
-            System.out.println("JsonObject 결과 값 :: " + obj);
-            System.out.println("lat :: " + obj.get("lat"));
-            System.out.println("lng :: " + obj.get("lng"));
+            obj =  (JSONObject)jsonParse.parse(resultStr);
+
         } catch (IOException e) {
             System.out.println("RestCall Fail : " + e.getMessage());
         } catch (ParseException e) {
             System.out.println("Json error");
         }
+
+        return String.valueOf(obj);
     }
 }

@@ -17,8 +17,8 @@
 .board-main input::placeholder {font-size: 90%;}
 .board-main .board-write-header { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 15px 10px; }
 .board-main .board-write-header .state-select-col select.state-select { width: 30%;}
-.board-main .board-write-header .category-select-col { width: 70%;}
-.board-main .board-write-header .location-select-col {width: 30%;}
+.board-main .board-write-header .category-select-col { width: 30%;}
+.board-main .board-write-header .location-select-col {width: 70%;}
 .board-main .board-write-header select.category-select { width: 100%; border-right: none;}
 .board-main .board-write-header select.location-select { width: 100%;}
 .board-main .board-write-header .board-write-price { border-right: none;}

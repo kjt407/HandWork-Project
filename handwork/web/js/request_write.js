@@ -1,3 +1,13 @@
+$(window).load(function (){
+    $("#location, #flocation").on('keydown paste focus mousedown', function(e){
+        if(e.keyCode != 9) // ignore tab
+            e.preventDefault();
+    });
+    $("#location, #flocation").on('click', function(e){
+        searchAddr();
+    });
+})
+
 // 마감일자 현재날짜 이전 선택 못하도록 하는 쿼리
 var localeDate = new Date().toLocaleDateString("ko-KR",{year:"numeric", month:"2-digit", day:"2-digit"});
 var replaceDate = localeDate.replaceAll(".","").replaceAll(" ","-");
@@ -100,3 +110,13 @@ function inputNumberFormat(obj) {
      str = String(str);
      return str.replace(/[^\d]+/g, '');
  }
+ 
+// 주소 입력 input 클릭시 동작
+function searchAddr(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            $('#flocation').val(data.address);
+            $('#location').val(data.sido+' '+data.sigungu.split(" ")[0]);
+        }
+    }).open();
+}
