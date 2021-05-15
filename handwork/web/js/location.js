@@ -10,9 +10,10 @@ var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_i
 
 
 function initMap(initLatlng){
+    var latlnginit = JSON.parse(initLatlng.latlng);
 
     let mapOptions = {
-        center: new naver.maps.LatLng(initLatlng.x, initLatlng.y),
+        center: new naver.maps.LatLng(latlnginit.lat, latlnginit.lng),
         zoom: 15
     };
 
@@ -22,13 +23,10 @@ function initMap(initLatlng){
         infoWindows = [];
 
     for(let key in initData) {
-        var latlngvar = initData[key].latlng;
-        console.log(latlngvar);
-        console.log(latlngvar["x"]);
-        console.log(latlngvar["y"]);
+        var latlngMarker = JSON.parse(initData[key].latlng);
         markers.push(
             new naver.maps.Marker({
-                position: new naver.maps.LatLng(initData[key].latlng.lat, initData[key].latlng.lng),
+                position: new naver.maps.LatLng(latlngMarker["lat"], latlngMarker["lng"]),
                 map: map
             }));
         infoWindows.push();
