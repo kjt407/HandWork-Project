@@ -35,15 +35,16 @@ public class LocationService {
 						String board_num = rs.getString("id");
 						String latlng = rs.getString("latlng");
 						if(latlng != null && !latlng.trim().equals("")) {
-							JSONParser jsonParse = new JSONParser();
-							JSONObject jsonObj = (JSONObject) jsonParse.parse(latlng);
-							String x = (String) jsonObj.get("x");
-							String y = (String) jsonObj.get("y");
+//							JSONParser jsonParse = new JSONParser();
+//							JSONObject jsonObj = (JSONObject) jsonParse.parse(latlng);
+//							String x = (String) jsonObj.get("x");
+//							String y = (String) jsonObj.get("y");
 
 							JSONObject json = new JSONObject();
 							json.put("board_num", board_num);
-							json.put("x", x);
-							json.put("y", y);
+							json.put("latlng", latlng);
+//							json.put("x", x);
+//							json.put("y", y);
 
 							jsonarray.add(json);
 						}

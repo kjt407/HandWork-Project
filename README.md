@@ -15,4 +15,11 @@
     * IDE 변경
     * 프로젝트 리빌드 ( ECLIPSE -> INTELIJ )
     * github 재연동
-    * 팀원별 git branch 생성 (kjt407, )
+    * 팀원별 git branch 생성 (kjt407, wnsgudchl)
+* ### 2021.05.14
+    * 수제공방 게시판 제작 (리스트, 디테일, 글작성)
+    * 판매자 정보 메일발송 처리 구현
+    * index 페이지 Slick slider 적용
+    * index 페이지 데이터베이스 연동
+    * 주변공방(NaverMap API) 기능구현
+    * 버그수정

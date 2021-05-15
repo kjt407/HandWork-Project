@@ -34,10 +34,6 @@ public class LocationController extends HttpServlet {
         }
 
     }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     private JSONArray initMarker(HttpServletRequest request, HttpServletResponse response) {
         LocationService service = new LocationService();

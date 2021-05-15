@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+
+.main-section { display: flex; justify-content: center; align-items: flex-start; width: 100%; min-height: 900px; padding: 80px; background:whitesmoke}
+.main-section .inner-container { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 400px;}
+.main-section .inner-container > p.horizontal-title { display: block; width: 100%; font-size: 26px; font-weight: bold; color: rgba(0, 0, 0, 0.85); text-align: center;}
+.main-section .inner-container > p.horizontal-title::after { display: block; content: ""; height: 1px; width: 100%; background: black; margin: 20px 0;}
+.main-section .inner-container form { display: flex; width: 100%; flex-direction: column; justify-content: flex-start; align-items: center;  }
+.main-section .inner-container form input { display:block; width: 100%; height: 50px; margin: 10px 0; font-size: 18px; font-weight: 400;}
+.main-section .inner-container form input[class^=text] {border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 1px;}
+.main-section .inner-container form input::placeholder { font-size: 90%; }
+.main-section .inner-container form input.btn-submit { font-size: 20px; font-weight: 400; color: white; background: tomato;  transition: 0.25s; }
+.login-section .login-container form input.btn-login:hover { background: darkred; }
+.login-section .login-container form > a {width: 100%; text-align: end; font-weight: lighter; font-size: 14px; color: rgba(0, 0, 0, 0.65);}
+.login-section .login-container form > a:hover { font-weight: 500; color: black;}
+.login-section .login-container p.horizontal-or {display: flex; width: 100%; justify-content: space-between; align-items: center; color: black; font-size: 16px; line-height: 16px; margin: 25px 0;}
+.login-section .login-container p.horizontal-or::before, p.horizontal-or::after { content: ""; width: 43%; height: 1px; background: black; line-height: 16px;}
+.login-section .login-container a.btn-login-kakao { display: block; width: 100%; height: 50px; background: url(../images/kakao_login.png) center no-repeat; background-size: cover; }
+
+
+.join-section { height: auto; }
+.join-section .inner-container > p.horizontal-title::after {margin: 20px 0 0 0;}
+.join-section .join-container form { display: flex; width: 400px; flex-direction: column; align-items: center; justify-content: center;}
+.join-section .join-container form .radio-group {display: flex; width: 100%; justify-content: center;}
+.join-section .join-container form .radio-group input { width: 0; height: 0; }
+.join-section .join-container form .radio-group input+label { display: inline-flex; width: 200px; height: 65px;  background: grey; font-size: 16px; font-weight: 500; color: #fff; justify-content: center; align-items: center;}
+.join-section .join-container form .radio-group input:checked+label {background: tomato;}
+.join-section .join-container form p.form-subs { font-size: 16px; padding: 20px 0 15px 0; }
+.join-section .join-container form p.form-subs-join { font-size: 16px; margin: 40px 0 0 0; }
+.join-section .join-container form div.join-input-row { display: flex; flex-direction: column; width: 400px; padding: 10px 0; }
+.join-section .join-container form div.join-input-row label { display: flex; justify-content: space-between; height: 100%; width:100%; font-size: 14px; align-items: center; padding: 0 0 8px 2px;}
+.join-section .join-container form div.join-input-row input[class^=join-] { width: 100%; height: 50px; }
+.join-section .join-container form input[class^=text-] { margin: 0; }
+.join-section .join-container form div.email-group { display: flex; align-items: center; }
+.join-section .join-container form div.email-group span { font-size: 18px; padding: 0 5px;}
+.join-section .join-container form .email-select {  display:block; width: 100%; height: 50px; font-size: 18px; font-weight: 400; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 1px; padding: 0 0 0 15px; }
+.join-section .join-container form .btn-join { margin: 20px 0; }
+.join-section .join-container form .btn-join.disable { background: silver; }
+.join-section .join-container form .btn-join:not(.disable):hover { background: darkred; }
+
+
