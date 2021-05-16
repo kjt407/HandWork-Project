@@ -54,7 +54,6 @@
 					<ul class="login">
 						<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
 						<li><a href="${pageContext.request.contextPath}/join">회원가입</a></li>
-						<li><a href="">마이페이지</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>

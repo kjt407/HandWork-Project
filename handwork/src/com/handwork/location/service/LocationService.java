@@ -65,7 +65,6 @@ public class LocationService {
 						int hit = rs.getInt("hit");
 						String filename = rs.getString("filename");
 						String how = rs.getString("how");
-						String writer_id = rs.getString("writer_id");
 						int state = rs.getInt("state");
 						int starAvg = getStarAvg(board_num);
 
@@ -82,7 +81,6 @@ public class LocationService {
 						json.put("hit", hit);
 						json.put("filename", filename);
 						json.put("how", how);
-						json.put("writer_id", writer_id);
 						json.put("state", state);
 						json.put("starAvg", starAvg);
 
