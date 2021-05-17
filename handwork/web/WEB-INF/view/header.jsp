@@ -44,7 +44,7 @@
 					</ul>
 			</div>
 			<form class="search" action="search" method="">
-				<input class="text" name="p" type="text" placeholder="검색어를 입력 해주세요">
+				<input class="text" name="q" type="text" placeholder="검색어를 입력 해주세요">
 				<input class="btn" type="submit" value="검색">
 			</form>
 
