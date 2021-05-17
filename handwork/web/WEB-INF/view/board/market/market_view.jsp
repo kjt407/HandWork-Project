@@ -52,7 +52,17 @@
             <h3 class="hide">게시글 상세페이지</h3>
             <div class="market board-header">
                 <div class="img-container">
-                    <img src="" alt="" id="img-main">
+                    <c:choose>
+                        <c:when test="${empty r.filename }">
+                            <img src="${pageContext.request.contextPath}/images/noImage.png" alt="" id="img-main" class="img-main no-img">
+                        </c:when>
+                        <c:when test="${r.filename eq '/'}">
+                            <img src="${pageContext.request.contextPath}/images/noImage.png" alt="" id="img-main" class="img-main no-img">
+                        </c:when>
+                        <c:otherwise>
+                                <img src="" alt="" id="img-main">
+                        </c:otherwise>
+                    </c:choose>
                     <input type="button" value="" class="btn-img prev" onclick="btnImg('prev')">
                     <input type="button" value="" class="btn-img next" onclick="btnImg('next')">
                     <ul class="img-ul">
@@ -62,21 +72,6 @@
                                 <img src="${pageContext.request.contextPath }/upload/marketBoard/${itemFN}" alt="" class="img-item" onmouseover="sliderHover(this)">
                             </li>
                         </c:forTokens>
-                        <%--                        <li class="img-li">--%>
-                        <%--                            <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
-                        <%--                        </li>--%>
-                        <%--                        <li class="img-li">--%>
-                        <%--                            <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
-                        <%--                        </li>--%>
-                        <%--                        <li class="img-li">--%>
-                        <%--                            <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
-                        <%--                        </li>--%>
-                        <%--                        <li class="img-li">--%>
-                        <%--                            <img src="${pageContext.request.contextPath}/images/item.png" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
-                        <%--                        </li>--%>
-                        <%--                        <li class="img-li">--%>
-                        <%--                            <img src="${pageContext.request.contextPath}/images/carousel_bg3.jpg" alt="" class="img-item" onmouseover="sliderHover(this)">--%>
-                        <%--                        </li>--%>
                     </ul>
                 </div>
                 <div class="main-panel">

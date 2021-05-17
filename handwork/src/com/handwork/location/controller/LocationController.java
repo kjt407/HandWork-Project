@@ -37,15 +37,19 @@ public class LocationController extends HttpServlet {
 
     private JSONArray initMarker(HttpServletRequest request, HttpServletResponse response) {
         LocationService service = new LocationService();
+        JSONArray result = service.getData("init","SELECT id,latlng FROM handwork.market");
 
-        return service.getData("init","SELECT id,latlng FROM handwork.market");
+        service.disconnect();
+        return result;
     }
 
     private JSONArray clickMarker(HttpServletRequest request, HttpServletResponse response) {
         LocationService service = new LocationService();
         String boardNum = request.getParameter("board-num");
-        System.out.println("SELECT * FROM handwork.market WHERE id = "+boardNum);
-        return service.getData("click","SELECT * FROM handwork.market WHERE id = "+boardNum);
+        JSONArray result = service.getData("click","SELECT * FROM handwork.market WHERE id = "+boardNum);
+
+        service.disconnect();
+        return result;
     }
 
 }

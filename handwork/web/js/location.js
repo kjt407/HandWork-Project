@@ -1,7 +1,7 @@
 $(window).load(function(){
     const json = {type:'init'};
     ajaxInit(json);
-    $('#map').height(window.innerHeight-80);
+    $('.main-map-container').height(window.innerHeight-80);
 });
 
 let initData = [];
@@ -49,7 +49,6 @@ function initMap(initLatlng){
                 const content =  data[0].content;
                 const regdate =  data[0].regdate;
                 const filename =  data[0].filename;
-                const writer_id =  data[0].writer_id;
                 const how =  data[0].how;
                 const hits =  data[0].hit;
                 const state =  data[0].state;
@@ -57,23 +56,30 @@ function initMap(initLatlng){
 
                 infoWindows[seq] = new naver.maps.InfoWindow({
                     content:
-                        '<div style="width:250px;text-align:center;padding:10px;">'+
-                        '<img src="'+getContextPath()+'/upload/marketBoard/'+data[0].filename.split('/')[0]+'" alt="" style="width: 50px; height: 50px;">'+
-                        '<p>'+title+'</p>'+
-                        '<p>'+content+'</p>'+
-                        '<p>'+price+'</p>'+
-                        '<p>'+writer_id+'</p>'+
-                        '</div>'
+                        '<div class="info-window">'+
+                        '<img src="'+getContextPath()+imgInit(filename)+'" alt="" class="info-img '+isNull(filename)+'">'+
+                        '<div class="wrap-left">'+
+                        '   <p class="info-title">'+title+'</p>'+
+                        '   <div><p class="info-price">'+price+'원</p>'+
+                        '   <div class="star-wrap">'+starAvg+'</div></div>\n' +
+                        '</div>',
+                    backgroundColor: "#fff",
+                    borderColor: "#FF6347FF",
+                    borderWidth: 3,
+                    anchorSize: new naver.maps.Size(30, 10),
+                    anchorSkew: true,
+                    anchorColor: "#fff",
+                    pixelOffset: new naver.maps.Point(0, -20)
                 });
                 $('.detail-section').empty();
                 $('.detail-section').append(
                     '<div class="wrap">\n' +
                     '                    <div class="img-container">\n' +
-                    '                        <img src="" alt="" id="img-main">\n' +
+                    '                        <img src="" alt="" id="img-main" class="img-main '+isNull(filename)+'">\n' +
                     '                        <input type="button" value="" class="btn-img prev" onclick="btnImg(\'prev\')">\n' +
                     '                        <input type="button" value="" class="btn-img next" onclick="btnImg(\'next\')">\n' +
                     '                        <ul class="img-ul">\n'  +
-                    imgListInit(filename.split('/'))+
+                    imgListInit(filename)+
                     '                        </ul>\n' +
                     '                    </div>\n' +
                     '                    <div class="main-panel">\n' +
@@ -84,7 +90,7 @@ function initMap(initLatlng){
                     '                        <p href="" class="item-title">'+title+'</p>\n' +
                     '                        <p href="" class="item-price state '+
                     stateInit(state)
-                                            +'">'+price+'</p>\n' +
+                                            +'">'+price+'원</p>\n' +
                     '                        <div class="star-wrap">'+starAvg+'</div>\n' +
                     '                        <p class="item-deadline subs">'+period+'</p>\n' +
                     '                        <p href="" class="item-location subs">'+location+'</p>\n' +
@@ -179,15 +185,41 @@ function ajaxClick(str,seq,map) {
     return returnData;
 }
 
+function isNull(filename){
+    if(filename == null || filename.replaceAll("/",'') == "" || !filename.includes("/")){
+        return true;
+    }else {
+        return false;
+    }
+}
+
+function imgInit(filename){
+    let imgName = "";
+    if(isNull(filename)){
+        imgName = '/images/noImage.png';
+    }else {
+        imgName = '/upload/marketBoard/'+filename.split("/")[0];
+    }
+
+    return imgName;
+}
+
 function imgListInit(filenames){
     console.log(filenames);
     let result = "";
-    for(let i=0; i<filenames.length-1; i++){
+    if(isNull(filenames)){
         result += '<li class="img-li">\n' +
-'                       <img src="'+getContextPath()+'/upload/marketBoard/'+filenames[i]+'" alt="" class="img-item">\n' +
-'                  </li>';
+    '                       <img src="'+getContextPath()+'/images/noImage.png'+'" alt="" class="img-item">\n' +
+    '                  </li>';
+        return result;
     }
-    return result
+
+    for(let i=0; i<filenames.split('/').length-1; i++){
+            result += '<li class="img-li">\n' +
+    '                       <img src="'+getContextPath()+'/upload/marketBoard/'+filenames.split('/')[i]+'" alt="" class="img-item">\n' +
+    '                  </li>';
+    }
+    return result;
 }
 
 function stateInit(state){

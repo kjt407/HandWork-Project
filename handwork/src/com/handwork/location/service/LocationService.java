@@ -6,26 +6,32 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.Console;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LocationService {
+	Connection conn;
+
+	public LocationService() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+			String dbID = "handwork";
+			String dbPassword = "handwork";
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
 
 	public JSONArray getData(String option, String sql) {
 
 		JSONArray jsonarray = new JSONArray();
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 
@@ -65,7 +71,6 @@ public class LocationService {
 						int hit = rs.getInt("hit");
 						String filename = rs.getString("filename");
 						String how = rs.getString("how");
-						String writer_id = rs.getString("writer_id");
 						int state = rs.getInt("state");
 						int starAvg = getStarAvg(board_num);
 
@@ -82,7 +87,6 @@ public class LocationService {
 						json.put("hit", hit);
 						json.put("filename", filename);
 						json.put("how", how);
-						json.put("writer_id", writer_id);
 						json.put("state", state);
 						json.put("starAvg", starAvg);
 
@@ -94,7 +98,6 @@ public class LocationService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -102,15 +105,9 @@ public class LocationService {
 	}
 
 	public int getStarAvg(int boardNum){
-		System.out.println("getStarAvg 메서드 실행");
 		int starAvg =0;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 			String sql = "select round(avg(star))starAvg from review where board_num = ?";
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setInt(1, boardNum);
@@ -125,6 +122,12 @@ public class LocationService {
 		return starAvg;
 	}
 
-
+	public void disconnect(){
+		try {
+			conn.close();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
 
 }

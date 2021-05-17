@@ -5,6 +5,7 @@
 .board-section .board-content-list.market > .board-items { display: flex; flex-direction: column; background: whitesmoke; border: #b5b5b5 1px solid; border-radius: 2px;}
 .board-section .board-content-list.market > .board-items .img-wrap { display: flex; justify-content: center; align-items: center; overflow: hidden; width: 100%; height:302px; }
 .board-section .board-content-list.market > .board-items .img-wrap > img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s all;}
+.board-section .board-content-list.market > .board-items .img-wrap > img.no-img { background: whitesmoke; padding: 20%; object-fit: contain;}
 .board-section .board-content-list.market > .board-items .img-wrap:hover > img { transform: scale(1.1); }
 .board-section .board-content-list.market > .board-items div.item-container { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 10px;}
 .board-section .board-content-list.market > .board-items div.item-container * { font-size: 17px; color: black; }
