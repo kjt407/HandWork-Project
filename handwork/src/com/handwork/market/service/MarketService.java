@@ -3,14 +3,26 @@ package com.handwork.market.service;
 
 import com.handwork.market.entity.Market;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MarketService {
+	Connection conn;
+
+	public MarketService(){
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+			String dbID = "handwork";
+			String dbPassword = "handwork";
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
 
 	public List<Market> getMarketList() {
 		return getMarketList("title", "", 1);
@@ -32,13 +44,6 @@ public class MarketService {
 				"list WHERE num between ? and ?";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%"+query+"%");
 			stmt.setInt(2, 1+(page-1)*6);
@@ -46,14 +51,7 @@ public class MarketService {
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()){
-//             int id = rs.getInt("id");
-//               String title = rs.getString("title");
-//               Date regdate = rs.getDate("regdate");
-//               String writer_id = rs.getString("writer_id");
-//               int hit = rs.getInt("hit");
-//               String files = rs.getString("files");
-//               String content = rs.getString("content");
-//
+
 				int id = rs.getInt("id");
 				String writer = rs.getString("writer");
 				String title = rs.getString("title");
@@ -77,7 +75,6 @@ public class MarketService {
 			}
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -98,12 +95,6 @@ public class MarketService {
 				")A ";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%"+query+"%");
 
@@ -114,7 +105,6 @@ public class MarketService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -127,12 +117,6 @@ public class MarketService {
 
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 
@@ -163,7 +147,6 @@ public class MarketService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -182,12 +165,6 @@ public class MarketService {
 				"       )";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 
@@ -214,13 +191,10 @@ public class MarketService {
 				if(incHit) {
 					stmt.execute("update market set hit=hit+1 where id=" + id);
 				}
-
-
 			}
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -236,12 +210,6 @@ public class MarketService {
 				" limit 1";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 
@@ -268,13 +236,10 @@ public class MarketService {
 				if(incHit) {
 					stmt.execute("update market set hit=hit+1 where id=" + id);
 				}
-
-
 			}
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -288,12 +253,7 @@ public class MarketService {
 		System.out.println("getCount 메서드 실행");
 		int count =0;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 			String sql = "SELECT count(board_num) count from review where board_num=?";
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setInt(1, boardNum);
@@ -312,12 +272,7 @@ public class MarketService {
 		System.out.println("getStarAvg 메서드 실행");
 		int starAvg =0;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 			String sql = "select round(avg(star))starAvg from review where board_num = ?";
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setInt(1, boardNum);
@@ -335,14 +290,7 @@ public class MarketService {
 	public String topReview(int boardnum){
 		String content ="";
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
 			String sql = "SELECT content FROM review where board_num=? order by idx desc limit 1";
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setInt(1, boardnum);
@@ -355,12 +303,18 @@ public class MarketService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return content;
 	}
 
+	public void disconnect() {
+		try {
+			conn.close();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
 
 }

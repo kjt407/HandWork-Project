@@ -32,22 +32,17 @@ public class MarketListController extends HttpServlet {
 		if(page_ != null && !page_.equals(""))
 			page = Integer.parseInt(page_);
 		
-		MarketService service = new MarketService();
+		MarketService service = new MarketService(); // 호출하면서 jdbc 커넥션 전역변수로 할당
 
 		List<Market> list = service.getMarketList(field, query, page);
 
-
-
 		int count = service.getMarketCount(field, query);
 
+		service.disconnect(); // 서비스 모두 사용한 후 jdbc 커넥션 종료
 
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
 
-
-		
-		
-		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/view/board/market/market.jsp").forward(request, response);
 		
 	}

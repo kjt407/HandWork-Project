@@ -71,7 +71,7 @@
 .board-section .board-main ul.board-content-list .board-items > div.board-list-aside .board-list-views::before{ content:"조회수 "; }
 .board-section .board-main .foot-menu { position: relative; display: flex; justify-content: center; width: 100%; margin:15px 0 70px 0;}
 .board-section .board-main .board-pager {display: flex; justify-content: center; }
-.board-section .board-main .board-pager li { padding: 0 10px; font-weight: lighter;}
+.board-section .board-main .board-pager li > * { padding: 0 10px; font-weight: lighter;}
 .board-section .board-main .board-pager li:hover {text-decoration: underline;}
 .board-section .board-main .board-pager li .on { font-weight: bold; color: tomato;}
 .board-section .board-main .foot-menu a.btn-write { position: absolute; right: 0; top:-5px; display: flex; justify-content: center; align-items: center; background: tomato; color: white; font-size: 15px; padding: 5px; border-radius: 5px; transition:0.3s}
