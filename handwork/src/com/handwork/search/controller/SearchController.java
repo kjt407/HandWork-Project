@@ -21,22 +21,35 @@ public class SearchController extends HttpServlet {
 		String query_ = request.getParameter("q");
 		String category_ = request.getParameter("c");
 
+		final int isQ = 0;
+		final int isC = 1;
+		int option = 99;
+
 		String query = "";
-		if(query_ != null && !query_.equals(""))
+		if(query_ != null && !query_.equals("")){
 			query = query_;
+			option = isQ;
+		}
 
 		String category = "";
-		if(category_ != null && !category_.equals(""))
+		if(category_ != null && !category_.equals("")){
 			category = category_;
+			option = isC;
+		}
 
 		SearchService service = new SearchService();
 
 		List<Request> requestList;
 		List<Market> marketList;
 
-
 		//조건 사용하여 카테고리 검색인지 전체검색인지 구분하기
-
+		if(option == isQ){
+//			전체검색일때
+			System.out.println("전체검색");
+		} else if(option == isC){
+//			카테고리 검색일때
+			System.out.println("카테고리검색");
+		}
 		requestList = service.getRequestSearchList(query);
 		requestList = service.getRequestCategorySearchList(category);
 		marketList = service.getMarketSearchList(query);
