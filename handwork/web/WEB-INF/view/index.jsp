@@ -31,13 +31,13 @@
 
 	<section class="slide">
 		<div class="slide-items">
-			<div class="slide-label">핸드워커</div>
+			<div class="slide-label">" 정성 가득한 수제품들을 <br/>지금 핸드워크에서 만나보세요 "</div>
 		</div>
 		<div class="slide-items">
-			<div class="slide-label">핸드워커</div>
+			<div class="slide-label">" 나에게 딱맞는 제품을 찾나요?<br/>제작의뢰 게시판을 이용 해보세요 "</div>
 		</div>
 		<div class="slide-items">
-			<div class="slide-label">핸드워커</div>
+			<div class="slide-label">" 주변 공방 게시판에서 집 근처 <br/>숨겨진 공방을 찾아보세요 "</div>
 		</div>
 	</section>
 

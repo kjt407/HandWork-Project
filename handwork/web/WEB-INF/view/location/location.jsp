@@ -31,7 +31,8 @@
             <div id="map"></div>
             <div class="detail-section">
                 <div class="init-container">
-                    <p style="color: black">원하는 지역의 마커를 눌러주세요<br>이곳에 정보가 표시됩니다</p>
+                    <img src="${pageContext.request.contextPath}/images/location_detail.png" alt="">
+                    <p>마커를 클릭 해주세요<br>이곳에 정보가 표시됩니다</p>
                 </div>
             </div>
         </div>

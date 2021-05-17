@@ -3,12 +3,14 @@
 .info-window > img.info-img { width: 120px; height: 120px; object-fit: cover;}
 .info-window > img.info-img.true { border: 1px solid #b5b5b5; padding: 30px; }
 .info-window > .wrap-left { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; margin-left: 5px; }
-.info-window > .wrap-left p.info-title { color: black; font-weight: 600; font-size: 20px; line-height: 22px; }
+.info-window > .wrap-left p.info-title { overflow: hidden; text-overflow: ellipsis; display: -webkit-box; line-height: 22px; max-height: 44px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; color: black; font-weight: 600; font-size: 20px; }
 .info-window > .wrap-left p.info-price { display: flex; align-items: center; font-size: 25px;  color: tomato; font-family: 'Do Hyeon', sans-serif; line-height: 27px; margin-bottom: 5px;}
 .board-section {display: flex; justify-content: flex-start; align-items: flex-start; min-height:auto;}
 .board-section #map { height: 100%; width:100%; position: relative; }
 .board-section div.detail-section { display:flex; flex-direction: column; align-items: center; justify-content: space-between; width: 400px; flex-shrink: 0; background: white;}
-.board-section div.detail-section div.init-container { display: flex; justify-content: center; width:100%; height:100%; align-items: center; background: whitesmoke; }
+.board-section div.detail-section div.init-container { display: flex; flex-direction: column; align-items: center; justify-content: center; width:100%; height:100%; align-items: center; background: lightsalmon; }
+.board-section div.detail-section div.init-container > img { object-fit: contain; width: 180px;margin-bottom: 30px;}
+.board-section div.detail-section div.init-container > p {text-align: center; line-height: 30px; font-size: 20px; color: white;}
 .board-section div.detail-section > .wrap { display:flex; flex-direction: column; align-items: center; justify-content: space-between; width: 100%;}
 .board-section div.detail-section .img-container { position:relative; display: flex; flex-direction: column; align-items: center; width: 100%;}
 .board-section div.detail-section .img-container #img-main {  width:100%; height: 400px; object-fit: cover; background: lightgrey;}

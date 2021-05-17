@@ -21,7 +21,7 @@
             <li <c:if test="${fn:contains(context, '/board/review')}"> class="crt-page" </c:if> > <a href="">리뷰게시판</a></li>
             <li <c:if test="${fn:contains(context, '/board/qna')}"> class="crt-page" </c:if> > <a href="">문의게시판</a></li>
     </ul>
-    <div class="filter">
-        <p>FILTER</p>
-    </div>
+<%--    <div class="filter">--%>
+<%--        <p>FILTER</p>--%>
+<%--    </div>--%>
 </div>

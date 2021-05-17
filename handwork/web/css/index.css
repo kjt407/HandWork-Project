@@ -23,7 +23,7 @@ header .login a:last-child {padding-right: 0px;}
 .slide div.slide-items:nth-child(1) {background: url(../images/carousel_bg1.jpg) center no-repeat; background-size: cover;}
 .slide div.slide-items:nth-child(2) {background: url(../images/carousel_bg2.jpg) center no-repeat; background-size: cover;}
 .slide div.slide-items:nth-child(3) {background: url(../images/carousel_bg3.jpg) center no-repeat; background-size: cover;}
-.slide .slide-label {background: rgba(0, 0, 0, 0.3) ; color: white; text-align: center; line-height: 600px; font-size: 25px;}
+.slide .slide-label { display: flex; justify-content: center; align-items: center; background: rgba(0, 0, 0, 0.4) ; color: white; text-align: center; height: 600px; font-size: 25px; line-height: 35px;}
 .slide .slick-dots {position: absolute; bottom: 0px;}
 .slide .slick-next {right: 0; z-index: -100;}
 
