@@ -58,10 +58,10 @@ function initMap(initLatlng){
                     content:
                         '<div class="info-window">'+
                         '<img src="'+getContextPath()+imgInit(filename)+'" alt="" class="info-img '+isNull(filename)+'">'+
-                        '<div>'+
-                        '<p>'+title+'</p>'+
-                        '<p>'+content+'</p>'+
-                        '<p>'+price+'원</p>'+
+                        '<div class="wrap-left">'+
+                        '   <p class="info-title">'+title+'</p>'+
+                        '   <div><p class="info-price">'+price+'원</p>'+
+                        '   <div class="star-wrap">'+starAvg+'</div></div>\n' +
                         '</div>',
                     backgroundColor: "#fff",
                     borderColor: "#FF6347FF",

@@ -4,6 +4,7 @@
 .board-section .board-container .board-main > div.market.board-header { display: flex; align-items: flex-start; justify-content: center; width: 100%; margin: 10px 0 100px;}
 .board-section .board-container .board-main > div.market.board-header > .img-container { position:relative; display: flex; flex-direction: column; align-items: center; width: 500px; flex-shrink: 0;}
 .board-section .board-container .board-main > div.market.board-header > .img-container #img-main {  width:100%; height: 450px; object-fit: cover; margin-bottom: 10px; background: lightgrey;}
+.board-section .board-container .board-main > div.market.board-header > .img-container .img-main.no-img { object-fit: contain !important; padding: 20% !important;}
 .board-section .board-container .board-main > div.market.board-header > .img-container .btn-img { position:absolute; width: 30px; height: 30px; opacity: 0.8;}
 .board-section .board-container .board-main > div.market.board-header > .img-container .btn-img.prev { top: 225px; left: 10px; background: url("../images/prevw.png") no-repeat; background-size: cover;}
 .board-section .board-container .board-main > div.market.board-header > .img-container .btn-img.next { top: 225px; right: 10px; background: url("../images/nextw.png") no-repeat; background-size: cover;}
