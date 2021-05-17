@@ -24,17 +24,21 @@ public class RequestListController extends HttpServlet {
 		String field_ = request.getParameter("f");
 		String query_ = request.getParameter("q");
 		String page_ = request.getParameter("p");
-		
+		String category_ = request.getParameter("c");
+
 		String field = "title";
 		if(field_!=null && !field_.equals(""))
 			field = field_;
+
 		String query = "";
 		if(query_ != null && !query_.equals(""))
 			query = query_;
+
 		int page = 1;
 		if(page_ != null && !page_.equals(""))
 			page = Integer.parseInt(page_);
-		
+
+
 		RequestService service = new RequestService();
 
 		List<Request> list = service.getRequestList(field, query, page);
@@ -45,9 +49,9 @@ public class RequestListController extends HttpServlet {
 
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
-		
-		
-		
+
+
+
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/view/board/request/request.jsp").forward(request, response);
 		

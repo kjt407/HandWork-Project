@@ -57,7 +57,7 @@ public class MarketDetailController extends HttpServlet {
 		Market prevNotice_ = service.getPrevNotice(id, true);
 		request.setAttribute("pr", prevNotice_);
 
-
+		service.disconnect();
 
 		request.getRequestDispatcher("/WEB-INF/view/board/market/market_view.jsp").forward(request, response);
 		

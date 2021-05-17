@@ -14,7 +14,7 @@
 						<li>카테고리
 							<div class="header-sub">
 								<ul class="inner-ul">
-									<li><a href="">패션/뷰티</a></li>
+									<li><a href="${pageContext.request.contextPath}/search?q=&c=패션/뷰티">패션/뷰티</a></li>
 									<li><a href="">가구/인테리어</a></li>
 									<li><a href="">식품</a></li>
 									<li><a href="">문구/잡화</a></li>
@@ -43,8 +43,8 @@
 						</li>
 					</ul>
 			</div>
-			<form class="search" action="" method="">
-				<input class="text" type="text" placeholder="검색어를 입력 해주세요">
+			<form class="search" action="search" method="">
+				<input class="text" name="c" type="text" placeholder="검색어를 입력 해주세요">
 				<input class="btn" type="submit" value="검색">
 			</form>
 
