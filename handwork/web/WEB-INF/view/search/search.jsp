@@ -28,33 +28,12 @@
 </header>
 
 
-<section class="board-title-section">
-    <div>제작의뢰 게시판</div>
-</section>
-
 <section class="request board-section">
     <h2 class="hide">제작의뢰 게시판</h2>
-    <div class="board-bg">
-        <div class="left"></div>
-        <div class="right"></div>
-    </div>
     <div class="board-container">
         <%--게시판 목록 include--%>
-        <jsp:include page="/WEB-INF/view/board_aslide.jsp"/>
         <div class="board-main request-main">
             <h3 class="hide">게시판 메인</h3>
-            <form action="" class="board-search">
-                <select name="f">
-                    <option ${(param.f == "title")?"selected":""} value="title">제목</option>
-                    <option ${(param.f == "writer")?"selected":""} value="writer">작성자</option>
-                </select>
-                <input type="text" class="search-text" name="q" value="${param.q}">
-                <input type="submit" class="search-submit" value="검색">
-            </form>
-
-
-
-
             <ul class="board-content-list">
                 <c:forEach var="r" items="${list}">
                     <li>
@@ -115,52 +94,6 @@
                     </li>
                 </c:forEach>
             </ul>
-
-            <c:set var="page" value="${(empty param.p) ? 1:param.p}" />
-            <c:set var="startNum" value="${page-(page-1)%5}" />
-            <c:set var="lastNum"
-                   value="${fn:substringBefore(Math.ceil(count/5),'.')}" />
-
-
-            <div class="foot-menu">
-
-                <ul class="board-pager">
-                    <c:if test="${startNum-1>0}">
-                        <a href="?p=${startNum-1}&t=&q=" class="btn btn-prev">이전</a>
-                    </c:if>
-                    <c:if test="${startNum-1<=1}">
-                        <span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
-                    </c:if>
-
-                    <c:forEach var="i" begin="0" end="4">
-                        <c:if test="${(startNum+i)<=lastNum }">
-                            <li><a
-                                    class="-text- ${(page==(startNum+i))?'on':''} bold"
-                                    href="?p=${startNum+i}&f=${param.f}&q=${param.q}">${startNum+i}</a></li>
-                        </c:if>
-                    </c:forEach>
-                    <c:if test="${startNum+4<lastNum}">
-                        <a href="?p=${startNum+5}&t=&q=" class="btn btn-next">다음</a>
-                    </c:if>
-                    <c:if test="${startNum+4>=lastNum}">
-                        <span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
-                    </c:if>
-
-                </ul>
-
-                <c:choose>
-                    <c:when test="${empty id}">
-
-                        <a onclick="alert('로그인을 해주세요');" class="btn-write">글작성</a>
-
-                    </c:when>
-                    <c:otherwise>
-
-                        <a href="${pageContext.request.contextPath}/request/write" class="btn-write">글작성</a>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-
         </div>
     </div>
 </section>
