@@ -182,8 +182,14 @@
                             <div class="review-control">
                                 <c:choose>
                                     <c:when test="${id eq re.user_id}">
+
                                         <input type="button" onclick="reviewEdit(this, ${r.id}, ${re.idx})" value="수정">
-                                        <input type="button" onclick="location.href='${pageContext.request.contextPath}/review/delete'" value="삭제">
+
+                                        <form action="/handwork/review/delete" method="post">
+                                            <input type="hidden" name="board-num" value="${r.id}">
+                                            <input type="hidden" name="idx" value="${re.idx}">
+                                            <input type="submit"  value="삭제">
+                                       </form>
 
                                     </c:when>
                                     <c:otherwise>

@@ -55,7 +55,7 @@ public class SearchController extends HttpServlet {
 		marketList = service.getMarketSearchList(query);
 		marketList = service.getMarketCategorySearchList(query);
 
-		request.setAttribute("list", requestList);
+		request.setAttribute("rlist", requestList);
 		request.setAttribute("mlist", marketList);
 		request.getRequestDispatcher("/WEB-INF/view/search/search.jsp").forward(request, response);
 		
