@@ -87,7 +87,6 @@ public class MailController extends HttpServlet {
 
 
 
-
             Address fromAddr = new InternetAddress(from);
             msg.setFrom(fromAddr);
 
