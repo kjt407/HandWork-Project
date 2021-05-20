@@ -45,7 +45,7 @@ public class RequestUpdateController extends HttpServlet{
 		request_.setIsUpdate(true);
 		
 		request.setAttribute("r", request_);
-		
+		service.disconnect();
 		request.getRequestDispatcher("/request/write").forward(request, response);
 	}
 	

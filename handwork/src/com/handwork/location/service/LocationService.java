@@ -1,14 +1,9 @@
 package com.handwork.location.service;
 
-import com.handwork.request.entity.Request;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-import java.io.Console;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LocationService {
 	Connection conn;

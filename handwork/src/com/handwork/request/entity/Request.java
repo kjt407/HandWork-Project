@@ -1,7 +1,5 @@
 package com.handwork.request.entity;
 
-import java.util.Date;
-
 public class Request {
 	//   private int id;
 //   private String title;
@@ -32,8 +30,8 @@ public class Request {
 		super();
 	}
 
-	public Request( String writer, String title, String kategorie, String location, String deadline, int price,
-					String content, String regdate, int hit, String filename, String how, String writer_id, int state) {
+	public Request(String writer, String title, String kategorie, String location, String deadline, int price,
+				   String content, String regdate, int hit, String filename, String how, String writer_id, int state) {
 		super();
 
 		this.writer = writer;

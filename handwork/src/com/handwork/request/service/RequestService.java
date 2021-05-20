@@ -1,17 +1,28 @@
 package com.handwork.request.service;
 
+import com.handwork.request.entity.Request;
+
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import com.handwork.request.entity.Request;
-import com.mysql.cj.xdevapi.PreparableStatement;
-
 public class RequestService {
+
+	Connection conn;
+
+	public RequestService(){
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+			String dbID = "handwork";
+			String dbPassword = "handwork";
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
 
 	public List<Request> getRequestList() {
 		return getRequestList("title", "", 1);
@@ -33,13 +44,7 @@ public class RequestService {
 				"list WHERE num between ? and ?";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%"+query+"%");
 			stmt.setInt(2, 1+(page-1)*5);
@@ -97,12 +102,7 @@ public class RequestService {
 				")A ";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%"+query+"%");
 
@@ -126,12 +126,7 @@ public class RequestService {
 
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 
@@ -180,12 +175,7 @@ public class RequestService {
 				"       )";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 
@@ -234,12 +224,7 @@ public class RequestService {
 				" limit 1";
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
 
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 
@@ -286,12 +271,8 @@ public class RequestService {
 		System.out.println("getCount 메서드 실행");
 		int count =0;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
+
 			String sql = "SELECT count(board_num) count from comment where board_num=?";
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setInt(1, boardNum);
@@ -306,5 +287,12 @@ public class RequestService {
 		return count;
 	}
 
+	public void disconnect() {
+		try {
+			conn.close();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
+		}
+	}
 
 }
