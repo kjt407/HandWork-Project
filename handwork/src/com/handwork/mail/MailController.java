@@ -37,13 +37,20 @@ public class MailController extends HttpServlet {
         String email = getEmail(writer_id);
         String phone=null;
         if(phone==null||phone.equals("")){
-            phone="제작자가 연락처를 등록하지 않았습니다.";
+            phone="연락처를 등록하지 않았습니다.";
         }else{
             phone = getPhone(writer_id);
         }
 
         int board_num = Integer.parseInt(request.getParameter("board-num"));
 
+        String url = String.valueOf(request.getRequestURL());
+        String url_ = request.getRequestURI();
+
+        String result = url.replace(url_,"");
+        System.out.println("url : "+result);
+
+        String resultURL = result+"/handwork/market/detail?id="+board_num;
         Properties p = new Properties(); // 정보를 담을 객체
 
         p.put("mail.smtp.host","smtp.gmail.com");
@@ -66,14 +73,18 @@ public class MailController extends HttpServlet {
             msg.setSubject(subject); //  제목
 
             StringBuffer buffer = new StringBuffer();
-            buffer.append("<H1>HANDWORK</H1><br>");
+            buffer.append("<div style=\"margin : 40px; background: white; box-shadow: 0 0 5px gray; border-radius: 2px; padding: 20px 60px 40px 60px; width: 500px; font-size: 17px;\">");
+            buffer.append("<div><h2 style=\"padding-top: 20px; padding-bottom: 20px; margin: 20px 0px; color: white; background-color: tomato; width: 500px; text-align: center;\">HANDWORK</h2></div><br>");
+            buffer.append("<div style=\"display: flex; width: 100%;\"><p style=\"font-weight: 600; font-size: 30px; line-height: 22px;\">"+title+"</p></div> <br>");
+            buffer.append("<div style=\"display: flex; width: 100%;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 22px;\">"+content+"</p></div> <br>");
+            buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px; color: tomato; font-family: 'Do Hyeon', sans-serif;\"><p style=\"font-weight: 600; font-size: 25px; line-height: 22px;\">"+price+"원</p></div> <br>");
+            buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 이름 : "+name+"</p></div> <br>");
+            buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 연락처 : "+phone+"</p></div> <br>");
+            buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 이메일 : "+email+"</p></div> <br>");
+            buffer.append("<div style=\"display: flex; align-items: center; margin: 10px; display: flex; justify-content: center; align-items: center; justify-self: flex-end; color: white; background: tomato; font-size: 19px; padding: 10px; border-radius: 2px; transition: 0.3s all; \"><a href=\""+resultURL+"\"style=\" font-weight: 600; font-size: 20px; line-height: 15px; text-decoration: none; color: white;\">게시글로 이동</a></div>");
+            buffer.append("</div>");
 
-            buffer.append("<H2>"+title+"</H3><br>");
-            buffer.append("<H2>"+content+"</H3><br>");
-            buffer.append("<H2>"+price+"원</H3><br>");
-            buffer.append("<H4>제작자 이름 : "+name+"</H5><br>");
-            buffer.append("<H4>제작자 연락처 : "+phone+"</H5><br>");
-            buffer.append("<H4>제작자 이메일 : "+email+"</H5><br>");
+
 
 
 
