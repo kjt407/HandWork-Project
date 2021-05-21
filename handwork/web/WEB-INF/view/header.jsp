@@ -35,8 +35,7 @@
 							<div class="header-sub">
 								<ul class="inner-ul">
 									<li><a href="">공지사항</a></li>
-									<li><a href="">이용후기</a></li>
-									<li><a href="">문의</a></li>
+									<li><a href="">자유게시판</a></li>
 								</ul>
 							</div>
 						</li>
