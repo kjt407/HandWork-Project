@@ -27,16 +27,17 @@
 <header>
     <jsp:include page="/WEB-INF/view/header.jsp"/>
 </header>
+<section class="board-title-section">
+    <div>"asfasdfsad"를 검색하신 결과입니다.</div>
+</section>
 
 <section class="search board-section">
     <h2 class="hide">제작의뢰 게시판</h2>
     <div class="board-container">
-        <p class="search-word">"asfasdfsad"를 검색하신 결과입니다.</p>
         <section id="search-market">
             <p class="section-title market">수제공방</p>
             <div class="board-content-list market">
             </div>
-            <input type="button" value="더보기">
         </section>
         <section id="search-request">
             <p class="section-title request">제작의뢰</p>

@@ -4,13 +4,18 @@ let mpage = 1;
 let rpage = 1;
 
 $(window).load(function(){
+    let boardTitle = $('.board-title-section')
     // 페이지 로드시 동작 실행 부분
     if(getParameterByName('c') != null && getParameterByName('c') != '') {
         type = 'c';
         param = getParameterByName('c');
+        boardTitle.addClass('category');
+        boardTitle.children('div').text('"'+param+'" 카테고리 검색결과 입니다.');
     } else if(getParameterByName('q') != null && getParameterByName('q') != '') {
         type = 'q';
         param = getParameterByName('q');
+        boardTitle.addClass('search');
+        boardTitle.children('div').text('"'+param+'" 키워드 검색결과 입니다.');
     }
 
     console.log(type);
@@ -54,7 +59,6 @@ function ajaxFunc(json) {
         dataType:"json",
         data:json,
         success:function(data){
-            alert("AJAX 통신성공");
             if(json.op == 'market'){
                 createMarket(data);
             } else if( json.op == 'request') {
@@ -63,7 +67,7 @@ function ajaxFunc(json) {
             console.log(data);
         },
         error:function(){
-            alert('Ajax 통신 에러');
+            alert('서버에서 정보를 받아올 수 없습니다');
         }
     })
 }
@@ -82,10 +86,10 @@ function createMarket(data) {
         const hit = data.list[i].hit;
         const filename = data.list[i].filename;
         let imgpath = '/images/noImage.png';
-        let classname = 'view-img no-img';
+        let classname = 'no-img';
         if(filename != null && filename !=''){
             imgpath = '/upload/marketBoard/'+filename.split('/')[0];
-            classname = 'view-img';
+            classname = '';
         }
         let state = data.list[i].state;
         if(state != null && state == 0){
@@ -99,15 +103,15 @@ function createMarket(data) {
 
         $('div.board-content-list.market').append(
             '<div class="board-items market">\n' +
-            '                    <a href="'+getContextPath()+'/market/detail?id='+idx+'" class="img-wrap"><img src="'+getContextPath()+imgpath+'" alt="제품이미지"></a>\n' +
+            '                    <a href="'+getContextPath()+'/market/detail?id='+idx+'" class="img-wrap"><img src="'+getContextPath()+imgpath+'" class="'+classname+'" alt="제품이미지"></a>\n' +
             '                    <div class="item-container market">\n' +
             '                        <div class="item-row">\n' +
-            '                            <a href="" class="item-writer">'+writer+'</a>\n' +
-            '                            <a href="" class="item-location">'+location+'</a>\n' +
+            '                            <a class="item-writer">'+writer+'</a>\n' +
+            '                            <a class="item-location">'+location+'</a>\n' +
             '                        </div>\n' +
-            '                        <a href="" class="item-title">'+title+'</a>\n' +
-            '                        <a href="" class="item-price state '+state+'">'+price+'원</a>\n' +
-            '                        <p href="" class="item-review-num">'+reviewnum+'</p>\n' +
+            '                        <a href="'+getContextPath()+'/market/detail?id='+idx+'" class="item-title">'+title+'</a>\n' +
+            '                        <a href="'+getContextPath()+'/market/detail?id='+idx+'" class="item-price state '+state+'">'+price+'원</a>\n' +
+            '                        <p class="item-review-num">'+reviewnum+'</p>\n' +
             '                        <div class="item-review">\n' +
             '                            <div class="star-wrap">'+starAvg+'</div>\n' +
             '                            <span class="review-text">'+topReview+'</span>\n' +
@@ -118,7 +122,7 @@ function createMarket(data) {
     }
     $('div.board-content-list.market').next('#btn-market-more').remove();
     if(data.next){
-        $('div.board-content-list.market').after('<input type="button" id="btn-market-more" onclick="btnMoreMarket()" value="더보기">');
+        $('div.board-content-list.market').after('<input type="button" id="btn-market-more" class="btn-more" onclick="btnMoreMarket()" value="↓">');
     }
 }
 
@@ -183,7 +187,7 @@ function createRequest(data) {
     }
     $('ul.board-content-list.request').next('#btn-request-more').remove();
     if(data.next){
-        $('ul.board-content-list.request').after('<input type="button" id="btn-request-more" onclick="btnMoreReqest()" value="더보기">');
+        $('ul.board-content-list.request').after('<input type="button" id="btn-request-more" class="btn-more" onclick="btnMoreReqest()" value="↓">');
     }
 }
 function btnMoreMarket(){
