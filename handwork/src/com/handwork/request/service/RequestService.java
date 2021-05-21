@@ -81,7 +81,6 @@ public class RequestService {
 			}
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -113,7 +112,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -156,7 +154,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -208,7 +205,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -257,7 +253,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
