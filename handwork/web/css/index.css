@@ -35,10 +35,10 @@ header .login a:last-child {padding-right: 0px;}
 .sell-section .board-title .sub{font-size: 15px; color: gray; padding: 0 0 25px 0;}
 .sell-section .board-slider {display: flex; width: 100%; justify-content: center;}
 .sell-section .board-slider .prev-container { display: flex; width: 280px; height: 500px; flex-direction: column; align-items: center; overflow: hidden; margin: 0 10px; background: white; }
-.prev-container:hover .img-wrap > img { transform: scale(1.1);}
 .board-items { display: flex; flex-direction: column; background: whitesmoke;  border-radius: 2px;}
 .board-items .img-wrap { display: flex; justify-content: center; align-items: center; overflow: hidden; width: 100%; height:302px; }
 .board-items .img-wrap > img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s all;}
+.board-items .img-wrap > img.no-img { padding: 20%; object-fit: contain; }
 .board-items .img-wrap:hover > img { transform: scale(1.1); }
 .board-items div.item-container { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; width: 100%; padding: 10px;}
 .board-items div.item-container * { font-size: 15px; color: black; }
@@ -103,6 +103,7 @@ header .login a:last-child {padding-right: 0px;}
 .order-section .right .right-container > .request-slide a.item-wrap:hover { background: white;}
 .order-section .right .right-container > .request-slide a.item-wrap > * { display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; margin: 0 0 0 10px; }
 .order-section .right .right-container > .request-slide a.item-wrap img.item-img { display: flex; justify-content: center; align-items: center; width: 80px; height: 100%; object-fit: cover; margin: 0; flex-shrink: 0;}
+.order-section .right .right-container > .request-slide a.item-wrap img.item-img.no-img { object-fit: contain; padding: 15px; }
 .order-section .right .right-container > .request-slide a.item-wrap span.item-title { -webkit-line-clamp:2; width: 100%; font-size: 16px;}
 .order-section .right .right-container > .request-slide a.item-wrap span.item-price { flex-shrink: 0; font-size: 16px; width: 80px; text-align: center;}
 .order-section .right .right-container > .request-slide a.item-wrap span.item-writer {  flex-shrink: 0; width: 50px; margin-right: 10px; text-align: right;}

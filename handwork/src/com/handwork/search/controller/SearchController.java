@@ -4,6 +4,8 @@ import com.handwork.market.entity.Market;
 import com.handwork.request.entity.Request;
 import com.handwork.request.service.RequestService;
 import com.handwork.search.service.SearchService;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,47 +19,39 @@ import java.util.List;
 public class SearchController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/x-json; charset=UTF-8");
+		String op = request.getParameter("op");
 
-		String query_ = request.getParameter("q");
-		String category_ = request.getParameter("c");
-
-		final int isQ = 0;
-		final int isC = 1;
-		int option = 99;
-
-		String query = "";
-		if(query_ != null && !query_.equals("")){
-			query = query_;
-			option = isQ;
+		if (op == null || op.equals("")) {
+			//pageInit
+			request.getRequestDispatcher("WEB-INF/view/search/search.jsp").forward(request, response);
+		} else {
+			switch (op) {
+				case "request":
+					response.getWriter().print(getRequest(request.getParameter("type"), request.getParameter("query"), Integer.parseInt(request.getParameter("page"))));
+					break;
+				case "market":
+					response.getWriter().print(getMarket(request.getParameter("type"), request.getParameter("query"), Integer.parseInt(request.getParameter("page"))));
+					break;
+			}
 		}
 
-		String category = "";
-		if(category_ != null && !category_.equals("")){
-			category = category_;
-			option = isC;
-		}
-
-		SearchService service = new SearchService();
-
-		List<Request> requestList;
-		List<Market> marketList;
-
-		//조건 사용하여 카테고리 검색인지 전체검색인지 구분하기
-		if(option == isQ){
-//			전체검색일때
-			System.out.println("전체검색");
-		} else if(option == isC){
-//			카테고리 검색일때
-			System.out.println("카테고리검색");
-		}
-		requestList = service.getRequestSearchList(query);
-		requestList = service.getRequestCategorySearchList(category);
-		marketList = service.getMarketSearchList(query);
-		marketList = service.getMarketCategorySearchList(query);
-
-		request.setAttribute("list", requestList);
-		request.setAttribute("mlist", marketList);
-		request.getRequestDispatcher("/WEB-INF/view/search/search.jsp").forward(request, response);
-		
 	}
+
+	private JSONObject getRequest(String type, String query, int page) {
+		SearchService service = new SearchService();
+		JSONObject result = service.getRequestList(type, query, page);
+		service.disconnect();
+
+		return result;
+	}
+	private JSONObject getMarket(String type, String query, int page) {
+		SearchService service = new SearchService();
+		JSONObject result = service.getMarketList(type, query, page);
+		System.out.println(result);
+		service.disconnect();
+
+		return result;
+	}
+
 }

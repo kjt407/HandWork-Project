@@ -74,78 +74,75 @@
                         </c:forTokens>
                     </ul>
                 </div>
-                <div class="main-panel">
-                    <div class="item-row">
-                        <a href="" class="item-writer">${r.writer}</a>
-                        <a href="" class="item-category">${r.kategorie}</a>
+                <div class="main-panel-wrap">
+                    <div class="main-panel">
+                        <div class="item-row">
+                            <a href="" class="item-writer">${r.writer}</a>
+                            <a href="" class="item-category">${r.kategorie}</a>
+                        </div>
+                        <p href="" class="item-title">${r.title}</p>
+                        <c:choose>
+                            <c:when test="${r.state eq 0}">
+                                <p href="" class="item-price state sell">${r.price}원</p>
+                            </c:when>
+                            <c:otherwise>
+                                <p href="" class="item-price state out">${r.price}원</p>
+                            </c:otherwise>
+                        </c:choose>
+                        <div class="star-wrap">${r.starAvg}</div>
+                        <p class="item-deadline subs">${r.period}</p>
+                        <a href="" class="item-location subs">${r.location}</a>
+                        <p class="item-ship subs">${r.how}</p>
+
+                        <c:choose>
+                            <c:when test="${r.state eq 1}">
+                                <input type="button" class="btn-contact" onclick="alert('품절입니다');" value="판매자와 연락하기" disabled></input>
+                            </c:when>
+                            <c:when test="${empty id}">
+                                <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기"></input>
+                            </c:when>
+                            <c:otherwise>
+                                <form name="a" action="mail" method="post">
+                                    <input type="button" class="btn-contact" value="판매자와 연락하기" onclick="check()">
+                                    <input type="hidden" name="to" value="wnsgudchl0302@naver.com">
+                                    <input type="hidden" name="from" value="ambirion0302@gmail.com">
+                                    <input type="hidden" name="title" value="${r.title}">
+                                    <input type="hidden" name="content" value="${r.content}">
+                                    <input type="hidden" name="name" value="${r.writer}">
+                                    <input type="hidden" name="writer_id" value="${r.writer_id}">
+                                    <input type="hidden" name="price" value="${r.price}">
+                                    <input type="hidden" name="board-num" value="${r.id}">
+                                    <input type="hidden" name="toId" value="${id}">
+                                </form>
+
+                            </c:otherwise>
+                        </c:choose>
+
+
+                        <div class="board-info-wrap" style="display: flex; justify-self: flex-end; margin: 10px 0 0 0; !important;">
+                            <p class="item-hits">${r.hit}</p>
+                            <p class="item-writedate">${r.regdate}</p>
+                        </div>
                     </div>
-                    <p href="" class="item-title">${r.title}</p>
-                    <c:choose>
-                        <c:when test="${r.state eq 0}">
-                            <p href="" class="item-price state sell">${r.price}원</p>
-                        </c:when>
-                        <c:otherwise>
-                            <p href="" class="item-price state out">${r.price}원</p>
-                        </c:otherwise>
-                    </c:choose>
-                    <div class="star-wrap">${r.starAvg}</div>
-                    <p class="item-deadline subs">${r.period}</p>
-                    <a href="" class="item-location subs">${r.location}</a>
-                    <p class="item-ship subs">${r.how}</p>
 
-                    <c:choose>
-                        <c:when test="${empty id}">
-                            <input type="button" class="btn-contact" onclick="alert('로그인을 해주세요');" value="판매자와 연락하기"></input>
-                        </c:when>
-                        <c:when test="${r.state eq 1}">
-                            <input type="button" class="btn-contact" onclick="alert('품절입니다');" value="판매자와 연락하기" disabled></input>
-                        </c:when>
-                        <c:otherwise>
-                            <form name="a" action="mail" method="post">
-                                <input type="button" class="btn-contact" value="판매자와 연락하기" onclick="check()">
-                                <input type="hidden" name="to" value="wnsgudchl0302@naver.com">
-                                <input type="hidden" name="from" value="ambirion0302@gmail.com">
-                                <input type="hidden" name="title" value="${r.title}">
-                                <input type="hidden" name="content" value="${r.content}">
-                                <input type="hidden" name="name" value="${r.writer}">
-                                <input type="hidden" name="writer_id" value="${r.writer_id}">
-                                <input type="hidden" name="price" value="${r.price}">
-                                <input type="hidden" name="board-num" value="${r.id}">
-                                <input type="hidden" name="toId" value="${id}">
-                            </form>
-
-                        </c:otherwise>
-                    </c:choose>
-
-
-                    <div class="board-info-wrap" style="display: flex; justify-self: flex-end; margin: 10px 0 0 0; !important;">
-                        <p class="item-hits">${r.hit}</p>
-                        <p class="item-writedate">${r.regdate}</p>
+                    <div class="control-row btn-group">
+                        <c:choose>
+                            <c:when test="${id eq r.writer_id}">
+                                <a href="${pageContext.request.contextPath}/market/update?id=${r.id}" class="btn-edit" >수정</a>
+                                <a href="${pageContext.request.contextPath}/market/delete?id=${r.id}" class="btn-edit"}>삭제</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit" >수정</a>
+                                <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit"}>삭제</a>
+                            </c:otherwise>
+                        </c:choose>
+                        <a href="${pageContext.request.contextPath}/market" class="btn-list">목록으로</a>
                     </div>
                 </div>
             </div>
             <div class="content-section market">
                 <p class="content-title section-title">제품 상세정보</p>
                 <p class="content-view">${fn:replace(r.content, crcn, br)}</p>
-            </div>
-            <div class="control-row btn-group">
-                <c:choose>
-                    <c:when test="${id eq r.writer_id}">
-
-                        <a href="${pageContext.request.contextPath}/market/update?id=${r.id}" class="btn-edit" >수정</a>
-                        <a href="${pageContext.request.contextPath}/market/delete?id=${r.id}" class="btn-edit"}>삭제</a>
-
-                    </c:when>
-                    <c:otherwise>
-
-                        <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit" >수정</a>
-                        <a onclick="alert('게시글 작성자만 수정 및 삭제를 할 수 있습니다.');" class="btn-edit"}>삭제</a>
-
-
-                    </c:otherwise>
-                </c:choose>
-
-                <a href="${pageContext.request.contextPath}/market" class="btn-list">목록으로</a>
             </div>
             <div class="review-section market">
                 <div class="section-title">
@@ -199,7 +196,6 @@
                 </ul>
 
             </div>
-        </div>
     </div>
 </section>
 <footer>

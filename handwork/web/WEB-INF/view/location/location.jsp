@@ -18,7 +18,7 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ff931k1pgc"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
-    <title>Title</title>
+    <title>핸드워크:주변공방</title>
 </head>
 <body>
     <h1 class="hide">수제공방</h1>
@@ -26,7 +26,7 @@
         <jsp:include page="/WEB-INF/view/header.jsp"/>
     </header>
     <section class="market board-section">
-        <h2 class="hide">수제공방 게시판</h2>
+        <h2 class="hide">수제공방 주변공방</h2>
         <div class="main-map-container" style="display: flex; width: 100%;">
             <div id="map"></div>
             <div class="detail-section">

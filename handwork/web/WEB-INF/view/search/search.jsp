@@ -13,12 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search.css">
     <script type="text/javascript"
             src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript"
             src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/search.js"></script>
     <title>핸드워크</title>
 </head>
 <body>
@@ -27,74 +28,21 @@
     <jsp:include page="/WEB-INF/view/header.jsp"/>
 </header>
 
-
-<section class="request board-section">
+<section class="search board-section">
     <h2 class="hide">제작의뢰 게시판</h2>
     <div class="board-container">
-        <%--게시판 목록 include--%>
-        <div class="board-main request-main">
-            <h3 class="hide">게시판 메인</h3>
-            <ul class="board-content-list">
-                <c:forEach var="r" items="${list}">
-                    <li>
-                        <div class="board-items">
-
-                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="img-container">
-                                <c:choose>
-                                    <c:when test="${empty r.filename }">
-                                        <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-                                    </c:when>
-                                    <c:when test="${r.filename eq '/'}">
-                                        <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-                                    </c:when>
-
-                                    <c:otherwise>
-                                        <c:set var="doneLoop" value="false"/>
-                                        <c:forTokens var="itemFN" items="${r.filename}" delims="/">
-                                            <c:if test="${not doneLoop}">
-                                                <img src="${pageContext.request.contextPath }/upload/requestBoard/${itemFN}" class="view-img">
-
-                                                <c:set var="doneLoop" value="true"/>
-                                            </c:if>
-                                        </c:forTokens>
-
-
-                                    </c:otherwise>
-                                </c:choose>
-
-                            </a>
-                            <div class="board-list-main">
-                                <div class="row-wrapper">
-                                    <a href="" class="board-list-category">${r.kategorie}</a>
-                                    <a href="" class="board-list-locale">${r.location}</a>
-                                </div>
-                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-title">${r.title}</a>
-                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-subs">${r.content}</a>
-                                <div class="row-wrapper">
-                                    <c:choose>
-                                        <c:when test="${r.state eq 0}">
-                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state auction">${r.price}원</a>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state complete">${r.price}원</a>
-                                        </c:otherwise>
-                                    </c:choose>
-                                    <div>
-                                        <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>
-                                        <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="board-list-aside">
-                                <p class="board-list-deadline">${r.deadline}</p>
-                                <span class="board-list-comment">${r.count}</span>
-                                <span class="board-list-views">${r.hit}</span>
-                            </div>
-                        </div>
-                    </li>
-                </c:forEach>
+        <p class="search-word">"asfasdfsad"를 검색하신 결과입니다.</p>
+        <section id="search-market">
+            <p class="section-title market">수제공방</p>
+            <div class="board-content-list market">
+            </div>
+            <input type="button" value="더보기">
+        </section>
+        <section id="search-request">
+            <p class="section-title request">제작의뢰</p>
+            <ul class="board-content-list request">
             </ul>
-        </div>
+        </section>
     </div>
 </section>
 <footer>
