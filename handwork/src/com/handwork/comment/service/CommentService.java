@@ -1,15 +1,6 @@
 package com.handwork.comment.service;
 
 
-
-
-
-import com.handwork.comment.entity.Comments;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class CommentService {
 /*
     public List<Comment> getCommentList() {

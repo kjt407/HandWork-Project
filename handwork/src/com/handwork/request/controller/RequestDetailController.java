@@ -54,7 +54,7 @@ public class RequestDetailController extends HttpServlet {
 		Request prevNotice_ = service.getPrevNotice(id, true);
 		request.setAttribute("pr", prevNotice_);
 		
-		
+		service.disconnect();
 		
 		request.getRequestDispatcher("/WEB-INF/view/board/request/request_view.jsp").forward(request, response);
 		

@@ -50,9 +50,9 @@ public class RequestListController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("count", count);
 
+		service.disconnect();
 
 
-		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/view/board/request/request.jsp").forward(request, response);
 		
 	}
