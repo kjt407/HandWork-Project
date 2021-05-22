@@ -98,7 +98,7 @@ public class RequestWriteController extends HttpServlet {
 					+ "values(?,?,?,?,?,?,?,?,0,?,?,?)";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
 			String dbID = "handwork";
 			String dbPassword = "handwork";
 			// System.out.println(id);

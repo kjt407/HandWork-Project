@@ -13,7 +13,7 @@ public class RequestService {
 	public RequestService(){
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
 			String dbID = "handwork";
 			String dbPassword = "handwork";
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
@@ -81,7 +81,6 @@ public class RequestService {
 			}
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -113,7 +112,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -156,7 +154,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -208,7 +205,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -257,7 +253,6 @@ public class RequestService {
 
 			rs.close();
 			stmt.close();
-			conn.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
