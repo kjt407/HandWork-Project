@@ -209,7 +209,7 @@ public class MarketUpdateController extends HttpServlet{
 		String sql = "update market set title=?, kategorie=?, location=?, flocation=?, period=?, price=?, content=?, filename=?, how=?, state=?, latlng=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
 	    String dbID = "handwork";
 	    String dbPassword = "handwork";
 		

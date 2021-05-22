@@ -116,7 +116,7 @@ public class MailController extends HttpServlet {
         String email = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
             String dbPassword = "handwork";
             String sql = "SELECT email from member where id=?";
@@ -139,7 +139,7 @@ public class MailController extends HttpServlet {
         String phone = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
             String dbPassword = "handwork";
             String sql = "SELECT phone from member where id=?";

@@ -251,7 +251,7 @@ public class RequestUpdateController extends HttpServlet{
 		String sql = "update board set title=?, kategorie=?, location=?, deadline=?, price=?, content=?, filename=?, how=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
 	    String dbID = "handwork";
 	    String dbPassword = "handwork";
 		
