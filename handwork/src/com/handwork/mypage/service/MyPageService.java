@@ -60,13 +60,12 @@ public class MyPageService {
             result.put("list", array);
             System.out.println(result.toJSONString());
 
-            result.put("list", array);
             if (page < getBoardPage(writer_id)) {
                 result.put("next", true);
             } else {
                 result.put("next", false);
             }
-
+            System.out.println("result : "+result.toJSONString());
             rs.close();
             stmt.close();
         } catch (Exception e) {
@@ -110,9 +109,9 @@ public class MyPageService {
 
         try {
             sql = "select * from (" +
-                    "SELECT idx, content, regdate, replyname, user_id  FROM review WHERE user_id = ? " +
+                    "SELECT board_num, content, regdate, replyname, user_id  FROM review WHERE user_id = ? " +
                     "UNION ALL " +
-                    "SELECT idx, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
+                    "SELECT board_num, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
                     ") a order by regdate  desc limit ?,5";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
@@ -123,13 +122,13 @@ public class MyPageService {
             while (rs.next()) {
                 JSONObject obj = new JSONObject();
 
-                int idx = rs.getInt("idx");
+                int board_num = rs.getInt("board_num");
                 String content = rs.getString("content");
                 String regdate = rs.getString("regdate");
                 String writer = rs.getString("user_id");
                 String replyname = rs.getString("replyname");
 
-                obj.put("idx", idx);
+                obj.put("board_num", board_num);
                 obj.put("content", content);
                 obj.put("regdate", regdate);
                 obj.put("writer", writer);
@@ -141,8 +140,6 @@ public class MyPageService {
             }
             result.put("list", array);
 
-
-            result.put("list", array);
             if (page < getReplyPage(writer_id)) {
                 result.put("next", true);
             } else {
@@ -182,7 +179,116 @@ public class MyPageService {
     }
 
     //회원정보수정
+    //이름 수정
+    public JSONObject editName(String id, String name){
 
+        JSONObject result = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+
+        try {
+            sql = "update member set name=?  where id=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, name);
+            stmt.setString(2, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                JSONObject obj = new JSONObject();
+                String name_ = rs.getString("name");
+                String id_ = rs.getString("id");
+                obj.put("name", name_);
+                obj.put("id", id_);
+
+                System.out.println(obj);
+                array.add(obj);
+            }
+            result.put("list", array);
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        System.out.println(result.toJSONString());
+        return result;
+    }
+
+    //email수정
+    public JSONObject editEmail(String id, String email){
+
+        JSONObject result = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+
+        try {
+            sql = "update member set email=?  where id=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                JSONObject obj = new JSONObject();
+                String email_ = rs.getString("email");
+                String id_ = rs.getString("id");
+                obj.put("email", email_);
+                obj.put("id", id_);
+
+                System.out.println(obj);
+                array.add(obj);
+            }
+            result.put("list", array);
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        System.out.println(result.toJSONString());
+        return result;
+    }
+
+    //phone수정
+     public JSONObject eidtPhone(String id, String phone){
+
+        JSONObject result = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+
+        try {
+            sql = "update member set phone=?  where id=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, phone);
+            stmt.setString(2, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                JSONObject obj = new JSONObject();
+                String phone_ = rs.getString("phone");
+                String id_ = rs.getString("id");
+                obj.put("phone", phone_);
+                obj.put("id", id_);
+
+                System.out.println(obj);
+                array.add(obj);
+            }
+            result.put("list", array);
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        System.out.println(result.toJSONString());
+        return result;
+    }
 
     public void disconnect() {
         try {
