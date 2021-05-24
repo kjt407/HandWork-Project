@@ -39,12 +39,13 @@ textarea { padding:5px 0;}
 select:focus,
 textarea:focus,
 input:focus { border: 1px solid #727272;}
+input[type=button]:focus { border: none;}
 
 input[type=tel][readonly],
 input[type=text][readonly],
 input[type=password][readonly],
-input[type=email][readonly], 
-input[type=search][readonly], 
+input[type=email][readonly],
+input[type=search][readonly],
 input[type=tel][disabled],
 input[type=text][disabled],
 input[type=password][disabled],

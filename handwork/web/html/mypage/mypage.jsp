@@ -32,6 +32,7 @@
             <section id="my-info-section">
                 <p class="section-title">내정보</p>
                 <img src="${pageContext.request.contextPath}/images/market_background.jpg" alt="" id="img-profile">
+                <p class="info-name">김종태</p>
             </section>
             <section id="my-log-section">
                 <p class="section-title">활동로그</p>
