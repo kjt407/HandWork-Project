@@ -4,7 +4,7 @@ public class Comments {
     private int idx;
     private String user_id;
     private String content;
-    private String c_time;
+    private String regdate;
     private int board_num;
     private int c_state;
     private String name;
@@ -14,12 +14,12 @@ public class Comments {
         super();
     }
 
-    public Comments(int idx, String user_id, String content, String c_time, int board_num, int c_state, String name, int price) {
+    public Comments(int idx, String user_id, String content, String regdate, int board_num, int c_state, String name, int price) {
         super();
         this.idx = idx;
         this.user_id = user_id;
         this.content = content;
-        this.c_time = c_time;
+        this.regdate = regdate;
         this.board_num = board_num;
         this.c_state = c_state;
         this.name = name;
@@ -50,12 +50,12 @@ public class Comments {
         this.content = content;
     }
 
-    public String getC_time() {
-        return c_time;
+    public String getRegdate() {
+        return regdate;
     }
 
-    public void setC_time(String c_time) {
-        this.c_time = c_time;
+    public void setRegdate(String c_time) {
+        this.regdate = c_time;
     }
 
     public int getBoard_num() {
@@ -92,7 +92,7 @@ public class Comments {
 
     @Override
     public String toString() {
-        return "comment [idx=" + idx + ", user_id=" + user_id + ", content=" + content + ", c_time=" + c_time
+        return "comment [idx=" + idx + ", user_id=" + user_id + ", content=" + content + ", regdate=" + regdate
                 + ", board_num=" + board_num + "]";
     }
 

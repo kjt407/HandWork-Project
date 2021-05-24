@@ -38,12 +38,12 @@ public class ReviewService {
                 int idx = rs.getInt("idx");
                 String user_id = rs.getString("user_id");
                 String content = rs.getString("content");
-                String r_time = rs.getString("r_time");
+                String regdate = rs.getString("regdate");
                 int board_num_ = rs.getInt("board_num");
                 String name = rs.getString("name");
                 int star = rs.getInt("star");
 
-                Reviews reviews = new Reviews(idx, user_id, content, r_time, board_num_, name, star);
+                Reviews reviews = new Reviews(idx, user_id, content, regdate, board_num_, name, star);
                 list.add(reviews);
 
             }

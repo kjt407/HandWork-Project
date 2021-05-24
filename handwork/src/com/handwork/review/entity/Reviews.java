@@ -4,7 +4,7 @@ public class Reviews {
     private int idx;
     private String user_id;
     private String content;
-    private String r_time;
+    private String regdate;
     private int board_num;
     private String name;
     private int star;
@@ -14,12 +14,12 @@ public class Reviews {
         super();
     }
 
-    public Reviews(int idx, String user_id, String content, String r_time, int board_num, String name, int star) {
+    public Reviews(int idx, String user_id, String content, String regdate, int board_num, String name, int star) {
         super();
         this.idx = idx;
         this.user_id = user_id;
         this.content = content;
-        this.r_time = r_time;
+        this.regdate = regdate;
         this.board_num = board_num;
         this.name = name;
         this.star = star;
@@ -50,12 +50,12 @@ public class Reviews {
         this.content = content;
     }
 
-    public String getR_time() {
-        return r_time;
+    public String getRegdate() {
+        return regdate;
     }
 
-    public void setR_time(String c_time) {
-        this.r_time = c_time;
+    public void setRegdate(String regdate) {
+        this.regdate = regdate;
     }
 
     public int getBoard_num() {
@@ -84,7 +84,7 @@ public class Reviews {
 
     @Override
     public String toString() {
-        return "comment [idx=" + idx + ", user_id=" + user_id + ", content=" + content + ", r_time=" + r_time
+        return "comment [idx=" + idx + ", user_id=" + user_id + ", content=" + content + ", regdate=" + regdate
                 + ", board_num=" + board_num + "]";
     }
 

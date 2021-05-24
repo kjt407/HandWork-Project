@@ -113,7 +113,7 @@ public class CommentController extends HttpServlet {
             String dbID = "handwork";
             String dbPassword = "handwork";
 
-            String sql ="insert into comment(user_id,content,c_time,board_num,c_state,name,price) values(?,?,?,?,0,?,?)";
+            String sql ="insert into comment(user_id,content,regdate,board_num,c_state,name,price) values(?,?,?,?,0,?,?)";
             Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -166,7 +166,7 @@ public class CommentController extends HttpServlet {
                 int idx = rs.getInt("idx");
                 String user_id = rs.getString("user_id");
                 String content = rs.getString("content");
-                String c_time = rs.getString("c_time");
+                String regdate = rs.getString("regdate");
 
                 int board_num_ = rs.getInt("board_num");
                 int price_ = rs.getInt("price");
@@ -180,7 +180,7 @@ public class CommentController extends HttpServlet {
                 jsonOb.put("content", content);
                 jsonOb.put("board_num", board_num_);
                 jsonOb.put("c_state", c_state);
-                jsonOb.put("time", c_time);
+                jsonOb.put("time", regdate);
                 jsonOb.put("price", price_);
                 jsonarray.add(jsonOb);
 
