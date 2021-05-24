@@ -49,7 +49,7 @@ public class ReviewWriteController extends HttpServlet {
             String dbID = "handwork";
             String dbPassword = "handwork";
 
-            String sql ="insert into review(user_id,content,r_time,board_num,name,star) values(?,?,?,?,?,?)";
+            String sql ="insert into review(user_id,content,regdate,board_num,name,star) values(?,?,?,?,?,?)";
             Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
             PreparedStatement stmt = conn.prepareStatement(sql);
 
