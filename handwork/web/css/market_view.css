@@ -71,7 +71,8 @@
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .star-wrap > .star-item { height: 100%; }
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > p.review-subs { max-width: 700px; padding: 0 15px; font-size: 16px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > div.review-control { display: flex;}
-.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > div.review-control > * { font-size: 14px; background: none; margin-left: 3px;}
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > div.review-control input[type=button],
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > div.review-control input[type=submit]{ font-size: 14px; background: none; margin-left: 3px;}
 
 
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li.write > p,

@@ -47,7 +47,6 @@ function ajaxFunc(json) {
             }
         },
         error:function(){
-            console.log(data);
             alert('서버에서 정보를 받아올 수 없습니다');
         }
     })
