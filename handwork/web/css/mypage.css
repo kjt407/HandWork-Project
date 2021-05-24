@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+section#main-section { display: flex; justify-content: center; align-items: center;}
+section#main-section div.wrap-main { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 1280px; min-height: 900px; background: whitesmoke;}
+
+/*공통항목*/
+p.section-title { display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 100%; color: #3f3f3f; font-size: 21px; font-weight: 600; margin-bottom: 30px; }
+p.section-title:before,p.section-title:after { content:""; width: 180px; height: 1px; background: #3f3f3f; margin: 0 20px; }
+div.log-container { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width:100%; }
+div.log-container p.list-title { font-size: 19px; }
+input.btn-more { align-self: center; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: salmon; border-radius: 50%; font-size: 21px; color: white; transition: 0.2s all;}
+input.btn-more:hover { background: #901d0c}
+
+section#main-section div.wrap-main > section#my-info-section { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:100%; margin-bottom: 80px;}
+section#main-section div.wrap-main > section#my-info-section img#img-profile { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+section#main-section div.wrap-main > section#my-log-section { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:100%; padding: 0 200px;}

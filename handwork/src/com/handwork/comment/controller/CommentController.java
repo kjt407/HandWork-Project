@@ -89,7 +89,7 @@ public class CommentController extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
             String dbPassword = "handwork";
             String sql = "select name from member where id = ?;";
@@ -109,7 +109,7 @@ public class CommentController extends HttpServlet {
         }
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
             String dbPassword = "handwork";
 
@@ -147,7 +147,7 @@ public class CommentController extends HttpServlet {
             System.out.println("loadDB 메서드 writter 할당 부분");
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
             String dbPassword = "handwork";
 
@@ -203,7 +203,7 @@ public class CommentController extends HttpServlet {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
+            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
             String dbPassword = "handwork";
 
