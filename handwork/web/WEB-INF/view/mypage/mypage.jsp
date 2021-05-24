@@ -39,28 +39,20 @@
                 <div class="log-container board">
                     <p class="list-title board">작성한 게시글</p>
                     <ul class="log-ul board">
-                        <li class="log-li board">
-                            <a href="">
-                                <p class="log-li-board board">수제공방</p>
-                                <p class="log-li-title board">제목입니다</p>
-                                <p class="log-li-date board">제목입니다</p>
-                            </a>
-                        </li>
                     </ul>
-                    <input type="button" value="+" class="btn-more" id="btn-more-board">
                 </div>
                 <div class="log-container reply">
                     <p class="list-title reply">작성한 댓글/리뷰</p>
                     <ul class="log-ul reply">
                         <li class="log-li reply">
                             <a href="">
-                                <p class="log-li-board reply">제작의뢰</p>
+                                <p class="log-li-type reply">제작의뢰</p>
                                 <p class="log-li-title reply">제목입니다</p>
                                 <p class="log-li-date reply">제목입니다</p>
                             </a>
                         </li>
                     </ul>
-                    <input type="button" value="+" class="btn-more" id="btn-more-reply">
+                    <input type="button" value="↓" class="btn-more" id="btn-more-reply">
                 </div>
             </section>
         </div>
