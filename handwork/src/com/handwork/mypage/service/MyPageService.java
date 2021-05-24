@@ -33,28 +33,30 @@ public class MyPageService {
 
 		try {
 
+			System.out.println("sql문실행전");
 				sql="select * from (" +
-						"SELECT writer, id, content, regdate, writer_id FROM board WHERE writer_id = ? " +
-						"UNION ALL" +
-						"SELECT writer, id, content, regdate, writer_id FROM market WHERE writer_id = ? " +
-						") a order by regdate  desc limit ?,5";
+						"SELECT id, content, regdate, title FROM board WHERE writer_id = ? " +
+						"UNION ALL " +
+						"SELECT id, content, regdate, title FROM market WHERE writer_id = ? " +
+						") a order by regdate desc limit 0,5";
 				stmt = conn.prepareStatement(sql);
+			System.out.println("sql문실행후"+sql);
 			stmt.setString(1, writer_id);
 			stmt.setString(2, writer_id);
-			stmt.setInt(3, 5*page-5);
+			System.out.println("sql문실행후후");
+			//stmt.setInt(3, 5*page-5);
 
 			ResultSet rs = stmt.executeQuery();
-
+			System.out.println("sql문실행후후ㅇㄴㅇㄴ");
 			while(rs.next()){
 				JSONObject obj = new JSONObject();
-				int id = rs.getInt("id");
-				String writer = rs.getString("writer_id");
 				String title = rs.getString("title");
 				String regdate = rs.getString("regdate");
 
+				System.out.println("asdasdasddasdsaasdasdasdsad");
+				System.out.println(title);
+				System.out.println(regdate);
 
-				obj.put("idx",id);
-				obj.put("writer",writer);
 				obj.put("title",title);
 				obj.put("regdate",regdate);
 
@@ -79,20 +81,20 @@ public class MyPageService {
 		PreparedStatement stmt = null;
 
 		try {
-
+			System.out.println("reply sql문실행전");
 			sql="select * from (" +
-					"SELECT id, content, regdate, user_id FROM review WHERE user_id = ? " +
-					"UNION ALL" +
-					"SELECT id, content, regdate, user_id FROM comment WHERE user_id = ? " +
+					"SELECT idx, content, regdate, user_id FROM review WHERE user_id = ? " +
+					"UNION ALL " +
+					"SELECT idx, content, regdate, user_id FROM comment WHERE user_id = ? " +
 					") a order by regdate  desc limit ?,5";
 				stmt = conn.prepareStatement(sql);
 			stmt.setString(1, writer_id);
 			stmt.setString(2, writer_id);
 			stmt.setInt(3, 5*page-5);
 
-
+			System.out.println("reply sql문실행후"+sql);
 			ResultSet rs = stmt.executeQuery();
-
+			System.out.println("reply sql문실행후후후ㅜㅎ");
 			while(rs.next()){
 				JSONObject obj = new JSONObject();
 				int idx = rs.getInt("idx");
@@ -116,7 +118,7 @@ public class MyPageService {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		System.out.println(array);
+		System.out.println(result.toJSONString());
 		return result;
 	}
 
