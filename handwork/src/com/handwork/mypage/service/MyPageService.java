@@ -179,7 +179,116 @@ public class MyPageService {
     }
 
     //회원정보수정
+    //이름 수정
+    public JSONObject editName(String id, String name){
 
+        JSONObject result = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+
+        try {
+            sql = "update member set name=?  where id=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, name);
+            stmt.setString(2, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                JSONObject obj = new JSONObject();
+                String name_ = rs.getString("name");
+                String id_ = rs.getString("id");
+                obj.put("name", name_);
+                obj.put("id", id_);
+
+                System.out.println(obj);
+                array.add(obj);
+            }
+            result.put("list", array);
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        System.out.println(result.toJSONString());
+        return result;
+    }
+
+    //email수정
+    public JSONObject editEmail(String id, String email){
+
+        JSONObject result = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+
+        try {
+            sql = "update member set email=?  where id=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                JSONObject obj = new JSONObject();
+                String email_ = rs.getString("email");
+                String id_ = rs.getString("id");
+                obj.put("email", email_);
+                obj.put("id", id_);
+
+                System.out.println(obj);
+                array.add(obj);
+            }
+            result.put("list", array);
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        System.out.println(result.toJSONString());
+        return result;
+    }
+
+    //phone수정
+     public JSONObject eidtPhone(String id, String phone){
+
+        JSONObject result = new JSONObject();
+        JSONArray array = new JSONArray();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+
+        try {
+            sql = "update member set phone=?  where id=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, phone);
+            stmt.setString(2, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                JSONObject obj = new JSONObject();
+                String phone_ = rs.getString("phone");
+                String id_ = rs.getString("id");
+                obj.put("phone", phone_);
+                obj.put("id", id_);
+
+                System.out.println(obj);
+                array.add(obj);
+            }
+            result.put("list", array);
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        System.out.println(result.toJSONString());
+        return result;
+    }
 
     public void disconnect() {
         try {

@@ -169,7 +169,7 @@
                                 <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
                                 <div class="write-info">
                                     <span class="user-name" >${re.name}</span>
-                                    <span class="user-date" >${re.r_time}</span>
+                                    <span class="user-date" >${re.regdate}</span>
                                 </div>
                             </div>
                             <div class="star-wrap">${re.star}</div>
