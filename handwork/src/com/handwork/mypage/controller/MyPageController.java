@@ -37,7 +37,6 @@ public class MyPageController extends HttpServlet {
                 response.getWriter().print(getReply((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
                 break;
         }
-
     }
 
     private JSONObject getBoard(String writer_id, int page) {
