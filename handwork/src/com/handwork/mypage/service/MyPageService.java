@@ -60,13 +60,12 @@ public class MyPageService {
             result.put("list", array);
             System.out.println(result.toJSONString());
 
-            result.put("list", array);
             if (page < getBoardPage(writer_id)) {
                 result.put("next", true);
             } else {
                 result.put("next", false);
             }
-
+            System.out.println("result : "+result.toJSONString());
             rs.close();
             stmt.close();
         } catch (Exception e) {
@@ -110,9 +109,9 @@ public class MyPageService {
 
         try {
             sql = "select * from (" +
-                    "SELECT idx, content, regdate, replyname, user_id  FROM review WHERE user_id = ? " +
+                    "SELECT board_num, content, regdate, replyname, user_id  FROM review WHERE user_id = ? " +
                     "UNION ALL " +
-                    "SELECT idx, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
+                    "SELECT board_num, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
                     ") a order by regdate  desc limit ?,5";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
@@ -123,13 +122,13 @@ public class MyPageService {
             while (rs.next()) {
                 JSONObject obj = new JSONObject();
 
-                int idx = rs.getInt("idx");
+                int board_num = rs.getInt("board_num");
                 String content = rs.getString("content");
                 String regdate = rs.getString("regdate");
                 String writer = rs.getString("user_id");
                 String replyname = rs.getString("replyname");
 
-                obj.put("idx", idx);
+                obj.put("board_num", board_num);
                 obj.put("content", content);
                 obj.put("regdate", regdate);
                 obj.put("writer", writer);
@@ -141,8 +140,6 @@ public class MyPageService {
             }
             result.put("list", array);
 
-
-            result.put("list", array);
             if (page < getReplyPage(writer_id)) {
                 result.put("next", true);
             } else {
