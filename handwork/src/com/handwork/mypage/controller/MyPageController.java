@@ -20,21 +20,22 @@ import java.util.List;
 public class MyPageController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getRequestDispatcher("WEB-INF/view/mypage/mypage.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/x-json; charset=UTF-8");
         String op = request.getParameter("op");
 
-        if (op == null || op.equals("")) {
-            //pageInit
-            request.getRequestDispatcher("WEB-INF/view/mypage/mypage.jsp").forward(request, response);
-        } else {
-            switch (op) {
-                case "board":
-                    response.getWriter().print(getBoard((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
-                    break;
-                case "reply":
-                    response.getWriter().print(getReply((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
-                    break;
-            }
+        switch (op) {
+            case "board":
+                response.getWriter().print(getBoard((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
+                break;
+            case "reply":
+                response.getWriter().print(getReply((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
+                break;
         }
 
     }
