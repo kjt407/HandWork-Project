@@ -2,7 +2,6 @@ let bpage = 1;
 let rpage = 1;
 
 $(window).load(function(){
-    console.log(type);
     init();
 });
 
@@ -38,14 +37,17 @@ function ajaxFunc(json) {
         dataType:"json",
         data:json,
         success:function(data){
+            alert('AJAX 통신성공');
             if(json.op == 'board'){
-                createBoard(data);
+                console.log(data.list);
+                // createBoard(data);
             } else if( json.op == 'reply') {
-                createReply(data);
+                console.log(data.list);
+                // createReply(data);
             }
-            console.log(data);
         },
         error:function(){
+            console.log(data);
             alert('서버에서 정보를 받아올 수 없습니다');
         }
     })

@@ -57,7 +57,7 @@
 				<c:otherwise>
 					<ul class="login">
 						<li><a class="header-username" disable>${name}님</a></li>
-						<li><a href="">마이페이지</a></li>
+						<li><a href="${pageContext.request.contextPath}/mypage">마이페이지</a></li>
 						<li><a href="${pageContext.request.contextPath}/logout" class="header-logout">로그아웃</a></li>
 					</ul>
 				</c:otherwise>

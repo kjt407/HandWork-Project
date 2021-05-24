@@ -36,7 +36,6 @@ public class MyPageController extends HttpServlet {
                     break;
             }
         }
-
     }
 
     private JSONObject getBoard(String writer_id, int page) {
