@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Enumeration;
 
 @WebServlet("/mypage/userimg")
 public class MyPageProfileImageController extends HttpServlet {
@@ -30,17 +31,15 @@ public class MyPageProfileImageController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("doPost 실행");
         response.setContentType("application/x-json; charset=UTF-8");
-        String op = request.getParameter("op");
 
-        switch (op) {
-            case "user-img":
-                response.getWriter().print(getUserImg((String) request.getSession().getAttribute("id"), request));
-                break;
-        }
+        response.getWriter().print(getUserImg((String) request.getSession().getAttribute("id"), request));
+
+
     }
 
     private JSONObject getUserImg(String writer_id, HttpServletRequest request) {
         MyPageService service = new MyPageService();
+        System.out.println("0번");
         JSONObject result = getProfileImgUpload(writer_id, request);
         service.disconnect();
 
@@ -52,15 +51,29 @@ public class MyPageProfileImageController extends HttpServlet {
 
         int sizeLimit = 15 * 1024 * 1024;
         String realPath = request.getServletContext().getRealPath("upload/profile");
-        File dir = new File(realPath);
         MultipartRequest multi = null;
         try {
+            System.out.println("1번");
             multi = new MultipartRequest(request, realPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
+            System.out.println("2번");
+            String editProfileImg = multi.getParameter("img");
+            System.out.println("editProfileImg : " + editProfileImg);
+            System.out.println("3번");
 
-            String editProfileImg = multi.getParameter("edit-profile-img");
+
+            Enumeration e = multi.getParameterNames();
+
+
+            while ( e.hasMoreElements() ){
+                String name = (String) e.nextElement();
+                String[] values = request.getParameterValues(name);
+                for (String value : values) {
+                    System.out.println("name=" + name + ",value=" + value);
+                }
+            }
 
             String sql = "update member set profile_img=? where id=?";
-
+            System.out.println("ㅎㅎㅎㅎㅎㅎㅎㅎ");
             Class.forName("com.mysql.cj.jdbc.Driver");
             String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
@@ -69,8 +82,10 @@ public class MyPageProfileImageController extends HttpServlet {
             Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, editProfileImg);
-            pstmt.executeUpdate();
+            pstmt.setString(2, writer_id);
 
+            pstmt.executeUpdate();
+            System.out.println("ㅎㅎㅎㅎㅎㅎㄴㄴㄴㄴㄴㄴㅎㅎ");
         } catch (Exception e) {
             e.printStackTrace();
         }
