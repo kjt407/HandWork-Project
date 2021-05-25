@@ -8,6 +8,8 @@ $(window).load(function(){
 function init() {
     loadBoard();
     loadReply();
+    loadInfo();
+    // createInfo({userName:'김종태'});
 }
 
 function loadBoard(){
@@ -26,6 +28,25 @@ function loadReply(){
     ajaxFunc(json);
 }
 
+function loadInfo(){
+    const json = {
+        op:'info'
+    };
+    ajaxFunc(json);
+}
+
+function editInfo(col,ele){
+    console.log(col);
+    console.log(ele);
+    const data = $(ele).find('.edit-data').val();
+    const json = {
+        op:'update',
+        col:col,
+        data:data
+    };
+    console.log('data = '+json);
+    ajaxFunc(json);
+}
 // AJAX 통신 부분
 function ajaxFunc(json) {
     const url = getContextPath()+"/mypage";
@@ -41,6 +62,8 @@ function ajaxFunc(json) {
                 createBoard(data);
             } else if( json.op == 'reply') {
                 createReply(data);
+            } else if( json.op == 'info' || json.op == 'update') {
+                createInfo(data);
             }
         },
         error:function(){
@@ -49,31 +72,66 @@ function ajaxFunc(json) {
     })
 }
 
-function createBoard(data) {
-    for(let i=0; i<data.list.length; i++){
-        const idx = data.list[i].boardnum;
-        const type = data.list[i].boardname;
-        const title = data.list[i].title;
-        let regdate = data.list[i].regdate;
-        regdate = regdate.substring(0,regdate.length-3);
-        let typeKor;
-        if (type == 'market'){
-            typeKor = "수제공방";
-        }else if (type == 'request'){
-            typeKor = "제작의뢰";
-        }
+// 동작 메서드
+function createInfo(data){
 
+    const userName = data.userName;
+    const userImg = data.userImg;
+    const userEmail = data.userEmail;
+    const userPhone = data.userPhone;
+
+    $('p.info-item').removeClass('null');
+    $('p.info-item.name').text(userName);
+    if (userName == null || userName.replaceAll(" ","") == ""){
+        $('p.info-item.name').addClass('null');
+    }
+    $('p.info-item.email').text(userEmail)
+    if (userEmail == null || userEmail.replaceAll(" ","") == ""){
+        $('p.info-item.email').addClass('null');
+    }
+    $('p.info-item.phone').text(userPhone);
+    if (userPhone == null || userPhone.replaceAll(" ","") == ""){
+        $('p.info-item.phone').addClass('null');
+    }
+    if (userImg != null || userImg.replaceAll(" ","") != ""){
+        $('img#img-profile').attr('src',getContextPath()+'/upload/profile/'+userImg);
+    }
+
+}
+
+function createBoard(data) {
+    if(data == null || data.list == null || data.list.length < 1){
         $('ul.log-ul.board').append(
             '<li class="log-li board">\n' +
-            '                            <a href="'+getContextPath()+'/'+type+'/detail?id='+idx+'">\n' +
-            '                                <div class="wrap">\n' +
-            '                                    <p class="log-li-type '+type+' board">'+typeKor+'</p>\n' +
-            '                                    <p class="log-li-title board">'+title+'</p>\n' +
-            '                                </div>\n' +
-            '                                <p class="log-li-date board">'+regdate+'</p>\n' +
-            '                            </a>\n' +
-            '                        </li>'
+            ' <p class="list-empty">작성한 게시글이 없습니다</p>' +
+            '</li>'
         )
+    } else{
+        for(let i=0; i<data.list.length; i++){
+            const idx = data.list[i].boardnum;
+            const type = data.list[i].boardname;
+            const title = data.list[i].title;
+            let regdate = data.list[i].regdate;
+            regdate = regdate.substring(0,regdate.length-3);
+            let typeKor;
+            if (type == 'market'){
+                typeKor = "수제공방";
+            }else if (type == 'request'){
+                typeKor = "제작의뢰";
+            }
+
+            $('ul.log-ul.board').append(
+                '<li class="log-li board">\n' +
+                '                            <a href="'+getContextPath()+'/'+type+'/detail?id='+idx+'">\n' +
+                '                                <div class="wrap">\n' +
+                '                                    <p class="log-li-type '+type+' board">'+typeKor+'</p>\n' +
+                '                                    <p class="log-li-title board">'+title+'</p>\n' +
+                '                                </div>\n' +
+                '                                <p class="log-li-date board">'+regdate+'</p>\n' +
+                '                            </a>\n' +
+                '                        </li>'
+            )
+        }
     }
     $('ul.log-ul.board').next('#btn-more-board').remove();
     if(data.next){
@@ -82,39 +140,60 @@ function createBoard(data) {
 }
 
 function createReply(data) {
-    for(let i=0; i<data.list.length; i++){
-        const idx = data.list[i].board_num;
-        const type = data.list[i].replyname;
-        const content = data.list[i].content;
-        let regdate = data.list[i].regdate;
-        regdate = regdate.substring(0,regdate.length-3);
-        let typeKor;
-        let typeBoard;
-        if (type == 'review'){
-            typeKor = "리뷰";
-            typeBoard = 'market';
-        }else if (type == 'comment'){
-            typeKor = "댓글";
-            typeBoard = 'request';
-        }
-
+    if(data == null || data.list == null || data.list.length < 1){
         $('ul.log-ul.reply').append(
-            '<li class="log-li reply">\n' +
-            '                            <a href="'+getContextPath()+'/'+typeBoard+'/detail?id='+idx+'">\n' +
-            '                                <div class="wrap">\n' +
-            '                                   <p class="log-li-type '+type+' reply">'+typeKor+'</p>\n' +
-            '                                   <p class="log-li-title reply">'+content+'</p>\n' +
-            '                                </div>\n' +
-            '                                <p class="log-li-date reply">'+regdate+'</p>\n' +
-            '                            </a>\n' +
-            '                        </li>'
+            '<li class="log-li board">\n' +
+            ' <p class="list-empty">작성한 게시글이 없습니다</p>' +
+            '</li>'
         )
+    } else {
+        for (let i = 0; i < data.list.length; i++) {
+            const idx = data.list[i].board_num;
+            const type = data.list[i].replyname;
+            const content = data.list[i].content;
+            let regdate = data.list[i].regdate;
+            regdate = regdate.substring(0, regdate.length - 3);
+            let typeKor;
+            let typeBoard;
+            if (type == 'review') {
+                typeKor = "리뷰";
+                typeBoard = 'market';
+            } else if (type == 'comment') {
+                typeKor = "댓글";
+                typeBoard = 'request';
+            }
+
+            $('ul.log-ul.reply').append(
+                '<li class="log-li reply">\n' +
+                '                            <a href="' + getContextPath() + '/' + typeBoard + '/detail?id=' + idx + '">\n' +
+                '                                <div class="wrap">\n' +
+                '                                   <p class="log-li-type ' + type + ' reply">' + typeKor + '</p>\n' +
+                '                                   <p class="log-li-title reply">' + content + '</p>\n' +
+                '                                </div>\n' +
+                '                                <p class="log-li-date reply">' + regdate + '</p>\n' +
+                '                            </a>\n' +
+                '                        </li>'
+            )
+        }
     }
     $('ul.log-ul.reply').next('#btn-more-reply').remove();
     if(data.next){
         $('ul.log-ul.reply').after('<input type="button" id="btn-more-reply" class="btn-more" onclick="btnMoreReply()" value="↓">');
     }
 }
+function btnEdit(ele,option){
+    const parent = $(ele).parents('div.info-row');
+    const content = $(parent).find('p.info-item').text();
+    $(parent).find('p.info-item, input.btn-edit').addClass('hide');
+    $(parent).append('<div style="display: flex;"><input type="text" class="edit-data" value="'+content+'"><input type="button" value="수정" onclick="editInfo(\''+option+'\',this)"><input type="button" value="취소" onclick="btnEditCancel(this)"></div>');
+}
+function btnEditCancel(ele){
+    const parentRow = $(ele).parents('div.info-row');
+    const parent= $(ele).parent('div');
+    $(parentRow).children().removeClass('hide');
+    parent.remove();
+}
+
 function btnMoreBoard(){
     bpage += 1;
     loadBoard();

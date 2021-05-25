@@ -32,26 +32,29 @@
             <section id="my-info-section">
                 <p class="section-title">내정보</p>
                 <form class=""  enctype="multipart/form-data" action="mypage" method="post">
-                    <img src="${pageContext.request.contextPath}/images/market_background.jpg" alt="" id="img-profile">
+                    <img src="${pageContext.request.contextPath}/upload/profile/noProfile-Big.png" alt="" id="img-profile">
                     <input type="file" name="" id="edit-profile-img" class="hide" placeholder="이미지 업로드" accept="image/png, image/jpeg, image/jpg" onchange="">
                     <label class="edit-profile-img label" for="edit-profile-img"><img src="${pageContext.request.contextPath}/images/edit2.png" id="label-img" alt=""></label>
                 </form>
                 <div class="info-row">
-                    <p class="info-item name">김종태</p>
-                    <input type="button" class="btn-edit name" />
+                    <p class="info-item name"></p>
+                    <input type="button" class="btn-edit name" onclick="btnEdit(this,'name')"/>
                 </div>
                 <div class="info-container">
                     <div class="info-row">
-                        <p class="info-item email">kjt407@nate.com</p>
-                        <input type="button" class="btn-edit name"/>
+                        <p class="info-title">이메일</p>
+                        <p class="info-item email"></p>
+                        <input type="button" class="btn-edit email" onclick="btnEdit(this,'email')"/>
                     </div>
                     <div class="info-row">
-                        <p class="info-item phone">010-7706-0437</p>
-                        <input type="button" class="btn-edit name"/>
+                        <p class="info-title">전화번호</p>
+                        <p class="info-item phone"></p>
+                        <input type="button" class="btn-edit phone" onclick="btnEdit(this,'phone')"/>
                     </div>
                     <div class="info-row">
-                        <p class="info-item passwd null">표기되지 않습니다</p>
-                        <input type="button" class="btn-edit name"/>
+                        <p class="info-title">비밀번호</p>
+                        <p class="info-item passwd">**********</p>
+                        <input type="button" class="btn-edit passwd"/>
                     </div>
                 </div>
 

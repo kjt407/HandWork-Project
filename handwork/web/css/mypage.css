@@ -13,6 +13,7 @@ input.btn-more { align-self: center; display: flex; align-items: center; justify
 input.btn-more:hover { background: steelblue; box-shadow: 0 0 8px gray;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul { width: 100%; margin-top:20px;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li { padding-bottom: 20px}
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li > p.list-empty { padding-left: 20px; font-size: 21px;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a { display: flex; justify-content: space-between; align-items: center; background: whitesmoke; padding: 30px; border-radius: 3px; transition: 0.2s all;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a:hover { background: #d9d7d7;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap { display: flex; align-items: center; margin-right: 15px; }
@@ -36,11 +37,8 @@ section#main-section div.wrap-main > section#my-info-section div.info-container 
 section#main-section div.wrap-main > section#my-info-section div.info-row { display: flex; align-items: center; margin-bottom: 20px; }
 section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item { display: flex; align-items: center; font-size: 22px; font-weight: 600; line-height: 25px; color: black; font-family: 'Gothic A1', sans-serif;}
 section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item.name{ margin-left: 30px; line-height: 25px;}
-section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item.null{ color: #555555; font-size: 20px;}
-section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item:before { content: ""; display: flex; justify-content: center; align-items: center; width: 80px; height: 40px; background: tomato; margin-right: 15px; color: white; font-size: 16px; font-weight: 500; text-align: center; border-radius: 5px;}
-section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item.email:before { content: "이메일";}
-section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item.phone:before { content: "전화번호";}
-section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item.passwd:before { content: "비밀번호";}
+section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item.null:after{ content: "등록되지 않았습니다"; color: #555555; font-size: 20px;}
+section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-title{ content: ""; display: flex; justify-content: center; align-items: center; width: 80px; height: 40px; background: tomato; margin-right: 15px; color: white; font-size: 16px; font-weight: 500; text-align: center; border-radius: 5px;}
 section#main-section div.wrap-main > section#my-info-section div.info-row > input.btn-edit { display: flex; justify-content: center; align-items: center; width: 20px; height: 20px; background: url("../images/edit.png") no-repeat; background-size: cover; margin-left: 10px; transition: 0.3s all; margin-bottom: 3px;}
 section#main-section div.wrap-main > section#my-info-section div.info-row > input.btn-edit:hover { transform: rotateZ(90deg); }
 section#main-section div.wrap-main > section#my-log-section { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:100%; padding: 0 200px;}
