@@ -39,6 +39,7 @@ textarea { padding:5px 0;}
 select:focus,
 textarea:focus,
 input:focus { border: 1px solid #727272;}
+input[type=button] { cursor: pointer;}
 input[type=button]:focus { border: none;}
 
 input[type=tel][readonly],
