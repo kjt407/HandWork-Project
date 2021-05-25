@@ -67,7 +67,6 @@ public class MyPageController extends HttpServlet {
 
         return result;
     }
-
     private JSONObject updateInfo(String writer_id, HttpServletRequest request) {
         MyPageService service = new MyPageService();
         JSONObject result = service.updateInfo(writer_id, request);
