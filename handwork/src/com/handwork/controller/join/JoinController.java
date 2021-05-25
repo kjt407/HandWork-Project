@@ -54,7 +54,7 @@ public class JoinController extends HttpServlet{
 				response.sendRedirect("joinFail");
 		
 			} else {
-		stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s', '%s')", dept, id, pw, name, email));
+		stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s', '%s', null, null)", dept, id, pw, name, email));
 		
 		response.sendRedirect("joinSuccess");
 		
