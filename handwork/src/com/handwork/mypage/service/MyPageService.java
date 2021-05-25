@@ -189,25 +189,19 @@ public class MyPageService {
         PreparedStatement stmt = null;
         String column = requset.getParameter("col");
         String data = requset.getParameter("data");
+        System.out.println(id);
+        System.out.println(column);
+        System.out.println(data);
+
+
 
         try {
             sql = "update member set "+column+"=?  where id=?";
+            System.out.println(sql);
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, data);
             stmt.setString(2, id);
-
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                String name_ = rs.getString("");
-                String id_ = rs.getString("id");
-                obj.put("name", name_);
-                obj.put("id", id_);
-
-                System.out.println(obj);
-            }
-
-
-            rs.close();
+            stmt.executeUpdate();
             stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
