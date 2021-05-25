@@ -182,9 +182,7 @@ public class MyPageService {
     //이름 수정
     public JSONObject editName(String id, String name){
 
-        JSONObject result = new JSONObject();
-        JSONArray array = new JSONArray();
-
+        JSONObject obj = new JSONObject();
         String sql = null;
         PreparedStatement stmt = null;
 
@@ -196,31 +194,29 @@ public class MyPageService {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                JSONObject obj = new JSONObject();
                 String name_ = rs.getString("name");
                 String id_ = rs.getString("id");
                 obj.put("name", name_);
                 obj.put("id", id_);
 
                 System.out.println(obj);
-                array.add(obj);
             }
-            result.put("list", array);
+
 
             rs.close();
             stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
         }
-        System.out.println(result.toJSONString());
-        return result;
+
+        return obj;
     }
 
     //email수정
     public JSONObject editEmail(String id, String email){
 
-        JSONObject result = new JSONObject();
-        JSONArray array = new JSONArray();
+        JSONObject obj = new JSONObject();
+
 
         String sql = null;
         PreparedStatement stmt = null;
@@ -233,31 +229,29 @@ public class MyPageService {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                JSONObject obj = new JSONObject();
+
                 String email_ = rs.getString("email");
                 String id_ = rs.getString("id");
                 obj.put("email", email_);
                 obj.put("id", id_);
 
                 System.out.println(obj);
-                array.add(obj);
-            }
-            result.put("list", array);
 
+            }
             rs.close();
             stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
         }
-        System.out.println(result.toJSONString());
-        return result;
+
+        return obj;
     }
 
     //phone수정
      public JSONObject eidtPhone(String id, String phone){
 
-        JSONObject result = new JSONObject();
-        JSONArray array = new JSONArray();
+        JSONObject obj = new JSONObject();
+
 
         String sql = null;
         PreparedStatement stmt = null;
@@ -270,24 +264,19 @@ public class MyPageService {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                JSONObject obj = new JSONObject();
                 String phone_ = rs.getString("phone");
                 String id_ = rs.getString("id");
                 obj.put("phone", phone_);
                 obj.put("id", id_);
 
                 System.out.println(obj);
-                array.add(obj);
             }
-            result.put("list", array);
-
             rs.close();
             stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
         }
-        System.out.println(result.toJSONString());
-        return result;
+        return obj;
     }
 
     public JSONObject loadInfo(String id){
