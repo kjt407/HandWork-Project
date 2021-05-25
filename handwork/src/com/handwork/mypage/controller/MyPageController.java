@@ -36,6 +36,11 @@ public class MyPageController extends HttpServlet {
             case "reply":
                 response.getWriter().print(getReply((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
                 break;
+            case "info":
+                response.getWriter().print(getInfo((String) request.getSession().getAttribute("id")));
+                break;
+            case "update":
+                break;
         }
     }
 
@@ -53,5 +58,15 @@ public class MyPageController extends HttpServlet {
 
         return result;
     }
+
+    private JSONObject getInfo(String writer_id) {
+        MyPageService service = new MyPageService();
+        JSONObject result = service.loadInfo(writer_id);
+        service.disconnect();
+
+        return result;
+    }
+
+
 
 }
