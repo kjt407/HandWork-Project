@@ -40,6 +40,7 @@ public class MyPageController extends HttpServlet {
                 response.getWriter().print(getInfo((String) request.getSession().getAttribute("id")));
                 break;
             case "update":
+                response.getWriter().print(updateName((String) request.getSession().getAttribute("id"),request.getParameter("name")));
                 break;
         }
     }

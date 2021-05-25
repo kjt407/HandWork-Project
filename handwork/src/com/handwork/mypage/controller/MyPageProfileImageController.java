@@ -73,6 +73,7 @@ public class MyPageProfileImageController extends HttpServlet {
             pstmt.setString(2, writer_id);
             pstmt.executeUpdate();
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }
