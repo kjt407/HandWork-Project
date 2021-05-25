@@ -10,11 +10,13 @@ public class Comments {
     private String name;
     private int price;
 
+    private String profile_img;
+
     public Comments() {
         super();
     }
 
-    public Comments(int idx, String user_id, String content, String regdate, int board_num, int c_state, String name, int price) {
+    public Comments(int idx, String user_id, String content, String regdate, int board_num, int c_state, String name, int price, String profile_img) {
         super();
         this.idx = idx;
         this.user_id = user_id;
@@ -24,6 +26,7 @@ public class Comments {
         this.c_state = c_state;
         this.name = name;
         this.price = price;
+        this.profile_img = profile_img;
     }
 
     public int getIdx() {
@@ -88,6 +91,14 @@ public class Comments {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getProfile_img() {
+        return profile_img;
+    }
+
+    public void setProfile_img(String profile_img) {
+        this.profile_img = profile_img;
     }
 
     @Override

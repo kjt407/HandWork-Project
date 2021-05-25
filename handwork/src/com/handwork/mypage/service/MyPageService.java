@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -182,13 +183,13 @@ public class MyPageService {
 
     //회원정보수정
     //이름 수정
-    public JSONObject updateInfo(String id, HttpServletRequest requset){
+    public JSONObject updateInfo(String id, HttpServletRequest request){
 
         JSONObject obj = new JSONObject();
         String sql = null;
         PreparedStatement stmt = null;
-        String column = requset.getParameter("col");
-        String data = requset.getParameter("data");
+        String column = request.getParameter("col");
+        String data = request.getParameter("data");
         System.out.println(id);
         System.out.println(column);
         System.out.println(data);
@@ -207,6 +208,8 @@ public class MyPageService {
             // TODO: handle exception
         }
 
+
+
         return obj;
     }
 
@@ -214,7 +217,7 @@ public class MyPageService {
 
 
 
-    public JSONObject loadInfo(String id){
+    public JSONObject loadInfo(String id, HttpServletRequest request){
         JSONObject obj = new JSONObject();
 
         String sql = null;
@@ -236,10 +239,11 @@ public class MyPageService {
                 obj.put("userPhone", phone);
                 obj.put("userImg", img);
 
+                HttpSession session = request.getSession();
+                session.setAttribute("name", name);
 
-
-                System.out.println("오비제이"+obj);
             }
+
 
             rs.close();
             stmt.close();

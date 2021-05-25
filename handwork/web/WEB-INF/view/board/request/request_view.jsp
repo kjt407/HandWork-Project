@@ -59,7 +59,16 @@
                     <p class="board-view-title">${r.title}</p>
                     <div class="header-row">
                         <div class="writer-info">
-                            <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="작성자 프로필">
+                            <c:choose>
+                                <c:when test="${empty r.profile_img}">
+                                    <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="작성자 프로필">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${pageContext.request.contextPath}/upload/profile/${r.profile_img}" alt="작성자 프로필">
+                                </c:otherwise>
+                            </c:choose>
+
+
                             <a href="">${r.writer}</a>
                         </div>
                         <div class="post-info">

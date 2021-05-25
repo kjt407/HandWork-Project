@@ -62,7 +62,7 @@
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row { display: flex; justify-content: space-between; align-items: flex-start;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row:first-child { margin-bottom: 15px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .user-info-wrap { display: flex; justify-content:flex-start;}
-.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .user-info-wrap > img.user-img { width:45px; height: 45px; object-fit: cover}
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .user-info-wrap > img.user-img { width:45px; height: 45px; object-fit: cover; border-radius: 50%;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .user-info-wrap > div.write-info { display: flex; flex-direction: column; justify-content: center; margin-left: 10px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .user-info-wrap > div.write-info > .user-name { font-size: 18px; color: black; margin-bottom: 3px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .user-info-wrap > div.write-info > .user-date { font-size: 15px; }

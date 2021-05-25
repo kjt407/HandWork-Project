@@ -3,15 +3,27 @@ package com.handwork.review.service;
 
 import com.handwork.review.entity.Reviews;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewService {
 
+    Connection conn;
+
+    public ReviewService(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
+            String dbID = "handwork";
+            String dbPassword = "handwork";
+            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 
     public List<Reviews> getReviewsList(int board_num) {
@@ -19,14 +31,9 @@ public class ReviewService {
         List<Reviews> list = new ArrayList<>();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
 
             String sql="SELECT * FROM review where board_num=? order by idx desc";
 
-            Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setInt(1, board_num);
@@ -40,21 +47,53 @@ public class ReviewService {
                 String content = rs.getString("content");
                 String regdate = rs.getString("regdate");
                 int board_num_ = rs.getInt("board_num");
-                String name = rs.getString("name");
-                int star = rs.getInt("star");
 
-                Reviews reviews = new Reviews(idx, user_id, content, regdate, board_num_, name, star);
+                int star = rs.getInt("star");
+                ArrayList lists = getWriterInfo(user_id);
+                String profile_img = (String)lists.get(0);
+                String name = (String)lists.get(1);
+
+                Reviews reviews = new Reviews(idx, user_id, content, regdate, board_num_, name, star, profile_img);
                 list.add(reviews);
 
             }
 
             rs.close();
             stmt.close();
-            conn.close();
+
         } catch (Exception e) {
             // TODO: handle exception
         }
         return list;
+    }
+
+    public ArrayList getWriterInfo(String id){
+        ArrayList result = new ArrayList();
+        try {
+
+            String sql = "SELECT profile_img,name from member where id=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()) {
+                result.add(rs.getString("profile_img"));
+                result.add(rs.getString("name"));
+            }
+        } catch (Exception e) {
+
+        }
+        return result;
+    }
+
+
+    public void disconnect() {
+        try {
+            conn.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 
