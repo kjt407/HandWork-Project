@@ -45,9 +45,8 @@ function editInfo(col,ele){
         col:col,
         data:data
     };
-    btnEditCancel(ele);
     ajaxFunc(json);
-
+    btnEditCancel(ele);
 }
 // AJAX 통신 부분
 function ajaxFunc(json) {
