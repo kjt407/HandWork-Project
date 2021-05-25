@@ -3,6 +3,9 @@ let rpage = 1;
 
 $(window).load(function(){
     init();
+    $('#edit-profile-img').change(function(){
+        imgUpload();
+    });
 });
 
 function init() {
@@ -36,15 +39,12 @@ function loadInfo(){
 }
 
 function editInfo(col,ele){
-    console.log(col);
-    console.log(ele);
-    const data = $(ele).find('.edit-data').val();
+    const data = $(ele).parent().find('.edit-data').val();
     const json = {
         op:'update',
         col:col,
         data:data
     };
-    console.log('data = '+json);
     ajaxFunc(json);
 }
 // AJAX 통신 부분
@@ -69,8 +69,29 @@ function ajaxFunc(json) {
         error:function(){
             alert('서버에서 정보를 받아올 수 없습니다');
         }
-    })
+    });
 }
+function imgUpload(){
+    if($("#edit-profile-img").val() != null && $("#edit-profile-img").val() != ""){
+        console.log('업로드 발생함'+$("#edit-profile-img").val());
+        console.log($("#edit-profile-img").val());
+        $("#img-upload-form").ajaxForm({
+            url : "/mypage/user-img",
+            enctype : "multipart/form-data",
+            dataType : "json",
+            error : function(){
+                alert("에러") ;
+            },
+            success : function(result){
+                alert("성공") ;
+            }
+        });
+        $("#img-upload-form").submit() ;
+    }
+}
+
+
+출처: https://fruitdev.tistory.com/199 [과일가게 개발자]
 
 // 동작 메서드
 function createInfo(data){
