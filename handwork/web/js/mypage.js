@@ -76,7 +76,7 @@ function imgUpload(){
         console.log('업로드 발생함'+$("#edit-profile-img").val());
         console.log($("#edit-profile-img").val());
         $("#img-upload-form").ajaxForm({
-            url : "/mypage/user-img",
+            url : getContextPath()+"/mypage/userimg",
             enctype : "multipart/form-data",
             dataType : "json",
             error : function(){
