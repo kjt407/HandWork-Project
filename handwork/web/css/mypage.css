@@ -1,26 +1,46 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;600&display=swap');
 
-section#main-section { display: flex; justify-content: center; align-items: center;}
+section#main-section { display: flex; justify-content: center; align-items: center; margin: 50px 0;}
 section#main-section div.wrap-main { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 1280px; min-height: 900px;}
 
 /*공통항목*/
-p.section-title { display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 100%; color: #3f3f3f; font-size: 21px; font-weight: 600; margin-bottom: 30px; }
+p.section-title { display: flex; justify-content: center; align-items: center; flex-shrink: 0; width: 100%; color: #3f3f3f; font-size: 21px; font-weight: 600; margin-bottom: 50px; }
 p.section-title:before,p.section-title:after { content:""; width: 180px; height: 1px; background: #3f3f3f; margin: 0 20px; }
-div.log-container { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width:100%; }
+div.log-container { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; width:100%; margin-bottom: 50px; }
 div.log-container p.list-title { font-size: 19px; color: black; }
-input.btn-more { align-self: center; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: gray; border-radius: 50%; font-size: 21px; color: white; transition: 0.2s all;}
-input.btn-more:hover { background: #901d0c}
+input.btn-more { align-self: center; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: lightslategray; border-radius: 50%; font-size: 21px; color: white; transition: 0.2s all;}
+input.btn-more:hover { background: steelblue; box-shadow: 0 0 8px gray;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul { width: 100%; margin-top:20px;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li { padding-bottom: 20px}
-section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a { display: flex; justify-content: space-between; align-items: center; background: whitesmoke; padding: 30px; border-radius: 3px;}
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a { display: flex; justify-content: space-between; align-items: center; background: whitesmoke; padding: 30px; border-radius: 3px; transition: 0.2s all;}
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a:hover { background: #d9d7d7;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap { display: flex; align-items: center; margin-right: 15px; }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type { margin-right: 15px; color: white; padding: 15px; border-radius: 3px; flex-shrink: 0;}
-section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.request { background:orange }
-section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.market { background:slateblue }
-section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-title { height: 19px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; font-size: 19px; line-height: 19px; }
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.request,
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.comment { background:darkorange }
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.market,
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.review { background:slateblue }
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-title { height: 19px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; color:black; font-size: 19px; line-height: 19px; }
+section#main-section div.wrap-main > section#my-log-section .log-container.reply > ul > li a div.wrap p.log-li-title { height: 16px; font-size: 16px; line-height: 16px; }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a p.log-li-date { flex-shrink: 0;}
 
 
-section#main-section div.wrap-main > section#my-info-section { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:100%; margin-bottom: 80px;}
-section#main-section div.wrap-main > section#my-info-section img#img-profile { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+section#main-section div.wrap-main > section#my-info-section { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:100%; padding: 0 200px; margin-bottom: 50px;}
+section#main-section div.wrap-main > section#my-info-section form { position: relative; margin-bottom: 30px;}
+section#main-section div.wrap-main > section#my-info-section form img#img-profile { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
+section#main-section div.wrap-main > section#my-info-section form .edit-profile-img.label { position: absolute; bottom: 0; right: 0; display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; background: lightslategrey; border-radius: 50%; transition: 0.2s all; cursor: pointer;}
+section#main-section div.wrap-main > section#my-info-section form .edit-profile-img.label:hover { background: tomato; box-shadow: 0 0 10px gray;}
+section#main-section div.wrap-main > section#my-info-section form img#label-img { width:30px; height:30px; object-fit: cover; }
+section#main-section div.wrap-main > section#my-info-section div.info-container { display: flex; flex-direction: column; align-items: flex-start;}
+section#main-section div.wrap-main > section#my-info-section div.info-row { display: flex; align-items: center; margin-bottom: 20px; }
+section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item { display: flex; align-items: center; font-size: 22px; font-weight: 600; line-height: 25px; color: black; font-family: 'Gothic A1', sans-serif;}
+section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item.name{ margin-left: 30px; line-height: 25px;}
+section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item.null{ color: #555555; font-size: 20px;}
+section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item:before { content: ""; display: flex; justify-content: center; align-items: center; width: 80px; height: 40px; background: tomato; margin-right: 15px; color: white; font-size: 16px; font-weight: 500; text-align: center; border-radius: 5px;}
+section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item.email:before { content: "이메일";}
+section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item.phone:before { content: "전화번호";}
+section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-item.passwd:before { content: "비밀번호";}
+section#main-section div.wrap-main > section#my-info-section div.info-row > input.btn-edit { display: flex; justify-content: center; align-items: center; width: 20px; height: 20px; background: url("../images/edit.png") no-repeat; background-size: cover; margin-left: 10px; transition: 0.3s all; margin-bottom: 3px;}
+section#main-section div.wrap-main > section#my-info-section div.info-row > input.btn-edit:hover { transform: rotateZ(90deg); }
 section#main-section div.wrap-main > section#my-log-section { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:100%; padding: 0 200px;}
