@@ -25,6 +25,9 @@ public class Request {
 	private String writer_id;
 	private int state;
 	private int count;
+	private String profile_img;
+
+
 
 	public Request() {
 		super();
@@ -50,7 +53,7 @@ public class Request {
 	}
 
 	public Request(int id, String writer, String title, String kategorie, String location, String deadline, int price,
-				   String content, String regdate, int hit, String filename, String how, String writer_id, int state) {
+				   String content, String regdate, int hit, String filename, String how, String writer_id, int state, String profile_img) {
 		super();
 		this.id = id;
 		this.writer = writer;
@@ -66,6 +69,7 @@ public class Request {
 		this.how = how;
 		this.writer_id = writer_id;
 		this.state = state;
+		this.profile_img = profile_img;
 	}
 
 	public Request(int id, String writer, String title, String kategorie, String location, String deadline, int price,
@@ -86,6 +90,7 @@ public class Request {
 		this.writer_id = writer_id;
 		this.state = state;
 		this.count = count;
+
 	}
 
 	public int getId() {
@@ -214,6 +219,14 @@ public class Request {
 
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public String getProfile_img() {
+		return profile_img;
+	}
+
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
 	}
 
 	@Override

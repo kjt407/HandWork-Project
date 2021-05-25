@@ -8,13 +8,14 @@ public class Reviews {
     private int board_num;
     private String name;
     private int star;
+    private String profile_img;
 
 
     public Reviews() {
         super();
     }
 
-    public Reviews(int idx, String user_id, String content, String regdate, int board_num, String name, int star) {
+    public Reviews(int idx, String user_id, String content, String regdate, int board_num, String name, int star, String profile_img) {
         super();
         this.idx = idx;
         this.user_id = user_id;
@@ -23,6 +24,7 @@ public class Reviews {
         this.board_num = board_num;
         this.name = name;
         this.star = star;
+        this.profile_img = profile_img;
 
     }
 
@@ -80,6 +82,14 @@ public class Reviews {
 
     public void setStar(int star) {
         this.star = star;
+    }
+
+    public String getProfile_img() {
+        return profile_img;
+    }
+
+    public void setProfile_img(String profile_img) {
+        this.profile_img = profile_img;
     }
 
     @Override

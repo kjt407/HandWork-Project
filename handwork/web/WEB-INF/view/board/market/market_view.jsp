@@ -166,7 +166,14 @@
                     <li class="review-li">
                         <div class="review-row">
                             <div class="user-info-wrap">
-                                <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                <c:choose>
+                                    <c:when test="${empty re.profile_img}">
+                                        <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="리뷰 작성자 프로필" class="user-img">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="${pageContext.request.contextPath}/upload/profile/${re.profile_img}" alt="작성자 프로필" class="user-img">
+                                    </c:otherwise>
+                                </c:choose>
                                 <div class="write-info">
                                     <span class="user-name" >${re.name}</span>
                                     <span class="user-date" >${re.regdate}</span>

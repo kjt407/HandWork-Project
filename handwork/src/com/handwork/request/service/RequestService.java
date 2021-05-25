@@ -132,7 +132,6 @@ public class RequestService {
 
 			if(rs.next()){
 				int nid = rs.getInt("id");
-				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -145,8 +144,12 @@ public class RequestService {
 				String how = rs.getString("how");
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
+				ArrayList list = getWriterInfo(writer_id);
+				String profile_img = (String)list.get(0);
+				String writer = (String)list.get(1);
 
-				request = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
+
+				request = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, profile_img);
 
 				System.out.println(" ð  : " + regdate);
 
@@ -180,7 +183,6 @@ public class RequestService {
 
 			if(rs.next()){
 				int nid = rs.getInt("id");
-				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -193,9 +195,11 @@ public class RequestService {
 				String how = rs.getString("how");
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
+				ArrayList list = getWriterInfo(writer_id);
+				String profile_img = (String)list.get(0);
+				String writer = (String)list.get(1);
 
-				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
-
+				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, profile_img);
 				if(incHit) {
 					stmt.execute("update board set hit=hit+1 where id=" + id);
 				}
@@ -228,7 +232,7 @@ public class RequestService {
 
 			if(rs.next()){
 				int nid = rs.getInt("id");
-				String writer = rs.getString("writer");
+
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -241,9 +245,11 @@ public class RequestService {
 				String how = rs.getString("how");
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
+				ArrayList list = getWriterInfo(writer_id);
+				String profile_img = (String)list.get(0);
+				String writer = (String)list.get(1);
 
-				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state);
-
+				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, profile_img);
 				if(incHit) {
 					stmt.execute("update board set hit=hit+1 where id=" + id);
 				}
@@ -280,6 +286,26 @@ public class RequestService {
 
 		}
 		return count;
+	}
+
+	public ArrayList getWriterInfo(String id){
+		ArrayList result = new ArrayList();
+		try {
+
+			String sql = "SELECT profile_img,name from member where id=?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, id);
+
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				result.add(rs.getString("profile_img"));
+				result.add(rs.getString("name"));
+			}
+		} catch (Exception e) {
+
+		}
+		return result;
 	}
 
 	public void disconnect() {
