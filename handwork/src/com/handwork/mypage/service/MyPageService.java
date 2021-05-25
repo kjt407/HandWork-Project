@@ -3,6 +3,8 @@ package com.handwork.mypage.service;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -180,21 +182,23 @@ public class MyPageService {
 
     //회원정보수정
     //이름 수정
-    public JSONObject editName(String id, String name){
+    public JSONObject updateInfo(String id, HttpServletRequest requset){
 
         JSONObject obj = new JSONObject();
         String sql = null;
         PreparedStatement stmt = null;
+        String column = requset.getParameter("col");
+        String data = requset.getParameter("data");
 
         try {
-            sql = "update member set name=?  where id=?";
+            sql = "update member set "+column+"=?  where id=?";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, name);
+            stmt.setString(1, data);
             stmt.setString(2, id);
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String name_ = rs.getString("name");
+                String name_ = rs.getString("");
                 String id_ = rs.getString("id");
                 obj.put("name", name_);
                 obj.put("id", id_);
@@ -212,72 +216,9 @@ public class MyPageService {
         return obj;
     }
 
-    //email수정
-    public JSONObject editEmail(String id, String email){
-
-        JSONObject obj = new JSONObject();
 
 
-        String sql = null;
-        PreparedStatement stmt = null;
 
-        try {
-            sql = "update member set email=?  where id=?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, email);
-            stmt.setString(2, id);
-
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-
-                String email_ = rs.getString("email");
-                String id_ = rs.getString("id");
-                obj.put("email", email_);
-                obj.put("id", id_);
-
-                System.out.println(obj);
-
-            }
-            rs.close();
-            stmt.close();
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-
-        return obj;
-    }
-
-    //phone수정
-     public JSONObject eidtPhone(String id, String phone){
-
-        JSONObject obj = new JSONObject();
-
-
-        String sql = null;
-        PreparedStatement stmt = null;
-
-        try {
-            sql = "update member set phone=?  where id=?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, phone);
-            stmt.setString(2, id);
-
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                String phone_ = rs.getString("phone");
-                String id_ = rs.getString("id");
-                obj.put("phone", phone_);
-                obj.put("id", id_);
-
-                System.out.println(obj);
-            }
-            rs.close();
-            stmt.close();
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-        return obj;
-    }
 
     public JSONObject loadInfo(String id){
         JSONObject obj = new JSONObject();
