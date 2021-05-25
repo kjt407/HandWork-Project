@@ -31,9 +31,9 @@
         <div class="wrap-main">
             <section id="my-info-section">
                 <p class="section-title">내정보</p>
-                <form class=""  enctype="multipart/form-data" action="mypage" method="post">
+                <form id="img-upload-form"  enctype="multipart/form-data" action="/mypage/user-img" method="post">
                     <img src="${pageContext.request.contextPath}/upload/profile/noProfile-Big.png" alt="" id="img-profile">
-                    <input type="file" name="" id="edit-profile-img" class="hide" placeholder="이미지 업로드" accept="image/png, image/jpeg, image/jpg" onchange="">
+                    <input type="file" name="img" id="edit-profile-img" class="hide" placeholder="이미지 업로드" accept="image/png, image/jpeg, image/jpg">
                     <label class="edit-profile-img label" for="edit-profile-img"><img src="${pageContext.request.contextPath}/images/edit2.png" id="label-img" alt=""></label>
                 </form>
                 <div class="info-row">
