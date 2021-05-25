@@ -62,8 +62,10 @@ function ajaxFunc(json) {
                 createBoard(data);
             } else if( json.op == 'reply') {
                 createReply(data);
-            } else if( json.op == 'info' || json.op == 'update') {
+            } else if( json.op == 'info') {
                 createInfo(data);
+            } else if( json.op == 'update') {
+                loadInfo();
             }
         },
         error:function(){
