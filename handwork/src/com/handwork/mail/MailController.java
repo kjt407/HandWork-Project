@@ -36,7 +36,7 @@ public class MailController extends HttpServlet {
         String price = request.getParameter("price");
         String name = request.getParameter("name");
         String email = getEmail(writer_id);
-        String phone=null;
+        String phone=getPhone(writer_id);
         if(phone==null||phone.equals("")){
             phone="연락처를 등록하지 않았습니다.";
         }else{

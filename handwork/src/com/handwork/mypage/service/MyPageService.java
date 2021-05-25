@@ -290,6 +290,40 @@ public class MyPageService {
         return result;
     }
 
+    public JSONObject loadInfo(String id){
+        JSONObject obj = new JSONObject();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+
+        try {
+            sql = "select * from member where id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                obj.put("userName", name);
+                obj.put("userEmail", email);
+                obj.put("userPhone", phone);
+
+
+
+                System.out.println("오비제이"+obj);
+            }
+
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        return obj;
+    }
+
     public void disconnect() {
         try {
             conn.close();
