@@ -295,9 +295,11 @@ public class MyPageService {
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String phone = rs.getString("phone");
+                String img = rs.getString("profile_img");
                 obj.put("userName", name);
                 obj.put("userEmail", email);
                 obj.put("userPhone", phone);
+                obj.put("userImg", img);
 
 
 
@@ -312,6 +314,7 @@ public class MyPageService {
 
         return obj;
     }
+
 
     public void disconnect() {
         try {
