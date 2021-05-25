@@ -38,10 +38,7 @@ public class MyPageProfileImageController extends HttpServlet {
     }
 
     private JSONObject getUserImg(String writer_id, HttpServletRequest request) {
-        MyPageService service = new MyPageService();
-
         JSONObject result = getProfileImgUpload(writer_id, request);
-        service.disconnect();
 
         return result;
     }
@@ -73,7 +70,7 @@ public class MyPageProfileImageController extends HttpServlet {
             pstmt.setString(2, writer_id);
             pstmt.executeUpdate();
 
-
+            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
