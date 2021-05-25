@@ -66,6 +66,27 @@ public class MyPageController extends HttpServlet {
 
         return result;
     }
+    
+    private JSONObject updateName(String writer_id, String name) {
+        MyPageService service = new MyPageService();
+        JSONObject result = service.editName(writer_id, name);
+        service.disconnect();
+        return result;
+    }
+    private JSONObject updateEmail(String writer_id, String email) {
+        MyPageService service = new MyPageService();
+        JSONObject result = service.editName(writer_id, email);
+        service.disconnect();
+        return result;
+    }
+    private JSONObject updatePhone(String writer_id, String phone) {
+        MyPageService service = new MyPageService();
+        JSONObject result = service.editName(writer_id, phone);
+        service.disconnect();
+        return result;
+    }
+
+
 
 
 
