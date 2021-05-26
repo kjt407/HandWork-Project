@@ -35,7 +35,7 @@
 							<div class="header-sub">
 								<ul class="inner-ul">
 									<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
-									<li><a href="">자유게시판</a></li>
+									<li><a href="${pageContext.request.contextPath}/free">자유게시판</a></li>
 								</ul>
 							</div>
 						</li>
