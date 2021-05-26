@@ -45,10 +45,21 @@ function editInfo(col,ele){
         col:col,
         data:data
     };
-    btnEditCancel(ele);
     ajaxFunc(json);
-
+    btnEditCancel(ele);
 }
+
+function editPw(col,ele){
+    const data = $(ele).parent().find('.edit-data').val();
+    const json = {
+        op:'pwcheck',
+        data:data
+    };
+    ajaxFunc(json);
+    btnEditCancel(ele);
+}
+
+
 // AJAX 통신 부분
 function ajaxFunc(json) {
     const url = getContextPath()+"/mypage";
@@ -68,9 +79,31 @@ function ajaxFunc(json) {
                 createInfo(data);
             } else if( json.op == 'update') {
                 loadInfo();
+            } else if( json.op == 'check-account') {
+                if(data != null && data.result != null && data.result){
+                    createPwCheck();
+                } else {
+                    alert('소셜계정은 해당 플랫폼에서 변경이 가능합니다');
+                }
+            } else if( json.op == 'check-pw') {
+                if(data != null && data.result != null && data.result){
+                    createPwEdit();
+                } else {
+                    alert('비밀번호를 다시 확인해주세요');
+                }
+            } else if( json.op == 'edit-pw') {
+                if(data != null && data.result != null && data.result){
+                    btnPwCancel();
+                    alert('비밀번호가 변경되었습니다')
+                } else {
+                    alert('비밀번호 변경에 실패했습니다');
+                }
             }
         },
         error:function(){
+            if( json.op == 'check-account') {
+                    createPwForm();
+                }
             alert('서버에서 정보를 받아올 수 없습니다');
         }
     });
@@ -83,7 +116,6 @@ function imgUpload(){
             dataType : "json",
             success : function(data){
                 loadInfo();
-                alert("성공\n업로드 완료!") ;
             },
             error : function(){
                 alert("이미지를 업로드 에러\n로그인 상태를 확인하세요") ;
@@ -99,24 +131,40 @@ function createInfo(data){
     const userImg = data.userImg;
     const userEmail = data.userEmail;
     const userPhone = data.userPhone;
-
+    
+    $('.header-username').text(userName+'님');
     $('p.info-item').removeClass('null');
-    $('p.info-item.name').text(userName);
     if (userName == null || userName.replaceAll(" ","") == ""){
         $('p.info-item.name').addClass('null');
+    } else {
+        $('p.info-item.name').text(userName);
     }
-    $('p.info-item.email').text(userEmail)
     if (userEmail == null || userEmail.replaceAll(" ","") == ""){
         $('p.info-item.email').addClass('null');
+    } else {
+        $('p.info-item.email').text(userEmail)
     }
-    $('p.info-item.phone').text(userPhone);
     if (userPhone == null || userPhone.replaceAll(" ","") == ""){
         $('p.info-item.phone').addClass('null');
+    } else {
+        $('p.info-item.phone').text(userPhone);
     }
     if (userImg != null || userImg.replaceAll(" ","") != ""){
         $('img#img-profile').attr('src',getContextPath()+'/upload/profile/'+userImg);
     }
+}
 
+function createPwCheck(){
+    const parent = $('div.info-row.passwd');
+    parent.children('.info-item.passwd').addClass('hide');
+    parent.children('.btn-edit.passwd').addClass('hide');
+    parent.append('<div class="check-pw"><input type="password" id="check-pw" placeholder="현재 비밀번호를 입력해주세요"><input type="button" value="확인" onclick="btnPwCheck(this)"><input type="button" value="취소" onclick="btnPwCancel()"></div>')
+}
+
+function createPwEdit(){
+    const parent = $('div.info-row.passwd');
+    parent.children('div.check-pw').remove();
+    parent.append('<div class="edit-pw"><input type="password" id="edit-pw" placeholder="변견하실 비밀번호를 입력해주세요"><input type="password" id="edit-pw-re" placeholder="한번 더 입력해 주세요"><input type="button" value="확인" onclick="btnPwEdit(this)"><input type="button" value="취소" onclick="btnPwCancel()"></div>')
 }
 
 function createBoard(data) {
@@ -201,12 +249,47 @@ function createReply(data) {
         $('ul.log-ul.reply').after('<input type="button" id="btn-more-reply" class="btn-more" onclick="btnMoreReply()" value="↓">');
     }
 }
+
+function btnPw(){
+    const json = {
+        op:'check-account',
+    };
+    ajaxFunc(json);
+}
+
+function btnPwCheck(ele){
+    const parent = $(ele).parent('div.check-pw');
+    const data = parent.children('input#check-pw').val();
+    const json = {
+        op:'check-pw',
+        data:data
+    };
+    ajaxFunc(json);
+}
+
+function btnPwEdit(ele){
+    const parent = $(ele).parent('div.edit-pw');
+    const data = parent.children('input#edit-pw').val();
+    const json = {
+        op:'edit-pw',
+        data:data
+    };
+    ajaxFunc(json);
+}
+
+function btnPwCancel(){
+    const parent = $('div.info-row.passwd');
+    parent.children().removeClass('hide');
+    parent.children('input.btn-edit.passwd').nextAll().remove();
+}
+
 function btnEdit(ele,option){
     const parent = $(ele).parents('div.info-row');
     const content = $(parent).find('p.info-item').text();
     $(parent).find('p.info-item, input.btn-edit').addClass('hide');
     $(parent).append('<div style="display: flex;"><input type="text" class="edit-data" value="'+content+'"><input type="button" value="수정" onclick="editInfo(\''+option+'\',this)"><input type="button" value="취소" onclick="btnEditCancel(this)"></div>');
 }
+
 function btnEditCancel(ele){
     const parentRow = $(ele).parents('div.info-row');
     const parent= $(ele).parent('div');
