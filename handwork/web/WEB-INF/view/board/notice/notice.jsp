@@ -13,12 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/notice.css">
     <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript"
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/notice.js"></script>
     <title>핸드워크</title>
 </head>
 <body>
@@ -52,29 +53,18 @@
                     <input type="submit" class="search-submit" value="검색">
                 </form>
 
-
-
-
-                <ul class="board-content-list">
+                <ul id="notice-content-ul">
                     <c:forEach var="r" items="${list}">
-                        <li>
-                            <div class="board-items">
-
-                                <a href="${pageContext.request.contextPath}/notice/detail?id=${r.id}" class="img-container">
-
-                                </a>
-                                <div class="board-list-main">
-                                    <a href="${pageContext.request.contextPath}/notice/detail?id=${r.id}" class="board-list-title">${r.title}</a>
-                                    <a href="${pageContext.request.contextPath}/notice/detail?id=${r.id}" class="board-list-subs">${r.content}</a>
-                                    <div class="row-wrapper">
-                                        <div>
-                                            <a href="${pageContext.request.contextPath}/notice/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>
-                                            <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
-                                        </div>
+                        <li class="notice-content-li">
+                            <input type="hidden" class="id" value="${r.id}">
+                            <div class="notice-title">
+                                <p class="board-list-title">${r.title}</p>
+                                <div class="list-row">
+                                    <p class="board-list-writer">${r.writer}</p>
+                                    <div class="wrap">
+                                        <p class="board-list-hit">${r.hit}</p>
+                                        <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
                                     </div>
-                                </div>
-                                <div class="board-list-aside">
-                                    <span class="board-list-views">${r.hit}</span>
                                 </div>
                             </div>
                         </li>

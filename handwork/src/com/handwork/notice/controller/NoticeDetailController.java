@@ -4,6 +4,7 @@ import com.handwork.notice.entity.Notice;
 import com.handwork.notice.service.NoticeService;
 import com.handwork.request.entity.Request;
 import com.handwork.request.service.RequestService;
+import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,30 +19,17 @@ public class NoticeDetailController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		response.setContentType("application/x-json; charset=UTF-8");
 		int id = Integer.parseInt(request.getParameter("id"));
+		String sessionID = (String) request.getSession().getAttribute("id");
 		
 		NoticeService service = new NoticeService();
-		
-		Notice notice_ = service.getNotice(id);
 
+		JSONObject result = service.getContent(id,sessionID);
 
-		int count = service.getCount(id);
-		
-
-
-		request.setAttribute("r", notice_);
-		
-		Notice nextRequest_ = service.getNextNotice(id, true);
-		request.setAttribute("nr", nextRequest_);
-
-		Notice prevNotice_ = service.getPrevNotice(id, true);
-		request.setAttribute("pr", prevNotice_);
-		
 		service.disconnect();
 		
-		request.getRequestDispatcher("/WEB-INF/view/board/notice/notice_view.jsp").forward(request, response);
-		
+		response.getWriter().print(result);
 	}
 	
 }

@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;600&display=swap');
 
 section#main-section { display: flex; justify-content: center; align-items: center; margin: 50px 0;}
 section#main-section div.wrap-main { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width: 1280px; min-height: 900px;}
@@ -34,11 +33,12 @@ section#main-section div.wrap-main > section#my-info-section form .edit-profile-
 section#main-section div.wrap-main > section#my-info-section form .edit-profile-img.label:hover { background: tomato; box-shadow: 0 0 10px gray;}
 section#main-section div.wrap-main > section#my-info-section form img#label-img { width:30px; height:30px; object-fit: cover; }
 section#main-section div.wrap-main > section#my-info-section div.info-container { display: flex; flex-direction: column; align-items: flex-start;}
-section#main-section div.wrap-main > section#my-info-section div.info-row { display: flex; align-items: center; margin-bottom: 20px; }
-section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item { display: flex; align-items: center; font-size: 22px; font-weight: 600; line-height: 25px; color: black; font-family: 'Gothic A1', sans-serif;}
+/*section#main-section div.wrap-main > section#my-info-section div.info-row { display: flex; align-items: center; margin-bottom: 20px; }*/
+section#main-section div.wrap-main > section#my-info-section div.info-row { display: flex; align-items: flex-start; margin-bottom: 20px; }
+section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item { display: flex; align-items: center; height: 40px; font-size: 22px; font-weight: 600; color: black; font-family: 'Gothic A1', sans-serif;}
 section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item.name{ margin-left: 30px; line-height: 25px;}
 section#main-section div.wrap-main > section#my-info-section div.info-row > p.info-item.null:after{ content: "등록되지 않았습니다"; color: #555555; font-size: 20px;}
 section#main-section div.wrap-main > section#my-info-section div.info-container div.info-row > p.info-title{ content: ""; display: flex; justify-content: center; align-items: center; width: 80px; height: 40px; background: tomato; margin-right: 15px; color: white; font-size: 16px; font-weight: 500; text-align: center; border-radius: 5px;}
-section#main-section div.wrap-main > section#my-info-section div.info-row > input.btn-edit { display: flex; justify-content: center; align-items: center; width: 20px; height: 20px; background: url("../images/edit.png") no-repeat; background-size: cover; margin-left: 10px; transition: 0.3s all; margin-bottom: 3px;}
+section#main-section div.wrap-main > section#my-info-section div.info-row > input.btn-edit { display: flex; justify-content: center; align-items: center; width: 20px; height: 40px; background: url("../images/edit.png") no-repeat center; background-size: 20px 20px; margin-left: 10px; transition: 0.3s all; margin-bottom: 3px;}
 section#main-section div.wrap-main > section#my-info-section div.info-row > input.btn-edit:hover { transform: rotateZ(90deg); }
 section#main-section div.wrap-main > section#my-log-section { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; width:100%; padding: 0 200px;}

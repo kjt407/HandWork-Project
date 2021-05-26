@@ -25,7 +25,8 @@ import java.util.Enumeration;
 public class NoticeUpdateController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		response.setContentType("application/x-json; charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		NoticeService service = new NoticeService();
 		Notice notice_ = service.getNotice(id);
@@ -33,13 +34,13 @@ public class NoticeUpdateController extends HttpServlet{
 		service.disconnect();
 		request.getRequestDispatcher("/notice/write").forward(request, response);
 	}
-	
-	
+
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int id = Integer.parseInt(request.getParameter("id"));
+		response.setContentType("application/x-json; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
+		int id = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		
 		String writer = (String) session.getAttribute("name");

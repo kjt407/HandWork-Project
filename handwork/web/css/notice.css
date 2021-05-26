@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+
+/* .board-title-section {display: flex; justify-content: center; align-items: center; height: 200px;  width:100%; background: silver;} */
+.board-title-section {position: relative; height: 300px;  width: auto; background: url(../images/notice_bg.jpg) center no-repeat; background-size: cover;}
+.board-title-section div {background: rgba(0, 0, 0, 0.5) ; color: white; text-align: center; line-height: 300px; font-size: 25px;}
+
+.board-section { position: relative; display: flex; justify-content: center; width: 100%; height: 100%; min-height: 900px; background: whitesmoke;}
+.board-section div.board-bg { position: absolute;  display: flex; left: 0; top: 0; width: 100%; height: 100%; z-index: 0; }
+.board-section .board-bg div.left { flex-grow: 1; width: 100%; height: 100%; background: whitesmoke; }
+.board-section .board-bg div.right { flex-grow: 1; width: 100%; height: 100%; background: white; }
+.board-section .board-container { display: flex; width: 1280px; z-index: 10; }
+.board-section .board-aside { display: flex; flex-direction: column; align-items: flex-start;  width: 20%; background: whitesmoke; padding: 30px 30px; }
+.board-section .board-aside p.board-list-title { font-size: 33px; color: black; font-weight: bold;}
+.board-section .board-aside p.title-deco { display: flex; width: 100%; font-size: 14px; font-weight: 600; color:#3f3f3f; justify-content: space-between; align-items: center; margin: 5px 0 30px 0;}
+.board-section .board-aside p.title-deco::after { content: ""; width: 60%; height: 1px; background: #3f3f3f;}
+.board-section .board-aside ul.board-list { width: 100%; font-size: 22px; font-weight: 600; margin-bottom: 30px; }
+/* .board-section .board-aside ul.board-list li {  border-top: 1px dashed #2f2f2f ; } */
+.board-section .board-aside ul.board-list li a { display: block; color: #2f2f2f; padding: 15px 0; transition: 0.1s;}
+/* .board-section .board-aside ul.board-list li a:hover {} */
+.board-section .board-aside ul.board-list li.crt-page a { background: tomato; color: white; text-align: center; }
+.board-section .board-aside ul.board-list li:not(.crt-page) a:hover { color: black; text-decoration: underline;}
+.board-section .board-aside ul.board-list li:first-child { border-top: none;}
+
+
+
+
+.board-section .board-main { display: flex; flex-direction: column; align-items: center; width: 80%; background: white; padding: 30px 20px 20px 40px;}
+.board-section form.board-search { display: flex; width: 100%; height: 30px; justify-content: flex-end; align-items: center; margin-bottom: 15px;}
+.board-section form.board-search > * { border: 1px solid hsla(0, 0%, 0%, 0.2); border-radius: 1px; background: white; font-size: 15px;}
+.board-section form.board-search select { width: 100px; height: 100%;}
+.board-section form.board-search input.search-text { width:250px; height: 100%; margin: 0 3px;}
+.board-section form.board-search input.search-submit { width:50px; height: 100%; height: 100%; background: gray; color: white; transition:0.3s; }
+.board-section form.board-search input.search-submit:hover { background:tomato; }
+
+.board-section .board-main #notice-content-ul { width: 100%;}
+.board-section .board-main #notice-content-ul > li { display: flex; flex-direction: column; width: 100%; background: rgba(250, 235, 215, 0.38); margin: 20px 0; padding: 20px; border-radius: 2px; border: 1px solid #b5b5b5; transition: 0.3s all;  cursor: pointer;}
+.board-section .board-main #notice-content-ul > li:hover { box-shadow: 0 0 10px gray; }
+.board-section .board-main #notice-content-ul > li > div.notice-title { display: flex; flex-direction: column; width: 100%; color: black;}
+.board-section .board-main #notice-content-ul > li > div.notice-title > .board-list-title{ margin-bottom: 20px; font-size: 21px; font-weight: 600;}
+.board-section .board-main #notice-content-ul > li > div.notice-title > div.list-row { display: flex; justify-content: space-between; align-items: flex-end; font-size: 16px;}
+.board-section .board-main #notice-content-ul > li > div.notice-title > div.list-row .board-list-writer { }
+.board-section .board-main #notice-content-ul > li > div.notice-title > div.list-row > div.wrap { display: flex;}
+
+.board-section .board-main .foot-menu { position: relative; display: flex; justify-content: center; width: 100%; margin:15px 0 70px 0;}
+.board-section .board-main .board-pager {display: flex; justify-content: center; }
+.board-section .board-main .board-pager li > * { padding: 0 10px; font-weight: lighter;}
+.board-section .board-main .board-pager li:hover {text-decoration: underline;}
+.board-section .board-main .board-pager li .on { font-weight: bold; color: tomato;}
+.board-section .board-main .foot-menu a.btn-write { position: absolute; right: 0; top:-5px; display: flex; justify-content: center; align-items: center; background: tomato; color: white; font-size: 15px; padding: 5px; border-radius: 5px; transition:0.3s}
+.board-section .board-main .foot-menu a.btn-write:hover { background: darkred; }

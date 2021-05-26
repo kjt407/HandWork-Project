@@ -143,7 +143,7 @@ function createInfo(data){
     } else {
         $('p.info-item.phone').text(userPhone);
     }
-    if (userImg != null || userImg.replaceAll(" ","") != ""){
+    if (userImg != null && userImg.replaceAll(" ","") != ""){
         $('img#img-profile').attr('src',getContextPath()+'/upload/profile/'+userImg);
     }
 }

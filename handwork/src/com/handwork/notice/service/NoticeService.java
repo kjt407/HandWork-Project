@@ -1,6 +1,7 @@
 package com.handwork.notice.service;
 
 import com.handwork.notice.entity.Notice;
+import org.json.simple.JSONObject;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -143,94 +144,32 @@ public class NoticeService {
 		return notice;
 	}
 
-	public Notice getNextNotice(int id, boolean incHit) {
-		Notice notice = null;
-
-		String sql = "select * from notice" +
-				"       where id = (" +
-				"       select id from notice" +
-				"       where regdate > (select regdate from notice where id = ?)" +
-				"       limit 1" +
-				"       )";
+	public JSONObject getContent(int id, String sessionID) {
+		JSONObject obj = new JSONObject();
 
 		try {
-
+			String sql = "select content from notice where id=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 
 			ResultSet rs = stmt.executeQuery();
 
 			if(rs.next()){
-				int nid = rs.getInt("id");
-				String title = rs.getString("title");
 				String content = rs.getString("content");
-				String regdate = rs.getString("regdate");
-				int hit = rs.getInt("hit");
-				String writer_id = rs.getString("writer_id");
-				ArrayList list = getWriterInfo(writer_id);
-				String profile_img = (String)list.get(0);
-				String writer = (String)list.get(1);
-
-				notice = new Notice(nid, writer, title, content, regdate, hit, writer_id);
-				if(incHit) {
-					stmt.execute("update notice set hit=hit+1 where id=" + id);
-				}
-
-
+				obj.put("content",content);
 			}
-
+			if(sessionID != null && sessionID.equals("HANDWORK")){
+				obj.put("admin",true);
+			} else {
+				obj.put("admin",false);
+			}
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
-		return notice;
+		return obj;
 	}
-
-	public Notice getPrevNotice(int id, boolean incHit) {
-		Notice notice = null;
-
-		String sql =   "select * from (select * from notice order by regdate desc) A " +
-				" where regdate < (select regdate from notice where id = ?) " +
-				" limit 1";
-
-		try {
-
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, id);
-
-			ResultSet rs = stmt.executeQuery();
-
-			if(rs.next()){
-				int nid = rs.getInt("id");
-
-				String title = rs.getString("title");
-				String content = rs.getString("content");
-				String regdate = rs.getString("regdate");
-				int hit = rs.getInt("hit");
-				String writer_id = rs.getString("writer_id");
-				ArrayList list = getWriterInfo(writer_id);
-				String profile_img = (String)list.get(0);
-				String writer = (String)list.get(1);
-
-				notice = new Notice(nid, writer, title, content, regdate, hit, writer_id);
-				if(incHit) {
-					stmt.execute("update notice set hit=hit+1 where id=" + id);
-				}
-
-
-			}
-
-			rs.close();
-			stmt.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-
-		return notice;
-	}
-
 
 
 	public int getCount(int boardNum){
