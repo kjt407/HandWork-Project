@@ -98,7 +98,8 @@ function createInfo(data){
     const userImg = data.userImg;
     const userEmail = data.userEmail;
     const userPhone = data.userPhone;
-
+    
+    $('.header-username').text(userName+'님');
     $('p.info-item').removeClass('null');
     $('p.info-item.name').text(userName);
     if (userName == null || userName.replaceAll(" ","") == ""){
