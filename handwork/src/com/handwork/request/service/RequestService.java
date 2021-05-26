@@ -61,7 +61,8 @@ public class RequestService {
 //               String content = rs.getString("content");
 //
 				int id = rs.getInt("id");
-				String writer = rs.getString("writer");
+
+
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -75,7 +76,8 @@ public class RequestService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				Request request = new Request(id, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
+
+				Request request = new Request(id, getBoardWrtierName(id), title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
 
 				list.add(request);
 			}
@@ -307,6 +309,35 @@ public class RequestService {
 		}
 		return result;
 	}
+
+	public String getBoardWrtierName(int boardNum){
+
+		String id = null;
+		String name = null;
+		System.out.println(boardNum);
+		try {
+
+			String sql = "SELECT id, writer_id FROM board where id=?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, boardNum);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				id = rs.getString("writer_id");
+			}
+
+			sql = "select name from member where id = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				name = rs.getString("name");
+			}
+		} catch (Exception e) {
+
+		}
+		return name;
+	}
+
 
 	public void disconnect() {
 		try {

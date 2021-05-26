@@ -53,7 +53,7 @@ public class MarketService {
 			while(rs.next()){
 
 				int id = rs.getInt("id");
-				String writer = rs.getString("writer");
+
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -69,7 +69,7 @@ public class MarketService {
 				int starAvg = getStarAvg(id);
 				String topReview = topReview(id);
 
-				Market market = new Market(id, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id), starAvg, topReview);
+				Market market = new Market(id, getBoardWrtierName(id), title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id), starAvg, topReview);
 
 				list.add(market);
 			}
@@ -124,7 +124,6 @@ public class MarketService {
 
 			if(rs.next()){
 				int nid = rs.getInt("id");
-				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -139,7 +138,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				market = new Market(nid, writer, title, kategorie, location, flocation, period, price, content, regdate, hit, filename, how, writer_id, state);
+				market = new Market(nid, getBoardWrtierName(nid), title, kategorie, location, flocation, period, price, content, regdate, hit, filename, how, writer_id, state);
 
 				System.out.println(" ð  : " + regdate);
 
@@ -172,7 +171,6 @@ public class MarketService {
 
 			if(rs.next()){
 				int nid = rs.getInt("id");
-				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -186,7 +184,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				notice = new Market(nid, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
+				notice = new Market(nid, getBoardWrtierName(nid), title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
 
 				if(incHit) {
 					stmt.execute("update market set hit=hit+1 where id=" + id);
@@ -217,7 +215,6 @@ public class MarketService {
 
 			if(rs.next()){
 				int nid = rs.getInt("id");
-				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String kategorie = rs.getString("kategorie");
 				String location = rs.getString("location");
@@ -231,7 +228,7 @@ public class MarketService {
 				String writer_id = rs.getString("writer_id");
 				int state = rs.getInt("state");
 
-				notice = new Market(nid, writer, title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
+				notice = new Market(nid, getBoardWrtierName(nid), title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
 
 				if(incHit) {
 					stmt.execute("update market set hit=hit+1 where id=" + id);
@@ -307,6 +304,33 @@ public class MarketService {
 			// TODO: handle exception
 		}
 		return content;
+	}
+	public String getBoardWrtierName(int boardNum){
+
+		String id = null;
+		String name = null;
+		System.out.println(boardNum);
+		try {
+
+			String sql = "SELECT id, writer_id FROM market where id=?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, boardNum);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				id = rs.getString("writer_id");
+			}
+
+			sql = "select name from member where id = ?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, id);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				name = rs.getString("name");
+			}
+		} catch (Exception e) {
+
+		}
+		return name;
 	}
 
 	public void disconnect() {
