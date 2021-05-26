@@ -86,7 +86,7 @@
 .request-view-main .request-view-comment .comment-ul .comment-li > * {font-size: 15px}
 .request-view-main .request-view-comment .comment-ul .comment-li-container { display: flex; justify-content: flex-start; align-items: flex-start; width: auto; }
 .request-view-main .request-view-comment .comment-ul .comment-li-container > div.user-img-wrap { display: flex; justify-content: center; align-items: center; width: 53px; height: 50px; overflow: hidden; border-radius: 50%;}
-.request-view-main .request-view-comment .comment-ul .comment-li-container > div.user-img-wrap img.user-img {display: flex; width:auto; height: 50px;}
+.request-view-main .request-view-comment .comment-ul .comment-li-container > div.user-img-wrap img.user-img {width: 50px; height: 50px; object-fit: cover;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap { display: flex; flex-direction: column; width: 100%;  margin-left: 10px;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row { display: flex;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header {display: flex; flex-direction: column;}

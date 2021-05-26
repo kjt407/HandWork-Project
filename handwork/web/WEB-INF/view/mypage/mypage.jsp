@@ -52,10 +52,10 @@
                         <p class="info-item phone"></p>
                         <input type="button" class="btn-edit phone" onclick="btnEdit(this,'phone')"/>
                     </div>
-                    <div class="info-row">
+                    <div class="info-row passwd">
                         <p class="info-title">비밀번호</p>
                         <p class="info-item passwd">**********</p>
-                        <input type="button" class="btn-edit passwd"/>
+                        <input type="button" class="btn-edit passwd" onclick="btnPw()"/>
                     </div>
                 </div>
 
