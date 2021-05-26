@@ -28,19 +28,29 @@ public class MyPageController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/x-json; charset=UTF-8");
         String op = request.getParameter("op");
+        String id = (String) request.getSession().getAttribute("id");
 
         switch (op) {
             case "board":
-                response.getWriter().print(getBoard((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
+                response.getWriter().print(getBoard(id, Integer.parseInt(request.getParameter("page"))));
                 break;
             case "reply":
-                response.getWriter().print(getReply((String) request.getSession().getAttribute("id"), Integer.parseInt(request.getParameter("page"))));
+                response.getWriter().print(getReply(id, Integer.parseInt(request.getParameter("page"))));
                 break;
             case "info":
-                response.getWriter().print(getInfo((String) request.getSession().getAttribute("id"), request));
+                response.getWriter().print(getInfo(id, request));
                 break;
             case "update":
-                response.getWriter().print(updateInfo((String) request.getSession().getAttribute("id"), request));
+                response.getWriter().print(updateInfo(id, request));
+                break;
+            case "check-account":
+                response.getWriter().print(checkAccount(id));
+                break;
+            case "check-pw":
+                response.getWriter().print(checkPw(id,request.getParameter("data")));
+                break;
+            case "edit-pw":
+                response.getWriter().print(editPw(id,request.getParameter("data")));
                 break;
         }
     }
@@ -72,6 +82,27 @@ public class MyPageController extends HttpServlet {
         JSONObject result = service.updateInfo(writer_id, request);
         service.disconnect();
 
+        return result;
+    }
+    private JSONObject checkAccount(String writer_id) {
+        MyPageService service = new MyPageService();
+        JSONObject result = service.checkAccount(writer_id);
+        service.disconnect();
+
+        return result;
+    }
+    private JSONObject checkPw(String writer_id, String pw) {
+        MyPageService service = new MyPageService();
+        JSONObject result = service.checkPw(writer_id, pw);
+        service.disconnect();
+
+        return result;
+    }
+
+    private JSONObject editPw(String writer_id, String pw) {
+        MyPageService service = new MyPageService();
+        JSONObject result = service.editPw(writer_id, pw);
+        service.disconnect();
         return result;
     }
     

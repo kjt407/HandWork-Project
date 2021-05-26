@@ -18,7 +18,7 @@
             <li <c:if test="${fn:contains(context, '/board/market')}"> class="crt-page" </c:if> > <a href="${pageContext.request.contextPath}/market">수제공방</a></li>
             <li <c:if test="${fn:contains(context, '/board/request')}"> class="crt-page" </c:if> > <a href="${pageContext.request.contextPath}/request">제작의뢰</a></li>
             <li <c:if test="${fn:contains(context, '/board/notice')}"> class="crt-page" </c:if> > <a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
-            <li <c:if test="${fn:contains(context, '/board/review')}"> class="crt-page" </c:if> > <a href="">자유게시판</a></li>
+            <li <c:if test="${fn:contains(context, '/board/free')}"> class="crt-page" </c:if> > <a href="${pageContext.request.contextPath}/free">자유게시판</a></li>
     </ul>
 <%--    <div class="filter">--%>
 <%--        <p>FILTER</p>--%>

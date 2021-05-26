@@ -44,17 +44,16 @@
     <div class="footer-container2">
         <p class="page-name">장터</p>
         <ul class="footer-board market">
-            <li class="board-li"><a href="">수제공방</a></li>
+            <li class="board-li"><a href="${pageContext.request.contextPath}/market">수제공방</a></li>
             <li class="board-li"><a href="${pageContext.request.contextPath}/request">제작의뢰</a></li>
-            <li class="board-li"><a href="">지도로 보기</a></li>
+            <li class="board-li"><a href="${pageContext.request.contextPath}/location">지도로 보기</a></li>
         </ul>
     </div>
     <div class="footer-container3">
         <p class="page-name">게시판</p>
         <ul class="footer-board board">
-            <li class="board-li"><a href="">공지사항</a></li>
-            <li class="board-li"><a href="">이용후기</a></li>
-            <li class="board-li"><a href="">자유게시판</a></li>
+            <li class="board-li"><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
+            <li class="board-li"><a href="${pageContext.request.contextPath}/free">자유게시판</a></li>
         </ul>
     </div>
     <div class="footer-container4">
