@@ -213,10 +213,6 @@ public class MyPageService {
         return obj;
     }
 
-
-
-
-
     public JSONObject loadInfo(String id, HttpServletRequest request){
         JSONObject obj = new JSONObject();
 
@@ -241,18 +237,44 @@ public class MyPageService {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("name", name);
+            }
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return obj;
+    }
 
+    public JSONObject checkAccount(String id){
+        JSONObject obj = new JSONObject();
+        String sql = null;
+        PreparedStatement stmt = null;
+        String pw = null;
+        try {
+            sql = "select pw from member where id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                pw = rs.getString("pw");
             }
 
+            if(pw!=null && pw.equals("null")){
+                obj.put("result", false);
+            }else{
+                obj.put("result", true);
+            }
 
             rs.close();
             stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
         }
-
         return obj;
     }
+
 
 
     public void disconnect() {
@@ -261,6 +283,64 @@ public class MyPageService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public JSONObject checkPw(String id, String pw){
+        JSONObject obj = new JSONObject();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+        String pw_=null;
+
+
+        try {
+            sql = "select pw from member where id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+               pw_ = rs.getString("pw");
+            }
+            if(pw.equals(pw_)){
+                obj.put("result", true);
+            }else{
+                obj.put("result", false);
+            }
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+        return obj;
+    }
+
+    public JSONObject editPw(String id, String pw){
+        JSONObject obj = new JSONObject();
+
+        String sql = null;
+        PreparedStatement stmt = null;
+        String pw_=null;
+
+
+        try {
+            sql = "update member set pw=?  where id=?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, pw);
+            stmt.setString(2, id);
+            stmt.executeUpdate();
+
+            obj.put("result", true);
+
+
+
+
+            stmt.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            obj.put("result", false);
+        }
+        return obj;
     }
 
 
