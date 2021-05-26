@@ -92,8 +92,12 @@ function ajaxFunc(json) {
         },
         error:function(){
             if( json.op == 'check-account') {
-                    createPwForm();
-                }
+                btnPwCancel();
+            } else if ( json.op == 'board' ) {
+                bpage--;
+            } else if ( json.op == 'reply' ) {
+                rpage--;
+            }
             alert('서버에서 정보를 받아올 수 없습니다');
         }
     });
@@ -250,6 +254,10 @@ function btnPw(){
 function btnPwCheck(ele){
     const parent = $(ele).parent('div.check-pw');
     const data = parent.children('input#check-pw').val();
+    if(data == null || data.length < 1 || data.includes(" ")){
+        alert('비밀번호 형식이 잘못되었습니다');
+        return;
+    }
     const json = {
         op:'check-pw',
         data:data
@@ -260,6 +268,14 @@ function btnPwCheck(ele){
 function btnPwEdit(ele){
     const parent = $(ele).parent('div.edit-pw');
     const data = parent.children('input#edit-pw').val();
+    const data_re = parent.children('input#edit-pw-re').val();
+    if(data != data_re) {
+        alert('비밀번호가 일치하지 않습니다');
+        return;
+    } else if(data == null || data.length < 1 || data.includes(" ")){
+        alert('비밀번호 형식이 올바르지 않습니다');
+        return;
+    }
     const json = {
         op:'edit-pw',
         data:data
@@ -277,7 +293,8 @@ function btnEdit(ele,option){
     const parent = $(ele).parents('div.info-row');
     const content = $(parent).find('p.info-item').text();
     $(parent).find('p.info-item, input.btn-edit').addClass('hide');
-    $(parent).append('<div style="display: flex;"><input type="text" class="edit-data" value="'+content+'"><input type="button" value="수정" onclick="editInfo(\''+option+'\',this)"><input type="button" value="취소" onclick="btnEditCancel(this)"></div>');
+    $(parent).append('<div style="display: flex;"><input type="text" class="edit-data '+option+'" value="'+content+'"><input type="button" value="수정" onclick="editInfo(\''+option+'\',this)"><input type="button" value="취소" onclick="btnEditCancel(this)"></div>');
+    addEvent();
 }
 
 function btnEditCancel(ele){
@@ -295,6 +312,42 @@ function btnMoreBoard(){
 function btnMoreReply(){
     rpage += 1;
     loadReply();
+}
+
+function addEvent(){
+    $('input.edit-data.phone').attr('maxlength',13);
+    $('input.edit-data.phone').keyup(function(){
+        this.value = autoHypenPhone( this.value );
+    })
+}
+
+var autoHypenPhone = function(str){
+    str = str.replace(/[^0-9]/g, '');
+    var tmp = '';
+    if( str.length < 4){
+        return str;
+    }else if(str.length < 7){
+        tmp += str.substr(0, 3);
+        tmp += '-';
+        tmp += str.substr(3);
+        return tmp;
+    }else if(str.length < 11){
+        tmp += str.substr(0, 3);
+        tmp += '-';
+        tmp += str.substr(3, 3);
+        tmp += '-';
+        tmp += str.substr(6);
+        return tmp;
+    }else{
+        tmp += str.substr(0, 3);
+        tmp += '-';
+        tmp += str.substr(3, 4);
+        tmp += '-';
+        tmp += str.substr(7);
+        return tmp;
+    }
+
+    return str;
 }
 
 function getContextPath() {
