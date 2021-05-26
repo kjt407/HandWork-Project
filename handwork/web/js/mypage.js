@@ -49,16 +49,6 @@ function editInfo(col,ele){
     btnEditCancel(ele);
 }
 
-function editPw(col,ele){
-    const data = $(ele).parent().find('.edit-data').val();
-    const json = {
-        op:'pwcheck',
-        data:data
-    };
-    ajaxFunc(json);
-    btnEditCancel(ele);
-}
-
 
 // AJAX 통신 부분
 function ajaxFunc(json) {
