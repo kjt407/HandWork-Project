@@ -46,10 +46,11 @@ public class NoticeUpdateController extends HttpServlet{
 		String writer = (String) session.getAttribute("name");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String category = request.getParameter("category");
 		try {
 
 		
-		String sql = "update notice set title=?, content=? where id=?";
+		String sql = "update notice set title=?, content=?, category=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
@@ -60,7 +61,8 @@ public class NoticeUpdateController extends HttpServlet{
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, title);
 		pstmt.setString(2, content);
-		pstmt.setInt(3, id);
+		pstmt.setString(3, category);
+		pstmt.setInt(4, id);
 		pstmt.executeUpdate();
 		
 		} catch (Exception e) {

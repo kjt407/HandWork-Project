@@ -40,12 +40,13 @@ public class NoticeWriteController extends HttpServlet {
 		String writer = (String) session.getAttribute("name");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
+		String category = request.getParameter("category");
 		String writer_id = (String)session.getAttribute("id");
 
 		try {
 
-			String sql = "insert into notice ( writer, title, content, regdate, hit, writer_id) "
-					+ "values(?,?,?,?,0,?)";
+			String sql = "insert into notice ( writer, title, content, regdate, hit, writer_id, category) "
+					+ "values(?,?,?,?,0,?,?)";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
@@ -58,6 +59,7 @@ public class NoticeWriteController extends HttpServlet {
 			pstmt.setString(3, content);
 			pstmt.setString(4, getCurrentTime());
 			pstmt.setString(5, writer_id);
+			pstmt.setString(6, category);
 
 			pstmt.executeUpdate();
 			System.out.println(getCurrentTime());

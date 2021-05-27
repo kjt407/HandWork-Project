@@ -53,6 +53,5 @@ public class NoticeListController extends HttpServlet {
 
 
 		request.getRequestDispatcher("/WEB-INF/view/board/notice/notice.jsp").forward(request, response);
-		
 	}
 }

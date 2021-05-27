@@ -58,13 +58,13 @@
                         <li class="notice-content-li">
                             <input type="hidden" class="id" value="${r.id}">
                             <div class="notice-title">
-                                <p class="board-list-title">${r.title}</p>
+                                <div class="list-row title">
+                                    <p class="board-list-category">[${r.category}]</p>
+                                    <p class="board-list-title">${r.title}</p>
+                                </div>
                                 <div class="list-row">
                                     <p class="board-list-writer">${r.writer}</p>
-                                    <div class="wrap">
-                                        <p class="board-list-hit">${r.hit}</p>
-                                        <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
-                                    </div>
+                                    <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
                                 </div>
                             </div>
                         </li>
@@ -72,9 +72,9 @@
                 </ul>
 
                 <c:set var="page" value="${(empty param.p) ? 1:param.p}" />
-                <c:set var="startNum" value="${page-(page-1)%5}" />
+                <c:set var="startNum" value="${page-(page-1)%6}" />
                 <c:set var="lastNum"
-                       value="${fn:substringBefore(Math.ceil(count/5),'.')}" />
+                       value="${fn:substringBefore(Math.ceil(count/6),'.')}" />
 
 
                 <div class="foot-menu">
@@ -95,7 +95,7 @@
                             </c:if>
                         </c:forEach>
                         <c:if test="${startNum+4<lastNum}">
-                            <a href="?p=${startNum+5}&t=&q=" class="btn btn-next">다음</a>
+                            <a href="?p=${startNum+6}&t=&q=" class="btn btn-next">다음</a>
                         </c:if>
                         <c:if test="${startNum+4>=lastNum}">
                             <span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>

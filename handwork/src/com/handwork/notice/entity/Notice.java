@@ -3,24 +3,24 @@ package com.handwork.notice.entity;
 public class Notice {
 
 	private int id;
+	private String category;
 	private String writer;
 	private String title;
 	private String content;
 	private String regdate;
-	private int hit;
 	private String writer_id;
 
 	public Notice() {
 		super();
 	}
 
-	public Notice(int id, String writer, String title, String content, String regdate, int hit, String writer_id) {
+	public Notice(int id, String category, String writer, String title, String content, String regdate, String writer_id) {
 		this.id = id;
+		this.category = category;
 		this.writer = writer;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
-		this.hit = hit;
 		this.writer_id = writer_id;
 	}
 
@@ -30,6 +30,14 @@ public class Notice {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getWriter() {
@@ -64,14 +72,6 @@ public class Notice {
 		this.regdate = regdate;
 	}
 
-	public int getHit() {
-		return hit;
-	}
-
-	public void setHit(int hit) {
-		this.hit = hit;
-	}
-
 	public String getWriter_id() {
 		return writer_id;
 	}
@@ -79,6 +79,7 @@ public class Notice {
 	public void setWriter_id(String writer_id) {
 		this.writer_id = writer_id;
 	}
+
 
 	@Override
 	public String toString() {

@@ -48,22 +48,22 @@ public class NoticeService {
 
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%"+query+"%");
-			stmt.setInt(2, 1+(page-1)*5);
-			stmt.setInt(3, page*5);
+			stmt.setInt(2, 1+(page-1)*6);
+			stmt.setInt(3, page*6);
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()){
 
 				int id = rs.getInt("id");
 				String writer = rs.getString("writer");
+				String category = rs.getString("category");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
-				int hit = rs.getInt("hit");
 				String writer_id = rs.getString("writer_id");
 
 
-				Notice notice = new Notice(id, writer, title, content, regdate, hit, writer_id);
+				Notice notice = new Notice(id, category, writer, title, content, regdate, writer_id);
 
 				list.add(notice);
 			}
@@ -120,17 +120,16 @@ public class NoticeService {
 
 			if(rs.next()){
 				int nid = rs.getInt("id");
+				String category = rs.getString("category");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
-				int hit = rs.getInt("hit");
 				String writer_id = rs.getString("writer_id");
 				ArrayList list = getWriterInfo(writer_id);
-				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
 
-				notice = new Notice(nid, writer, title, content, regdate, hit, writer_id);
+				notice = new Notice(nid, category, writer, title, content, regdate, writer_id);
 
 
 			}

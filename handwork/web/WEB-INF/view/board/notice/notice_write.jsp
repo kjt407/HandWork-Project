@@ -18,7 +18,6 @@
     <script type="text/javascript"
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <title>핸드워크</title>
 </head>
 <body>
@@ -57,9 +56,17 @@
                 <p class="board-write-header-title">공지사항 글쓰기</p>
                 <div class="board-write-header">
                     <div class="board-write-row">
+                        <div class="board-write-col" style="width: 20%;">
+                            <p class="input-label">구분</p>
+                            <select name="category" id="category-select" class="category-select" class="board-write-category">
+                                <option value="필독" selected>필독</option>
+                                <option value="중요">중요</option>
+                                <option value="일반">일반</option>
+                            </select>
+                        </div>
                         <div class="board-write-col">
                             <p class="input-label">글 제목</p>
-                            <input type="text" name="title" class="board-write-title" value="${r.title}"placeholder="제목을 입력해 주세요" required/>
+                            <input type="text" name="title" class="board-write-title" value="${r.title}"placeholder="제목을 입력해 주세요" maxlength="40" required/>
                         </div>
                     </div>    
 
