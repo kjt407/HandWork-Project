@@ -18,6 +18,8 @@ import java.util.Properties;
 
 @WebServlet("/market/mail")
 public class MailController extends HttpServlet {
+    Connection conn;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,46 +27,52 @@ public class MailController extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=UTF-8");
 
-
-        String subject = "(핸드워크) 문의하신 정보입니다.";
-        String from = request.getParameter("from");
-        String toId = request.getParameter("toId");
-        String to = getEmail(toId);
-        String title	= request.getParameter("title");
-        String content = request.getParameter("content");
-        String writer_id = request.getParameter("writer_id");
-        String price = request.getParameter("price");
-        String name = request.getParameter("name");
-        String email = getEmail(writer_id);
-        String phone=getPhone(writer_id);
-        if(phone==null||phone.equals("")){
-            phone="연락처를 등록하지 않았습니다.";
-        }else{
-            phone = getPhone(writer_id);
-        }
-
-        int board_num = Integer.parseInt(request.getParameter("board-num"));
-
-        String url = String.valueOf(request.getRequestURL());
-        String url_ = request.getRequestURI();
-
-        String result = url.replace(url_,"");
-        System.out.println("url : "+result);
-
-        String resultURL = result+"/handwork/market/detail?id="+board_num;
-        Properties p = new Properties(); // 정보를 담을 객체
-
-        p.put("mail.smtp.host","smtp.gmail.com");
-        p.put("mail.smtp.port", "465");
-        p.put("mail.smtp.starttls.enable", "true");
-        p.put("mail.smtp.auth", "true");
-        p.put("mail.smtp.debug", "true");
-        p.put("mail.smtp.socketFactory.port", "465");
-        p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        p.put("mail.smtp.socketFactory.fallback", "false");
-
-
         try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
+            String dbID = "handwork";
+            String dbPassword = "handwork";
+            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+
+            String subject = "(핸드워크) 문의하신 정보입니다.";
+            String from = request.getParameter("from");
+            String toId = request.getParameter("toId");
+            String to = getEmail(toId);
+            String title	= request.getParameter("title");
+            String content = request.getParameter("content");
+            String writer_id = request.getParameter("writer_id");
+            String price = request.getParameter("price");
+            String name = request.getParameter("name");
+            String email = getEmail(writer_id);
+            String phone=getPhone(writer_id);
+            if(phone==null||phone.equals("")){
+                phone="연락처를 등록하지 않았습니다.";
+            }else{
+                phone = getPhone(writer_id);
+            }
+
+            int board_num = Integer.parseInt(request.getParameter("board-num"));
+
+            String url = String.valueOf(request.getRequestURL());
+            String url_ = request.getRequestURI();
+
+            String result = url.replace(url_,"");
+            System.out.println("url : "+result);
+
+            String resultURL = result+"/handwork/market/detail?id="+board_num;
+            Properties p = new Properties(); // 정보를 담을 객체
+
+            p.put("mail.smtp.host","smtp.gmail.com");
+            p.put("mail.smtp.port", "465");
+            p.put("mail.smtp.starttls.enable", "true");
+            p.put("mail.smtp.auth", "true");
+            p.put("mail.smtp.debug", "true");
+            p.put("mail.smtp.socketFactory.port", "465");
+            p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            p.put("mail.smtp.socketFactory.fallback", "false");
+
+
+
             Authenticator auth = new MailAuth();
             Session ses = Session.getInstance(p, auth);
 
@@ -103,9 +111,7 @@ public class MailController extends HttpServlet {
 
             out.flush();
 
-
-
-
+            conn.close();
         } catch(Exception e){
             e.printStackTrace();
             return;
@@ -116,12 +122,8 @@ public class MailController extends HttpServlet {
         System.out.println("getEmail 메서드 실행");
         String email = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
+
             String sql = "SELECT email from member where id=?";
-            Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, writer_id);
@@ -139,12 +141,7 @@ public class MailController extends HttpServlet {
         System.out.println("getEmail 메서드 실행");
         String phone = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
             String sql = "SELECT phone from member where id=?";
-            Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, writer_id);

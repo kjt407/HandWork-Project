@@ -49,48 +49,6 @@ public class RequestUpdateController extends HttpServlet{
 		request.getRequestDispatcher("/request/write").forward(request, response);
 	}
 	
-		
-		/*try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC";
-		    String dbID = "handwork";
-		    String dbPassword = "handwork";
-			
-		    Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword); 
-			Statement stmt = conn.createStatement();
-			
-			
-			ResultSet rs =stmt.executeQuery((String.format("select * from board where id=" + id)));
-			  if(rs.next()) {
-				  Request req = new Request();
-				  
-				  	req.setId(rs.getInt("id"));
-					req.setWriter(rs.getString("writer"));
-					req.setTitle(rs.getString("title"));
-					req.setKategorie(rs.getString("kategorie"));
-					req.setLocation(rs.getString("location"));
-					req.setDeadline(rs.getString("deadline"));
-					req.setPrice(rs.getInt("price"));
-					req.setContent(rs.getString("content"));
-					req.setRegdate(rs.getDate("regdate"));
-					req.setHit(rs.getInt("hit"));
-					
-					
-					System.out.println(req.getId());
-					System.out.println(req.getTitle());
-					
-					requeset.setAttribute("title", req.getTitle());
-				  }
-			    stmt.close();
-			    conn.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}*/
-		//response.sendRedirect("../request/write");
-		//request.getRequestDispatcher("/request_write.jsp").forward(request, response);
-		//request.getRequestDispatcher("../request/write").forward(request, response);
-	
-	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -251,7 +209,7 @@ public class RequestUpdateController extends HttpServlet{
 		String sql = "update board set title=?, kategorie=?, location=?, deadline=?, price=?, content=?, filename=?, how=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
+		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
 	    String dbID = "handwork";
 	    String dbPassword = "handwork";
 		
