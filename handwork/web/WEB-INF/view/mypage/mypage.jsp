@@ -22,7 +22,7 @@
     </script><script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.form.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/mypage.js"></script>
-    <title>핸드워크: 수제공방</title>
+    <title>핸드워크: 마이페이지</title>
 </head>
 <body>
 <h1 class="hide">수제공방</h1>

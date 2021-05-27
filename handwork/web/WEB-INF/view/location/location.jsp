@@ -20,10 +20,10 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ff931k1pgc"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
-    <title>핸드워크:주변공방</title>
+    <title>핸드워크: 주변공방</title>
 </head>
 <body>
-    <h1 class="hide">수제공방</h1>
+    <h1 class="hide">핸드워크</h1>
     <header>
         <jsp:include page="/WEB-INF/view/header.jsp"/>
     </header>

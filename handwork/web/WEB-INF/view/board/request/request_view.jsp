@@ -29,7 +29,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/request_view.js"></script>
 
-    <title>핸드워크</title>
+    <title>핸드워크: 제작의뢰</title>
 </head>
 <body>
     <input type="hidden" id="board-state" value="${r.state}">

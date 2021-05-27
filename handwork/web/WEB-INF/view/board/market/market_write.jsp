@@ -21,7 +21,7 @@
             src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <title>핸드워크</title>
+    <title>핸드워크: 수제공방</title>
 </head>
 <body>
 <h1 class="hide">핸드워크: 수제공방</h1>

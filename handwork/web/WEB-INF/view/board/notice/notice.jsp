@@ -22,7 +22,7 @@
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/notice.js"></script>
-    <title>핸드워크</title>
+    <title>핸드워크: 공지사항</title>
 </head>
 <body>
     <h1 class="hide">핸드워크</h1>

@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
-<title>로그인</title>
+<title>핸드워크: 로그인</title>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript"
