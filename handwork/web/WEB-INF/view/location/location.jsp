@@ -7,6 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=" shortcut icon" href="${pageContext.request.contextPath}/images/handwork-fav.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/images/handwork-fav.ico">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
