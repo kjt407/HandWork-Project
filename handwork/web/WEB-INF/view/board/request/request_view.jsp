@@ -16,8 +16,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel=" shortcut icon" href="${pageContext.request.contextPath}/images/handwork-fav.ico">
-    <link rel="icon" href="${pageContext.request.contextPath}/images/handwork-fav.ico">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
@@ -29,7 +27,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/request_view.js"></script>
 
-    <title>핸드워크: 제작의뢰</title>
+    <title>핸드워크</title>
 </head>
 <body>
     <input type="hidden" id="board-state" value="${r.state}">
@@ -225,7 +223,7 @@
                                     <p>제안하기</p>
                                     <div class="suggest-price-group">
                                         <p>제안가격 : </p>
-                                        <input type="number" class="suggest-price" id="suggest-price" placeholder="제안가격">
+                                        <input type="number" min="0" oninput="priceException(this);" class="suggest-price" id="suggest-price" placeholder="제안가격">
                                     </div>
                                 </div>
                                 <div class="comment-write-row write">
