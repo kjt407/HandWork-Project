@@ -87,19 +87,19 @@
                     <div class="board-write-row">
                         <div class="board-write-col">
                             <p class="input-label">글 제목</p>
-                            <input type="text" name="title" class="board-write-title" value="${r.title}"placeholder="제목을 입력해 주세요" required/>
+                            <input type="text" maxlength="45" name="title" class="board-write-title" value="${r.title}"placeholder="제목을 입력해 주세요" required/>
                         </div>
                     </div>
                     <div class="board-write-row">
                         <div class="board-write-col price-col">
                             <p class="input-label">희망가격</p>
                             <%-- <input type="text" name="price" class="board-write-price" value="${r.price}"placeholder="가격을 원단위로 입력해 주세요 "/> --%>
-                            <input type="text" class="board-write-price" value="${r.price}" placeholder="가격을 원단위로 입력해 주세요"  oninput="inputNumberFormat(this)" required/>
+                            <input type="text" maxlength="10" class="board-write-price" value="${r.price}" placeholder="가격을 원단위로 입력해 주세요"  oninput="inputNumberFormat(this)" required/>
                             <input type="hidden" id="real-input-price" name="price" value="${r.price}" />
                         </div>
                         <div class="board-write-col period-col">
                             <p class="input-label">제작기간</p>
-                            <input type="number"name="period" placeholder="기간을 일단위로 입력해 주세요" value="${r.period}"class="board-write-period" id="board-write-period" required>
+                            <input type="number" min="0" max="180" name="period" placeholder="기간을 일단위로 입력해 주세요" value="${r.period}"class="board-write-period" id="board-write-period" required>
                         </div>
                     </div>
 

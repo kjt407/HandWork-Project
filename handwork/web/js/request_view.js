@@ -98,8 +98,7 @@ function commentEdit(ele) {
     const boardNum = $('#board-id').val();
 
     parentLi.addClass('hide');
-    parentLi.after('<li class="comment-edit-li"> <p class="comment-edit-title">제안 수정하기</p> <input type="hidden" class="comment-index" value="'+commentIndex+'">   <div class="comment-edit-row"><span class="comment-edit-label price">제안가격</span><input type="text" class="comment-edit-price" value="'+parentLi.find('.comment-price').html()+'"></div>   <div class="comment-edit-row"><span class="comment-edit-label subs">제안내용</span><textarea class="comment-edit-subs">'+parentLi.find('.comment-subs').html()+'</textarea></div>         <div class="comment-edit-row"><input type="button" class="comment-edit-btn confirm" value="확인" onclick="editAction(0,this)"> <input type="button" class="comment-edit-btn" value="취소" onclick="editAction(1,this)"/></div> </li>')
-    // parentLi.after('<li class="comment-edit-li"> <p>댓글 수정하기</p> <input type="hidden" class="comment-index" value="'+commentIndex+'"> <input type="text" class="comment-edit-price" value="'+parentLi.find('.comment-price').html()+'"> <input type="text" class="comment-edit-subs" value="'+parentLi.find('.comment-subs').html()+'"> <input type="button" value="확인" onclick="editAction(0,this)"> <input type="button" value="취소" onclick="editAction(1,this)"/> </li>')
+    parentLi.after('<li class="comment-edit-li"> <p class="comment-edit-title">제안 수정하기</p> <input type="hidden" class="comment-index" value="'+commentIndex+'">   <div class="comment-edit-row"><span class="comment-edit-label price">제안가격</span><input type="number" oninput="priceException(this);" class="comment-edit-price" value="'+parentLi.find('.comment-price').html()+'"></div>   <div class="comment-edit-row"><span class="comment-edit-label subs">제안내용</span><textarea class="comment-edit-subs">'+parentLi.find('.comment-subs').html()+'</textarea></div>         <div class="comment-edit-row"><input type="button" class="comment-edit-btn confirm" value="확인" onclick="editAction(0,this)"> <input type="button" class="comment-edit-btn" value="취소" onclick="editAction(1,this)"/></div> </li>')
 }
 
 function editAction(action,ele){
@@ -207,7 +206,11 @@ function ajaxPost(json) {
             createEle(data);
         },
         error:function(){
-            alert('Ajax 통신 에러');
+            if(json.requestType == 'edit'){
+                alert('잘못된 정보를 입력하셨습니다');
+            } else {
+                alert('Ajax 통신 에러');
+            }
         }
     })
 }
@@ -240,6 +243,10 @@ function createEle(data) {
             $('#comment-ul').append('<li class="comment-li bided"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="'+getContextPath()+'/upload/profile/'+profile_img+'" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-top">                     <div class="top-left"><span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span></div> <div class="top-right"><span class="bid-comment">채택완료된 댓글 입니다</span></div>                     </div>                     <div class="header-bottom">                     <span class="comment-price" >' + cPrice + '</span>                     </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                      </div> </div></div></li>')
         }
     }
+}
+
+function priceException(ele){
+    ele.value = ele.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').substring(0,9);
 }
 
 function plzLogin(){
