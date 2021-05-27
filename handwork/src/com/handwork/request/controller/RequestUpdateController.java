@@ -265,7 +265,7 @@ public class RequestUpdateController extends HttpServlet{
 		pstmt.setInt(5, price);
 		pstmt.setString(6, content);
 		
-		if(fullFileName.replace("/","").equals("")) {
+		if(fullFileName == null || fullFileName.replace("/","").equals("")) {
 	         fullFileName = null;
 	    }
 		

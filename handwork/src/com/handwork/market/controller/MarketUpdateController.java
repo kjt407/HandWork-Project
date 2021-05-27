@@ -224,7 +224,7 @@ public class MarketUpdateController extends HttpServlet{
 		pstmt.setInt(6, price);
 		pstmt.setString(7, content);
 
-		if(fullFileName.replace("/","").equals("")) {
+		if(fullFileName == null || fullFileName.replace("/","").equals("")) {
 	         fullFileName = null;
 	    }
 		
