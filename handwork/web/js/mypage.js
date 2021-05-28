@@ -150,6 +150,9 @@ function createInfo(data){
 
 function createPwCheck(){
     const parent = $('div.info-row.passwd');
+    if(parent.find('div.check-pw').length){
+        return;
+    }
     parent.children('.info-item.passwd').addClass('hide');
     parent.children('.btn-edit.passwd').addClass('hide');
     parent.append('<div class="check-pw edit-container"><input type="password" id="check-pw" class="edit-data pw" placeholder="현재 비밀번호를 입력해주세요" onKeypress="javascript:if(event.keyCode==13) {btnPwCheck(this);}"><input type="button" class="btn-cancel" onclick="btnPwCancel()"></div>')
@@ -157,8 +160,11 @@ function createPwCheck(){
 
 function createPwEdit(){
     const parent = $('div.info-row.passwd');
+    if(parent.find('div.edit-pw').length){
+        return;
+    }
     parent.children('div.check-pw').remove();
-    parent.append('<div class="edit-pw edit-container"><div><input type="password" id="edit-pw" class="edit-data pw" placeholder="변견하실 비밀번호를 입력해주세요"><input type="password" id="edit-pw-re" class="edit-data pw" placeholder="한번 더 입력해 주세요"><input type="button" value="확인" onclick="btnPwEdit(this)"></div><input type="button" class="btn-cancel" onclick="btnPwCancel()"></div>')
+    parent.append('<div class="edit-pw edit-container"><div><input type="password" id="edit-pw" class="edit-data pw" placeholder="변경할 비밀번호를 입력해주세요" style="margin-bottom: 3px;"><input type="password" id="edit-pw-re" class="edit-data pw" placeholder="다시 입력해 주세요" onKeypress="javascript:if(event.keyCode==13) {btnPwEdit(this);}"></div><input type="button" class="btn-cancel" onclick="btnPwCancel()"></div>')
 }
 
 function createBoard(data) {
@@ -266,9 +272,9 @@ function btnPwCheck(ele){
 }
 
 function btnPwEdit(ele){
-    const parent = $(ele).parent('div.edit-pw');
-    const data = parent.children('input#edit-pw').val();
-    const data_re = parent.children('input#edit-pw-re').val();
+    const parent = $(ele).parents('div.edit-pw');
+    const data = parent.find('input#edit-pw').val();
+    const data_re = parent.find('input#edit-pw-re').val();
     if(data != data_re) {
         alert('비밀번호가 일치하지 않습니다');
         return;
@@ -291,6 +297,9 @@ function btnPwCancel(){
 
 function btnEdit(ele,option){
     const parent = $(ele).parents('div.info-row');
+    if(parent.find('div.edit-container').length){
+        return;
+    }
     const content = $(parent).find('p.info-item').text();
     const width = $(parent).find('p.info-item').css('width');
     $(parent).find('p.info-item, input.btn-edit').addClass('hide');

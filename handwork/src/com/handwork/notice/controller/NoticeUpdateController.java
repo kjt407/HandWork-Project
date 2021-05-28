@@ -53,7 +53,7 @@ public class NoticeUpdateController extends HttpServlet{
 		String sql = "update notice set title=?, content=?, category=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
+		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
 	    String dbID = "handwork";
 	    String dbPassword = "handwork";
 		

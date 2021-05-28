@@ -43,8 +43,8 @@ public class JoinController extends HttpServlet{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String dbURL = "jdbc:mysql://61.83.168.88:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-	    String dbID = "handwork";
+		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
+		String dbID = "handwork";
 	    String dbPassword = "handwork";
 		
 		try (Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
