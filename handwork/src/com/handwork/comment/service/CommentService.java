@@ -4,6 +4,7 @@ package com.handwork.comment.service;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -184,6 +185,7 @@ public class CommentService {
         System.out.println("adopt 메서드 실행");
         int commentIndex = Integer.parseInt(req.getParameter("commentIndex"));
         int boardNum = Integer.parseInt(req.getParameter("boardNum"));
+        String writer_id = req.getParameter("writeId");
 
         try {
 
@@ -268,4 +270,5 @@ public class CommentService {
             throwables.printStackTrace();
         }
     }
+
 }

@@ -88,7 +88,6 @@ public class RequestService {
 		}
 		return list;
 	}
-
 	public List<Request> getRequestList(String field, String query, int page, int limit) {
 
 		List<Request> list = new ArrayList<>();
@@ -105,6 +104,7 @@ public class RequestService {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, "%"+query+"%");
 			stmt.setInt(2, limit);
+
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()){
@@ -279,7 +279,7 @@ public class RequestService {
 
 		String sql =   "select * from (select * from board order by regdate desc) A " +
 				" where regdate < (select regdate from board where id = ?) " +
-				" limit 1";
+				" order by id desc limit 1";
 
 		try {
 
