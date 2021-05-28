@@ -95,6 +95,7 @@ public class MyPageService {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
             stmt.setString(2, writer_id);
+            stmt.setString(3, writer_id);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -126,7 +127,8 @@ public class MyPageService {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
             stmt.setString(2, writer_id);
-            stmt.setInt(3, 5 * page - 5);
+            stmt.setString(3, writer_id);
+            stmt.setInt(4, 5 * page - 5);
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -179,6 +181,7 @@ public class MyPageService {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
             stmt.setString(2, writer_id);
+            stmt.setString(3, writer_id);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
