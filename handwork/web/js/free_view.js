@@ -123,33 +123,6 @@ function editAction(action,ele){
     }
 }
 
-// 댓글 채택 온클릭 부분
-function commentAdopt(ele) {
-    const parentLi = $(ele).parents('.comment-li');
-
-    if (stateCheck()){
-        alert('이미 채결 완료된 게시글 입니1다');
-        return;
-    }else {
-        const writerId = $('#board-writer-id').val();
-        const sessionId = $('#session-id').val();
-        if (writerId != sessionId) {
-            alert('의뢰글 작성자만 채택 할 수 있습니다')
-            return;
-        }
-    }
-    const commentIndex = parentLi.children('.comment-index').val();
-    const writeId = parentLi.children('.comment-writerid').val();
-    const boardNum = $('#board-id').val();
-
-    const json = {
-        requestType:'adopt',
-        commentIndex:commentIndex,
-        writeId:writeId,
-        boardNum:boardNum
-    };
-    ajaxPost(json);
-}
 
 // 댓글 등록 온클릭 함수
 function commentRegister(sessionID, boardNum){
@@ -194,17 +167,6 @@ function ajaxPost(json) {
         dataType:"json",
         data:json,
         success:function(data){
-            if (data.state != null && data.state === 1){
-                alert("이미 채결완료된 게시글 입니다\n페이지가 새로고침 됩니다");
-                location.href = getContextPath()+"/request/detail?id="+data.boardNum;
-                return;
-            }else if (data.state != null && data.state === 2){
-                alert("채결이 완료 되었습니다\n페이지가 새로고침 됩니다");
-                location.href = getContextPath()+"/request/detail?id="+data.boardNum;
-                return;
-            }
-            // alert('ajax통신 성공'+data+'length: '+data.length);
-            console.log(data);
             createEle(data);
         },
         error:function(){
@@ -222,28 +184,15 @@ function createEle(data) {
     $('#comment-ul').children().remove();
     for(let i=0; i<jsonLength; i++) {
         const cIdx = data[i].idx;
-        const cState = data[i].c_state;
         const cWriterID = data[i].userid;
         const cWriterName = data[i].name;
         const cWriteTime = data[i].time;
         const cSubs = data[i].content;
-        const cPrice = data[i].price;
         let profile_img = data[i].profile_img;
         if (profile_img == null || profile_img.replaceAll(" ","") == "") {
             profile_img = "noProfile.png"
         }
-
-
-        // if (cState == 0) { // 채택안된 댓글 이라면
-        //     $('#comment-ul').append('<li class="comment-li"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="/Project/images/noProfile.png" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-left">                     <span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span>                     </div>                     <div class="header-right">                     <span class="comment-price" >' + cPrice + '</span>                     </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                     <div class="comment-control">                     <input type="button" onclick="commentEdit(this)" value="수정">                  <input type="button" onclick="commentDelete(this)" value="삭제">                     <input type="button" onclick="commentAdopt(this)" value="채택">                     </div> </div> </div> </div> </li>');
-        // }else if (cState == 1) { // 채택된 댓글 이라면
-        //     $('#comment-ul').append('<li class="comment-li bided"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="/Project/images/noProfile.png" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-left">                     <span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span>                     </div>                     <div class="header-right">                     <span class="comment-price" >' + cPrice + '</span>                     </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                     <div class="comment-control">                    <input type="button" onclick="commentEdit(this)" value="수정">                      <input type="button" onclick="commentDelete(this)" value="삭제">                     <input type="button" onclick="commentAdopt(this)" value="채택">                      </div> </div> </div></div> <div>채택완료된 댓글 입니다</div></li>')
-        // }
-        if (cState == 0) { // 채택안된 댓글 이라면
-            $('#comment-ul').append('<li class="comment-li"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="'+getContextPath()+'/upload/profile/'+profile_img+'" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-top">                     <div class="top-left"><span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span></div>                      <div class="top-right"><input type="button" onclick="commentEdit(this)" value="수정">                  <input type="button" onclick="commentDelete(this)" value="삭제">                     <input type="button" onclick="commentAdopt(this)" value="채택"></div></div>                     <div class="header-bottom">                     <span class="comment-price" >' + cPrice + '</span>                     </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                     <div class="comment-control">                                          </div> </div> </div> </div> </li>');
-        }else if (cState == 1) { // 채택된 댓글 이라면
-            $('#comment-ul').append('<li class="comment-li bided"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="'+getContextPath()+'/upload/profile/'+profile_img+'" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-top">                     <div class="top-left"><span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span></div> <div class="top-right"><span class="bid-comment">채택완료된 댓글 입니다</span></div>                     </div>                     <div class="header-bottom">                     <span class="comment-price" >' + cPrice + '</span>                     </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                      </div> </div></div></li>')
-        }
+        $('#comment-ul').append('<li class="comment-li"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="'+getContextPath()+'/upload/profile/'+profile_img+'" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-top">                     <div class="top-left"><span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span></div>                      <div class="top-right"><input type="button" onclick="commentEdit(this)" value="수정">                  <input type="button" onclick="commentDelete(this)" value="삭제">                     <input type="button" onclick="commentAdopt(this)" value="채택"></div></div>                     <div class="header-bottom">                                        </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                     <div class="comment-control">                                          </div> </div> </div> </div> </li>');
     }
 }
 
