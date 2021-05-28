@@ -55,14 +55,16 @@ public class FreeService {
 			while(rs.next()){
 
 				int id = rs.getInt("id");
-				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
 				int hit = rs.getInt("hit");
 				String writer_id = rs.getString("writer_id");
+				ArrayList plist = getWriterInfo(writer_id);
+				String profile_img = (String)plist.get(0);
+				String writer = (String)plist.get(1);
 
-				Free free = new Free(id, writer, title, content, regdate, hit, writer_id, getCount(id));
+				Free free = new Free(id, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 
 				list.add(free);
 			}
@@ -129,7 +131,7 @@ public class FreeService {
 				String writer = (String)list.get(1);
 
 
-				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 
 			}
 
@@ -170,7 +172,7 @@ public class FreeService {
 				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
-				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 				if(incHit) {
 					stmt.execute("update free set hit=hit+1 where id=" + id);
 				}
@@ -213,7 +215,7 @@ public class FreeService {
 				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
-				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 				if(incHit) {
 					stmt.execute("update free set hit=hit+1 where id=" + id);
 				}

@@ -13,7 +13,7 @@ public class Free {
 	private String profile_img;
 
 
-	public Free(int id, String writer, String title, String content, String regdate, int hit, String writer_id, int count) {
+	public Free(int id, String writer, String title, String content, String regdate, int hit, String writer_id, int count, String profile_img) {
 		this.id = id;
 		this.writer = writer;
 		this.title = title;
@@ -21,9 +21,10 @@ public class Free {
 		this.regdate = regdate;
 		this.hit = hit;
 		this.writer_id = writer_id;
-		this.profile_img = profile_img;
 		this.count = count;
+		this.profile_img = profile_img;
 	}
+
 
 	public int getId() {
 		return id;

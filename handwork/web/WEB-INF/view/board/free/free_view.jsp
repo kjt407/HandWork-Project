@@ -59,10 +59,15 @@
                     <p class="board-view-title">${r.title}</p>
                     <div class="header-row">
                         <div class="writer-info">
-
-
-
-                            <a href="">${r.writer}</a>
+                            <c:choose>
+                                <c:when test="${empty r.profile_img}">
+                                    <img src="${pageContext.request.contextPath}/images/noProfile.png" alt="작성자 프로필">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${pageContext.request.contextPath}/upload/profile/${r.profile_img}" alt="작성자 프로필">
+                                </c:otherwise>
+                            </c:choose>
+                            <a>${r.writer}</a>
                         </div>
                         <div class="post-info">
                             <p class="board-view-comment">${r.count}</p>
@@ -107,9 +112,6 @@
                            <c:otherwise>
                               <a href="${pageContext.request.contextPath}/free/detail?id=${nr.id}" class="control-board-items board-next">
                               <p class="control-col">다음글</p>
-                                 <div class="img-wrap">
-
-                              </div>
                               <div class="control-col title-subs">
                                   <p class="view-control-title">${nr.title}</p>
                               </div>
@@ -126,10 +128,6 @@
                            <c:otherwise>
                               <a href="${pageContext.request.contextPath}/free/detail?id=${pr.id}" class="control-board-items board-next">
                               <p class="control-col">이전글</p>
-                                 <div class="img-wrap">
-
-
-                              </div>
                               <div class="control-col title-subs">
                                   <p class="view-control-title">${pr.title}</p>
                               </div>

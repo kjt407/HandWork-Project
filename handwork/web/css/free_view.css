@@ -34,7 +34,7 @@
 .request-view-main .request-view-control .control-row.btn-group a[class^=btn-] {display: flex; justify-content: center; align-items: center; background: whitesmoke; padding: 10px; border-radius: 10px; margin: 5px; transition: 0.3s;}
 .request-view-main .request-view-control .control-row.btn-group a[class^=btn-]:hover {background: tomato;}
 .request-view-main .request-view-control .prev-next-group { display: flex; flex-direction: column; }
-.request-view-main .request-view-control .prev-next-group a.control-board-items { display: flex; justify-content: space-between; width: 100%; background: whitesmoke; margin: 5px 0; transition: 0.3s; }
+.request-view-main .request-view-control .prev-next-group a.control-board-items { display: flex; justify-content: space-between; width: 100%; height:50px; background: whitesmoke; margin: 5px 0; transition: 0.3s; }
 .request-view-main .request-view-control .prev-next-group a.control-board-items:hover { background: rgb(181, 181, 181); }
 .request-view-main .request-view-control .prev-next-group a.control-board-items .img-wrap { display: flex; width: 100px; height: 100px; justify-content: center; align-items: center; overflow: hidden;}
 .request-view-main .request-view-control .prev-next-group a.control-board-items .img-wrap img {width: auto; max-height: 100px;}
