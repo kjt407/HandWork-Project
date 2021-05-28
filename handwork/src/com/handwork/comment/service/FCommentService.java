@@ -74,18 +74,12 @@ public class FCommentService {
     }
 
     public void loadDB(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        System.out.println("loadDB 메서드 처음");
         PrintWriter writer = res.getWriter();
-        System.out.println("loadDB 메서드 writter null 할당부분");
-        System.out.println("bordnum: "+req.getParameter("boardNum"));
         int boardNum = Integer.parseInt(req.getParameter("boardNum"));
-        System.out.println("loadDB 메서드 boardnum 할당부분");
 
 
         JSONArray jsonarray = new JSONArray();
-        System.out.println("loadDB 메서드 Try  진입전");
         try {
-            System.out.println("loadDB 메서드 writter 할당 부분");
             String sql="SELECT * FROM fcomment where board_num=? order by idx asc";
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -152,7 +146,7 @@ public class FCommentService {
         String subs = req.getParameter("subs");
 
         try {
-            String sql ="update fcomment content=? where idx=?";
+            String sql ="update fcomment set content=? where idx=?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 

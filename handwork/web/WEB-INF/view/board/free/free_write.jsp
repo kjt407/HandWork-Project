@@ -63,7 +63,7 @@
                     <div class="board-write-row">
                         <div class="board-write-col">
                             <p class="input-label">글 제목</p>
-                            <input type="text" name="title" class="board-write-title" value="${r.title}"placeholder="제목을 입력해 주세요" required/>
+                            <input type="text" maxlength="45" name="title" class="board-write-title" value="${r.title}"placeholder="제목을 입력해 주세요" required/>
                         </div>
                     </div>
 

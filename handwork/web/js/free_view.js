@@ -17,15 +17,7 @@ function commentLoad() {
     ajaxPost(json);
 }
 
-// 댓글 버튼 클릭시 게시글 state 확인하는 구문
-function stateCheck() {
-    const boardState = $('#board-state').val();
-    if (boardState != null && boardState == 1) {
-        return 1;
-    } else if (boardState != null && boardState == 0) {
-        return 0;
-    }
-}
+
 // 로그인 체크
 function loginCheck(cWriterId) {
     const sessionID = $('#session-id').val();
@@ -44,23 +36,19 @@ function commentDelete(ele) {
     // const sessionIDtrim = sessionStorage.getItem('id');
     const parentLi = $(ele).parents('.comment-li');
 
-    if (stateCheck()){
-        alert('이미 채결 완료된 게시글 입니다');
-        return;
-    }else {
-        switch (loginCheck(parentLi.children('.comment-writerid').val())){
-            case 0 :
-                alert('로그인을 해주세요');
-                return;
-                break;
-            case 1 :
-                alert('댓글 작성자만 수정/삭제 할 수 있습니다');
-                return;
-                break;
-            case 2 :
-                // alert('세션 확인 완료')
-                break;
-        }
+
+    switch (loginCheck(parentLi.children('.comment-writerid').val())){
+        case 0 :
+            alert('로그인을 해주세요');
+            return;
+            break;
+        case 1 :
+            alert('댓글 작성자만 수정/삭제 할 수 있습니다');
+            return;
+            break;
+        case 2 :
+            // alert('세션 확인 완료')
+            break;
     }
     const commentIndex = parentLi.children('.comment-index').val();
     const boardNum = $('#board-id').val();
@@ -76,29 +64,25 @@ function commentDelete(ele) {
 // 해당 댓글 수정 온클릭 함수
 function commentEdit(ele) {
     const parentLi = $(ele).parents('.comment-li');
-    if (stateCheck()){
-        alert('이미 채결 완료된 게시글 입니다');
-        return;
-    }else {
-        switch (loginCheck(parentLi.children('.comment-writerid').val())){
-            case 0 :
-                alert('로그인을 해주세요');
-                return;
-                break;
-            case 1 :
-                alert('댓글 작성자만 수정/삭제 할 수 있습니다');
-                return;
-                break;
-            case 2 :
-                // alert('세션 확인 완료')
-                break;
-        }
+
+    switch (loginCheck(parentLi.children('.comment-writerid').val())){
+        case 0 :
+            alert('로그인을 해주세요');
+            return;
+            break;
+        case 1 :
+            alert('댓글 작성자만 수정/삭제 할 수 있습니다');
+            return;
+            break;
+        case 2 :
+            // alert('세션 확인 완료')
+            break;
     }
     const commentIndex = parentLi.children('.comment-index').val();
     const boardNum = $('#board-id').val();
 
     parentLi.addClass('hide');
-    parentLi.after('<li class="comment-edit-li"> <p class="comment-edit-title">제안 수정하기</p> <input type="hidden" class="comment-index" value="'+commentIndex+'">   <div class="comment-edit-row"><span class="comment-edit-label price">제안가격</span><input type="number" oninput="priceException(this);" class="comment-edit-price" value="'+parentLi.find('.comment-price').html()+'"></div>   <div class="comment-edit-row"><span class="comment-edit-label subs">제안내용</span><textarea class="comment-edit-subs">'+parentLi.find('.comment-subs').html()+'</textarea></div>         <div class="comment-edit-row"><input type="button" class="comment-edit-btn confirm" value="확인" onclick="editAction(0,this)"> <input type="button" class="comment-edit-btn" value="취소" onclick="editAction(1,this)"/></div> </li>')
+    parentLi.after('<li class="comment-edit-li"> <p class="comment-edit-title">댓글 수정하기</p> <input type="hidden" class="comment-index" value="'+commentIndex+'">   <div class="comment-edit-row"></div>   <div class="comment-edit-row"><span class="comment-edit-label subs">제안내용</span><textarea class="comment-edit-subs">'+parentLi.find('.comment-subs').html()+'</textarea></div>         <div class="comment-edit-row"><input type="button" class="comment-edit-btn confirm" value="확인" onclick="editAction(0,this)"> <input type="button" class="comment-edit-btn" value="취소" onclick="editAction(1,this)"/></div> </li>')
 }
 
 function editAction(action,ele){
@@ -106,14 +90,12 @@ function editAction(action,ele){
 
     if (action != null && action === 0) {
         const commentIndex = parentLi.find('.comment-index').val();
-        const price = parentLi.find('.comment-edit-price').val();
         const subs = parentLi.find('.comment-edit-subs').val();
         const boardNum = $('#board-id').val();
         const json = {
             requestType:'edit',
             commentIndex:commentIndex,
             boardNum:boardNum,
-            price:price,
             subs: subs
         };
         ajaxPost(json);
@@ -126,20 +108,11 @@ function editAction(action,ele){
 
 // 댓글 등록 온클릭 함수
 function commentRegister(sessionID, boardNum){
-    if (stateCheck()){
-        alert('이미 채결 완료된 게시글 입니다');
-        return;
-    }else {
-    }
     let sessionIDtrim = sessionID.trim();
-    let price = $('#suggest-price').val();
     let subs = $('#suggest-comment').val();
 
     //댓글 입력 폼 미기입시 예외처리
-    if (price == null || price === ""){
-        alert('제안가격을 입력해주세요');
-        return;
-    } else if (subs == null || subs === "") {
+   if (subs == null || subs === "") {
         alert('제안 내용을 입력해주세요');
         return;
     }
@@ -147,18 +120,16 @@ function commentRegister(sessionID, boardNum){
         requestType:'register',
         sessionID:sessionIDtrim,
         boardNum:boardNum,
-        price:price,
         subs: subs
     };
     ajaxPost(json);
-    $('#suggest-price').val(null);
     $('#suggest-comment').val(null);
 }
 
 
 // AJAX 통신 부분
 function ajaxPost(json) {
-    const url = getContextPath()+"/comment";
+    const url = getContextPath()+"/fcomment";
 
     $.ajax({
         type:"POST",
@@ -192,13 +163,10 @@ function createEle(data) {
         if (profile_img == null || profile_img.replaceAll(" ","") == "") {
             profile_img = "noProfile.png"
         }
-        $('#comment-ul').append('<li class="comment-li"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="'+getContextPath()+'/upload/profile/'+profile_img+'" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-top">                     <div class="top-left"><span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span></div>                      <div class="top-right"><input type="button" onclick="commentEdit(this)" value="수정">                  <input type="button" onclick="commentDelete(this)" value="삭제">                     <input type="button" onclick="commentAdopt(this)" value="채택"></div></div>                     <div class="header-bottom">                                        </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                     <div class="comment-control">                                          </div> </div> </div> </div> </li>');
+        $('#comment-ul').append('<li class="comment-li"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="'+getContextPath()+'/upload/profile/'+profile_img+'" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-top">                     <div class="top-left"><span class="comment-writername" >' + cWriterName + '</span> </div>                      <div class="top-right"><input type="button" onclick="commentEdit(this)" value="수정">                  <input type="button" onclick="commentDelete(this)" value="삭제"></div></div>                     <div class="header-bottom"><span class="comment-writedate" >' + cWriteTime.substring(0,16) + '</span></div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                     <div class="comment-control">                                          </div> </div> </div> </div> </li>');
     }
 }
 
-function priceException(ele){
-    ele.value = ele.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1').substring(0,9);
-}
 
 function plzLogin(){
     alert("로그인을 해주세요");

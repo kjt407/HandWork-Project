@@ -60,10 +60,12 @@ public class FreeService {
 				String regdate = rs.getString("regdate");
 				int hit = rs.getInt("hit");
 				String writer_id = rs.getString("writer_id");
-				ArrayList list_ = getWriterInfo(writer_id);
-				String profile_img = (String)list_.get(0);
-				String writer = (String)list_.get(1);
-				Free free = new Free(id, writer, title, content, regdate, hit, writer_id, getCount(id));
+				ArrayList plist = getWriterInfo(writer_id);
+				String profile_img = (String)plist.get(0);
+				String writer = (String)plist.get(1);
+
+				Free free = new Free(id, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
+
 
 				list.add(free);
 			}
@@ -130,7 +132,7 @@ public class FreeService {
 				String writer = (String)list.get(1);
 
 
-				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 
 			}
 
@@ -171,7 +173,7 @@ public class FreeService {
 				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
-				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 				if(incHit) {
 					stmt.execute("update free set hit=hit+1 where id=" + id);
 				}
@@ -193,7 +195,7 @@ public class FreeService {
 
 		String sql =   "select * from (select * from free order by regdate desc) A " +
 				" where regdate < (select regdate from free where id = ?) " +
-				" limit 1";
+				" order by id desc limit 1";
 
 		try {
 
@@ -214,7 +216,7 @@ public class FreeService {
 				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
-				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 				if(incHit) {
 					stmt.execute("update free set hit=hit+1 where id=" + id);
 				}
@@ -240,7 +242,7 @@ public class FreeService {
 		int count =0;
 		try {
 
-			String sql = "SELECT count(board_num) count from freecomment where board_num=?";
+			String sql = "SELECT count(board_num) count from fcomment where board_num=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setInt(1, boardNum);
@@ -252,7 +254,7 @@ public class FreeService {
 		} catch (Exception e) {
 
 		}
-		return 0;
+		return count;
 	}
 
 	public ArrayList getWriterInfo(String id){
