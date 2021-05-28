@@ -152,13 +152,13 @@ function createPwCheck(){
     const parent = $('div.info-row.passwd');
     parent.children('.info-item.passwd').addClass('hide');
     parent.children('.btn-edit.passwd').addClass('hide');
-    parent.append('<div class="check-pw"><input type="password" id="check-pw" placeholder="현재 비밀번호를 입력해주세요"><input type="button" value="확인" onclick="btnPwCheck(this)"><input type="button" value="취소" onclick="btnPwCancel()"></div>')
+    parent.append('<div class="check-pw edit-container"><input type="password" id="check-pw" class="edit-data pw" placeholder="현재 비밀번호를 입력해주세요" onKeypress="javascript:if(event.keyCode==13) {btnPwCheck(this);}"><input type="button" class="btn-cancel" onclick="btnPwCancel()"></div>')
 }
 
 function createPwEdit(){
     const parent = $('div.info-row.passwd');
     parent.children('div.check-pw').remove();
-    parent.append('<div class="edit-pw"><input type="password" id="edit-pw" placeholder="변견하실 비밀번호를 입력해주세요"><input type="password" id="edit-pw-re" placeholder="한번 더 입력해 주세요"><input type="button" value="확인" onclick="btnPwEdit(this)"><input type="button" value="취소" onclick="btnPwCancel()"></div>')
+    parent.append('<div class="edit-pw edit-container"><div><input type="password" id="edit-pw" class="edit-data pw" placeholder="변견하실 비밀번호를 입력해주세요"><input type="password" id="edit-pw-re" class="edit-data pw" placeholder="한번 더 입력해 주세요"><input type="button" value="확인" onclick="btnPwEdit(this)"></div><input type="button" class="btn-cancel" onclick="btnPwCancel()"></div>')
 }
 
 function createBoard(data) {
@@ -292,8 +292,10 @@ function btnPwCancel(){
 function btnEdit(ele,option){
     const parent = $(ele).parents('div.info-row');
     const content = $(parent).find('p.info-item').text();
+    const width = $(parent).find('p.info-item').css('width');
     $(parent).find('p.info-item, input.btn-edit').addClass('hide');
-    $(parent).append('<div style="display: flex;"><input type="text" class="edit-data '+option+'" value="'+content+'"><input type="button" value="수정" onclick="editInfo(\''+option+'\',this)"><input type="button" value="취소" onclick="btnEditCancel(this)"></div>');
+    $(parent).append('<div style="display: flex;" class="edit-container"><input type="text" class="edit-data '+option+'" value="'+content+'" onKeypress="javascript:if(event.keyCode==13) {editInfo(\''+option+'\',this)}"><input type="button" class="btn-cancel" onclick="btnEditCancel(this)"></div>');
+    $(parent).find('input.edit-data').css('width',width);
     addEvent();
 }
 
