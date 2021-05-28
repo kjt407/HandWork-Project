@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/free.css">
     <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript"
@@ -53,29 +53,40 @@
                     <input type="text" class="search-text" name="q" value="${param.q}">
                     <input type="submit" class="search-submit" value="검색">
                 </form>
-                
-                
-               
-			
+
+
+
+                <%--                        <div class="board-items">--%>
+                <%--                            <div class="board-list-main">--%>
+                <%--                                <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-title">${r.title}</a>--%>
+                <%--                                <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-subs">${r.content}</a>--%>
+                <%--                                <div class="row-wrapper">--%>
+                <%--                                    <div>--%>
+                <%--                                        <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>--%>
+                <%--                                        <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>--%>
+                <%--                                    </div>--%>
+                <%--                                </div>--%>
+                <%--                            </div>--%>
+                <%--                            <div class="board-list-aside">--%>
+                <%--                                <span class="board-list-comment">${r.count}</span>--%>
+                <%--                                <span class="board-list-views">${r.hit}</span>--%>
+                <%--                            </div>--%>
+                <%--                        </div>--%>
 				 <ul class="board-content-list">
 				 	<c:forEach var="r" items="${list}">
-                    <li>
-                        <div class="board-items">
-                            <div class="board-list-main">
-                                <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-title">${r.title}</a>
-                                <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-subs">${r.content}</a>
-                                <div class="row-wrapper">
-                                    <div>
-                                        <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>
+                    <li class="notice-content-li" onclick="location.href='${pageContext.request.contextPath}/free/detail?id=${r.id}'">
+                            <div class="notice-title">
+                                <div class="list-row title">
+                                    <p class="board-list-title">${r.title}</p><span class="board-list-comment">${r.count}</span>
+                                </div>
+                                <div class="list-row">
+                                    <p class="board-list-writer">${r.writer}</p>
+                                    <div style="display: flex">
+                                        <p class="board-list-hit">${r.hit}</p>
                                         <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="board-list-aside">
-                                <span class="board-list-comment">${r.count}</span>
-                                <span class="board-list-views">${r.hit}</span>
-                            </div>
-                        </div>
                     </li>
                     </c:forEach>
                 </ul>

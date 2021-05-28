@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+div.board-title-section {position: relative; height: 300px;  width: auto; background: url(../images/market_background.jpg) center no-repeat; background-size: cover;}
 .request-view-main .request-view-header { display: flex; flex-direction: column; width: 100%; border-bottom: 1px solid gray; padding-bottom: 15px;}
 .request-view-main .request-view-header .header-row { display: flex; justify-content: space-between; align-items: flex-end;}
 .request-view-main .request-view-header .board-view-category { display: flex; align-items: center; font-size: 14px;}

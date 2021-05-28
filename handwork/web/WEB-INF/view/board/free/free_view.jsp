@@ -20,7 +20,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/images/handwork-fav.ico">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/free.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/free_view.css">
     <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>

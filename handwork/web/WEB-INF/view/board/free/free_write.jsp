@@ -13,7 +13,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/images/handwork-fav.ico">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/free.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board-write.css">
     <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -29,11 +29,11 @@
 		<jsp:include page="/WEB-INF/view/header.jsp"/>
 	</header>
     <section class="board-title-section">
-        <div>제작의뢰 게시판</div>
+        <div>자유게시판</div>
     </section>
 
     <section class="request board-section">
-        <h2 class="hide">제작의뢰 게시판</h2>
+        <h2 class="hide">자유게시판</h2>
         <div class="board-bg">
             <div class="left"></div>
             <div class="right"></div>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
 
-                    <textarea id="subs" cols="30" rows="10" name="content" class="board-write-subs" placeholder="의뢰 요청 사항 (상세하게 입력해주세요)" required>${r.content}</textarea>
+                    <textarea id="subs" cols="30" rows="10" name="content" class="board-write-subs" placeholder="게시글을 자유롭게 작성해보세요" required>${r.content}</textarea>
                     <div class="btn-submit-group">
                         <input type="submit" class="btn-submit submit" value="작성완료"/>
                         <c:choose>
