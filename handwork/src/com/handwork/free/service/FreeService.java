@@ -195,7 +195,7 @@ public class FreeService {
 
 		String sql =   "select * from (select * from free order by regdate desc) A " +
 				" where regdate < (select regdate from free where id = ?) " +
-				" limit 1";
+				" order by id desc limit 1";
 
 		try {
 
