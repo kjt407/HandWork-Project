@@ -56,7 +56,7 @@
                     </div>
                     <div class="info-row passwd">
                         <p class="info-title">비밀번호</p>
-                        <p class="info-item passwd">**********</p>
+                        <p class="info-item passwd">*************</p>
                         <input type="button" class="btn-edit passwd" onclick="btnPw()"/>
                     </div>
                 </div>
