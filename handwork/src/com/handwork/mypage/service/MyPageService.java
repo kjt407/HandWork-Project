@@ -39,11 +39,14 @@ public class MyPageService {
                     "SELECT id, content, regdate, title, boardname FROM board WHERE writer_id = ? " +
                     "UNION ALL " +
                     "SELECT id, content, regdate, title, boardname FROM market WHERE writer_id = ? " +
+                    "UNION ALL " +
+                    "SELECT id, content, regdate, title, boardname FROM free WHERE writer_id = ? " +
                     ") a order by regdate desc limit ?,5";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
             stmt.setString(2, writer_id);
-            stmt.setInt(3, 5 * page - 5);
+            stmt.setString(3, writer_id);
+            stmt.setInt(4, 5 * page - 5);
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -86,6 +89,8 @@ public class MyPageService {
                     "SELECT id, content, regdate, title, boardname FROM board WHERE writer_id = ? " +
                     "UNION ALL " +
                     "SELECT id, content, regdate, title, boardname FROM market WHERE writer_id = ? " +
+                    "UNION ALL " +
+                    "SELECT id, content, regdate, title, boardname FROM free WHERE writer_id = ? " +
                     ") a order by regdate desc";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
@@ -115,6 +120,8 @@ public class MyPageService {
                     "SELECT board_num, content, regdate, replyname, user_id  FROM review WHERE user_id = ? " +
                     "UNION ALL " +
                     "SELECT board_num, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
+                    "UNION ALL " +
+                    "SELECT board_num, content, regdate, replyname, user_id  FROM fcomment WHERE user_id = ? " +
                     ") a order by regdate  desc limit ?,5";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
@@ -166,6 +173,8 @@ public class MyPageService {
                     "SELECT idx, content, regdate, replyname, user_id  FROM review WHERE user_id = ? " +
                     "UNION ALL " +
                     "SELECT idx, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
+                    "UNION ALL " +
+                    "SELECT idx, content, regdate, replyname, user_id  FROM fcomment WHERE user_id = ? " +
                     ") a order by regdate  desc";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
