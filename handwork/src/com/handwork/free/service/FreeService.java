@@ -55,13 +55,14 @@ public class FreeService {
 			while(rs.next()){
 
 				int id = rs.getInt("id");
-				String writer = rs.getString("writer");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
 				int hit = rs.getInt("hit");
 				String writer_id = rs.getString("writer_id");
-
+				ArrayList list_ = getWriterInfo(writer_id);
+				String profile_img = (String)list_.get(0);
+				String writer = (String)list_.get(1);
 				Free free = new Free(id, writer, title, content, regdate, hit, writer_id, getCount(id));
 
 				list.add(free);

@@ -102,7 +102,6 @@
 
                 
                     <div class="prev-next-group">
-                        >?????????
                         <c:choose>
                            <c:when test="${empty nr.id}">
                            </c:when>
