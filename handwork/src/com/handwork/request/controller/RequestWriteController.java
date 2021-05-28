@@ -28,7 +28,6 @@ import java.util.Enumeration;
 import com.handwork.dao.DAO;
 import com.handwork.request.entity.Request;
 import com.handwork.request.service.RequestService;
-import com.mysql.cj.Session;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
