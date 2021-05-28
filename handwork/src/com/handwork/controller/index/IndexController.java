@@ -55,7 +55,8 @@ public class IndexController extends HttpServlet {
 
 		MarketService service = new MarketService();
 
-		List<Market> m_list = service.getMarketList(field, query, page);
+		int limit = 8; //8개만 가져올꺼임 ㅅㄱ
+		List<Market> m_list = service.getMarketList(field, query, page, limit);
 
 
 
@@ -83,7 +84,8 @@ public class IndexController extends HttpServlet {
 
 		RequestService service = new RequestService();
 
-		List<Request> list = service.getRequestList(field, query, page);
+		int limit = 8; //8개만 가져올꺼임 ㅅㄱ
+		List<Request> list = service.getRequestList(field, query, page, limit);
 
 
 
