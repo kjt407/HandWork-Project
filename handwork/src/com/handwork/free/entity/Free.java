@@ -8,20 +8,18 @@ public class Free {
 	private String content;
 	private String regdate;
 	private int hit;
-	private String filename;
 	private String writer_id;
 	private int count;
 	private String profile_img;
 
 
-	public Free(int id, String writer, String title, String content, String regdate, int hit, String filename, String writer_id, int count) {
+	public Free(int id, String writer, String title, String content, String regdate, int hit, String writer_id, int count) {
 		this.id = id;
 		this.writer = writer;
 		this.title = title;
 		this.content = content;
 		this.regdate = regdate;
 		this.hit = hit;
-		this.filename = filename;
 		this.writer_id = writer_id;
 		this.profile_img = profile_img;
 		this.count = count;
@@ -75,13 +73,6 @@ public class Free {
 		this.hit = hit;
 	}
 
-	public String getFilename() {
-		return filename;
-	}
-
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
 
 	public int getCount() {
 		return count;
@@ -116,7 +107,6 @@ public class Free {
 				", content='" + content + '\'' +
 				", regdate='" + regdate + '\'' +
 				", hit=" + hit +
-				", filename='" + filename + '\'' +
 				", writer_id='" + writer_id + '\'' +
 				", profile_img='" + profile_img + '\'' +
 				'}';

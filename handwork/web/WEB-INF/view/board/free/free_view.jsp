@@ -73,17 +73,6 @@
                 </div>
                 <div class="request-view-body">
                     <div class="body-row">
-                        <div class="image-slide-main">
-                        
-                        <c:forTokens var="itemFN" items="${r.filename}" delims="/">
-                        <%-- 	${itemFN} --%>
-                      		<div><img src="${pageContext.request.contextPath }/upload/freeBoard/${itemFN}" class="view-img"></div>
-                        </c:forTokens>
-                            
-                        </div>
-                    </div>
-
-                    <div class="body-row">
                         <span class="sub-title">의뢰사항 :</span>
                         <p class="subs">${fn:replace(r.content, crcn, br)}</p>
                     </div>
@@ -113,6 +102,7 @@
 
                 
                     <div class="prev-next-group">
+                        >?????????
                         <c:choose>
                            <c:when test="${empty nr.id}">
                            </c:when>
@@ -120,36 +110,18 @@
                               <a href="${pageContext.request.contextPath}/free/detail?id=${nr.id}" class="control-board-items board-next">
                               <p class="control-col">다음글</p>
                                  <div class="img-wrap">
-                                  <c:choose>
-                                    <c:when test="${empty nr.filename }">
-                                       <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img" style="width: 50px; height:50px;">
-                           
-                                    </c:when>
-                           
-                                    <c:otherwise>
-                                       <c:set var="doneLoop" value="false"/>
-                                          <c:forTokens var="itemFN" items="${nr.filename}" delims="/">
-                                             <c:if test="${not doneLoop}">
-                                                <img src="${pageContext.request.contextPath }/upload/freeBoard/${itemFN}" class="view-img">
-                              
-                                                <c:set var="doneLoop" value="true"/>
-                                             </c:if>
-                                          </c:forTokens>
-                              
-                              
-                                    </c:otherwise>
-                                 </c:choose>
+
                               </div>
                               <div class="control-col title-subs">
                                   <p class="view-control-title">${nr.title}</p>
                               </div>
-                              <p class="view-control-price board-list-price state complete control-col">${nr.price}</p>
+
                               <p class=" view-control-writer board-list-writer control-col">${nr.writer}</p>
                               </a>
-                        
+
                            </c:otherwise>
                         </c:choose>
-                        
+
                         <c:choose>
                            <c:when test="${empty pr.id}">
                            </c:when>
@@ -157,31 +129,12 @@
                               <a href="${pageContext.request.contextPath}/free/detail?id=${pr.id}" class="control-board-items board-next">
                               <p class="control-col">이전글</p>
                                  <div class="img-wrap">
-                     
-                                 <c:choose>
-                                    <c:when test="${empty pr.filename }">
-                                       <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img" style="width: 50px; height:50px;">
-                           
-                           
-                                    </c:when>
-                           
-                                    <c:otherwise>
-                                       <c:set var="doneLoop" value="false"/>
-                                          <c:forTokens var="itemFN" items="${pr.filename}" delims="/">
-                                             <c:if test="${not doneLoop}">
-                                                <img src="${pageContext.request.contextPath }/upload/freeBoard/${itemFN}" class="view-img">
-                           
-                                                <c:set var="doneLoop" value="true"/>
-                                             </c:if>
-                                          </c:forTokens>
-                                       </c:otherwise>
-                                 </c:choose>
-                     
+
+
                               </div>
                               <div class="control-col title-subs">
                                   <p class="view-control-title">${pr.title}</p>
                               </div>
-                              <p class="view-control-price board-list-price state complete control-col">${pr.price}</p>
                               <p class=" view-control-writer board-list-writer control-col">${pr.writer}</p>
                               </a>
                            </c:otherwise>

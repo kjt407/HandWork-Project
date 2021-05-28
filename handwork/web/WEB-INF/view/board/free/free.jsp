@@ -61,31 +61,6 @@
 				 	<c:forEach var="r" items="${list}">
                     <li>
                         <div class="board-items">
-
-                            <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="img-container">
-                               	 <c:choose>
-				                   		<c:when test="${empty r.filename }">
-				                   			<img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-				                   		</c:when>
-				                   		<c:when test="${r.filename eq '/'}">
-	                                        <img src="${pageContext.request.contextPath}/images/noImage.png" class="view-img no-img">
-	                                     </c:when>
-				                   	
-				                   		<c:otherwise>
-				                 	  		<c:set var="doneLoop" value="false"/>
-					                   		<c:forTokens var="itemFN" items="${r.filename}" delims="/">
-					                   			<c:if test="${not doneLoop}">
-					                      			<img src="${pageContext.request.contextPath }/upload/freeBoard/${itemFN}" class="view-img">
-					                      			
-					                      			<c:set var="doneLoop" value="true"/>
-					                      		</c:if>
-					                    	</c:forTokens>
-					                    	
-					                    	
-				                   		</c:otherwise>
-				                   	</c:choose>
-                              
-                            </a>
                             <div class="board-list-main">
                                 <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-title">${r.title}</a>
                                 <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}" class="board-list-subs">${r.content}</a>

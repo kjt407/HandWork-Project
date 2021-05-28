@@ -45,11 +45,11 @@
 			<c:choose>
 				<c:when test="${empty r.id}">
 				<%-- ${r.id}write --%>
-					<form class="board-main request-write-main"  enctype="multipart/form-data" action="write" method="post">
+					<form class="board-main request-write-main"   action="write" method="post">
 				</c:when>
 				<c:otherwise>
 				<%-- ${r.id}update --%>
-					<form class="board-main request-write-main" enctype="multipart/form-data" action="update" method="post">
+					<form class="board-main request-write-main"  action="update" method="post">
 				</c:otherwise>
 			</c:choose> 
 			
@@ -58,82 +58,24 @@
                         
             
                 <h3 class="hide">게시글 작성페이지</h3>
-                <p class="board-write-header-title">제작의뢰 글쓰기</p>
+                <p class="board-write-header-title">자유게시판 글쓰기</p>
                 <div class="board-write-header">
-                    <div class="board-write-row">
-                        <div class="board-write-col category-select-col">
-                            <p class="input-label">카테고리</p>
-                            <select name="kategorie" id="category-select" class="category-select" class="board-write-category">
-                                <option value="패션/뷰티" selected>패션/뷰티</option>
-                                <option value="가구/인테리어">가구/인테리어</option>
-                                <option value="식품">식품</option>
-                                <option value="문구/잡화">문구/잡화</option>
-                                <option value="패션/뷰티">패션/뷰티</option>
-                                <option value="생활용품">생활용품</option>
-                            </select>
-                        </div>
-                        <div class="board-write-col location-select-col">
-                            <p class="input-label">의뢰지역</p>
-                            <input type="text" name="location" id="location" class="board-write-location" value="${r.location}" required/>
-                        </div>
-                    </div>
                     <div class="board-write-row">
                         <div class="board-write-col">
                             <p class="input-label">글 제목</p>
                             <input type="text" name="title" class="board-write-title" value="${r.title}"placeholder="제목을 입력해 주세요" required/>
                         </div>
-                    </div>    
-                    <div class="board-write-row">
-                        <div class="board-write-col price-col">
-                            <p class="input-label">희망가격</p>
-                            <%-- <input type="text" name="price" class="board-write-price" value="${r.price}"placeholder="가격을 원단위로 입력해 주세요 "/> --%>
-                            <input type="text" class="board-write-price" value="${r.price}" placeholder="가격을 원단위로 입력해 주세요"  oninput="inputNumberFormat(this)" required/>
-                            <input type="hidden" id="real-input-price" name="price" value="${r.price}" />
-                        </div>
-                        <div class="board-write-col deadline-col">
-                            <p class="input-label">마감일자</p>
-                            <input type="date" value="xxx" min="yyy" max="zzz" name="deadline" value="${r.deadline}"class="board-write-daedline" id="board-write-daedline" required>
-                        </div>
-                    </div>
-                    
-                    
-                     <div class="board-write-col img-col">
-                        <p class="input-label">참고 이미지</p>
-                        <ul class="add-img-list" id="add-img-ul">
-                        	<c:choose>
-								<c:when test="${r.isUpdate}">
-									<c:forTokens var="itemFN" items="${r.filename}" delims="/" varStatus="status">
-				                        <li class="img-ul-li add-img-li-update">
-			                                <input type="file" name="img_update${status.count}" class="board-write-img hide" id="img-update${status.count}" placeholder="이미지 업로드" accept="image/png, image/jpeg, image/jpg" onchange="editFile(this)"/><label for="img-update${status.count}">변경</label><p id="img-update-path${status.count}" class="img-path" >${itemFN}</p><input type="button" class="btn-del-img" onClick="delFile(this)"/>
-			                            </li>
-			                        </c:forTokens>
-								</c:when>
-								<c:otherwise>
-								</c:otherwise>
-							</c:choose>
-                        </ul>
-                       <div class="add-btn-container">
-                            <a type="button" onclick="addImg()" id="btn-add-img">+</a>
-                        </div>
                     </div>
 
-                    <div class="board-write-col price-col">
-                        <p class="input-label">수령방법</p>
-                        <div class="board-write-row delivery-container">
-                            <input type="radio" name="how" id="d_radio1" value="직접수령" class="delivery-radio hide" checked><label for="d_radio1" class="delivery-radio-label">직접수령</label>
-                            <input type="radio" name="how" id="d_radio2" value="택배" class="delivery-radio hide"><label for="d_radio2" class="delivery-radio-label">택배</label>
-                            <input type="radio" name="how" id="d_radio3" value="직접수령+택배" class="delivery-radio hide"><label for="d_radio3" class="delivery-radio-label">직접수령+택배</label>
-                        </div>
-                    </div>
                     <textarea id="subs" cols="30" rows="10" name="content" class="board-write-subs" placeholder="의뢰 요청 사항 (상세하게 입력해주세요)" required>${r.content}</textarea>
                     <div class="btn-submit-group">
                         <input type="submit" class="btn-submit submit" value="작성완료"/>
                         <c:choose>
                        <c:when test="${empty r.id }">
-                          <a href="${pageContext.request.contextPath}/request" class="btn-submit cancel" >취소</a>
+                          <a href="${pageContext.request.contextPath}/free" class="btn-submit cancel" >취소</a>
                        </c:when>
                        <c:otherwise>
-                          <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}"  class="btn-submit cancel" >취소</a>
+                          <a href="${pageContext.request.contextPath}/free/detail?id=${r.id}"  class="btn-submit cancel" >취소</a>
                        </c:otherwise>
                     </c:choose> 
                     </div>
