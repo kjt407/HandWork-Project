@@ -81,6 +81,55 @@ public class MarketService {
 		return list;
 	}
 
+	public List<Market> getMarketList(String field, String query, int page, int limit) {
+
+		List<Market> list = new ArrayList<>();
+
+		String sql="SELECT *" +
+				"FROM( " +
+				"SELECT @rownum:=@rownum+1  num, A.* FROM market A, " +
+				"   (SELECT @ROWNUM := 0) R where "+field+" like ? order by regdate desc" +
+				") " +
+				"list WHERE num limit ?";
+
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%"+query+"%");
+			stmt.setInt(2, limit);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while(rs.next()){
+
+				int id = rs.getInt("id");
+
+				String title = rs.getString("title");
+				String kategorie = rs.getString("kategorie");
+				String location = rs.getString("location");
+				int period = rs.getInt("period");
+				int price = rs.getInt("price");
+				String content = rs.getString("content");
+				String regdate = rs.getString("regdate");
+				int hit = rs.getInt("hit");
+				String filename = rs.getString("filename");
+				String how = rs.getString("how");
+				String writer_id = rs.getString("writer_id");
+				int state = rs.getInt("state");
+				int starAvg = getStarAvg(id);
+				String topReview = topReview(id);
+
+				Market market = new Market(id, getBoardWrtierName(id), title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state, getCount(id), starAvg, topReview);
+
+				list.add(market);
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
+
 	public int getMarketCount() {
 		return getMarketCount("title", "");
 	}

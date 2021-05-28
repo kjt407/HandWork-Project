@@ -167,7 +167,7 @@
                         
                            </c:otherwise>
                         </c:choose>
-                        
+
                         <c:choose>
                            <c:when test="${empty pr.id}">
                            </c:when>

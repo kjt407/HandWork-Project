@@ -88,6 +88,62 @@ public class RequestService {
 		}
 		return list;
 	}
+	public List<Request> getRequestList(String field, String query, int page, int limit) {
+
+		List<Request> list = new ArrayList<>();
+
+		String sql="SELECT *" +
+				"FROM( " +
+				"SELECT @rownum:=@rownum+1  num, A.* FROM board A, " +
+				"   (SELECT @ROWNUM := 0) R where "+field+" like ? order by regdate desc" +
+				") " +
+				"list WHERE num limit ?";
+
+		try {
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%"+query+"%");
+			stmt.setInt(2, limit);
+
+			ResultSet rs = stmt.executeQuery();
+
+			while(rs.next()){
+//             int id = rs.getInt("id");
+//               String title = rs.getString("title");
+//               Date regdate = rs.getDate("regdate");
+//               String writer_id = rs.getString("writer_id");
+//               int hit = rs.getInt("hit");
+//               String files = rs.getString("files");
+//               String content = rs.getString("content");
+//
+				int id = rs.getInt("id");
+
+
+				String title = rs.getString("title");
+				String kategorie = rs.getString("kategorie");
+				String location = rs.getString("location");
+				String deadline = rs.getString("deadline");
+				int price = rs.getInt("price");
+				String content = rs.getString("content");
+				String regdate = rs.getString("regdate");
+				int hit = rs.getInt("hit");
+				String filename = rs.getString("filename");
+				String how = rs.getString("how");
+				String writer_id = rs.getString("writer_id");
+				int state = rs.getInt("state");
+
+
+				Request request = new Request(id, getBoardWrtierName(id), title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, getCount(id));
+
+				list.add(request);
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return list;
+	}
 
 	public int getRequestCount() {
 		return getRequestCount("title", "");
@@ -223,7 +279,7 @@ public class RequestService {
 
 		String sql =   "select * from (select * from board order by regdate desc) A " +
 				" where regdate < (select regdate from board where id = ?) " +
-				" limit 1";
+				" order by id desc limit 1";
 
 		try {
 

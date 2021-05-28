@@ -60,6 +60,7 @@ public class FreeUpdateController extends HttpServlet{
 		pstmt.setString(1, request.getParameter("title"));
 		pstmt.setString(2, request.getParameter("content"));
 		pstmt.setInt(3, Integer.parseInt(request.getParameter("id")));
+
 		pstmt.executeUpdate();
 
 		conn.close();

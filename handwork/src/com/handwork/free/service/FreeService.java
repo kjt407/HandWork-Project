@@ -66,6 +66,7 @@ public class FreeService {
 
 				Free free = new Free(id, writer, title, content, regdate, hit, writer_id, getCount(id),profile_img);
 
+
 				list.add(free);
 			}
 			rs.close();
