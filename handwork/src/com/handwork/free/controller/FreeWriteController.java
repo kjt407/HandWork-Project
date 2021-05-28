@@ -33,48 +33,18 @@ public class FreeWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		StringBuilder filename = new StringBuilder();
-
-		int sizeLimit = 15 * 1024 * 1024;
-
-		// ����θ� �����η� �����;�
-		String realPath = request.getServletContext().getRealPath("upload/freeBoard");
-		System.out.println(realPath);
-
-		// upload ������ ���� ��� ������ �����
-		File dir = new File(realPath);
-		if (!dir.exists())
-			dir.mkdirs();
-
-		MultipartRequest multi = null;
-		multi = new MultipartRequest(request, realPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String writer = (String) session.getAttribute("name");
-		String title = multi.getParameter("title");
-		String content = multi.getParameter("content");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		String writer_id = (String)session.getAttribute("id");
-
-		Enumeration files = multi.getFileNames();
-
-		ArrayList<String> fileList = new ArrayList<String>();
-
-		while (files.hasMoreElements()) {
-			String filenames = multi.getFilesystemName((String) files.nextElement());
-			fileList.add(filenames);
-			// System.out.println(filenames);
-		}
-		for (int i = fileList.size(); i > 0; i--) {
-			System.out.println(fileList.get(i - 1));
-			filename.append(fileList.get(i - 1) + "/");
-		}
 
 
 		try {
 
-			String sql = "insert into free ( writer, title, content, regdate, hit, filename, writer_id) "
-					+ "values(?,?,?,?,0,?,?)";
+			String sql = "insert into free ( writer, title, content, regdate, hit, writer_id) "
+					+ "values(?,?,?,?,0,?)";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
@@ -87,12 +57,7 @@ public class FreeWriteController extends HttpServlet {
 			pstmt.setString(2, title);
 			pstmt.setString(3, content);
 			pstmt.setString(4, getCurrentTime());
-			if (filename.toString().contains("null") || filename.toString() == null ) {
-				pstmt.setNull(5, java.sql.Types.VARCHAR);
-			} else {
-				pstmt.setString(5, filename.toString());
-			}
-			pstmt.setString(6, writer_id);
+			pstmt.setString(5, writer_id);
 
 			pstmt.executeUpdate();
 			System.out.println(getCurrentTime());

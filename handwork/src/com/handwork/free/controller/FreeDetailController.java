@@ -28,13 +28,7 @@ public class FreeDetailController extends HttpServlet {
 
 		int count = service.getCount(id);
 		
-		String filename = free_.getFilename();
-		if(filename==null || filename.equals("")) {
-			
-		} else {
-			String filenameRs = filename.substring(0, filename.length()-1);
-			free_.setFilename(filenameRs);
-		}
+
 		//free_.setIsUpdate(false);
 		//free_.setCount(count);
 

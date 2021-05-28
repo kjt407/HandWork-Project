@@ -60,10 +60,9 @@ public class FreeService {
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
 				int hit = rs.getInt("hit");
-				String filename = rs.getString("filename");
 				String writer_id = rs.getString("writer_id");
 
-				Free free = new Free(id, writer, title, content, regdate, hit, filename, writer_id, getCount(id));
+				Free free = new Free(id, writer, title, content, regdate, hit, writer_id, getCount(id));
 
 				list.add(free);
 			}
@@ -124,14 +123,13 @@ public class FreeService {
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
 				int hit = rs.getInt("hit");
-				String filename = rs.getString("filename");
 				String writer_id = rs.getString("writer_id");
 				ArrayList list = getWriterInfo(writer_id);
 				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
 
-				free = new Free(nid, writer, title, content, regdate, hit, filename, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
 
 			}
 
@@ -150,7 +148,7 @@ public class FreeService {
 		String sql = "select * from free" +
 				"       where id = (" +
 				"       select id from free" +
-				"       where regdate > (select regdate from board where id = ?)" +
+				"       where regdate > (select regdate from free where id = ?)" +
 				"       limit 1" +
 				"       )";
 
@@ -167,15 +165,14 @@ public class FreeService {
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
 				int hit = rs.getInt("hit");
-				String filename = rs.getString("filename");
 				String writer_id = rs.getString("writer_id");
 				ArrayList list = getWriterInfo(writer_id);
 				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
-				free = new Free(nid, writer, title, content, regdate, hit, filename, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
 				if(incHit) {
-					stmt.execute("update board set hit=hit+1 where id=" + id);
+					stmt.execute("update free set hit=hit+1 where id=" + id);
 				}
 
 
@@ -211,15 +208,14 @@ public class FreeService {
 				String content = rs.getString("content");
 				String regdate = rs.getString("regdate");
 				int hit = rs.getInt("hit");
-				String filename = rs.getString("filename");
 				String writer_id = rs.getString("writer_id");
 				ArrayList list = getWriterInfo(writer_id);
 				String profile_img = (String)list.get(0);
 				String writer = (String)list.get(1);
 
-				free = new Free(nid, writer, title, content, regdate, hit, filename, writer_id, getCount(id));
+				free = new Free(nid, writer, title, content, regdate, hit, writer_id, getCount(id));
 				if(incHit) {
-					stmt.execute("update board set hit=hit+1 where id=" + id);
+					stmt.execute("update free set hit=hit+1 where id=" + id);
 				}
 
 
