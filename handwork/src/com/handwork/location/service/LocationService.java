@@ -1,5 +1,6 @@
 package com.handwork.location.service;
 
+import com.handwork.dao.DAO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -7,19 +8,11 @@ import java.sql.*;
 
 public class LocationService {
 	Connection conn;
+	DAO dao;
 
-	public LocationService() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		}
+	public LocationService(){
+		dao = new DAO();
+		conn = dao.getConnection();
 	}
 
 	public JSONArray getData(String option, String sql) {
@@ -120,6 +113,7 @@ public class LocationService {
 	public void disconnect(){
 		try {
 			conn.close();
+			dao = null;
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}

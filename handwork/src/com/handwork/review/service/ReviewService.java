@@ -1,6 +1,7 @@
 package com.handwork.review.service;
 
 
+import com.handwork.dao.DAO;
 import com.handwork.review.entity.Reviews;
 
 import java.sql.*;
@@ -8,23 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewService {
-
     Connection conn;
+    DAO dao;
 
     public ReviewService(){
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
-            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        dao = new DAO();
+        conn = dao.getConnection();
     }
-
 
     public List<Reviews> getReviewsList(int board_num) {
 
@@ -87,10 +78,10 @@ public class ReviewService {
         return result;
     }
 
-
-    public void disconnect() {
+    public void disconnect(){
         try {
             conn.close();
+            dao = null;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -1,6 +1,8 @@
 package com.handwork.review.controller;
 
 
+import com.handwork.dao.DAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,20 +38,18 @@ public class ReviewDeleteController extends HttpServlet {
         System.out.println(idx);
         System.out.println(board_num);
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
+            DAO dao = new DAO();
+            Connection conn = dao.getConnection();
 
             String sql ="delete from review where idx=?";
-            Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setInt(1,idx);
-
-
             stmt.executeUpdate();
 
+            stmt.close();
+            conn.close();
+            dao = null;
         } catch (Exception e) {
             // TODO: handle exception
         }

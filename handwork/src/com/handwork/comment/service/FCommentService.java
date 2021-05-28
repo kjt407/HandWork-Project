@@ -1,6 +1,7 @@
 package com.handwork.comment.service;
 
 
+import com.handwork.dao.DAO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -14,21 +15,12 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class FCommentService {
-
     Connection conn;
+    DAO dao;
 
     public FCommentService(){
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
-            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        dao = new DAO();
+        conn = dao.getConnection();
     }
 
     public void registerDB(HttpServletRequest req, HttpServletResponse res) throws IOException {
@@ -186,9 +178,10 @@ public class FCommentService {
         return LocalDate.now() + " " + LocalTime.now().toString().substring(0, 8);
     }
 
-    public void disconnect() {
+    public void disconnect(){
         try {
             conn.close();
+            dao = null;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

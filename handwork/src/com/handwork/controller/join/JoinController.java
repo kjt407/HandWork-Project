@@ -1,10 +1,9 @@
 package com.handwork.controller.join;
 
+import com.handwork.dao.DAO;
+
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,32 +35,27 @@ public class JoinController extends HttpServlet{
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
 		String email = email1 + "@" + email2;
-		
+
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
+
+		Statement stmt = null;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-		String dbID = "handwork";
-	    String dbPassword = "handwork";
-		
-		try (Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(String.format("select * from member where id='%s'", id));) {
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(String.format("select * from member where id='%s'", id));
 			if (rs.next()) {
+				conn.close();
+				dao = null;
 				response.sendRedirect("joinFail");
-		
 			} else {
-		stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s', '%s', null, null)", dept, id, pw, name, email));
-		
-		response.sendRedirect("joinSuccess");
-		
+				stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s', '%s', null, null)", dept, id, pw, name, email));
+				conn.close();
+				dao = null;
+				response.sendRedirect("joinSuccess");
 			}
-		} catch (Exception e) {
-		e.printStackTrace();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
 		}
-		
+
 	}
 }

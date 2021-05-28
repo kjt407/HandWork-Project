@@ -1,5 +1,6 @@
 package com.handwork.market.controller;
 
+import com.handwork.dao.DAO;
 import com.handwork.market.entity.Market;
 import com.handwork.market.service.MarketService;
 import com.oreilly.servlet.MultipartRequest;
@@ -207,13 +208,9 @@ public class MarketUpdateController extends HttpServlet{
 		System.out.println("������Ʈ�� �ʱ� ����");
 		
 		String sql = "update market set title=?, kategorie=?, location=?, flocation=?, period=?, price=?, content=?, filename=?, how=?, state=?, latlng=? where id=?";
-		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-	    String dbID = "handwork";
-	    String dbPassword = "handwork";
-		
-		Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, title);
@@ -242,7 +239,8 @@ public class MarketUpdateController extends HttpServlet{
 		pstmt.setInt(12, id);
 
 		pstmt.executeUpdate();
-		
+		conn.close();
+		dao = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

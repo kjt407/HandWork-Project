@@ -1,5 +1,6 @@
 package com.handwork.notice.controller;
 
+import com.handwork.dao.DAO;
 import com.handwork.notice.entity.Notice;
 import com.handwork.notice.service.NoticeService;
 import com.handwork.request.entity.Request;
@@ -51,20 +52,20 @@ public class NoticeUpdateController extends HttpServlet{
 
 		
 		String sql = "update notice set title=?, content=?, category=? where id=?";
-		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-	    String dbID = "handwork";
-	    String dbPassword = "handwork";
-		
-		Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
+
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, title);
 		pstmt.setString(2, content);
 		pstmt.setString(3, category);
 		pstmt.setInt(4, id);
 		pstmt.executeUpdate();
-		
+
+		pstmt.close();
+		conn.close();
+		dao = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

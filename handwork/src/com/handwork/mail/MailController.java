@@ -1,5 +1,7 @@
 package com.handwork.mail;
 
+import com.handwork.dao.DAO;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -28,11 +30,8 @@ public class MailController extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
 
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
-            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+            DAO dao = new DAO();
+            conn = dao.getConnection();
 
             String subject = "(핸드워크) 문의하신 정보입니다.";
             String from = request.getParameter("from");
@@ -112,6 +111,7 @@ public class MailController extends HttpServlet {
             out.flush();
 
             conn.close();
+            dao = null;
         } catch(Exception e){
             e.printStackTrace();
             return;

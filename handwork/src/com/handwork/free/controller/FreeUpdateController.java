@@ -1,5 +1,6 @@
 package com.handwork.free.controller;
 
+import com.handwork.dao.DAO;
 import com.handwork.free.entity.Free;
 import com.handwork.free.service.FreeService;
 import com.handwork.request.entity.Request;
@@ -44,18 +45,11 @@ public class FreeUpdateController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 
-
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
 		try {
 			String sql = "update free set title=?, content=? where id=?";
-
-			Class.forName("com.mysql.cj.jdbc.Driver");
-				String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-
 
 			pstmt.setString(1, request.getParameter("title"));
 			pstmt.setString(2, request.getParameter("content"));
@@ -64,6 +58,7 @@ public class FreeUpdateController extends HttpServlet{
 			pstmt.executeUpdate();
 
 			conn.close();
+			dao = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

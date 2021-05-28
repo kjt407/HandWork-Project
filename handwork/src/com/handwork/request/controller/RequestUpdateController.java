@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 
+import com.handwork.dao.DAO;
 import com.handwork.request.entity.Request;
 import com.handwork.request.service.RequestService;
 import com.mysql.cj.Session;
@@ -207,13 +208,10 @@ public class RequestUpdateController extends HttpServlet{
 		System.out.println("������Ʈ�� �ʱ� ����");
 		
 		String sql = "update board set title=?, kategorie=?, location=?, deadline=?, price=?, content=?, filename=?, how=? where id=?";
-		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-	    String dbID = "handwork";
-	    String dbPassword = "handwork";
-		
-		Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
+
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, title);
@@ -239,7 +237,9 @@ public class RequestUpdateController extends HttpServlet{
 		pstmt.setInt(9, id);
 		
 		pstmt.executeUpdate();
-		
+		pstmt.close();
+		conn.close();
+		dao = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,6 @@
 package com.handwork.request.service;
 
+import com.handwork.dao.DAO;
 import com.handwork.request.entity.Request;
 
 import java.sql.*;
@@ -7,21 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RequestService {
-
 	Connection conn;
+	DAO dao;
 
 	public RequestService(){
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		}
+		dao = new DAO();
+		conn = dao.getConnection();
 	}
 
 	public List<Request> getRequestList() {
@@ -394,10 +386,10 @@ public class RequestService {
 		return name;
 	}
 
-
-	public void disconnect() {
+	public void disconnect(){
 		try {
 			conn.close();
+			dao = null;
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}

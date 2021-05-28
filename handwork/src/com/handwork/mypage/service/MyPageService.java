@@ -1,5 +1,6 @@
 package com.handwork.mypage.service;
 
+import com.handwork.dao.DAO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -11,20 +12,13 @@ import java.util.ArrayList;
 
 public class MyPageService {
     Connection conn;
+    DAO dao;
 
-    public MyPageService() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
-            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    public MyPageService(){
+        dao = new DAO();
+        conn = dao.getConnection();
     }
+
     //로그인한 아이디가 작성한 게식글 가져오기
     public JSONObject getBoardList(String writer_id, int page) {
 
@@ -287,16 +281,6 @@ public class MyPageService {
         return obj;
     }
 
-
-
-    public void disconnect() {
-        try {
-            conn.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
     public JSONObject checkPw(String id, String pw){
         JSONObject obj = new JSONObject();
 
@@ -344,9 +328,6 @@ public class MyPageService {
 
             obj.put("result", true);
 
-
-
-
             stmt.close();
         } catch (Exception e) {
             // TODO: handle exception
@@ -355,5 +336,13 @@ public class MyPageService {
         return obj;
     }
 
+    public void disconnect(){
+        try {
+            conn.close();
+            dao = null;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
 }

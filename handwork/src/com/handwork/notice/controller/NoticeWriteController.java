@@ -1,5 +1,6 @@
 package com.handwork.notice.controller;
 
+import com.handwork.dao.DAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -48,11 +49,9 @@ public class NoticeWriteController extends HttpServlet {
 			String sql = "insert into notice ( writer, title, content, regdate, hit, writer_id, category) "
 					+ "values(?,?,?,?,0,?,?)";
 
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			DAO dao = new DAO();
+			Connection conn = dao.getConnection();
+
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, writer);
 			pstmt.setString(2, title);
@@ -62,12 +61,13 @@ public class NoticeWriteController extends HttpServlet {
 			pstmt.setString(6, category);
 
 			pstmt.executeUpdate();
-			System.out.println(getCurrentTime());
 
+			pstmt.close();
+			conn.close();
+			dao = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// System.out.println(id);
 		response.sendRedirect(request.getContextPath()+"/notice");
 	}
 

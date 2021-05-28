@@ -1,5 +1,6 @@
 package com.handwork.search.service;
 
+import com.handwork.dao.DAO;
 import com.handwork.market.entity.Market;
 import com.handwork.request.entity.Request;
 import org.json.simple.JSONArray;
@@ -11,19 +12,11 @@ import java.util.List;
 
 public class SearchService {
 	Connection conn;
+	DAO dao;
 
 	public SearchService(){
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		}
+		dao = new DAO();
+		conn = dao.getConnection();
 	}
 
 	public JSONObject getRequestList(String type,String query,int page) {
@@ -313,13 +306,13 @@ public class SearchService {
 		return maxPage;
 	}
 
-	public void disconnect() {
+	public void disconnect(){
 		try {
 			conn.close();
+			dao = null;
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}
 	}
-
 
 }

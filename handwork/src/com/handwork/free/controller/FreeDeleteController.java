@@ -1,5 +1,7 @@
 package com.handwork.free.controller;
 
+import com.handwork.dao.DAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,21 +18,16 @@ public class FreeDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		
+
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-		    String dbID = "handwork";
-		    String dbPassword = "handwork";
-			
-		    Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword); 
 			Statement stmt = conn.createStatement();
-			
-			
 			stmt.executeUpdate(String.format("delete from free where id=" + id));
 			  
-			    stmt.close();
-			    conn.close();
+			stmt.close();
+			conn.close();
+			dao = null;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

@@ -1,5 +1,7 @@
 package com.handwork.controller.login;
 
+import com.handwork.dao.DAO;
+
 import java.io.IOException;
 import java.sql.*;
 
@@ -32,58 +34,38 @@ public class LoginController extends HttpServlet {
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
-		
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(name);
-		System.out.println(email);
+
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
 
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-	    String dbID = "handwork";
-	    String dbPassword = "handwork";
-		
-		if(pw==null){
-			try (Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-					Statement stmt = conn.createStatement();
-					ResultSet rs = stmt.executeQuery(String.format("select * from member where id='%s'", id));) {
+			if (pw == null) {
+				Statement stmt = null;
+				stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(String.format("select * from member where id='%s'", id));
 				if (rs.next()) {
 				} else {
-			stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s')", id, pw, name, email));
+					stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s')", id, pw, name, email));
 				}
-			} catch (Exception e) {
-			e.printStackTrace();
 			}
-		}
 
-		try (Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-				Statement stmt = conn.createStatement();
-				ResultSet rs = stmt.executeQuery(String.format("select * from member where id='%s' and pw='%s'",
-						request.getParameter("id"), request.getParameter("pw")));) {
-
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(String.format("select * from member where id='%s' and pw='%s'", request.getParameter("id"), request.getParameter("pw")));
+			conn.close();
+			dao = null;
 			if (rs.next()) {
-
 				HttpSession session = request.getSession();
 				session.setAttribute("id", rs.getString("id"));
 				session.setAttribute("name", rs.getString("name"));
 				session.setAttribute("dept", rs.getString("dept"));
 
 				request.setAttribute("l", rs.getString("name"));
-				System.out.println(request.getAttribute("l"));
-				response.sendRedirect(request.getContextPath()+"/");
+				response.sendRedirect(request.getContextPath() + "/");
 				return;
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException throwables) {
+			throwables.printStackTrace();
 		}
 		response.sendRedirect("loginFail");
-		
-		// request.getRequestDispatcher("index.jsp").forward(request, response);
-
 	}
 }

@@ -1,5 +1,6 @@
 package com.handwork.market.controller;
 
+import com.handwork.dao.DAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import org.json.simple.JSONObject;
@@ -96,12 +97,8 @@ public class MarketWriteController extends HttpServlet {
 			String sql = "insert into market ( writer, title, kategorie, location, flocation, period, price, content, regdate, hit, filename, how, writer_id, state, latlng) "
 					+ "values(?,?,?,?,?,?,?,?,?,0,?,?,?,?,?)";
 
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-			// System.out.println(id);
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+			DAO dao = new DAO();
+			Connection conn = dao.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, writer);
 			pstmt.setString(2, title);
@@ -123,8 +120,8 @@ public class MarketWriteController extends HttpServlet {
 			pstmt.setString(14, getGeoCode(flocation));
 
 			pstmt.executeUpdate();
-			System.out.println(getCurrentTime());
-
+			conn.close();
+			dao = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

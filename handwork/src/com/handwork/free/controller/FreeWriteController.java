@@ -1,5 +1,6 @@
 package com.handwork.free.controller;
 
+import com.handwork.dao.DAO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -40,18 +41,12 @@ public class FreeWriteController extends HttpServlet {
 		String content = request.getParameter("content");
 		String writer_id = (String)session.getAttribute("id");
 
-
+		DAO dao = new DAO();
+		Connection conn = dao.getConnection();
 		try {
-
 			String sql = "insert into free ( writer, title, content, regdate, hit, writer_id) "
 					+ "values(?,?,?,?,0,?)";
 
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-			String dbID = "handwork";
-			String dbPassword = "handwork";
-			// System.out.println(id);
-			Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, writer);
 			pstmt.setString(2, title);
@@ -60,12 +55,11 @@ public class FreeWriteController extends HttpServlet {
 			pstmt.setString(5, writer_id);
 
 			pstmt.executeUpdate();
-			System.out.println(getCurrentTime());
-
+			conn.close();
+			dao = null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		// System.out.println(id);
 		response.sendRedirect(request.getContextPath()+"/free");
 	}
 

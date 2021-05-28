@@ -1,5 +1,6 @@
 package com.handwork.mypage.controller;
 
+import com.handwork.dao.DAO;
 import com.handwork.mypage.service.MyPageService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -53,24 +54,16 @@ public class MyPageProfileImageController extends HttpServlet {
             multi = new MultipartRequest(request, realPath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
             String editProfileImg = multi.getFilesystemName("img");
 
-
-
-
-            System.out.println();
-            System.out.println(String.valueOf(editProfileImg));
             String sql = "update member set profile_img=? where id=?";
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
-            String dbID = "handwork";
-            String dbPassword = "handwork";
-            // System.out.println(id);
-            Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+            DAO dao = new DAO();
+            Connection conn = dao.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, editProfileImg);
             pstmt.setString(2, writer_id);
             pstmt.executeUpdate();
 
             conn.close();
+            dao = null;
         } catch (Exception e) {
             e.printStackTrace();
         }
