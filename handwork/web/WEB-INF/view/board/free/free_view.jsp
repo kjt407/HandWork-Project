@@ -21,13 +21,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header_footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/board_view.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/free_view.css">
     <script type="text/javascript"
 		src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript"
         src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/request_view.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/free_view.js"></script>
 
     <title>핸드워크: 자유게시판</title>
 </head>
@@ -73,7 +73,6 @@
                 </div>
                 <div class="request-view-body">
                     <div class="body-row">
-                        <span class="sub-title">의뢰사항 :</span>
                         <p class="subs">${fn:replace(r.content, crcn, br)}</p>
                     </div>
                 </div>      
@@ -102,7 +101,6 @@
 
                 
                     <div class="prev-next-group">
-                        >?????????
                         <c:choose>
                            <c:when test="${empty nr.id}">
                            </c:when>
@@ -144,20 +142,13 @@
 
 <%--                댓글 작성하는 폼 부분--%>
                 <div class="request-view-comment">
-                    <p id="comment-ul-title">제안댓글</p>
+                    <p id="comment-ul-title">댓글</p>
                     <ul class="comment-ul" id="comment-ul">
                         <%--AJAX 스크립트 처리--%>
                     </ul>
-
-
-
                             <div class="comment-write">
                                 <div class="comment-write-row">
-                                    <p>제안하기</p>
-                                    <div class="suggest-price-group">
-                                        <p>제안가격 : </p>
-                                        <input type="number" class="suggest-price" id="suggest-price" placeholder="제안가격">
-                                    </div>
+                                    <p>댓글등록</p>
                                 </div>
                                 <div class="comment-write-row write">
                                     <textarea name="suggest_comment" id="suggest-comment" required></textarea>
@@ -171,8 +162,6 @@
                                     </c:choose>
                                 </div>
                             </div>
-
-
                 </div>
             </div>
         </div>

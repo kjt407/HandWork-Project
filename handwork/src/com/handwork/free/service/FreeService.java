@@ -239,7 +239,7 @@ public class FreeService {
 		int count =0;
 		try {
 
-			String sql = "SELECT count(board_num) count from freecomment where board_num=?";
+			String sql = "SELECT count(board_num) count from fcomment where board_num=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 
 			stmt.setInt(1, boardNum);
@@ -251,7 +251,7 @@ public class FreeService {
 		} catch (Exception e) {
 
 		}
-		return 0;
+		return count;
 	}
 
 	public ArrayList getWriterInfo(String id){

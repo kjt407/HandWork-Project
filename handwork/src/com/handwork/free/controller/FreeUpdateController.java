@@ -42,89 +42,11 @@ public class FreeUpdateController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String fullFileName = null;
-		ArrayList<String> imgUpdateList = new ArrayList<String>();
-
-		int sizeLimit = 15 * 1024 * 1024;
-
-		String realPath = request.getServletContext().getRealPath("upload/freeBoard");
-		System.out.println(realPath);
-
-		File dir = new File(realPath);
-		if (!dir.exists()) dir.mkdirs();
-				
-		MultipartRequest multi = null;
-		multi = new MultipartRequest(request, realPath, 
-				sizeLimit, "utf-8",new DefaultFileRenamePolicy());
-
-		int id = Integer.parseInt(multi.getParameter("id"));
 		request.setCharacterEncoding("utf-8");
-		HttpSession session = request.getSession();
-		String writer = (String) session.getAttribute("name");
-		String title = multi.getParameter("title");
-		String content = multi.getParameter("content");
 
-		Enumeration files = multi.getFileNames();
-		ArrayList<String> fileList = new ArrayList<String>();		
-		while(files.hasMoreElements()) {
-			String paramName = (String) files.nextElement();
-			if(paramName.contains("img_update")) {
-				String imgUpdateVal = multi.getFilesystemName(paramName);
-				if(imgUpdateVal == null || imgUpdateVal.equals("")|| imgUpdateVal.equals("null")) {
-					
-				} else {
-					imgUpdateList.add(imgUpdateVal); //imgUpdateList = ���� �� �̹���(sql �߰��ʿ�)
-				}
-			}
-			if(paramName.contains("img_path")){
-				String filenames = multi.getFilesystemName(paramName);
-				fileList.add(filenames);
-			}
-		}
-
-		String[] del_filename = multi.getParameterValues("del_filename");
-		String[] edit_filename = multi.getParameterValues("edit_filename");
-
-		RequestService service = new RequestService();
-		Request request_ = service.getRequest(id);
-		if(request_.getFilename() != null && !request_.getFilename().equals("")) {
-			fullFileName = request_.getFilename();//Request�� ����� �̹��� �� ���
-			if(del_filename != null && !del_filename.equals("")) {
-				for(int i=0; i<del_filename.length; i++) {
-					String delFile = del_filename[i].replace("*", " ");;
-					fullFileName = fullFileName.replace(delFile, "");
-				}
-			}
-			if(edit_filename != null && !edit_filename.equals("")) {
-				for(int i=0; i<edit_filename.length; i++) {
-					String newFileName = imgUpdateList.get(i);
-					if(newFileName == null || newFileName.equals("")|| newFileName.equals("null")) {
-						
-					} else {
-						String editFile = edit_filename[i].replace("*", " ");
-						String changeFileName = imgUpdateList.get(i);
-						fullFileName = fullFileName.replace(editFile,changeFileName+"/");
-					}
-				}
-			}
-		}
-
-		for(int i=0;i<fileList.size(); i++) {
-			String newFileName = fileList.get(i);
-			if(newFileName == null || newFileName.equals("")|| newFileName.equals("null")) {
-			} else if(fullFileName==null){
-				fullFileName = "";
-				fullFileName = fullFileName.concat(newFileName+"/");
-			} else {
-				fullFileName = fullFileName.concat(newFileName+"/");
-			}
-		}
 
 		try {
-		System.out.println("������Ʈ�� �ʱ� ����");
-		
-		String sql = "update free set title=?, content=?, filename=? where id=?";
+		String sql = "update free set title=?, content=? where id=?";
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 			String dbURL = "jdbc:mysql://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
@@ -133,21 +55,18 @@ public class FreeUpdateController extends HttpServlet{
 		
 		Connection conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		PreparedStatement pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, title);
-		pstmt.setString(2, content);
-		if(fullFileName.replace("/","").equals("")) {
-	         fullFileName = null;
-	    }
-		if(fullFileName== null || fullFileName.equals("")) {
-			pstmt.setNull(3, java.sql.Types.VARCHAR);
-		} else {
-			pstmt.setString(3, fullFileName);
-		}
-		pstmt.setInt(4, id);
+
+
+		pstmt.setString(1, request.getParameter("title"));
+		pstmt.setString(2, request.getParameter("content"));
+		pstmt.setInt(3, Integer.parseInt(request.getParameter("id")));
 		pstmt.executeUpdate();
+
+		conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		response.sendRedirect(request.getContextPath()+"/free");
 	}
 }
