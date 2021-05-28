@@ -168,6 +168,7 @@ function createPwEdit(){
 }
 
 function createBoard(data) {
+    console.log(data);
     if(data == null || data.list == null || data.list.length < 1){
         $('ul.log-ul.board').append(
             '<li class="log-li board">\n' +
@@ -186,6 +187,8 @@ function createBoard(data) {
                 typeKor = "수제공방";
             }else if (type == 'request'){
                 typeKor = "제작의뢰";
+            }else if (type == 'free'){
+                typeKor = "자유";
             }
 
             $('ul.log-ul.board').append(
@@ -208,6 +211,7 @@ function createBoard(data) {
 }
 
 function createReply(data) {
+    console.log(data);
     if(data == null || data.list == null || data.list.length < 1){
         $('ul.log-ul.reply').append(
             '<li class="log-li board">\n' +
@@ -227,8 +231,11 @@ function createReply(data) {
                 typeKor = "리뷰";
                 typeBoard = 'market';
             } else if (type == 'comment') {
-                typeKor = "댓글";
+                typeKor = "제안";
                 typeBoard = 'request';
+            } else if (type == 'fcomment') {
+                typeKor = "댓글";
+                typeBoard = 'free';
             }
 
             $('ul.log-ul.reply').append(

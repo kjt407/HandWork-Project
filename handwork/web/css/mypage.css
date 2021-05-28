@@ -17,10 +17,13 @@ section#main-section div.wrap-main > section#my-log-section .log-container > ul 
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a:hover { background: #d9d7d7;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap { display: flex; align-items: center; margin-right: 15px; }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type { margin-right: 15px; color: white; padding: 15px; border-radius: 3px; flex-shrink: 0;}
+p.log-li-type.request, p.log-li-type.market, p.log-li-type.free  { display: flex; justify-content: center; align-items: center; width: 83px;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.request,
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.comment { background:darkorange }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.market,
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.review { background:slateblue }
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.free,
+section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.fcomment { background:lightslategrey }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-title { height: 19px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow: hidden; color:black; font-size: 19px; line-height: 19px; }
 section#main-section div.wrap-main > section#my-log-section .log-container.reply > ul > li a div.wrap p.log-li-title { height: 16px; font-size: 16px; line-height: 16px; }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a p.log-li-date { flex-shrink: 0;}
