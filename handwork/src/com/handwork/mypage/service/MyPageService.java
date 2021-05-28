@@ -121,7 +121,7 @@ public class MyPageService {
                     "UNION ALL " +
                     "SELECT board_num, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
                     "UNION ALL " +
-                    "SELECT board_num, content, regdate, replyname, user_id  FROM free WHERE user_id = ? " +
+                    "SELECT board_num, content, regdate, replyname, user_id  FROM fcomment WHERE user_id = ? " +
                     ") a order by regdate  desc limit ?,5";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
@@ -174,7 +174,7 @@ public class MyPageService {
                     "UNION ALL " +
                     "SELECT idx, content, regdate, replyname, user_id  FROM comment WHERE user_id = ? " +
                     "UNION ALL " +
-                    "SELECT idx, content, regdate, replyname, user_id  FROM free WHERE user_id = ? " +
+                    "SELECT idx, content, regdate, replyname, user_id  FROM fcomment WHERE user_id = ? " +
                     ") a order by regdate  desc";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, writer_id);
