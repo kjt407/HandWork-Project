@@ -45,7 +45,7 @@
 .board-section .board-main ul.board-content-list .board-items > a.img-container img.no-img {width: auto; height: 75px; min-height: 75px; transition:0.3s; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main { position: relative; display: flex; flex-direction: column; justify-content: flex-start; width: 660px; height: 100%; padding: 0 0 0 10px; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main [class^=board-list-] { font-size: 14px; }
-.board-section .board-main ul.board-content-list .board-items > div.board-list-main a[class^=board-list-]:hover { text-decoration: underline; }
+.board-section .board-main ul.board-content-list .board-items > div.board-list-main a.underline:hover { text-decoration: underline; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main > div.row-wrapper { display: flex; justify-content: space-between; align-items: flex-end; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main > div.row-wrapper a { display: flex; align-items: center; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main > div.row-wrapper > div { display: flex; }

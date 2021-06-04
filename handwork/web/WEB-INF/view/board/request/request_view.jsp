@@ -55,7 +55,7 @@
             <div class="board-main request-view-main">
                 <h3 class="hide">게시글 상세페이지</h3>
                 <div class="request-view-header">
-                    <p class="board-view-category">${r.kategorie}</p>
+                    <a href="${pageContext.request.contextPath }/search?c=${r.kategorie}" class="board-view-category">${r.kategorie}</a>
                     <p class="board-view-title">${r.title}</p>
                     <div class="header-row">
                         <div class="writer-info">
@@ -69,7 +69,7 @@
                             </c:choose>
 
 
-                            <a href="">${r.writer}</a>
+                            <a>${r.writer}</a>
                         </div>
                         <div class="post-info">
                             <p class="board-view-comment">${r.count}</p>

@@ -274,6 +274,8 @@ public class SearchService {
 			rs = stmt.executeQuery();
 			if(rs.next()) {
 				result.add(rs.getString("content"));
+			} else {
+				result.add("");
 			}
 		} catch (Exception e) {
 		}

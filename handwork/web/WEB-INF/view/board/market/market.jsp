@@ -84,8 +84,8 @@
                         </a>
                         <div class="item-container market">
                             <div class="item-row">
-                                <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-writer">${r.writer}</a>
-                                <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-location">${r.location}</a>
+                                <p class="item-writer">${r.writer}</p>
+                                <p class="item-location">${r.location}</p>
                             </div>
                             <a href="${pageContext.request.contextPath}/market/detail?id=${r.id}" class="item-title">${r.title}</a>
                             <c:choose>

@@ -185,7 +185,7 @@ function createRequest(data) {
                 '                            <div class="row-wrapper">\n' +
                 '                                        <a href="' + getContextPath() + '/request/detail?id=' + idx + '" class="board-list-price state ' + state + '">' + price + '원</a>\n' +
                 '                                <div>\n' +
-                '                                    <a href="' + getContextPath() + '/request/detail?id=' + idx + '" class="board-list-writer">' + writer + '</a>\n' +
+                '                                    <a class="board-list-writer">' + writer + '</a>\n' +
                 '                                    <p class="board-list-writedate">' + regdate + '</p>\n' +
                 '                                </div>\n' +
                 '                            </div>\n' +
