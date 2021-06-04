@@ -1,12 +1,13 @@
 $(window).load(function(){
     const json = {type:'init'};
     ajaxInit(json);
+    $('.main-map-container').css('min-height','720px');
     $('.main-map-container').height(window.innerHeight-80);
 });
 
 let initData = [];
 let map;
-var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_ico_mylct">현재위치</span></a>';
+var locationBtnHtml = '<a href="#" class="btn_mylct hide"><span class="spr_trff spr_ico_mylct hide">현재위치</span></a>';
 
 
 function initMap(initLatlng){

@@ -217,6 +217,9 @@
                         <c:when test="${r.state eq 1}">
                             <p style="display: flex; justify-content: center; align-content: center; background: whitesmoke; padding: 60px 0; font-size: 25px; width: 100%">채결 완료되어 댓글을 작성 할 수 없습니다</p>
                         </c:when>
+                        <c:when test="${id eq r.writer_id}">
+                            <p style="display: flex; justify-content: center; align-content: center; background: whitesmoke; padding: 60px 0; font-size: 25px; width: 100%">작성자는 제안댓글을 남길 수 없습니다</p>
+                        </c:when>
                         <c:otherwise>
                             <div class="comment-write">
                                 <div class="comment-write-row">

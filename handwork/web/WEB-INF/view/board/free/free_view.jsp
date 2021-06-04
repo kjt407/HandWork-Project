@@ -42,10 +42,10 @@
     </header>
 
     <section class="board-title-section">
-        <div>제작의뢰 게시판</div>
+        <div>자유게시판</div>
     </section>
     <section class="request board-section">
-        <h2 class="hide">제작의뢰 게시판</h2>
+        <h2 class="hide">자유게시판</h2>
         <div class="board-bg">
             <div class="left"></div>
             <div class="right"></div>
