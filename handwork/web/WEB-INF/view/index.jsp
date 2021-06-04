@@ -82,7 +82,15 @@
 								<p class="item-location">${m.location}</p>
 							</div>
 							<p class="item-title">${m.title}</p>
-							<p class="item-price state sell">${m.price}원</p>
+<%--							<p class="item-price state sell">${m.price}원</p>--%>
+							<c:choose>
+								<c:when test="${m.state eq 0}">
+									<p href="" class="item-price state sell">${m.price}원</p>
+								</c:when>
+								<c:otherwise>
+									<p href="" class="item-price state out">${m.price}원</p>
+								</c:otherwise>
+							</c:choose>
 							<p class="item-review-num">${m.count}</p>
 							<div class="item-review">
 								<div class="star-wrap">${m.starAvg}</div>
