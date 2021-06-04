@@ -1,4 +1,12 @@
 @charset "utf-8";
+@keyframes spinCircle {
+    from {
+        transform:rotate(0);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
 
 .board-title-section {position: relative; height: 300px;  width: auto; background: url(../images/market_background.jpg) center no-repeat; background-size: cover;}
 .board-section .board-container .board-main > div.market.board-header { display: flex; align-items: flex-start; justify-content: center; width: 100%; margin: 10px 0 100px;}
@@ -44,9 +52,16 @@
 .board-section .board-container .board-main > div.market.board-header .main-panel .item-writedate:before { content: ""; width: 16px; height: 16px;background: url(../images/writing.png) center no-repeat;  background-size: 16px 16px; margin-right: 2px; opacity: 0.5;}
 .board-section .board-container .board-main > div.market.board-header .main-panel .item-hits:before { content: ""; width: 16px; height: 16px;background: url(../images/views.png) center no-repeat;  background-size: 16px 16px; margin-right: 2px; opacity: 0.5;}
 
-.board-section .board-container .board-main > div.market.board-header .main-panel .btn-contact { display: flex; justify-content: center; align-items: center; justify-self: flex-end; color: white; background: coral; font-size: 19px; padding: 10px; border-radius: 2px; transition: 0.3s all;}
+.board-section .board-container .board-main > div.market.board-header .main-panel div#email-send-wrap { display: flex; align-items: center}
+.board-section .board-container .board-main > div.market.board-header .main-panel .btn-contact { display: flex; justify-content: center; align-items: center; justify-self: flex-end; width: 165px; color: white; background: coral; font-size: 19px; padding: 10px; border-radius: 2px; transition: 0.3s all;}
 .board-section .board-container .board-main > div.market.board-header .main-panel .btn-contact:hover,
 .board-section .board-container .board-main > div.market.board-header .main-panel .btn-contact:disabled { background: gray;}
+.board-section .board-container .board-main > div.market.board-header .main-panel #loading-circle { width: 40px; height: 40px; background: url("../images/loading.png") center no-repeat; background-size: cover; margin-left: 10px;
+    animation-name:spinCircle;
+    animation-duration:.8s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
 
 
 .board-section .board-container .board-main > div.market.content-section { display: flex; flex-direction: column; justify-content: flex-start; width: 100%; min-height: 250px; font-size: 21px; line-height: 35px; margin-bottom: 70px;}

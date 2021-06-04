@@ -170,7 +170,68 @@ function imgSlider(ele) {
     let imgView = $('#img-main');
     imgView.attr('src',$(ele).attr('src'));
 }
-// 이미지 뷰 부분
+
+function sendEmail(ele) {
+    const parent = $(ele).parent('#email-send-wrap');
+
+    const to = parent.children('input[name="to"]');
+    const from = parent.children('input[name="from"]');
+    const title = parent.children('input[name="title"]');
+    const content = parent.children('input[name="content"]');
+    const name = parent.children('input[name="name"]');
+    const writer_id = parent.children('input[name="writer_id"]');
+    const price = parent.children('input[name="price"]');
+    const board_num = parent.children('input[name="board-num"]');
+    const toId = parent.children('input[name="toId"]');
+
+    const parameter = {
+        to:to.val(),
+        from:from.val(),
+        title:title.val(),
+        content:content.val(),
+        name:name.val(),
+        writer_id:writer_id.val(),
+        price:price.val(),
+        board_num:board_num.val(),
+        toId:toId.val()
+    }
+
+    ajaxEmail(parameter,ele);
+}
+
+function ajaxEmail(json,ele) {
+    const url = getContextPath()+"/market/mail";
+    $(ele).attr('disabled',true);
+    $(ele).val('메일 발송중');
+    $(ele).after('<span id="loading-circle"></span>');
+
+    $.ajax({
+        type:"POST",
+        url:url,
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        dataType:"json",
+        data:json,
+        success:function(data){
+            emailSended(ele);
+            if(data.state == 'success'){
+                setTimeout(function (){alert('메일 발송에 성공했습니다 \n설정하신 메일함을 확인해 주세요');},10)
+            } else if(data.state == 'error'){
+                setTimeout(function (){alert('메일 발송에 실패했습니다 \n이메일 설정을 확인해주세요');},10)
+            }
+            console.log(data);
+        },
+        error:function(){
+            emailSended(ele);
+            setTimeout(function (){alert('메일 발송에 실패했습니다 \n이메일 설정을 확인해주세요');},10)
+        }
+    })
+}
+
+function emailSended(ele){
+    $(ele).parent('#email-send-wrap').children('#loading-circle').remove();
+    $(ele).attr('disabled',false);
+    $(ele).val('판매자와 연락하기');
+}
 
 function plzLogin(){
     alert("로그인을 해주세요");

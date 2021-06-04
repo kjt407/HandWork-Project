@@ -1,6 +1,7 @@
 package com.handwork.mail;
 
 import com.handwork.dao.DAO;
+import org.json.simple.JSONObject;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -28,6 +29,7 @@ public class MailController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=UTF-8");
+        JSONObject json = new JSONObject();
 
         try{
             DAO dao = new DAO();
@@ -49,8 +51,7 @@ public class MailController extends HttpServlet {
             }else{
                 phone = getPhone(writer_id);
             }
-
-            int board_num = Integer.parseInt(request.getParameter("board-num"));
+            int board_num = Integer.parseInt(request.getParameter("board_num"));
 
             String url = String.valueOf(request.getRequestURL());
             String url_ = request.getRequestURI();
@@ -104,18 +105,17 @@ public class MailController extends HttpServlet {
             msg.setContent(buffer.toString(), "text/html;charset=UTF-8"); // 내용
             Transport.send(msg); // 전송
 
-            PrintWriter out = response.getWriter();
-
-            out.println("<script>alert('메일이 성공적으로 발송되었습니다.'); location.href='"+request.getContextPath()+"/market/detail?id="+board_num+"';</script>");
-
-            out.flush();
-
             conn.close();
             dao = null;
+
+
+            json.put("state","success");
+
         } catch(Exception e){
             e.printStackTrace();
-            return;
+            json.put("state","error");
         }
+        response.getWriter().print(json);
     }
 
     private String getEmail(String writer_id){
