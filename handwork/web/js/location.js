@@ -1,8 +1,8 @@
 $(window).load(function(){
     const json = {type:'init'};
     ajaxInit(json);
-    $('.main-map-container').css('min-height','720px');
-    $('.main-map-container').height(window.innerHeight-80);
+    $('.main-map-container').css('min-height','800px');
+    $('.main-map-container').height(window.innerHeight-80);z
 });
 
 let initData = [];

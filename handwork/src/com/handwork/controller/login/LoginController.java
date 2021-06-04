@@ -57,7 +57,6 @@ public class LoginController extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("id", rs.getString("id"));
 				session.setAttribute("name", rs.getString("name"));
-				session.setAttribute("dept", rs.getString("dept"));
 
 				request.setAttribute("l", rs.getString("name"));
 				response.sendRedirect(request.getContextPath() + "/");

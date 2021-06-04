@@ -30,14 +30,14 @@
 		<div class="join-container inner-container">
 			<p class="horizontal-join horizontal-title">회원가입</p>
 			<form action="join" method="post">
-				<p class="form-subs">사용자 유형</p>
-				<div class="radio-group">
-					<input type="radio" name="user-type" id="customer" value="customer"
-						class="radio-type-user" checked> <label class=""
-						for="customer">구매자</label> <input type="radio" name="user-type"
-						id="seller" value="seller" class="radio-type-user"> <label
-						class="" for="seller">제작자</label>
-				</div>
+<%--				<p class="form-subs">사용자 유형</p>--%>
+<%--				<div class="radio-group">--%>
+<%--					<input type="radio" name="user-type" id="customer" value="customer"--%>
+<%--						class="radio-type-user" checked> <label class=""--%>
+<%--						for="customer">구매자</label> <input type="radio" name="user-type"--%>
+<%--						id="seller" value="seller" class="radio-type-user"> <label--%>
+<%--						class="" for="seller">제작자</label>--%>
+<%--				</div>--%>
 				<p class="form-subs-join">회원정보 입력</p>
 				<div class="join-input-row">
 					<label for="join-id"><span>아이디</span></label> <input type="text"

@@ -28,7 +28,6 @@ public class JoinController extends HttpServlet{
 			throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
-		String dept = request.getParameter("user-type");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name = request.getParameter("name");
@@ -48,7 +47,7 @@ public class JoinController extends HttpServlet{
 				dao = null;
 				response.sendRedirect("joinFail");
 			} else {
-				stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s', '%s', null, null)", dept, id, pw, name, email));
+				stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s', '%s', null, null)", id, pw, name, email));
 				conn.close();
 				dao = null;
 				response.sendRedirect("joinSuccess");
