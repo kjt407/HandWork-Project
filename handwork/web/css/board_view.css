@@ -1,4 +1,19 @@
 @charset "utf-8";
+@keyframes spinCircle {
+    from {
+        transform:rotate(0);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+#loading-circle { width: 20px; height: 20px; background: url("../images/loading.png") center no-repeat; background-size: cover; margin-right: 10px;
+    animation-name:spinCircle;
+    animation-duration:.8s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
 
 .request-view-main .request-view-header { display: flex; flex-direction: column; width: 100%; border-bottom: 1px solid gray; padding-bottom: 15px;}
 .request-view-main .request-view-header .header-row { display: flex; justify-content: space-between; align-items: flex-end;}
@@ -91,7 +106,8 @@
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row { display: flex;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header {display: flex; flex-direction: column;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header div.header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;}
-.request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header div.header-top div.top-right > input[type='button'] { background: none; font-size: 15px; color: black; opacity: 0.5; font-weight: normal;}
+.request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header div.header-top div.top-right { display: flex;}
+.request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header div.header-top div.top-right > input[type='button'] { background: none; font-size: 15px; color: black; opacity: 0.5; font-weight: normal; margin-left: 5px;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header div.header-top div.top-right > input[type='button']:hover { opacity: 0.8;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header div.header-top div.top-right > span.bid-comment { color: darkgreen; font-size: 19px; font-weight: bold;}
 .request-view-main .request-view-comment .comment-ul .comment-li-container .comment-content-wrap .comment-content-row.comment-header div.header-bottom {margin-bottom: 17px;}

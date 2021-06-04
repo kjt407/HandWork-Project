@@ -138,6 +138,7 @@ function commentAdopt(ele) {
             return;
         }
     }
+    emailSending(ele);
     const commentIndex = parentLi.children('.comment-index').val();
     const writeId = parentLi.children('.comment-writerid').val();
     const boardNum = $('#board-id').val();
@@ -195,11 +196,13 @@ function ajaxPost(json) {
         data:json,
         success:function(data){
             if (data.state != null && data.state === 1){
-                alert("이미 채결완료된 게시글 입니다\n페이지가 새로고침 됩니다");
+                emailSended();
+                setTimeout(function (){alert("이미 채결완료된 게시글 입니다\n페이지가 새로고침 됩니다");},10);
                 location.href = getContextPath()+"/request/detail?id="+data.boardNum;
                 return;
             }else if (data.state != null && data.state === 2){
-                alert("채결이 완료 되었습니다\n페이지가 새로고침 됩니다");
+                emailSended();
+                setTimeout(function (){alert("채결이 완료 되었습니다\n페이지가 새로고침 됩니다");},10);
                 location.href = getContextPath()+"/request/detail?id="+data.boardNum;
                 return;
             }
@@ -245,6 +248,18 @@ function createEle(data) {
             $('#comment-ul').append('<li class="comment-li bided"> <input type="hidden" class="comment-index" value='+cIdx+'> <input type="hidden" class="comment-writerid" value='+cWriterID+'> <div class="comment-li-container"> <div class="user-img-wrap"> <img src="'+getContextPath()+'/upload/profile/'+profile_img+'" alt="댓글 작성자 프로필" class="user-img"> </div> <div class="comment-content-wrap"> <div class="comment-content-row comment-header"> <div class="header-top">                     <div class="top-left"><span class="comment-writername" >' + cWriterName + '</span> <span class="comment-writedate" >' + cWriteTime + '</span></div> <div class="top-right"><span class="bid-comment">채택완료된 댓글 입니다</span></div>                     </div>                     <div class="header-bottom">                     <span class="comment-price" >' + cPrice + '</span>                     </div> </div> <div class="comment-content-row comment-body">                     <p class="comment-subs">' + cSubs + '</p>                      </div> </div></div></li>')
         }
     }
+}
+
+function emailSending(ele){
+    const parent = $(ele).parent('div.top-right');
+    $(parent).children().addClass('hide');
+    $(parent).append('<span id="loading-circle" class="loading-email"></span><span class="loading-email">채택 진행중</span>');
+}
+
+function emailSended(){
+    const parent = $('div.top-right');
+    $('span.loading-email').remove();
+    $(parent).children().removeClass('hide');
 }
 
 function priceException(ele){
