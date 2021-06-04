@@ -27,7 +27,7 @@ public class MarketDetailController extends HttpServlet {
 		MarketService service = new MarketService();
 		ReviewService reviewService = new ReviewService();
 
-		Market market = service.getMarket(id);
+		Market market = service.getMarket(id, true);
 
 		List<Reviews> reviewsList = reviewService.getReviewsList(id);
 
@@ -51,10 +51,10 @@ public class MarketDetailController extends HttpServlet {
 		request.setAttribute("reviewsList", reviewsList);
 		request.setAttribute("r", market);
 
-		Market nextMarket = service.getNextNotice(id, true);
+		Market nextMarket = service.getNextNotice(id);
 		request.setAttribute("nr", nextMarket);
 		
-		Market prevNotice_ = service.getPrevNotice(id, true);
+		Market prevNotice_ = service.getPrevNotice(id);
 		request.setAttribute("pr", prevNotice_);
 
 		service.disconnect();
