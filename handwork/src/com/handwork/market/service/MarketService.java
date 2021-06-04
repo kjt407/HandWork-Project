@@ -153,7 +153,7 @@ public class MarketService {
 		return count;
 	}
 
-	public Market getMarket(int id) {
+	public Market getMarket(int id, boolean incHit) {
 		Market market = null;
 		String sql = "select * from market where id=?";
 
@@ -181,7 +181,9 @@ public class MarketService {
 				int state = rs.getInt("state");
 
 				market = new Market(nid, getBoardWrtierName(nid), title, kategorie, location, flocation, period, price, content, regdate, hit, filename, how, writer_id, state);
-
+				if(incHit) {
+					stmt.execute("update market set hit=hit+1 where id=" + id);
+				}
 				System.out.println(" ð  : " + regdate);
 
 			}
@@ -195,7 +197,7 @@ public class MarketService {
 		return market;
 	}
 
-	public Market getNextNotice(int id, boolean incHit) {
+	public Market getNextNotice(int id) {
 		Market notice = null;
 
 		String sql = "select * from market" +
@@ -228,9 +230,7 @@ public class MarketService {
 
 				notice = new Market(nid, getBoardWrtierName(nid), title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
 
-				if(incHit) {
-					stmt.execute("update market set hit=hit+1 where id=" + id);
-				}
+
 			}
 
 			rs.close();
@@ -242,7 +242,7 @@ public class MarketService {
 		return notice;
 	}
 
-	public Market getPrevNotice(int id, boolean incHit) {
+	public Market getPrevNotice(int id) {
 		Market notice = null;
 
 		String sql =   "select * from (select * from market order by regdate desc) A " +
@@ -272,9 +272,6 @@ public class MarketService {
 
 				notice = new Market(nid, getBoardWrtierName(nid), title, kategorie, location, period, price, content, regdate, hit, filename, how, writer_id, state);
 
-				if(incHit) {
-					stmt.execute("update market set hit=hit+1 where id=" + id);
-				}
 			}
 
 			rs.close();

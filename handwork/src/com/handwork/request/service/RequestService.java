@@ -168,7 +168,7 @@ public class RequestService {
 		return count;
 	}
 
-	public Request getRequest(int id) {
+	public Request getRequest(int id, boolean incHit) {
 		Request request = null;
 		String sql = "select * from board where id=?";
 
@@ -200,7 +200,9 @@ public class RequestService {
 
 
 				request = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, profile_img);
-
+				if(incHit) {
+					stmt.execute("update board set hit=hit+1 where id=" + id);
+				}
 				System.out.println(" ð  : " + regdate);
 
 			}
@@ -214,7 +216,7 @@ public class RequestService {
 		return request;
 	}
 
-	public Request getNextNotice(int id, boolean incHit) {
+	public Request getNextNotice(int id) {
 		Request notice = null;
 
 		String sql = "select * from board" +
@@ -250,9 +252,7 @@ public class RequestService {
 				String writer = (String)list.get(1);
 
 				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, profile_img);
-				if(incHit) {
-					stmt.execute("update board set hit=hit+1 where id=" + id);
-				}
+
 
 
 			}
@@ -266,7 +266,7 @@ public class RequestService {
 		return notice;
 	}
 
-	public Request getPrevNotice(int id, boolean incHit) {
+	public Request getPrevNotice(int id) {
 		Request notice = null;
 
 		String sql =   "select * from (select * from board order by regdate desc) A " +
@@ -300,9 +300,7 @@ public class RequestService {
 				String writer = (String)list.get(1);
 
 				notice = new Request(nid, writer, title, kategorie, location, deadline, price, content, regdate, hit, filename, how, writer_id, state, profile_img);
-				if(incHit) {
-					stmt.execute("update board set hit=hit+1 where id=" + id);
-				}
+
 
 
 			}

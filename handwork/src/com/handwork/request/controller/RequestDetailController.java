@@ -31,7 +31,7 @@ public class RequestDetailController extends HttpServlet {
 		
 		RequestService service = new RequestService();
 		
-		Request request_ = service.getRequest(id);
+		Request request_ = service.getRequest(id, true);
 
 
 		int count = service.getCount(id);
@@ -48,10 +48,10 @@ public class RequestDetailController extends HttpServlet {
 
 		request.setAttribute("r", request_);
 		
-		Request nextRequest_ = service.getNextNotice(id, true);
+		Request nextRequest_ = service.getNextNotice(id);
 		request.setAttribute("nr", nextRequest_);
 		
-		Request prevNotice_ = service.getPrevNotice(id, true);
+		Request prevNotice_ = service.getPrevNotice(id);
 		request.setAttribute("pr", prevNotice_);
 		
 		service.disconnect();

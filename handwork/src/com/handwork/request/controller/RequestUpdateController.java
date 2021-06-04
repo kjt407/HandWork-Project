@@ -41,7 +41,7 @@ public class RequestUpdateController extends HttpServlet{
 		
 		RequestService service = new RequestService();
 		
-		Request request_ = service.getRequest(id);
+		Request request_ = service.getRequest(id, true);
 		request_.setIsUpdate(true);
 		
 		request.setAttribute("r", request_);
@@ -137,7 +137,7 @@ public class RequestUpdateController extends HttpServlet{
 		
 		// ���񽺸� ȣ���Ͽ� Request ������� �ش� �Խñ� �̹��� �� ��� �޾ƿ� 		
 		RequestService service = new RequestService();
-		Request request_ = service.getRequest(id);
+		Request request_ = service.getRequest(id, true);
 		if(request_.getFilename() != null && !request_.getFilename().equals("")) {
 			System.out.println("������Ʈ ����Ұ� null ���� �ƴ�"+fullFileName);
 			fullFileName = request_.getFilename();//Request�� ����� �̹��� �� ���	

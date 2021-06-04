@@ -38,7 +38,7 @@ public class MarketUpdateController extends HttpServlet{
 		
 		MarketService service = new MarketService();
 		
-		Market market = service.getMarket(id);
+		Market market = service.getMarket(id, true);
 		market.setIsUpdate(true);
 		
 		request.setAttribute("r", market);
@@ -138,7 +138,7 @@ public class MarketUpdateController extends HttpServlet{
 		
 		// ���񽺸� ȣ���Ͽ� Request ������� �ش� �Խñ� �̹��� �� ��� �޾ƿ� 		
 		MarketService service = new MarketService();
-		Market market = service.getMarket(id);
+		Market market = service.getMarket(id, true);
 		if(market.getFilename() != null && !market.getFilename().equals("")) {
 			System.out.println("������Ʈ ����Ұ� null ���� �ƴ�"+fullFileName);
 			fullFileName = market.getFilename();//Request�� ����� �̹��� �� ���
