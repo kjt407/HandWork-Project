@@ -214,7 +214,8 @@ function ajaxPost(json) {
             if(json.requestType == 'edit'){
                 alert('잘못된 정보를 입력하셨습니다');
             } else {
-                alert('Ajax 통신 에러');
+                emailSended();
+                alert('서버와 통신중 에러발생');
             }
         }
     })
