@@ -79,8 +79,8 @@
                 <div class="main-panel-wrap">
                     <div class="main-panel">
                         <div class="item-row">
-                            <a href="" class="item-writer">${r.writer}</a>
-                            <a href="" class="item-category">${r.kategorie}</a>
+                            <p href="" class="item-writer">${r.writer}</p>
+                            <a href="${pageContext.request.contextPath }/search?c=${r.kategorie}" class="item-category">${r.kategorie}</a>
                         </div>
                         <p href="" class="item-title">${r.title}</p>
                         <c:choose>
@@ -93,7 +93,7 @@
                         </c:choose>
                         <div class="star-wrap">${r.starAvg}</div>
                         <p class="item-deadline subs">${r.period}</p>
-                        <a href="" class="item-location subs">${r.location}</a>
+                        <p href="" class="item-location subs">${r.location}</p>
                         <p class="item-ship subs">${r.how}</p>
 
                         <c:choose>

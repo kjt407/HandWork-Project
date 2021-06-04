@@ -54,7 +54,7 @@ section.board-section.search .btn-more:hover { background: #901d0c;}
 .board-section.search > div.board-container > section#search-request .board-items > a.img-container img.no-img {width: auto; height: 75px; min-height: 75px; transition:0.3s; }
 .board-section.search > div.board-container > section#search-request .board-items > div.board-list-main { position: relative; display: flex; flex-direction: column; justify-content: flex-start; width: 100%; height: 100%; padding: 0 25px 0 25px; }
 .board-section.search > div.board-container > section#search-request .board-items > div.board-list-main [class^=board-list-] { font-size: 14px; }
-.board-section.search > div.board-container > section#search-request .board-items > div.board-list-main a[class^=board-list-]:hover { text-decoration: underline; }
+/*.board-section.search > div.board-container > section#search-request .board-items > div.board-list-main a[class^=board-list-]:hover { text-decoration: underline; }*/
 .board-section.search > div.board-container > section#search-request .board-items > div.board-list-main > div.row-wrapper { display: flex; justify-content: space-between; align-items: flex-end; }
 .board-section.search > div.board-container > section#search-request .board-items > div.board-list-main > div.row-wrapper a { display: flex; align-items: center; }
 .board-section.search > div.board-container > section#search-request .board-items > div.board-list-main > div.row-wrapper > div { display: flex; }

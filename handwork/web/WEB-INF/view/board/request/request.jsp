@@ -88,23 +88,23 @@
                             </a>
                             <div class="board-list-main">
                                 <div class="row-wrapper">
-                                    <a href="" class="board-list-category">${r.kategorie}</a>
-                                    <a href="" class="board-list-locale">${r.location}</a>
+                                    <a href="${pageContext.request.contextPath }/search?c=${r.kategorie}" class="board-list-category underline">${r.kategorie}</a>
+                                    <a class="board-list-locale">${r.location}</a>
                                 </div>
-                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-title">${r.title}</a>
-                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-subs">${r.content}</a>
+                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-title underline">${r.title}</a>
+                                <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-subs underline">${r.content}</a>
                                 <div class="row-wrapper">
                                     <c:choose>
                                         <c:when test="${r.state eq 0}">
-                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state auction">${r.price}원</a>
+                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state auction underline">${r.price}원</a>
                                         </c:when>
                                         <c:otherwise>
-                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state complete">${r.price}원</a>
+                                            <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-price state complete underline">${r.price}원</a>
                                         </c:otherwise>
                                     </c:choose>
                                     <div>
-                                        <a href="${pageContext.request.contextPath}/request/detail?id=${r.id}" class="board-list-writer">${r.writer}</a>
-                                        <p class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</p>
+                                        <a class="board-list-writer">${r.writer}</a>
+                                        <a class="board-list-writedate">${fn:substring(r.regdate, 0, 16)}</a>
                                     </div>
                                 </div>
                             </div>
