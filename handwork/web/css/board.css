@@ -40,7 +40,7 @@
 .board-section .board-main ul.board-content-list li::after {display: block; content: ""; height: 1px; width: 100%; background: gray; }
 .board-section .board-main ul.board-content-list .board-items { display: flex; justify-content: space-between; width: 100%; height: 190px; overflow: hidden; background: white; padding: 20px 0;}
 .board-section .board-main ul.board-content-list .board-items > a.img-container { display: flex; width: 150px; height: 150px; justify-content: center; align-items: center; overflow: hidden; }
-.board-section .board-main ul.board-content-list .board-items > a.img-container img {width: auto; height: 150px; min-height: 150px; transition:0.3s;}
+.board-section .board-main ul.board-content-list .board-items > a.img-container img {width: 150px; height: 150px; object-fit: cover; transition:0.3s;}
 .board-section .board-main ul.board-content-list .board-items > a.img-container img:hover { transform: scale(1.2); }
 .board-section .board-main ul.board-content-list .board-items > a.img-container img.no-img {width: auto; height: 75px; min-height: 75px; transition:0.3s; }
 .board-section .board-main ul.board-content-list .board-items > div.board-list-main { position: relative; display: flex; flex-direction: column; justify-content: flex-start; width: 660px; height: 100%; padding: 0 0 0 10px; }

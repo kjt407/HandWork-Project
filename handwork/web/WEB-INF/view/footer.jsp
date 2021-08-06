@@ -45,8 +45,8 @@
         <p class="page-name">장터</p>
         <ul class="footer-board market">
             <li class="board-li"><a href="${pageContext.request.contextPath}/market">수제공방</a></li>
+            <li class="board-li"><a href="${pageContext.request.contextPath}/location">주변공방</a></li>
             <li class="board-li"><a href="${pageContext.request.contextPath}/request">제작의뢰</a></li>
-            <li class="board-li"><a href="${pageContext.request.contextPath}/location">지도로 보기</a></li>
         </ul>
     </div>
     <div class="footer-container3">

@@ -81,7 +81,7 @@ public class RequestMailController extends HttpServlet {
             msg.setSubject(subject); //  제목
 
             StringBuffer buffer = new StringBuffer();
-            buffer.append("<div style=\"margin : 40px; background: white; box-shadow: 0 0 5px gray; border-radius: 2px; padding: 20px 60px 40px 60px; width: 500px; font-size: 17px;\">");
+            buffer.append("<div style=\"display:flex; padding: 50px 100px; width:100%; background:whitesmoke;\"><div style=\"margin : 40px; background: white; box-shadow: 0 0 5px gray; border-radius: 2px; padding: 20px 60px 40px 60px; width: 500px; font-size: 17px;\">");
             buffer.append("<div><h2 style=\"padding-top: 20px; padding-bottom: 20px; margin: 20px 0px; color: white; background-color: tomato; width: 500px; text-align: center;\">HANDWORK</h2></div><br>");
             buffer.append("<div style=\"display: flex; width: 100%;\"><p style=\"font-weight: 600; font-size: 30px; line-height: 22px;\">"+title+"</p></div> <br>");
             buffer.append("<div style=\"display: flex; width: 100%;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 22px;\">"+content+"</p></div> <br>");
@@ -90,7 +90,7 @@ public class RequestMailController extends HttpServlet {
             buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 연락처 : "+phone+"</p></div> <br>");
             buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 이메일 : "+email+"</p></div> <br>");
             buffer.append("<div style=\"display: flex; align-items: center; margin: 10px; display: flex; justify-content: center; align-items: center; justify-self: flex-end; color: white; background: tomato; font-size: 19px; padding: 10px; border-radius: 2px; transition: 0.3s all; \"><a href=\""+resultURL+"\"style=\" font-weight: 600; font-size: 20px; line-height: 15px; text-decoration: none; color: white;\">게시글로 이동</a></div>");
-            buffer.append("</div>");
+            buffer.append("</div></div>");
 
 
 

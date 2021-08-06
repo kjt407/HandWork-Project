@@ -52,7 +52,7 @@
 .request-view-main .request-view-control .prev-next-group a.control-board-items { display: flex; justify-content: space-between; width: 100%; background: whitesmoke; margin: 5px 0; transition: 0.3s; }
 .request-view-main .request-view-control .prev-next-group a.control-board-items:hover { background: rgb(181, 181, 181); }
 .request-view-main .request-view-control .prev-next-group a.control-board-items .img-wrap { display: flex; width: 100px; height: 100px; justify-content: center; align-items: center; overflow: hidden;}
-.request-view-main .request-view-control .prev-next-group a.control-board-items .img-wrap img {width: auto; max-height: 100px;}
+.request-view-main .request-view-control .prev-next-group a.control-board-items .img-wrap img {width: 100px; height: 100px; object-fit: cover;}
 .request-view-main .request-view-control .prev-next-group a.control-board-items .control-col { display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 80px; font-size: 16px;}
 .request-view-main .request-view-control .prev-next-group a.control-board-items .control-col.title-subs { justify-content: space-around; align-items: flex-start; max-width: 550px; }
 .request-view-main .request-view-control .prev-next-group a.control-board-items .control-col.title-subs p.view-control-title { font-size: 18px; font-weight: 500; width: 400px; }

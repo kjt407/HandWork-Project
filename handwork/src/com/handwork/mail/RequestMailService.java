@@ -39,7 +39,7 @@ public class RequestMailService {
             DAO dao = new DAO();
             conn = dao.getConnection();
 
-            String subject = "(핸드워크) 문의하신 정보입니다.";
+            String subject = "(핸드워크) 제안이 채택되었습니다";
             String fromId = (String) request.getSession().getAttribute("id");
             String from = "ambirion0302@gmail.com";
             String toId = request.getParameter("commentIndex");
@@ -77,12 +77,12 @@ public class RequestMailService {
             msg.setSubject(subject); //  제목
 
             StringBuffer buffer = new StringBuffer();
-                        buffer.append("<div style=\"margin : 40px; background: white; box-shadow: 0 0 5px gray; border-radius: 2px; padding: 20px 60px 40px 60px; width: 500px; font-size: 17px;\">");
+                        buffer.append("<div style=\"display:flex; padding: 50px 100px; width:100%; background:whitesmoke;\"><div style=\"margin : 40px; background: white; box-shadow: 0 0 5px gray; border-radius: 2px; padding: 20px 60px 40px 60px; width: 500px; font-size: 17px;\">");
                         buffer.append("<div><h2 style=\"padding-top: 20px; padding-bottom: 20px; margin: 20px 0px; color: white; background-color: tomato; width: 500px; text-align: center;\">HANDWORK <br> 체결이 완료되었습니다.</h2></div><br>");
-                        buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 이름 : "+getName(fromId)+"</p></div> <br>");
-                        buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 연락처 : "+getPhone(fromId)+"</p></div> <br>");
-                        buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">제작자 이메일 : "+getEmail(fromId)+"</p></div> <br>");
-                        buffer.append("<div style=\"display: flex; align-items: center; margin: 10px; display: flex; justify-content: center; align-items: center; justify-self: flex-end; color: white; background: tomato; font-size: 19px; padding: 10px; border-radius: 2px; transition: 0.3s all; \"><a href=\""+resultURL+"\"style=\" font-weight: 600; font-size: 20px; line-height: 15px; text-decoration: none; color: white;\">게시글로 이동</a></div>");
+                        buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">구매자 이름 : "+getName(fromId)+"</p></div> <br>");
+                        buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">구매자 연락처 : "+getPhone(fromId)+"</p></div> <br>");
+                        buffer.append("<div style=\"display: flex; align-items: center;  padding 20px 0px;\"><p style=\"font-weight: 600; font-size: 20px; line-height: 15px;\">구매자 이메일 : "+getEmail(fromId)+"</p></div> <br>");
+                        buffer.append("<div style=\"display: flex; align-items: center; margin: 10px; display: flex; justify-content: center; align-items: center; justify-self: flex-end; color: white; background: tomato; font-size: 19px; padding: 10px; border-radius: 2px; transition: 0.3s all; \"><a href=\""+resultURL+"\"style=\" font-weight: 600; font-size: 20px; line-height: 15px; text-decoration: none; color: white;\">게시글로 이동</a></div></div>");
 
             buffer.append("</div>");
 

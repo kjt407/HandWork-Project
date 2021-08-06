@@ -70,10 +70,10 @@
 .board-section .board-container .board-main .title-wrap { display: flex; justify-content: space-between; align-items: flex-end;}
 .board-section .board-container .board-main .content-view {display: flex; justify-content: flex-start; margin: 30px 30px; font-family: 'Segoe UI Emoji';  color: black;}
 
-.board-section .board-container .board-main > div.market.review-section { display: flex; flex-direction: column; width: 100%;}
+.board-section .board-container .board-main > div.market.review-section { display: flex; flex-direction: column; width: 100%; margin-bottom: 50px;}
 .board-section .board-container .board-main > div.market.review-section .title-wrap > input.btn-write-review{ background: none; font-size: 16px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul { padding: 0 20px;}
-.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li {display: flex; flex-direction: column; background: whitesmoke; margin: 20px 0; padding: 15px; border-radius: 5px;}
+.board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li {display: flex; flex-direction: column; background: whitesmoke; margin-top: 20px; padding: 15px; border-radius: 5px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row { display: flex; justify-content: space-between; align-items: flex-start;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row:first-child { margin-bottom: 15px;}
 .board-section .board-container .board-main > div.market.review-section > ul.review-ul .review-li > .review-row > .user-info-wrap { display: flex; justify-content:flex-start;}

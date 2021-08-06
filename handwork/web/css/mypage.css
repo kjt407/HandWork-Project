@@ -17,7 +17,7 @@ section#main-section div.wrap-main > section#my-log-section .log-container > ul 
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a:hover { background: #d9d7d7;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap { display: flex; align-items: center; margin-right: 15px; }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type { margin-right: 15px; color: white; padding: 15px; border-radius: 3px; flex-shrink: 0;}
-p.log-li-type.request, p.log-li-type.market, p.log-li-type.free  { display: flex; justify-content: center; align-items: center; width: 83px;}
+p.log-li-type.request, p.log-li-type.market, p.log-li-type.free  { display: flex; justify-content: center; align-items: center; width: 83px; padding: 15px 0 !important;}
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.request,
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.comment { background:darkorange }
 section#main-section div.wrap-main > section#my-log-section .log-container > ul > li a div.wrap p.log-li-type.market,
