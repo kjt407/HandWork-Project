@@ -23,15 +23,17 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/header_footer.js"></script>
 
 <script>
-	window.Kakao.init("47d80a797066ad48e74a8224ca2a7e23");
-	
+	window.Kakao.init("609302f33d08c368472335f196417c87");
+	// window.Kakao.init("47d80a797066ad48e74a8224ca2a7e23");
+
 	var id = null;
 	var email = null;
 	var name = null;
 	
 	function kakaoLogin(){
 		window.Kakao.Auth.loginForm({
-			scope:'profile, account_email',
+			scope:'profile_nickname, profile_image, account_email',
+			// scope:'profile, account_email',
 			success: function(authObj){
 				console.log(authObj);
 				window.Kakao.API.request({

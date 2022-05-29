@@ -10,7 +10,7 @@ public class DAO {
     public DAO() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            String dbURL = "jdbc:mariadb://nfox.site:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
+            String dbURL = "jdbc:mariadb://db:3306/handwork?serverTimezone=UTC&useSSL=FALSE";
             String dbID = "handwork";
             String dbPassword = "handwork";
             conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
@@ -22,5 +22,6 @@ public class DAO {
     public Connection getConnection (){
         return conn;
     }
+
 
 }

@@ -22,6 +22,8 @@ public class KakaoLoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		System.out.println("kakaoLogin 컨트롤러 doget 실행됨");
+
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -37,7 +39,8 @@ public class KakaoLoginController extends HttpServlet {
 				ResultSet rs = stmt.executeQuery(String.format("select * from member where id='%s'", id));
 				if (rs.next()) {
 				} else {
-					stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s','%s')", id, pw, name, email));
+					stmt.executeUpdate(String.format("insert into member(id,pw,name,email) values('%s', '%s', '%s','%s')", id, pw, name, email));
+//					stmt.executeUpdate(String.format("insert into member values(null, '%s', '%s', '%s','%s')", id, pw, name, email));
 				}
 			}
 
@@ -62,6 +65,6 @@ public class KakaoLoginController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("kakaoLogin 컨트롤러 post 실행됨");
 	}
 }
